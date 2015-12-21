@@ -1,0 +1,104 @@
+{
+    "properties": [
+        {
+            "modifiers": [
+                "public"
+            ], 
+            "name": "payload", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 3
+            }, 
+            "type": "String"
+        }
+    ], 
+    "externalReferences": [], 
+    "innerClasses": [], 
+    "interfaces": [
+        "Database.AllowsCallouts", 
+        "System.Queueable"
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "name": "AsyncPush", 
+    "tableDeclaration": {
+        "type": "AsyncPush", 
+        "modifiers": [
+            "public"
+        ], 
+        "references": [], 
+        "location": {
+            "column": 14, 
+            "line": 1
+        }, 
+        "name": "AsyncPush"
+    }, 
+    "key": "01p61000006rLrxAAE", 
+    "variables": [
+        {
+            "type": "QueueableContext", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 42, 
+                "line": 5
+            }, 
+            "name": "context"
+        }, 
+        {
+            "type": "HttpRequest", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 7
+            }, 
+            "name": "req"
+        }, 
+        {
+            "type": "Http", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 14, 
+                "line": 13
+            }, 
+            "name": "http"
+        }, 
+        {
+            "type": "HttpResponse", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 14
+            }, 
+            "name": "res"
+        }
+    ], 
+    "id": "01p61000006rLrxAAE", 
+    "methods": [
+        {
+            "modifiers": [
+                "public"
+            ], 
+            "name": "execute", 
+            "parameters": [
+                {
+                    "type": "QueueableContext", 
+                    "name": "context"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 5
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

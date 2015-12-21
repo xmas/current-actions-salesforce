@@ -1,0 +1,15 @@
+<aura:component >
+<!-- The component must contain attributes named 'Street', 'City', 'State', and 'PostalCode', all of type 'String'.
+
+The attributes can have any or no default.
+All of the attributes must be bound to the component using the {!v.Attribute} format.
+-->
+
+    <aura:attribute name="Street" type="String" default="test"/>
+    <aura:attribute name="City" type="String" default="test"/>
+    <aura:attribute name="State" type="String" default="test"/>
+    <aura:attribute name="PostalCode" type="String" default="test"/>
+
+    {!v.Street}, {!v.City}, {!v.State}, {!v.PostalCode}
+    
+</aura:component>

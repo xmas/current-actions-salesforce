@@ -1,0 +1,62 @@
+<aura:component >    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="insight" type="Insight__c" />
+    <aura:registerEvent name="selected_insight" type="c:selectInsight"/>
+    
+    <aura:handler event="c:modalClose" action="{!c.closeModal}"/>
+    <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
+    <div aura:id="modal">
+        {!v.modal}
+    </div>
+    
+    <div class="slds-media slds-comment slds-hint-parent">
+        <div class="slds-media__figure">
+            
+            <span class="slds-icon__container slds-icon-action-call">
+                <c:svg class="slds-icon" xlinkHref="/resource/SLDS0120/assets/icons/action-sprite/svg/symbols.svg#new_custom17" />
+                <span class="slds-assistive-text">Account Icon</span>
+            </span>
+            
+        </div>
+        <div class="slds-media__body">
+            <div class="slds-grid slds-grid--align-spread">
+                <p class="slds-text-longform"><a href="javascript:void(0)" title="source link"><b>{!v.insight.Data_Source__c}{!v.insight.Insight__r.Data_Source__c}</b></a></p>
+                
+                <!--
+                <a href="javascript:void(0);" onclick="{!c.sendSelectedInsight}">Details</a>
+                <aura:if isTrue="{!false}"><c:InsightDetail /></aura:if> -->
+                <a href="javascript:void(0);" onclick="{!c.openObject}">Go To</a>
+                <a href="{!'omnifocus:///add?name=' + v.insight.Long_Name__c}" >Add to OmniFocus</a>
+
+
+
+            </div>
+            test test test TEST!!!! 
+            <ul class="slds-list--horizontal slds-has-dividers slds-text-body--small">
+                <li class="slds-list__item"><ui:outputDateTime value="{!v.insight.LastModifiedDate}"/></li>
+                <li class="slds-list__item">NUM_VIEWS</li>
+                <li class="slds-list__item">NUM_COMMENTS comments</li>
+            </ul>
+            <div class="slds-comment__content slds-text-longform slds-text-heading--small">
+                <b>{!v.insight.Long_Name__c}{!v.insight.Insight__r.Long_Name__c}</b>
+            </div>
+            <p>
+                <span class="slds-badge">TOPIC1</span>
+                <span class="slds-badge">TOPIC2</span>
+            </p>
+            <br></br>
+            
+            <div class="container">
+                <aura:unescapedHtml value="{!v.insight.Details__c}"/>     
+                <aura:unescapedHtml value="{!v.insight.Insight__r.Details__c}"/>     
+            </div>
+            
+            <div class="container">
+                <aura:unescapedHtml value="{!v.insight.Chart__c}"/>
+                <aura:unescapedHtml value="{!v.insight.Insight__r.Chart__c}"/>
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

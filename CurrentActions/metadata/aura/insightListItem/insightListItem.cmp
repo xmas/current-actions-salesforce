@@ -1,0 +1,4 @@
+<aura:component >
+    <aura:attribute name="insight" type="Insight__c"/>
+    <ui:outputText value="{!v.insight.Name}" click="{!c.select}"/>
+</aura:component>
