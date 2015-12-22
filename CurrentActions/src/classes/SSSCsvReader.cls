@@ -23,11 +23,9 @@
 	 	return null;
 	 	String line = this.buffer.remove(0);
 	 	System.debug('last char is: -'+line.substring(line.length()-1)+'-');
-	 	if (line.substring(line.length()-1) == '^M') {
-	 		System.debug('extra delim');
-	 	}
+
 	 	if (!line.substring(line.length()-1).isAsciiPrintable() ) {
-	 		System.debug('CRAZY TOWON-'+line.substring(line.length()-1));
+	 		//System.debug('CRAZY TOWON-'+line.substring(line.length()-1));
 	 		line = line.substring(0, line.length() -1 );
 
 	 	}
