@@ -103,8 +103,8 @@ public with sharing class DataBot {
         payload.put('mediums', mediums);
 
         List <Map<String, String>> users = new List <Map<String, String>> ();
-        users.add(new Map<String, String>{'guid'=>'123456'});
-        users.add(new Map<String, String>{'guid'=>'987654'});
+        //users.add(new Map<String, String>{'guid'=>'123456'});
+        //users.add(new Map<String, String>{'guid'=>'987654'});
         payload.put('users', users);
 
         //System.debug('PUSH DATA:');
@@ -112,7 +112,7 @@ public with sharing class DataBot {
         String payload_s = JSON.serialize(payload);
         push.payload = payload_s;
         //System.debug(push);
-       	System.debug('queiung: '+payload_s);
+       	//System.debug('queiung: '+payload_s);
 
         System.enqueueJob(push);
 

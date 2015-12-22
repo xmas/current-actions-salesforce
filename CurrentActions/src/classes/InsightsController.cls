@@ -26,7 +26,7 @@ public class InsightsController {
                 Directly_Responsible_User__c, 
                 OwnerId, Chart__c
                 FROM Insight__c 
-                ORDER BY CreatedDate DESC LIMIT 20];
+                ORDER BY CreatedDate DESC LIMIT 50];
     }
     
     @AuraEnabled

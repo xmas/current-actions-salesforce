@@ -216,7 +216,8 @@ public with sharing class CurrencyBot {
             String avgs = '';
             
             min = 0;
-            for (Integer i = statsList.size()-1; i >= 0 ; i--) {
+            Integer listcount = statsList.size() - 10;
+            for (Integer i = statsList.size()-1; i >= Math.max(0, listcount) ; i--) {
                 Map <String, Object> statEntry = (Map <String, Object>) statsList[i];
                 Double minE = Double.valueOf(statEntry.get('min'));
                 Double maxE = Double.valueOf(statEntry.get('max'));
@@ -231,7 +232,7 @@ public with sharing class CurrencyBot {
                 mins += minE.format();
                 maxs += maxE.format();
                 avgs += avgE.format();
-                if (i > 0) {
+                if (i > listcount) {
                     mins += ',';
                     maxs += ',';
                     avgs += ',';
@@ -243,13 +244,13 @@ public with sharing class CurrencyBot {
                 'https://chart.googleapis.com/chart?chs=600x300&&chco=0849A2&cht=lc&chd=t0:-1,'+mins+',-1|-1,'+avgs+',-1|-1,'+avgs+',-1|-1,'+maxs+',-1'+
                 '&chm=F,0000FF,0,,20&chxt=y&chxl=0:|0|'+max.format();
             
-            //System.debug(chart_opts);
+            System.debug(chart_opts);
             
             //generateChart(new_insight, chart_opts);
             AsyncChart ac = new AsyncChart();
             ac.insight = new_insight;
             ac.chart_options = chart_opts;
-            //System.enqueueJob(ac);
+            System.enqueueJob(ac);
         }
         
     }

@@ -1,0 +1,261 @@
+{
+    "properties": [
+        {
+            "modifiers": [
+                "private"
+            ], 
+            "name": "delim", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 5
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [
+                "private"
+            ], 
+            "name": "buffer", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 7
+            }, 
+            "type": "LIST"
+        }, 
+        {
+            "modifiers": [
+                "private", 
+                "static"
+            ], 
+            "name": "quotePattern", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 83
+            }, 
+            "type": "Pattern"
+        }
+    ], 
+    "externalReferences": [], 
+    "innerClasses": [], 
+    "interfaces": [], 
+    "constructors": [
+        {
+            "modifiers": [
+                "public"
+            ], 
+            "name": "SSSCsvReader", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "data"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 9
+            }, 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "public"
+            ], 
+            "name": "SSSCsvReader", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "data"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "delim"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 13
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "SSSCsvReader", 
+    "tableDeclaration": {
+        "type": "SSSCsvReader", 
+        "modifiers": [
+            "public", 
+            "with sharing"
+        ], 
+        "references": [], 
+        "location": {
+            "column": 28, 
+            "line": 4
+        }, 
+        "name": "SSSCsvReader"
+    }, 
+    "key": "01p61000006rTNyAAM", 
+    "variables": [
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 9
+            }, 
+            "name": "data"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 13
+            }, 
+            "name": "data"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 42, 
+                "line": 13
+            }, 
+            "name": "delim"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 11, 
+                "line": 24
+            }, 
+            "name": "line"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 13, 
+                "line": 35
+            }, 
+            "name": "parts"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 13, 
+                "line": 37
+            }, 
+            "name": "next"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 13, 
+                "line": 40
+            }, 
+            "name": "quoteIndex"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 15, 
+                "line": 47
+            }, 
+            "name": "skip"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 87
+            }, 
+            "name": "line"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 50, 
+                "line": 87
+            }, 
+            "name": "skip"
+        }, 
+        {
+            "type": "Matcher", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 88
+            }, 
+            "name": "m"
+        }
+    ], 
+    "id": "01p61000006rTNyAAM", 
+    "methods": [
+        {
+            "modifiers": [
+                "public"
+            ], 
+            "name": "readLine", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 21
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "private"
+            ], 
+            "name": "findQuote", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "line"
+                }, 
+                {
+                    "type": "Integer", 
+                    "name": "skip"
+                }
+            ], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 87
+            }, 
+            "returnType": "Integer", 
+            "type": null
+        }
+    ]
+}

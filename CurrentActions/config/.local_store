@@ -112,7 +112,7 @@
         "id": "01p61000006r5oRAAQ", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2015-12-08 23:41:17", 
+        "lastModifiedDate": "2015-12-21 15:01:06", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -216,7 +216,7 @@
         "id": "01p61000006ZOEcAAO", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2015-12-20 22:38:22", 
+        "lastModifiedDate": "2015-12-21 11:38:14", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -346,7 +346,7 @@
         "id": "01p61000006ZOEmAAO", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2015-12-20 11:38:21", 
+        "lastModifiedDate": "2015-12-21 11:28:06", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -515,7 +515,7 @@
         "id": "01p61000005QuGOAA0", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2015-12-13 23:19:34", 
+        "lastModifiedDate": "2015-12-21 11:14:39", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -593,7 +593,7 @@
         "id": "01p61000006rICWAA2", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2015-12-16 16:47:10", 
+        "lastModifiedDate": "2015-12-21 22:10:20", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -700,6 +700,19 @@
         "lastModifiedDate": "2015-11-23 11:35:47", 
         "mmState": "clean", 
         "type": "StaticResource"
+    }, 
+    "SSSCsvReader.cls": {
+        "createdById": "005610000012IXIAA2", 
+        "createdByName": "Rowan Christmas", 
+        "createdDate": "2015-12-21 15:06:41", 
+        "fileName": "unpackaged/classes/SSSCsvReader.cls", 
+        "fullName": "SSSCsvReader", 
+        "id": "01p61000006rTNyAAM", 
+        "lastModifiedById": "005610000012IXIAA2", 
+        "lastModifiedByName": "Rowan Christmas", 
+        "lastModifiedDate": "2015-12-21 20:46:43", 
+        "mmState": "clean", 
+        "type": "ApexClass"
     }, 
     "Silver Partner User.profile": {
         "createdById": "005610000012IXIAA2", 
