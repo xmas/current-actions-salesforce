@@ -5,7 +5,8 @@ public with sharing class NumberBot
     
     public NumberBot(String csvURL) {
 
-        String queryName = 'Available Resources';
+        String botName = 'Available Resources';
+
         List <InsightAssociation__c> assocs = new  List <InsightAssociation__c> ();
 
         HttpRequest req = new HttpRequest();
@@ -16,64 +17,52 @@ public with sharing class NumberBot
         String csvString = res.getBody();
 
 
+        SSSCsvReader reader = new SSSCsvReader(csvString);
+        String[] headers = reader.popHeader();
+        List<List<String>>  rows = reader.popContent();
+        Integer count = rows.size();
+
+        if (count == 0) {
+            return;
+        }
+
         Map<String, Account> accounts = new Map<String, Account>(); 
         for(Account objCS : [Select Account.Name, Account.Id From Account] ) {
             accounts.put(objCS.Name, objCS);
         }
 
-        SSSCsvReader reader = new SSSCsvReader(csvString);
-
-        String[] names = new List<String> ();
-        String[] emails = new List<String> ();
-        String[] clients = new List<String> ();
-
-
-        String[] header = reader.readLine();
-        String[] row = reader.readLine();
-        csvtype[] types = typesForValues(row);
-        Integer count = 0;
-
-        while (row != null) {
-            count++;
-            for (Integer i = 0; i < row.size(); i++ ) {
-                if ( header[i].toLowerCase().contains('email') ) {
-                    // add to email list
-                    emails.add(row[i]);
-                }
-
-                if ( header[i].toLowerCase().contains('name') ) {
-                    // add to email list
-                    names.add(row[i]);
-                }
-
-                if (header[i].endsWith('Client')) {
-                    if (row[i].length() > 0) {
-                        clients.add(row[i]);
-                    }
-                }
-
-            }
-
-            row = reader.readLine();
-        }
-        // end read rows
-
-        String tableHTML = buildTable(new List<String> {'Name', 'Email'}, new List<String[]>  {names, emails});
-        String mailAll = '<a href="mailto:'+String.join(emails, ',')+'">Email Group</a>';
+        //csvtype[] types = typesForValues(rows[0]);
         
-        Insight__c insight = DataBot.createInsight('Available Resources', 'Resource Bot', '', mailAll+'<br></br>'+tableHTML);
-        countCompare(queryName, insight, count);
+        
+        Integer email_id = headerIndexForString('email', headers);
+        Integer name_id = headerIndexForString('name', headers);
 
+        String tableHTML = buildTable(new List<String> {'Name', 'Email'}, new Integer[] {name_id, email_id}, rows);
+        String mailAll = '<a href="mailto:'+String.join(valuesForIndex(email_id, rows), ',')+'">Email Group</a>';
+        
+        String title = 'There ';
+        if (count == 1) {
+            title = title + ' is 1 available resource.';
+        } 
+        else {
+            title = title + ' are '+count+' available resources.';
+        }
 
-        Set<String> clientSet =new Set<String>();
-        clientSet.addAll(clients);
-        System.debug(clientSet);
-        for (String client : clientSet) {
-            System.debug(client+' = '+accounts.get(client).Id);
-            String aid = accounts.get(client).Id;
+        Insight__c insight = DataBot.createInsight(title, botName, '', mailAll+'<br></br>'+tableHTML);
+        countCompare(botName, insight, count);
+
+        String[] clients = valuesForIndex(headerIndexForString('client', headers), rows);
+        Set<String> clientSet = new Set<String>();
+        for (String client : clients) {
+            if (accounts.containsKey(client)) {
+                clientSet.add(accounts.get(client).Id);
+            } 
+        }
+
+        for (Id clientId : clientSet) {
             InsightAssociation__c assoc = new InsightAssociation__c (
                 Insight__c = insight.Id,
-                RecordID__c = aid,
+                RecordID__c = clientId,
                 Name = 'Available Resource for account'
                 );
             assocs.add(assoc);
@@ -85,20 +74,39 @@ public with sharing class NumberBot
 
     }
 
-    private void countCompare (String u_name, Insight__c insight, Integer count) {
 
-        LedgerBot ledgers = new LedgerBot();
-        System.debug('count: '+count);
+    private Integer headerIndexForString(String search, String[] headers) {
+       for (Integer i = 0; i < headers.size(); i++) {
+        if (headers[i].toLowerCase().contains(search)) {
+           return i;
+       }
+   }
+   return -1;
+}
 
-        LedgerBot__c fieldLedgerBot = ledgers.getLedgerBotByName(u_name);
-        String lastResultString = fieldLedgerBot.Last_Result__c;
-        Map <String, Object> fieldParams = DataBot.mapFromJSON(lastResultString);
+private List<String> valuesForIndex(Integer index, List<List<String>> rows) {
+ List<String>  vals = new List<String>();
+ for (String[] row : rows) {
+    vals.add(row[index]);
+}
+return vals;
+}
 
-        List <Object> statsList = (List <Object>)fieldParams.get('stats');
-        Map <String, Object> newStats = new Map <String, Object> ();
-        newStats.put('date', system.now().formatGMT('EEE, MMM d yyyy HH:mm:ss'));
-        newStats.put('count', count);
-        statsList = Util.push(statsList, newStats);
+
+private void countCompare (String u_name, Insight__c insight, Integer count) {
+
+    LedgerBot ledgers = new LedgerBot();
+    System.debug('count: '+count);
+
+    LedgerBot__c fieldLedgerBot = ledgers.getLedgerBotByName(u_name);
+    String lastResultString = fieldLedgerBot.Last_Result__c;
+    Map <String, Object> fieldParams = DataBot.mapFromJSON(lastResultString);
+
+    List <Object> statsList = (List <Object>)fieldParams.get('stats');
+    Map <String, Object> newStats = new Map <String, Object> ();
+    newStats.put('date', system.now().formatGMT('EEE, MMM d yyyy HH:mm:ss'));
+    newStats.put('count', count);
+    statsList = Util.push(statsList, newStats);
 
          // repack the JSON
          fieldParams.put('stats', statsList);
@@ -117,7 +125,6 @@ public with sharing class NumberBot
             countHistory.add(countE);
         }
 
-        System.debug(countHistory);
         if (max > 100) {
             for (Integer c = 0; c < countHistory.size(); c++) {
                 if (countHistory[c] > 1) {
@@ -125,7 +132,6 @@ public with sharing class NumberBot
                 }
             }
         }
-        System.debug(countHistory);
 
 
         String chart_opts = 'https://chart.googleapis.com/chart?cht=lc&chco=0849A2&chs=600x300&chd=t:'+
@@ -141,34 +147,35 @@ public with sharing class NumberBot
 
     }
 
-    public String buildTable (List<String> headers, List<String[]> rows) {
+    public String buildTable (List<String> headers, Integer[] ids, List<List<String>>rows) {
+
+        if (headers.size() != ids.size()) {
+            System.debug('Attempting to build table with different numbers of headers and ids');
+            return null;
+        }
+
         String html = '<div class="slds"><table class="slds-table slds-table--bordered"><thead> <tr class="slds-text-heading--label">';
         for (String header : headers) {
             html = html + '<th scope="col"><span class="slds-truncate">';
-
             html = html + header;
             html = html + '</span></th>';
         }
         html = html + '  </thead><tbody>';
 
-        for (Integer i = 0; i < rows[0].size(); i++) {
+        for (String[] row : rows) {
             html = html + '<tr class="slds-hint-parent">';
+            for (Integer i = 0; i < ids.size(); i++) {
 
-            html = html + '<td data-label="'+headers[0]+'">';
-            html = html + '<span class="slds-truncate">'+rows[0][i]+'</span></td>';
-
-            html = html + '<td data-label="'+headers[1]+'">';
-            html = html + '<a href="#" class="slds-truncate">'+rows[1][i]+'</a></td>';
-
+                Integer val_index = ids[i];
+                
+                html = html + '<td data-label="'+headers[i]+'">';
+                html = html + '<span class="slds-truncate">'+row[val_index]+'</span></td>';
+            }
             html = html + '</tr>';
         }
-
-
-
         html = html + '</tbody></table></div>';
 
-        System.debug(html);
-
+        //System.debug(html);
         return html;
     }
 
@@ -182,7 +189,8 @@ public with sharing class NumberBot
             System.debug(i+' : '+row[i]);
             String val = row[i];
 
-            if (val.startsWith('$')) {
+            if ( val.startsWith('$') ) {
+
                 types[i] = csvtype.CSVCURRENCY;
                 System.debug('CURRENCY: '+val);
                 } else if (val.isNumeric()) {
@@ -216,3 +224,4 @@ public with sharing class NumberBot
         }
 
     }
+

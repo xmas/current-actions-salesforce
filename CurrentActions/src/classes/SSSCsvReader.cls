@@ -5,16 +5,31 @@
  	private String delim = ',';
 	// the input data
 	private String[] buffer;
-	
+
+	public List <String> popHeader() {
+		return readLine();
+	}
+
+	public List<List<String>> popContent() {
+		List<List<String>> linesValues = new List<List<string>>();
+		List <String> row = readLine();
+		while (row != null) {
+			linesValues.add(row);
+			row = readLine();
+		}
+		return linesValues;
+	}
+
+
 	public SSSCsvReader(String data){
 		this.buffer = data.split('\n'); 
 	}
-	
+
 	public SSSCsvReader(String data, String delim){
 		this.buffer = data.split('\n'); 
 		this.delim = delim;
 	}
-	
+
 	/**
 	 * Read and parse next available line.  Return null if end of stream.
 	 */
@@ -22,7 +37,7 @@
 	 	if(buffer.size() == 0)
 	 	return null;
 	 	String line = this.buffer.remove(0);
-	 	System.debug('last char is: -'+line.substring(line.length()-1)+'-');
+	 	//System.debug('last char is: -'+line.substring(line.length()-1)+'-');
 
 	 	if (!line.substring(line.length()-1).isAsciiPrintable() ) {
 	 		//System.debug('CRAZY TOWON-'+line.substring(line.length()-1));

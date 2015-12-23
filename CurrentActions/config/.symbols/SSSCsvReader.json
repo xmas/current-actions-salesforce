@@ -36,7 +36,7 @@
             "references": [], 
             "location": {
                 "column": 25, 
-                "line": 81
+                "line": 96
             }, 
             "type": "Pattern"
         }
@@ -60,7 +60,7 @@
             "references": [], 
             "location": {
                 "column": 9, 
-                "line": 9
+                "line": 24
             }, 
             "type": null
         }, 
@@ -83,7 +83,7 @@
             "references": [], 
             "location": {
                 "column": 9, 
-                "line": 13
+                "line": 28
             }, 
             "type": null
         }
@@ -106,12 +106,32 @@
     "key": "01p61000006rTNyAAM", 
     "variables": [
         {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 14
+            }, 
+            "name": "linesValues"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 15
+            }, 
+            "name": "row"
+        }, 
+        {
             "type": "String", 
             "modifiers": [], 
             "references": [], 
             "location": {
                 "column": 29, 
-                "line": 9
+                "line": 24
             }, 
             "name": "data"
         }, 
@@ -121,7 +141,7 @@
             "references": [], 
             "location": {
                 "column": 29, 
-                "line": 13
+                "line": 28
             }, 
             "name": "data"
         }, 
@@ -131,7 +151,7 @@
             "references": [], 
             "location": {
                 "column": 42, 
-                "line": 13
+                "line": 28
             }, 
             "name": "delim"
         }, 
@@ -141,7 +161,7 @@
             "references": [], 
             "location": {
                 "column": 11, 
-                "line": 24
+                "line": 39
             }, 
             "name": "line"
         }, 
@@ -151,7 +171,7 @@
             "references": [], 
             "location": {
                 "column": 13, 
-                "line": 33
+                "line": 48
             }, 
             "name": "parts"
         }, 
@@ -161,7 +181,7 @@
             "references": [], 
             "location": {
                 "column": 13, 
-                "line": 35
+                "line": 50
             }, 
             "name": "next"
         }, 
@@ -171,7 +191,7 @@
             "references": [], 
             "location": {
                 "column": 13, 
-                "line": 38
+                "line": 53
             }, 
             "name": "quoteIndex"
         }, 
@@ -181,7 +201,7 @@
             "references": [], 
             "location": {
                 "column": 15, 
-                "line": 45
+                "line": 60
             }, 
             "name": "skip"
         }, 
@@ -191,7 +211,7 @@
             "references": [], 
             "location": {
                 "column": 36, 
-                "line": 85
+                "line": 100
             }, 
             "name": "line"
         }, 
@@ -201,7 +221,7 @@
             "references": [], 
             "location": {
                 "column": 50, 
-                "line": 85
+                "line": 100
             }, 
             "name": "skip"
         }, 
@@ -211,7 +231,7 @@
             "references": [], 
             "location": {
                 "column": 12, 
-                "line": 86
+                "line": 101
             }, 
             "name": "m"
         }
@@ -222,13 +242,43 @@
             "modifiers": [
                 "public"
             ], 
+            "name": "popHeader", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 9
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "public"
+            ], 
+            "name": "popContent", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 13
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "public"
+            ], 
             "name": "readLine", 
             "parameters": [], 
             "visibility": "PUBLIC", 
             "references": [], 
             "location": {
                 "column": 19, 
-                "line": 21
+                "line": 36
             }, 
             "returnType": "LIST", 
             "type": null
@@ -252,7 +302,7 @@
             "references": [], 
             "location": {
                 "column": 19, 
-                "line": 85
+                "line": 100
             }, 
             "returnType": "Integer", 
             "type": null

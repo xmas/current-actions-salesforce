@@ -85,7 +85,7 @@
                 "column": 16, 
                 "line": 8
             }, 
-            "name": "queryName"
+            "name": "botName"
         }, 
         {
             "type": "LIST", 
@@ -93,7 +93,7 @@
             "references": [], 
             "location": {
                 "column": 38, 
-                "line": 9
+                "line": 10
             }, 
             "name": "assocs"
         }, 
@@ -103,7 +103,7 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 11
+                "line": 12
             }, 
             "name": "req"
         }, 
@@ -113,7 +113,7 @@
             "references": [], 
             "location": {
                 "column": 14, 
-                "line": 14
+                "line": 15
             }, 
             "name": "http"
         }, 
@@ -123,7 +123,7 @@
             "references": [], 
             "location": {
                 "column": 22, 
-                "line": 15
+                "line": 16
             }, 
             "name": "res"
         }, 
@@ -133,29 +133,9 @@
             "references": [], 
             "location": {
                 "column": 16, 
-                "line": 16
+                "line": 17
             }, 
             "name": "csvString"
-        }, 
-        {
-            "type": "Map", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 30, 
-                "line": 19
-            }, 
-            "name": "accounts"
-        }, 
-        {
-            "type": "Account", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 21, 
-                "line": 20
-            }, 
-            "name": "objCS"
         }, 
         {
             "type": "SSSCsvReader", 
@@ -163,7 +143,7 @@
             "references": [], 
             "location": {
                 "column": 22, 
-                "line": 24
+                "line": 20
             }, 
             "name": "reader"
         }, 
@@ -173,59 +153,19 @@
             "references": [], 
             "location": {
                 "column": 18, 
-                "line": 26
+                "line": 21
             }, 
-            "name": "names"
+            "name": "headers"
         }, 
         {
             "type": "LIST", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 18, 
-                "line": 27
+                "column": 29, 
+                "line": 22
             }, 
-            "name": "emails"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 18, 
-                "line": 28
-            }, 
-            "name": "clients"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 18, 
-                "line": 31
-            }, 
-            "name": "header"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 18, 
-                "line": 32
-            }, 
-            "name": "row"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 19, 
-                "line": 33
-            }, 
-            "name": "types"
+            "name": "rows"
         }, 
         {
             "type": "Integer", 
@@ -233,19 +173,49 @@
             "references": [], 
             "location": {
                 "column": 17, 
-                "line": 34
+                "line": 23
             }, 
             "name": "count"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 30, 
+                "line": 29
+            }, 
+            "name": "accounts"
+        }, 
+        {
+            "type": "Account", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 30
+            }, 
+            "name": "objCS"
         }, 
         {
             "type": "Integer", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 26, 
+                "column": 17, 
+                "line": 37
+            }, 
+            "name": "email_id"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 17, 
                 "line": 38
             }, 
-            "name": "i"
+            "name": "name_id"
         }, 
         {
             "type": "String", 
@@ -253,7 +223,7 @@
             "references": [], 
             "location": {
                 "column": 16, 
-                "line": 61
+                "line": 40
             }, 
             "name": "tableHTML"
         }, 
@@ -263,9 +233,19 @@
             "references": [], 
             "location": {
                 "column": 16, 
-                "line": 62
+                "line": 41
             }, 
             "name": "mailAll"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 43
+            }, 
+            "name": "title"
         }, 
         {
             "type": "Insight__c", 
@@ -273,9 +253,19 @@
             "references": [], 
             "location": {
                 "column": 20, 
-                "line": 64
+                "line": 51
             }, 
             "name": "insight"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 54
+            }, 
+            "name": "clients"
         }, 
         {
             "type": "Set", 
@@ -283,7 +273,7 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 68
+                "line": 55
             }, 
             "name": "clientSet"
         }, 
@@ -293,19 +283,19 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 71
+                "line": 56
             }, 
             "name": "client"
         }, 
         {
-            "type": "String", 
+            "type": "Id", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 20, 
-                "line": 73
+                "column": 17, 
+                "line": 62
             }, 
-            "name": "aid"
+            "name": "clientId"
         }, 
         {
             "type": "InsightAssociation__c", 
@@ -313,7 +303,7 @@
             "references": [], 
             "location": {
                 "column": 35, 
-                "line": 74
+                "line": 63
             }, 
             "name": "assoc"
         }, 
@@ -322,8 +312,78 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 39, 
+                "column": 49, 
+                "line": 78
+            }, 
+            "name": "search"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 66, 
+                "line": 78
+            }, 
+            "name": "headers"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 79
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 45, 
+                "line": 87
+            }, 
+            "name": "index"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 71, 
+                "line": 87
+            }, 
+            "name": "rows"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
                 "line": 88
+            }, 
+            "name": "vals"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 89
+            }, 
+            "name": "row"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 35, 
+                "line": 96
             }, 
             "name": "u_name"
         }, 
@@ -332,8 +392,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 58, 
-                "line": 88
+                "column": 54, 
+                "line": 96
             }, 
             "name": "insight"
         }, 
@@ -342,8 +402,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 75, 
-                "line": 88
+                "column": 71, 
+                "line": 96
             }, 
             "name": "count"
         }, 
@@ -352,8 +412,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 19, 
-                "line": 90
+                "column": 15, 
+                "line": 98
             }, 
             "name": "ledgers"
         }, 
@@ -362,8 +422,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 22, 
-                "line": 93
+                "column": 18, 
+                "line": 101
             }, 
             "name": "fieldLedgerBot"
         }, 
@@ -372,8 +432,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 16, 
-                "line": 94
+                "column": 12, 
+                "line": 102
             }, 
             "name": "lastResultString"
         }, 
@@ -382,8 +442,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 30, 
-                "line": 95
+                "column": 26, 
+                "line": 103
             }, 
             "name": "fieldParams"
         }, 
@@ -392,8 +452,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 23, 
-                "line": 97
+                "column": 19, 
+                "line": 105
             }, 
             "name": "statsList"
         }, 
@@ -402,8 +462,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 30, 
-                "line": 98
+                "column": 26, 
+                "line": 106
             }, 
             "name": "newStats"
         }, 
@@ -413,7 +473,7 @@
             "references": [], 
             "location": {
                 "column": 23, 
-                "line": 110
+                "line": 118
             }, 
             "name": "countHistory"
         }, 
@@ -423,7 +483,7 @@
             "references": [], 
             "location": {
                 "column": 17, 
-                "line": 111
+                "line": 119
             }, 
             "name": "min"
         }, 
@@ -433,7 +493,7 @@
             "references": [], 
             "location": {
                 "column": 17, 
-                "line": 112
+                "line": 120
             }, 
             "name": "max"
         }, 
@@ -443,7 +503,7 @@
             "references": [], 
             "location": {
                 "column": 22, 
-                "line": 113
+                "line": 121
             }, 
             "name": "i"
         }, 
@@ -453,7 +513,7 @@
             "references": [], 
             "location": {
                 "column": 34, 
-                "line": 114
+                "line": 122
             }, 
             "name": "statEntry"
         }, 
@@ -463,7 +523,7 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 115
+                "line": 123
             }, 
             "name": "countE"
         }, 
@@ -473,7 +533,7 @@
             "references": [], 
             "location": {
                 "column": 26, 
-                "line": 122
+                "line": 129
             }, 
             "name": "c"
         }, 
@@ -483,7 +543,7 @@
             "references": [], 
             "location": {
                 "column": 16, 
-                "line": 131
+                "line": 137
             }, 
             "name": "chart_opts"
         }, 
@@ -493,7 +553,7 @@
             "references": [], 
             "location": {
                 "column": 20, 
-                "line": 136
+                "line": 142
             }, 
             "name": "ac"
         }, 
@@ -503,7 +563,7 @@
             "references": [], 
             "location": {
                 "column": 44, 
-                "line": 144
+                "line": 150
             }, 
             "name": "headers"
         }, 
@@ -512,8 +572,18 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 68, 
-                "line": 144
+                "column": 63, 
+                "line": 150
+            }, 
+            "name": "ids"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 86, 
+                "line": 150
             }, 
             "name": "rows"
         }, 
@@ -523,7 +593,7 @@
             "references": [], 
             "location": {
                 "column": 16, 
-                "line": 145
+                "line": 157
             }, 
             "name": "html"
         }, 
@@ -533,19 +603,39 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 146
+                "line": 158
             }, 
             "name": "header"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 165
+            }, 
+            "name": "row"
         }, 
         {
             "type": "Integer", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 22, 
-                "line": 154
+                "column": 26, 
+                "line": 167
             }, 
             "name": "i"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 169
+            }, 
+            "name": "val_index"
         }, 
         {
             "type": "LIST", 
@@ -553,7 +643,7 @@
             "references": [], 
             "location": {
                 "column": 56, 
-                "line": 175
+                "line": 182
             }, 
             "name": "row"
         }, 
@@ -563,7 +653,7 @@
             "references": [], 
             "location": {
                 "column": 24, 
-                "line": 177
+                "line": 184
             }, 
             "name": "types"
         }, 
@@ -573,7 +663,7 @@
             "references": [], 
             "location": {
                 "column": 17, 
-                "line": 178
+                "line": 185
             }, 
             "name": "datePattern"
         }, 
@@ -583,7 +673,7 @@
             "references": [], 
             "location": {
                 "column": 22, 
-                "line": 181
+                "line": 188
             }, 
             "name": "i"
         }, 
@@ -593,7 +683,7 @@
             "references": [], 
             "location": {
                 "column": 20, 
-                "line": 183
+                "line": 190
             }, 
             "name": "val"
         }, 
@@ -603,7 +693,7 @@
             "references": [], 
             "location": {
                 "column": 51, 
-                "line": 208
+                "line": 216
             }, 
             "name": "money"
         }, 
@@ -613,7 +703,7 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 212
+                "line": 220
             }, 
             "name": "dollarPattern"
         }, 
@@ -623,7 +713,7 @@
             "references": [], 
             "location": {
                 "column": 20, 
-                "line": 213
+                "line": 221
             }, 
             "name": "s"
         }, 
@@ -633,13 +723,61 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 214
+                "line": 222
             }, 
             "name": "d"
         }
     ], 
     "id": "01p61000006rICWAA2", 
     "methods": [
+        {
+            "modifiers": [
+                "private"
+            ], 
+            "name": "headerIndexForString", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "search"
+                }, 
+                {
+                    "type": "LIST", 
+                    "name": "headers"
+                }
+            ], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 78
+            }, 
+            "returnType": "Integer", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "private"
+            ], 
+            "name": "valuesForIndex", 
+            "parameters": [
+                {
+                    "type": "Integer", 
+                    "name": "index"
+                }, 
+                {
+                    "type": "LIST", 
+                    "name": "rows"
+                }
+            ], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 87
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
         {
             "modifiers": [
                 "private"
@@ -662,8 +800,8 @@
             "visibility": "PRIVATE", 
             "references": [], 
             "location": {
-                "column": 18, 
-                "line": 88
+                "column": 14, 
+                "line": 96
             }, 
             "returnType": "void", 
             "type": null
@@ -680,6 +818,10 @@
                 }, 
                 {
                     "type": "LIST", 
+                    "name": "ids"
+                }, 
+                {
+                    "type": "LIST", 
                     "name": "rows"
                 }
             ], 
@@ -687,7 +829,7 @@
             "references": [], 
             "location": {
                 "column": 19, 
-                "line": 144
+                "line": 150
             }, 
             "returnType": "String", 
             "type": null
@@ -707,7 +849,7 @@
             "references": [], 
             "location": {
                 "column": 26, 
-                "line": 175
+                "line": 182
             }, 
             "returnType": "LIST", 
             "type": null
@@ -727,7 +869,7 @@
             "references": [], 
             "location": {
                 "column": 24, 
-                "line": 208
+                "line": 216
             }, 
             "returnType": "Decimal", 
             "type": null
