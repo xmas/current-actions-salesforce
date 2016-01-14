@@ -3,100 +3,6 @@ public with sharing class ReportBot {
 
 	public ReportBot() {
 		
-		List<Report> summaryReports = getSummaryReports();
-
-		for (Report r : summaryReports) {
-			System.debug(LoggingLevel.ERROR, '-------------------------------');
-			System.debug(LoggingLevel.ERROR, r.Id);
-
-			ReportResponse resp = getReportResponse(r.id);
-			for (ReportBot.SummaryReportGroup sgroup : resp.sumResp.groupList) {
-				System.debug(LoggingLevel.ERROR, '---------');
-				System.debug(LoggingLevel.ERROR, sgroup);
-				System.debug(LoggingLevel.ERROR, sgroup.fieldDataList);
-
-				List<List<ReportBot.FieldData>> fieldDataList = sgroup.fieldDataList;
-				for (List<ReportBot.FieldData> row : fieldDataList) {
-					System.debug(LoggingLevel.ERROR, row);
-				}
-			}
-		}
-	}
-
-
-
-	public void runSummaryReports(List <Report> reportList) {
-		for (Report report : reportList ) {
-
-			if (report.Id != '00O61000002qafREAQ') {
-				continue;
-			}
-
-			System.debug(report.Id);
-
-			Reports.ReportResults reportResult = Reports.ReportManager.runReport(report.Id, true);			
-			Reports.ReportMetadata metadata = reportResult.getReportMetadata();
-			Reports.ReportExtendedMetadata extendedMetadata = reportResult.getReportExtendedMetadata();
-
-			Map <String,Reports.DetailColumn> detailColumnInfo = extendedMetadata.getDetailColumnInfo();
-			//Reports.ReportFactWithDetails factWithDetails = (Reports.ReportFactWithDetails) reportResult.getFactMap().get('T!T');
-
-
-			for (String colName : metadata.getDetailColumns()) {
-				System.debug('Column: '+detailColumnInfo.get(colName));
-			}
-
-			System.debug(extendedMetadata);
-
-			System.debug('Aggregates'+metadata.getAggregates());
-			System.debug('Division'+metadata.getDivision());
-			System.debug('getGroupingsAcross()'+metadata.getGroupingsAcross());
-			System.debug('getGroupingsDown()'+metadata.getGroupingsDown());
-
-
-
-
-			System.debug(reportResult.getAllData());
-			
-			//for (String colName : metadata.getDetailColumns()) {
-			//	System.debug('Column: '+detailColumnInfo.get(colName));
-			//}
-			
-			//for (Reports.ReportDetailRow row : factWithDetails.getRows()) {
-			//	for (Reports.ReportDataCell cell : row.getDataCells()) {
-			//		System.debug('The cell data: ' + cell.getLabel());
-			//	}
-			//}  
-
-
-		}
-	}
-
-	public void runTabularReports(List <Report> reportList) {
-
-		for (Report report : reportList ) {
-
-			Reports.ReportResults reportResult = Reports.ReportManager.runReport(report.Id, true);			
-			Reports.ReportMetadata metadata = reportResult.getReportMetadata();
-			Reports.ReportExtendedMetadata extendedMetadata = reportResult.getReportExtendedMetadata();
-
-			Map <String,Reports.DetailColumn> detailColumnInfo = extendedMetadata.getDetailColumnInfo();
-			Reports.ReportFactWithDetails factWithDetails = (Reports.ReportFactWithDetails) reportResult.getFactMap().get('T!T');
-
-			
-			for (String colName : metadata.getDetailColumns()) {
-				System.debug('Column: '+detailColumnInfo.get(colName));
-			}
-			
-			for (Reports.ReportDetailRow row : factWithDetails.getRows()) {
-				for (Reports.ReportDataCell cell : row.getDataCells()) {
-					System.debug('The cell data: ' + cell.getLabel());
-				}
-			}  
-
-
-
-		}
 	}
 
 	public static ReportResponse getReportResponse(Id reportId) {
@@ -136,7 +42,7 @@ public with sharing class ReportBot {
 		if (reportType == 'tabular') { 
 			rr.tabResp = getTabularReportResponse(results); 
 			} else if (reportType == 'summary') { 
-				rr.sumResp = getSummaryReportResponse(results); 
+				rr.sumResp = getSummaryReportResponse(reportId, results); 
 				} else if (reportType == 'matrix') { 
 					rr.tabResp = getMatrixReportResponse(results); 
 				}
@@ -160,6 +66,7 @@ public with sharing class ReportBot {
 	}	
 
 	public class SummaryReportGroup {
+		public String path {get; set;}
 		public String fieldName {get; set;}
 		public String fieldValue {get; set;}
 		public String fieldLabel {get; set;}
@@ -167,6 +74,7 @@ public with sharing class ReportBot {
 		public Boolean isHyperLink {get; set;}	
 		public Integer fieldsInGroup {get; set;}					
 		public List<List<FieldData>> fieldDataList {get; set;}
+		public List<SummaryReportGroup> groupParents {get; set;}
 		public SummaryReportGroup(){}
 	}
 
@@ -191,89 +99,41 @@ public with sharing class ReportBot {
 		public fieldData(){isHyperLink=false;}
 	}
 
-	public static TabularReportResponse getTabularReportResponse(Reports.ReportResults results) {
-		TabularReportResponse trr = new TabularReportResponse();
-		List<FieldDef> reportFields = new List<FieldDef> (); 
-		List<List<FieldData>> fieldDataList = new List<List<FieldData>> ();  
+	public static SummaryReportGroup createSummaryReportGroup (
+		Reports.GroupingColumn groupingColumnDetail, 
+		Reports.GroupingValue groupingValue,
+		String path
+		) {
 
-    	//get the metadata
-    	Reports.ReportMetadata reportMetadata = results.getReportMetadata();
+		SummaryReportGroup srg = new SummaryReportGroup();
+		srg.fieldName = groupingColumnDetail.getLabel();
+		try { srg.fieldValue = (String)groupingValue.getValue(); } catch (Exception e) { srg.fieldValue = String.valueOf(groupingValue.getValue()); }
+		srg.fieldLabel = groupingValue.getLabel();
+		srg.groupKey = groupingValue.getKey();
+		srg.isHyperLink = isHyperlink(srg.fieldValue);
+		srg.path = path+'.'+srg.fieldValue.replaceAll(' ','');
+		System.debug(LoggingLevel.ERROR, 'PARENT SRG: '+srg);
+		return srg;
+	}
 
-    	//get a string array of the field names
-    	List<String> fieldNames = reportMetadata.getDetailColumns();        
-
-    	//get the extended metadata
-    	Reports.ReportExtendedMetadata reportExtendedMetadata = results.getReportExtendedMetadata();
-
-    	//get the map of the column names to their name and label
-    	Map<String, Reports.DetailColumn> detailColumnMap = reportExtendedMetadata.getDetailColumnInfo();
-
-    	//loop over the detailColumnMap and get the name, label, and data type
-    	for (String fieldName: fieldNames) {
-    		Reports.DetailColumn detailColumn = detailColumnMap.get(fieldName);
-    		FieldDef fd = new FieldDef();
-    		fd.fieldName = detailColumn.getName(); 
-    		fd.fieldLabel = detailColumn.getLabel();
-    		fd.dataType = detailColumn.getDataType().name();
-    		reportFields.add(fd);
-    	}
-
-    	// Get the fact map from the report results
-    	Reports.ReportFactWithDetails factDetails = (Reports.ReportFactWithDetails)results.getFactMap().get('T!T');     
-
-    	List<Reports.ReportDetailRow> reportDetailRowList = factDetails.getRows();
-
-    	//loop over the rows
-    	for (Reports.ReportDetailRow reportDetailRow: reportDetailRowList) {
-    		Integer cellCounter = 0;
-    		List<FieldData> fieldDataRow = new List <FieldData> ();
-        //loop over the cells in the row
-        for (Reports.ReportDataCell reportDataCell: reportDetailRow.getDataCells()) {
-        	FieldData fd = new FieldData();
-        	fd.fieldValue = (String)reportDataCell.getValue();
-        	fd.fieldLabel = (String)reportDataCell.getLabel();
-        	fd.dataType = reportFields[cellCounter].dataType;
-        	cellCounter++;
-        	fieldDataRow.add(fd);
-        }
-
-        	//add the row to the list
-        	fieldDataList.add(fieldDataRow);
-        }
-
-        trr.reportFields = reportFields;
-        trr.fieldDataList = fieldDataList;
-        return trr;
-    }
-
-    public static SummaryReportResponse getSummaryReportResponse(Reports.ReportResults results) {
+	public static SummaryReportResponse getSummaryReportResponse(Id reportId, Reports.ReportResults results) {
 
     	//System.Debug(LoggingLevel.ERROR, JSON.serialize(results));
 
-    	summaryReportResponse srr = new summaryReportResponse();
-    	List<FieldDef> reportFields = new List<FieldDef> ();	
+    	SummaryReportResponse srr = new SummaryReportResponse();
 
-		//get the metadata
-		Reports.ReportMetadata reportMetadata = results.getReportMetadata();
+    	Reports.ReportMetadata reportMetadata = results.getReportMetadata();
+    	Reports.ReportExtendedMetadata reportExtendedMetadata = results.getReportExtendedMetadata();
 
-		//get a string array of the field names
-		List<String> fieldNames = reportMetadata.getDetailColumns();		
-
-		//get the extended metadata
-		Reports.ReportExtendedMetadata reportExtendedMetadata = results.getReportExtendedMetadata();
-
+    	/* Column Details */
 		//get the map of the column names to their name and label
 		Map<String, Reports.DetailColumn> detailColumnMap = reportExtendedMetadata.getDetailColumnInfo();
 
-		//get the map of the grouping column names to their name and label
-		Map<String, Reports.GroupingColumn> groupingColumnMap = reportExtendedMetadata.getGroupingColumnInfo();		
-
-		//get the grouping column info
-		Reports.GroupingInfo groupingInfo = reportMetadata.getGroupingsDown()[0]; //only supports one grouping level
-		Reports.GroupingColumn groupingColumnDetail = groupingColumnMap.get(groupingInfo.getName());				
-
 		//loop over the detailColumnMap and get the name, label, and data type
-		for (String fieldName: fieldNames) {
+		List<FieldDef> reportFields = new List<FieldDef> ();	
+
+
+		for (String fieldName: reportMetadata.getDetailColumns()) {
 			Reports.DetailColumn detailColumn = detailColumnMap.get(fieldName);
 			fieldDef fd = new fieldDef();
 			fd.fieldName = detailColumn.getName(); 
@@ -283,32 +143,55 @@ public with sharing class ReportBot {
 		}
 		srr.reportFields = reportFields;
 
+
+		/* Groupings */
+
+		//get the map of the grouping column names to their name and label
+		Map<String, Reports.GroupingColumn> groupingColumnMap = reportExtendedMetadata.getGroupingColumnInfo();		
+
+		//get the grouping column info
+		Reports.GroupingInfo groupingInfo = reportMetadata.getGroupingsDown()[0]; //only supports one grouping level
+		Reports.GroupingColumn groupingColumnDetail = groupingColumnMap.get(groupingInfo.getName());				
+
 		//get the summary grouping down dimension grouping values.  only going 1 level deep
 		List<SummaryReportGroup> groupList = new List<SummaryReportGroup>();
 		for (Reports.GroupingValue groupingValue: results.getGroupingsDown().getGroupings()) {
 
-			//System.debug(LoggingLevel.ERROR, groupingValue);
+			SummaryReportGroup srg = createSummaryReportGroup (groupingColumnDetail, groupingValue, reportId);
+			System.debug(LoggingLevel.ERROR, 'PARENT SRG: '+srg);
 
 
-			SummaryReportGroup srg = new SummaryReportGroup();
-			srg.fieldName = groupingColumnDetail.getLabel();
-			try {			
-				srg.fieldValue = (String)groupingValue.getValue();
-				} catch (Exception e) {
-					srg.fieldValue = String.valueOf(groupingValue.getValue());
+			List<Reports.GroupingValue> child_groupings = groupingValue.getGroupings();
+			if (child_groupings.size() > 0) {
+				System.debug(LoggingLevel.ERROR, String.valueOf(groupingValue.getValue())+' has '+child_groupings.size()+' child_groupings');
+
+				for (Reports.GroupingValue childGrouping : child_groupings) {
+
+
+					//get the grouping column info
+					Reports.GroupingInfo childGroupingInfo = reportMetadata.getGroupingsDown()[1]; 
+					Reports.GroupingColumn childGroupingColumnDetail = groupingColumnMap.get(childGroupingInfo.getName());	
+
+
+					SummaryReportGroup childSRG = new SummaryReportGroup();
+					childSRG.fieldName = groupingColumnDetail.getLabel();
+					try { childSRG.fieldValue = (String)childGrouping.getValue(); } catch (Exception e) { childSRG.fieldValue = String.valueOf(childGrouping.getValue()); }
+					childSRG.fieldLabel = childGrouping.getLabel();
+					childSRG.groupKey = childGrouping.getKey();
+					childSRG.isHyperLink = isHyperlink(childSRG.fieldValue);
+					childSRG.path = srg.path+'.'+childSRG.fieldValue.replaceAll(' ','');
+					System.debug(LoggingLevel.ERROR, '--CHILD SRG: '+childSRG);
+
 				}
+			}
 
-				srg.fieldLabel = groupingValue.getLabel();
-				srg.groupKey = groupingValue.getKey();
-				srg.isHyperLink = isHyperlink(srg.fieldValue);
-
-				//System.debug(LoggingLevel.ERROR, 'SRG: '+srg);
 
 
 			//use our group key to get the group rows from the fact map
+			System.debug(LoggingLevel.ERROR, srg.groupKey);
 			Reports.ReportFactWithDetails factDetails = (Reports.ReportFactWithDetails)results.getFactMap().get(srg.groupKey+'!T');	
 
-			//System.debug(LoggingLevel.ERROR, factDetails);
+			System.debug(LoggingLevel.ERROR, factDetails.getAggregates());
 
 
 			List<Reports.ReportDetailRow> reportDetailRowList = factDetails.getRows();			
@@ -316,7 +199,7 @@ public with sharing class ReportBot {
 			List<List<fieldData>> fieldDataList = new List<List<fieldData>>();
 
 			//loop over the rows
-			for (Reports.ReportDetailRow reportDetailRow: reportDetailRowList) {
+			for (Reports.ReportDetailRow reportDetailRow : reportDetailRowList) {
 				//System.debug(LoggingLevel.ERROR, reportDetailRow);
 				Integer cellCounter = 0;
 				List<FieldData> fieldDataRow = new List<FieldData> ();
@@ -329,6 +212,7 @@ public with sharing class ReportBot {
 						fd.fieldLabel = (String)reportDataCell.getLabel();
 						fd.dataType = reportFields[cellCounter].dataType;
 						fd.isHyperLink = isHyperlink(fd.fieldValue);
+
 						} catch (Exception e) {
 							System.debug(reportDataCell + ' was a Datetime');
 							fd.fieldValue = 'DATETIME';
@@ -445,20 +329,75 @@ public static TabularReportResponse getMatrixReportResponse(Reports.ReportResult
 		return trr;
 	}
 
-	public static Boolean isHyperlink(String sVal) {
-		Boolean isHyperLink = true;
-		Id theId;
-		try {theId = (Id)sVal;}
-		catch (Exception e) {isHyperLink = false;}
-		return isHyperLink;
-	}
+	public static TabularReportResponse getTabularReportResponse(Reports.ReportResults results) {
+		TabularReportResponse trr = new TabularReportResponse();
+		List<FieldDef> reportFields = new List<FieldDef> (); 
+		List<List<FieldData>> fieldDataList = new List<List<FieldData>> ();  
 
-	public List <Report> getSummaryReports() {
-		return [SELECT Id, Name FROM Report WHERE Format = 'Summary' ORDER BY Name];
-	}
+    	//get the metadata
+    	Reports.ReportMetadata reportMetadata = results.getReportMetadata();
 
-	public List <Report> getTabularReports() {
-		return [SELECT Id, Name FROM Report WHERE Format = 'Tabular' ORDER BY Name];
-	}
+    	//get a string array of the field names
+    	List<String> fieldNames = reportMetadata.getDetailColumns();        
+
+    	//get the extended metadata
+    	Reports.ReportExtendedMetadata reportExtendedMetadata = results.getReportExtendedMetadata();
+
+    	//get the map of the column names to their name and label
+    	Map<String, Reports.DetailColumn> detailColumnMap = reportExtendedMetadata.getDetailColumnInfo();
+
+    	//loop over the detailColumnMap and get the name, label, and data type
+    	for (String fieldName: fieldNames) {
+    		Reports.DetailColumn detailColumn = detailColumnMap.get(fieldName);
+    		FieldDef fd = new FieldDef();
+    		fd.fieldName = detailColumn.getName(); 
+    		fd.fieldLabel = detailColumn.getLabel();
+    		fd.dataType = detailColumn.getDataType().name();
+    		reportFields.add(fd);
+    	}
+
+    	// Get the fact map from the report results
+    	Reports.ReportFactWithDetails factDetails = (Reports.ReportFactWithDetails)results.getFactMap().get('T!T');     
+
+    	List<Reports.ReportDetailRow> reportDetailRowList = factDetails.getRows();
+
+    	//loop over the rows
+    	for (Reports.ReportDetailRow reportDetailRow: reportDetailRowList) {
+    		Integer cellCounter = 0;
+    		List<FieldData> fieldDataRow = new List <FieldData> ();
+        //loop over the cells in the row
+        for (Reports.ReportDataCell reportDataCell: reportDetailRow.getDataCells()) {
+        	FieldData fd = new FieldData();
+        	fd.fieldValue = (String)reportDataCell.getValue();
+        	fd.fieldLabel = (String)reportDataCell.getLabel();
+        	fd.dataType = reportFields[cellCounter].dataType;
+        	cellCounter++;
+        	fieldDataRow.add(fd);
+        }
+
+        	//add the row to the list
+        	fieldDataList.add(fieldDataRow);
+        }
+
+        trr.reportFields = reportFields;
+        trr.fieldDataList = fieldDataList;
+        return trr;
+    }
+
+    public static Boolean isHyperlink(String sVal) {
+    	Boolean isHyperLink = true;
+    	Id theId;
+    	try {theId = (Id)sVal;}
+    	catch (Exception e) {isHyperLink = false;}
+    	return isHyperLink;
+    }
+
+    public static List <Report> getSummaryReports() {
+    	return [SELECT Id, Name FROM Report WHERE Format = 'Summary' ORDER BY Name];
+    }
+
+    public List <Report> getTabularReports() {
+    	return [SELECT Id, Name FROM Report WHERE Format = 'Tabular' ORDER BY Name];
+    }
 
 }

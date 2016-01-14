@@ -13,7 +13,7 @@
                     "references": [], 
                     "location": {
                         "column": 19, 
-                        "line": 147
+                        "line": 53
                     }, 
                     "type": "String"
                 }, 
@@ -26,7 +26,7 @@
                     "references": [], 
                     "location": {
                         "column": 34, 
-                        "line": 148
+                        "line": 54
                     }, 
                     "type": "TabularReportResponse"
                 }, 
@@ -39,7 +39,7 @@
                     "references": [], 
                     "location": {
                         "column": 34, 
-                        "line": 149
+                        "line": 55
                     }, 
                     "type": "SummaryReportResponse"
                 }
@@ -58,7 +58,7 @@
                     "references": [], 
                     "location": {
                         "column": 12, 
-                        "line": 151
+                        "line": 57
                     }, 
                     "type": null
                 }
@@ -73,7 +73,7 @@
                 "references": [], 
                 "location": {
                     "column": 17, 
-                    "line": 146
+                    "line": 52
                 }, 
                 "name": "ReportResponse"
             }, 
@@ -93,7 +93,7 @@
                     "references": [], 
                     "location": {
                         "column": 25, 
-                        "line": 157
+                        "line": 63
                     }, 
                     "type": "LIST"
                 }, 
@@ -106,7 +106,7 @@
                     "references": [], 
                     "location": {
                         "column": 35, 
-                        "line": 158
+                        "line": 64
                     }, 
                     "type": "LIST"
                 }
@@ -125,7 +125,7 @@
                     "references": [], 
                     "location": {
                         "column": 10, 
-                        "line": 159
+                        "line": 65
                     }, 
                     "type": null
                 }
@@ -140,7 +140,7 @@
                 "references": [], 
                 "location": {
                     "column": 15, 
-                    "line": 156
+                    "line": 62
                 }, 
                 "name": "SummaryReportResponse"
             }, 
@@ -155,12 +155,25 @@
                     "modifiers": [
                         "public"
                     ], 
+                    "name": "path", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 17, 
+                        "line": 69
+                    }, 
+                    "type": "String"
+                }, 
+                {
+                    "modifiers": [
+                        "public"
+                    ], 
                     "name": "fieldName", 
                     "visibility": "PUBLIC", 
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 163
+                        "line": 70
                     }, 
                     "type": "String"
                 }, 
@@ -173,7 +186,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 164
+                        "line": 71
                     }, 
                     "type": "String"
                 }, 
@@ -186,7 +199,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 165
+                        "line": 72
                     }, 
                     "type": "String"
                 }, 
@@ -199,7 +212,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 166
+                        "line": 73
                     }, 
                     "type": "String"
                 }, 
@@ -212,7 +225,7 @@
                     "references": [], 
                     "location": {
                         "column": 18, 
-                        "line": 167
+                        "line": 74
                     }, 
                     "type": "Boolean"
                 }, 
@@ -225,7 +238,7 @@
                     "references": [], 
                     "location": {
                         "column": 18, 
-                        "line": 168
+                        "line": 75
                     }, 
                     "type": "Integer"
                 }, 
@@ -238,7 +251,20 @@
                     "references": [], 
                     "location": {
                         "column": 32, 
-                        "line": 169
+                        "line": 76
+                    }, 
+                    "type": "LIST"
+                }, 
+                {
+                    "modifiers": [
+                        "public"
+                    ], 
+                    "name": "groupParents", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 35, 
+                        "line": 77
                     }, 
                     "type": "LIST"
                 }
@@ -257,7 +283,7 @@
                     "references": [], 
                     "location": {
                         "column": 10, 
-                        "line": 170
+                        "line": 78
                     }, 
                     "type": null
                 }
@@ -272,7 +298,7 @@
                 "references": [], 
                 "location": {
                     "column": 15, 
-                    "line": 162
+                    "line": 68
                 }, 
                 "name": "SummaryReportGroup"
             }, 
@@ -292,7 +318,7 @@
                     "references": [], 
                     "location": {
                         "column": 25, 
-                        "line": 174
+                        "line": 82
                     }, 
                     "type": "LIST"
                 }, 
@@ -305,7 +331,7 @@
                     "references": [], 
                     "location": {
                         "column": 32, 
-                        "line": 175
+                        "line": 83
                     }, 
                     "type": "LIST"
                 }
@@ -324,7 +350,7 @@
                     "references": [], 
                     "location": {
                         "column": 10, 
-                        "line": 176
+                        "line": 84
                     }, 
                     "type": null
                 }
@@ -339,7 +365,7 @@
                 "references": [], 
                 "location": {
                     "column": 15, 
-                    "line": 173
+                    "line": 81
                 }, 
                 "name": "TabularReportResponse"
             }, 
@@ -359,7 +385,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 180
+                        "line": 88
                     }, 
                     "type": "String"
                 }, 
@@ -372,7 +398,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 181
+                        "line": 89
                     }, 
                     "type": "String"
                 }, 
@@ -385,7 +411,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 182
+                        "line": 90
                     }, 
                     "type": "String"
                 }
@@ -404,7 +430,7 @@
                     "references": [], 
                     "location": {
                         "column": 10, 
-                        "line": 183
+                        "line": 91
                     }, 
                     "type": null
                 }
@@ -419,7 +445,7 @@
                 "references": [], 
                 "location": {
                     "column": 15, 
-                    "line": 179
+                    "line": 87
                 }, 
                 "name": "FieldDef"
             }, 
@@ -439,7 +465,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 187
+                        "line": 95
                     }, 
                     "type": "String"
                 }, 
@@ -452,7 +478,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 188
+                        "line": 96
                     }, 
                     "type": "String"
                 }, 
@@ -465,7 +491,7 @@
                     "references": [], 
                     "location": {
                         "column": 17, 
-                        "line": 189
+                        "line": 97
                     }, 
                     "type": "String"
                 }, 
@@ -478,7 +504,7 @@
                     "references": [], 
                     "location": {
                         "column": 18, 
-                        "line": 190
+                        "line": 98
                     }, 
                     "type": "Boolean"
                 }
@@ -497,7 +523,7 @@
                     "references": [], 
                     "location": {
                         "column": 10, 
-                        "line": 191
+                        "line": 99
                     }, 
                     "type": null
                 }
@@ -512,7 +538,7 @@
                 "references": [], 
                 "location": {
                     "column": 15, 
-                    "line": 186
+                    "line": 94
                 }, 
                 "name": "FieldData"
             }, 
@@ -557,242 +583,12 @@
     "key": "01p61000006rnjSAAQ", 
     "variables": [
         {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 16, 
-                "line": 6
-            }, 
-            "name": "summaryReports"
-        }, 
-        {
-            "type": "Report", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 15, 
-                "line": 8
-            }, 
-            "name": "r"
-        }, 
-        {
-            "type": "ReportResponse", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 19, 
-                "line": 12
-            }, 
-            "name": "resp"
-        }, 
-        {
-            "type": "SummaryReportGroup", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 38, 
-                "line": 13
-            }, 
-            "name": "sgroup"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 37, 
-                "line": 18
-            }, 
-            "name": "fieldDataList"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 36, 
-                "line": 19
-            }, 
-            "name": "row"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 46, 
-                "line": 28
-            }, 
-            "name": "reportList"
-        }, 
-        {
-            "type": "Report", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 15, 
-                "line": 29
-            }, 
-            "name": "report"
-        }, 
-        {
-            "type": "ReportResults", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 26, 
-                "line": 37
-            }, 
-            "name": "reportResult"
-        }, 
-        {
-            "type": "ReportMetadata", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 27, 
-                "line": 38
-            }, 
-            "name": "metadata"
-        }, 
-        {
-            "type": "ReportExtendedMetadata", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 35, 
-                "line": 39
-            }, 
-            "name": "extendedMetadata"
-        }, 
-        {
-            "type": "Map", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 38, 
-                "line": 41
-            }, 
-            "name": "detailColumnInfo"
-        }, 
-        {
-            "type": "String", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 16, 
-                "line": 45
-            }, 
-            "name": "colName"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 46, 
-                "line": 75
-            }, 
-            "name": "reportList"
-        }, 
-        {
-            "type": "Report", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 15, 
-                "line": 77
-            }, 
-            "name": "report"
-        }, 
-        {
-            "type": "ReportResults", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 26, 
-                "line": 79
-            }, 
-            "name": "reportResult"
-        }, 
-        {
-            "type": "ReportMetadata", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 27, 
-                "line": 80
-            }, 
-            "name": "metadata"
-        }, 
-        {
-            "type": "ReportExtendedMetadata", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 35, 
-                "line": 81
-            }, 
-            "name": "extendedMetadata"
-        }, 
-        {
-            "type": "Map", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 38, 
-                "line": 83
-            }, 
-            "name": "detailColumnInfo"
-        }, 
-        {
-            "type": "ReportFactWithDetails", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 34, 
-                "line": 84
-            }, 
-            "name": "factWithDetails"
-        }, 
-        {
-            "type": "String", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 16, 
-                "line": 87
-            }, 
-            "name": "colName"
-        }, 
-        {
-            "type": "ReportDetailRow", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 33, 
-                "line": 91
-            }, 
-            "name": "row"
-        }, 
-        {
-            "type": "ReportDataCell", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 33, 
-                "line": 92
-            }, 
-            "name": "cell"
-        }, 
-        {
             "type": "Id", 
             "modifiers": [], 
             "references": [], 
             "location": {
                 "column": 52, 
-                "line": 102
+                "line": 8
             }, 
             "name": "reportId"
         }, 
@@ -802,7 +598,7 @@
             "references": [], 
             "location": {
                 "column": 25, 
-                "line": 104
+                "line": 10
             }, 
             "name": "results"
         }, 
@@ -812,7 +608,7 @@
             "references": [], 
             "location": {
                 "column": 26, 
-                "line": 107
+                "line": 13
             }, 
             "name": "reportMetadata"
         }, 
@@ -822,7 +618,7 @@
             "references": [], 
             "location": {
                 "column": 11, 
-                "line": 110
+                "line": 16
             }, 
             "name": "groupingsDown"
         }, 
@@ -832,7 +628,7 @@
             "references": [], 
             "location": {
                 "column": 11, 
-                "line": 111
+                "line": 17
             }, 
             "name": "groupingsAcross"
         }, 
@@ -842,7 +638,7 @@
             "references": [], 
             "location": {
                 "column": 30, 
-                "line": 113
+                "line": 19
             }, 
             "name": "groupingDownList"
         }, 
@@ -852,7 +648,7 @@
             "references": [], 
             "location": {
                 "column": 30, 
-                "line": 114
+                "line": 20
             }, 
             "name": "groupingAcrossList"
         }, 
@@ -862,7 +658,7 @@
             "references": [], 
             "location": {
                 "column": 10, 
-                "line": 124
+                "line": 30
             }, 
             "name": "reportType"
         }, 
@@ -872,197 +668,67 @@
             "references": [], 
             "location": {
                 "column": 18, 
-                "line": 133
+                "line": 39
             }, 
             "name": "rr"
         }, 
         {
-            "type": "ReportResults", 
+            "type": "GroupingColumn", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 85, 
-                "line": 194
+                "column": 26, 
+                "line": 103
             }, 
-            "name": "results"
+            "name": "groupingColumnDetail"
         }, 
         {
-            "type": "TabularReportResponse", 
+            "type": "GroupingValue", 
             "modifiers": [], 
             "references": [], 
             "location": {
                 "column": 25, 
-                "line": 195
+                "line": 104
             }, 
-            "name": "trr"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 18, 
-                "line": 196
-            }, 
-            "name": "reportFields"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 25, 
-                "line": 197
-            }, 
-            "name": "fieldDataList"
-        }, 
-        {
-            "type": "ReportMetadata", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 29, 
-                "line": 200
-            }, 
-            "name": "reportMetadata"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 19, 
-                "line": 203
-            }, 
-            "name": "fieldNames"
-        }, 
-        {
-            "type": "ReportExtendedMetadata", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 37, 
-                "line": 206
-            }, 
-            "name": "reportExtendedMetadata"
-        }, 
-        {
-            "type": "Map", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 40, 
-                "line": 209
-            }, 
-            "name": "detailColumnMap"
+            "name": "groupingValue"
         }, 
         {
             "type": "String", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 18, 
-                "line": 212
+                "column": 10, 
+                "line": 105
             }, 
-            "name": "fieldName"
+            "name": "path"
         }, 
         {
-            "type": "DetailColumn", 
+            "type": "SummaryReportGroup", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 28, 
-                "line": 213
+                "column": 22, 
+                "line": 108
             }, 
-            "name": "detailColumn"
+            "name": "srg"
         }, 
         {
-            "type": "FieldDef", 
+            "type": "Id", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 16, 
-                "line": 214
+                "column": 66, 
+                "line": 119
             }, 
-            "name": "fd"
-        }, 
-        {
-            "type": "ReportFactWithDetails", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 36, 
-                "line": 222
-            }, 
-            "name": "factDetails"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 36, 
-                "line": 224
-            }, 
-            "name": "reportDetailRowList"
-        }, 
-        {
-            "type": "ReportDetailRow", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 35, 
-                "line": 227
-            }, 
-            "name": "reportDetailRow"
-        }, 
-        {
-            "type": "Integer", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 15, 
-                "line": 228
-            }, 
-            "name": "cellCounter"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 23, 
-                "line": 229
-            }, 
-            "name": "fieldDataRow"
-        }, 
-        {
-            "type": "ReportDataCell", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 37, 
-                "line": 231
-            }, 
-            "name": "reportDataCell"
-        }, 
-        {
-            "type": "FieldData", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 20, 
-                "line": 232
-            }, 
-            "name": "fd"
+            "name": "reportId"
         }, 
         {
             "type": "ReportResults", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 88, 
-                "line": 249
+                "column": 98, 
+                "line": 119
             }, 
             "name": "results"
         }, 
@@ -1072,47 +738,27 @@
             "references": [], 
             "location": {
                 "column": 28, 
-                "line": 253
+                "line": 123
             }, 
             "name": "srr"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 21, 
-                "line": 254
-            }, 
-            "name": "reportFields"
         }, 
         {
             "type": "ReportMetadata", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 26, 
-                "line": 257
+                "column": 29, 
+                "line": 125
             }, 
             "name": "reportMetadata"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 16, 
-                "line": 260
-            }, 
-            "name": "fieldNames"
         }, 
         {
             "type": "ReportExtendedMetadata", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 34, 
-                "line": 263
+                "column": 37, 
+                "line": 126
             }, 
             "name": "reportExtendedMetadata"
         }, 
@@ -1122,39 +768,19 @@
             "references": [], 
             "location": {
                 "column": 37, 
-                "line": 266
+                "line": 130
             }, 
             "name": "detailColumnMap"
         }, 
         {
-            "type": "Map", 
+            "type": "LIST", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 39, 
-                "line": 269
+                "column": 18, 
+                "line": 133
             }, 
-            "name": "groupingColumnMap"
-        }, 
-        {
-            "type": "GroupingInfo", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 24, 
-                "line": 272
-            }, 
-            "name": "groupingInfo"
-        }, 
-        {
-            "type": "GroupingColumn", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 26, 
-                "line": 273
-            }, 
-            "name": "groupingColumnDetail"
+            "name": "reportFields"
         }, 
         {
             "type": "String", 
@@ -1162,7 +788,7 @@
             "references": [], 
             "location": {
                 "column": 15, 
-                "line": 276
+                "line": 136
             }, 
             "name": "fieldName"
         }, 
@@ -1172,7 +798,7 @@
             "references": [], 
             "location": {
                 "column": 25, 
-                "line": 277
+                "line": 137
             }, 
             "name": "detailColumn"
         }, 
@@ -1182,9 +808,39 @@
             "references": [], 
             "location": {
                 "column": 13, 
-                "line": 278
+                "line": 138
             }, 
             "name": "fd"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 39, 
+                "line": 150
+            }, 
+            "name": "groupingColumnMap"
+        }, 
+        {
+            "type": "GroupingInfo", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 153
+            }, 
+            "name": "groupingInfo"
+        }, 
+        {
+            "type": "GroupingColumn", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 154
+            }, 
+            "name": "groupingColumnDetail"
         }, 
         {
             "type": "LIST", 
@@ -1192,7 +848,7 @@
             "references": [], 
             "location": {
                 "column": 28, 
-                "line": 287
+                "line": 157
             }, 
             "name": "groupList"
         }, 
@@ -1202,7 +858,7 @@
             "references": [], 
             "location": {
                 "column": 30, 
-                "line": 288
+                "line": 158
             }, 
             "name": "groupingValue"
         }, 
@@ -1212,9 +868,59 @@
             "references": [], 
             "location": {
                 "column": 23, 
-                "line": 293
+                "line": 160
             }, 
             "name": "srg"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 164
+            }, 
+            "name": "child_groupings"
+        }, 
+        {
+            "type": "GroupingValue", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 168
+            }, 
+            "name": "childGrouping"
+        }, 
+        {
+            "type": "GroupingInfo", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 27, 
+                "line": 172
+            }, 
+            "name": "childGroupingInfo"
+        }, 
+        {
+            "type": "GroupingColumn", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 173
+            }, 
+            "name": "childGroupingColumnDetail"
+        }, 
+        {
+            "type": "SummaryReportGroup", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 176
+            }, 
+            "name": "childSRG"
         }, 
         {
             "type": "ReportFactWithDetails", 
@@ -1222,7 +928,7 @@
             "references": [], 
             "location": {
                 "column": 34, 
-                "line": 309
+                "line": 192
             }, 
             "name": "factDetails"
         }, 
@@ -1232,7 +938,7 @@
             "references": [], 
             "location": {
                 "column": 34, 
-                "line": 314
+                "line": 197
             }, 
             "name": "reportDetailRowList"
         }, 
@@ -1242,7 +948,7 @@
             "references": [], 
             "location": {
                 "column": 26, 
-                "line": 316
+                "line": 199
             }, 
             "name": "fieldDataList"
         }, 
@@ -1252,7 +958,7 @@
             "references": [], 
             "location": {
                 "column": 33, 
-                "line": 319
+                "line": 202
             }, 
             "name": "reportDetailRow"
         }, 
@@ -1262,7 +968,7 @@
             "references": [], 
             "location": {
                 "column": 13, 
-                "line": 321
+                "line": 204
             }, 
             "name": "cellCounter"
         }, 
@@ -1272,7 +978,7 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 322
+                "line": 205
             }, 
             "name": "fieldDataRow"
         }, 
@@ -1282,7 +988,7 @@
             "references": [], 
             "location": {
                 "column": 33, 
-                "line": 325
+                "line": 208
             }, 
             "name": "reportDataCell"
         }, 
@@ -1292,7 +998,7 @@
             "references": [], 
             "location": {
                 "column": 16, 
-                "line": 326
+                "line": 209
             }, 
             "name": "fd"
         }, 
@@ -1302,7 +1008,7 @@
             "references": [], 
             "location": {
                 "column": 83, 
-                "line": 355
+                "line": 239
             }, 
             "name": "results"
         }, 
@@ -1312,7 +1018,7 @@
             "references": [], 
             "location": {
                 "column": 24, 
-                "line": 356
+                "line": 240
             }, 
             "name": "trr"
         }, 
@@ -1322,7 +1028,7 @@
             "references": [], 
             "location": {
                 "column": 17, 
-                "line": 357
+                "line": 241
             }, 
             "name": "reportFields"
         }, 
@@ -1332,7 +1038,7 @@
             "references": [], 
             "location": {
                 "column": 24, 
-                "line": 358
+                "line": 242
             }, 
             "name": "fieldDataList"
         }, 
@@ -1342,7 +1048,7 @@
             "references": [], 
             "location": {
                 "column": 25, 
-                "line": 361
+                "line": 245
             }, 
             "name": "reportMetadata"
         }, 
@@ -1352,7 +1058,7 @@
             "references": [], 
             "location": {
                 "column": 15, 
-                "line": 364
+                "line": 248
             }, 
             "name": "fieldNames"
         }, 
@@ -1362,7 +1068,7 @@
             "references": [], 
             "location": {
                 "column": 33, 
-                "line": 367
+                "line": 251
             }, 
             "name": "reportExtendedMetadata"
         }, 
@@ -1372,7 +1078,7 @@
             "references": [], 
             "location": {
                 "column": 38, 
-                "line": 370
+                "line": 254
             }, 
             "name": "detailColumnMap"
         }, 
@@ -1382,7 +1088,7 @@
             "references": [], 
             "location": {
                 "column": 23, 
-                "line": 375
+                "line": 259
             }, 
             "name": "groupingInfoDown"
         }, 
@@ -1392,7 +1098,7 @@
             "references": [], 
             "location": {
                 "column": 25, 
-                "line": 376
+                "line": 260
             }, 
             "name": "groupingColumnDown"
         }, 
@@ -1402,7 +1108,7 @@
             "references": [], 
             "location": {
                 "column": 11, 
-                "line": 377
+                "line": 261
             }, 
             "name": "fdGroupDown"
         }, 
@@ -1412,7 +1118,7 @@
             "references": [], 
             "location": {
                 "column": 29, 
-                "line": 384
+                "line": 268
             }, 
             "name": "groupingValue"
         }, 
@@ -1422,7 +1128,7 @@
             "references": [], 
             "location": {
                 "column": 12, 
-                "line": 385
+                "line": 269
             }, 
             "name": "fd"
         }, 
@@ -1432,7 +1138,7 @@
             "references": [], 
             "location": {
                 "column": 27, 
-                "line": 393
+                "line": 277
             }, 
             "name": "groupListDown"
         }, 
@@ -1442,7 +1148,7 @@
             "references": [], 
             "location": {
                 "column": 29, 
-                "line": 394
+                "line": 278
             }, 
             "name": "groupingValue"
         }, 
@@ -1452,7 +1158,7 @@
             "references": [], 
             "location": {
                 "column": 22, 
-                "line": 395
+                "line": 279
             }, 
             "name": "srg"
         }, 
@@ -1462,7 +1168,7 @@
             "references": [], 
             "location": {
                 "column": 27, 
-                "line": 404
+                "line": 288
             }, 
             "name": "groupListAcross"
         }, 
@@ -1472,7 +1178,7 @@
             "references": [], 
             "location": {
                 "column": 29, 
-                "line": 405
+                "line": 289
             }, 
             "name": "groupingValue"
         }, 
@@ -1482,7 +1188,7 @@
             "references": [], 
             "location": {
                 "column": 22, 
-                "line": 406
+                "line": 290
             }, 
             "name": "srg"
         }, 
@@ -1492,7 +1198,7 @@
             "references": [], 
             "location": {
                 "column": 26, 
-                "line": 415
+                "line": 299
             }, 
             "name": "down"
         }, 
@@ -1502,7 +1208,7 @@
             "references": [], 
             "location": {
                 "column": 19, 
-                "line": 416
+                "line": 300
             }, 
             "name": "fieldDataRow"
         }, 
@@ -1512,7 +1218,7 @@
             "references": [], 
             "location": {
                 "column": 13, 
-                "line": 419
+                "line": 303
             }, 
             "name": "fd"
         }, 
@@ -1522,7 +1228,7 @@
             "references": [], 
             "location": {
                 "column": 27, 
-                "line": 426
+                "line": 310
             }, 
             "name": "across"
         }, 
@@ -1532,7 +1238,7 @@
             "references": [], 
             "location": {
                 "column": 34, 
-                "line": 428
+                "line": 312
             }, 
             "name": "factDetails"
         }, 
@@ -1542,17 +1248,197 @@
             "references": [], 
             "location": {
                 "column": 25, 
-                "line": 429
+                "line": 313
             }, 
             "name": "summaryValue"
+        }, 
+        {
+            "type": "ReportResults", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 85, 
+                "line": 332
+            }, 
+            "name": "results"
+        }, 
+        {
+            "type": "TabularReportResponse", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 333
+            }, 
+            "name": "trr"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 334
+            }, 
+            "name": "reportFields"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 335
+            }, 
+            "name": "fieldDataList"
+        }, 
+        {
+            "type": "ReportMetadata", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 338
+            }, 
+            "name": "reportMetadata"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 341
+            }, 
+            "name": "fieldNames"
+        }, 
+        {
+            "type": "ReportExtendedMetadata", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 37, 
+                "line": 344
+            }, 
+            "name": "reportExtendedMetadata"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 40, 
+                "line": 347
+            }, 
+            "name": "detailColumnMap"
         }, 
         {
             "type": "String", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 43, 
-                "line": 448
+                "column": 18, 
+                "line": 350
+            }, 
+            "name": "fieldName"
+        }, 
+        {
+            "type": "DetailColumn", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 351
+            }, 
+            "name": "detailColumn"
+        }, 
+        {
+            "type": "FieldDef", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 352
+            }, 
+            "name": "fd"
+        }, 
+        {
+            "type": "ReportFactWithDetails", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 360
+            }, 
+            "name": "factDetails"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 362
+            }, 
+            "name": "reportDetailRowList"
+        }, 
+        {
+            "type": "ReportDetailRow", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 35, 
+                "line": 365
+            }, 
+            "name": "reportDetailRow"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 15, 
+                "line": 366
+            }, 
+            "name": "cellCounter"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 367
+            }, 
+            "name": "fieldDataRow"
+        }, 
+        {
+            "type": "ReportDataCell", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 37, 
+                "line": 369
+            }, 
+            "name": "reportDataCell"
+        }, 
+        {
+            "type": "FieldData", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 370
+            }, 
+            "name": "fd"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 46, 
+                "line": 387
             }, 
             "name": "sVal"
         }, 
@@ -1561,8 +1447,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 11, 
-                "line": 449
+                "column": 14, 
+                "line": 388
             }, 
             "name": "isHyperLink"
         }, 
@@ -1571,8 +1457,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 6, 
-                "line": 450
+                "column": 9, 
+                "line": 389
             }, 
             "name": "theId"
         }
@@ -1583,68 +1469,13 @@
             "modifiers": [
                 "public"
             ], 
-            "name": "runSummaryReports", 
-            "parameters": [
-                {
-                    "type": "LIST", 
-                    "name": "reportList"
-                }
-            ], 
-            "visibility": "PUBLIC", 
-            "references": [], 
-            "location": {
-                "column": 14, 
-                "line": 28
-            }, 
-            "returnType": "void", 
-            "type": null
-        }, 
-        {
-            "modifiers": [
-                "public"
-            ], 
-            "name": "runTabularReports", 
-            "parameters": [
-                {
-                    "type": "LIST", 
-                    "name": "reportList"
-                }
-            ], 
-            "visibility": "PUBLIC", 
-            "references": [], 
-            "location": {
-                "column": 14, 
-                "line": 75
-            }, 
-            "returnType": "void", 
-            "type": null
-        }, 
-        {
-            "modifiers": [
-                "public"
-            ], 
-            "name": "getSummaryReports", 
-            "parameters": [], 
-            "visibility": "PUBLIC", 
-            "references": [], 
-            "location": {
-                "column": 23, 
-                "line": 456
-            }, 
-            "returnType": "LIST", 
-            "type": null
-        }, 
-        {
-            "modifiers": [
-                "public"
-            ], 
             "name": "getTabularReports", 
             "parameters": [], 
             "visibility": "PUBLIC", 
             "references": [], 
             "location": {
-                "column": 23, 
-                "line": 460
+                "column": 26, 
+                "line": 399
             }, 
             "returnType": "LIST", 
             "type": null
@@ -1665,7 +1496,7 @@
             "references": [], 
             "location": {
                 "column": 31, 
-                "line": 102
+                "line": 8
             }, 
             "returnType": "ReportResponse", 
             "type": null
@@ -1675,20 +1506,28 @@
                 "static", 
                 "public"
             ], 
-            "name": "getTabularReportResponse", 
+            "name": "createSummaryReportGroup", 
             "parameters": [
                 {
-                    "type": "ReportResults", 
-                    "name": "results"
+                    "type": "GroupingColumn", 
+                    "name": "groupingColumnDetail"
+                }, 
+                {
+                    "type": "GroupingValue", 
+                    "name": "groupingValue"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "path"
                 }
             ], 
             "visibility": "PUBLIC", 
             "references": [], 
             "location": {
-                "column": 38, 
-                "line": 194
+                "column": 35, 
+                "line": 102
             }, 
-            "returnType": "TabularReportResponse", 
+            "returnType": "SummaryReportGroup", 
             "type": null
         }, 
         {
@@ -1699,6 +1538,10 @@
             "name": "getSummaryReportResponse", 
             "parameters": [
                 {
+                    "type": "Id", 
+                    "name": "reportId"
+                }, 
+                {
                     "type": "ReportResults", 
                     "name": "results"
                 }
@@ -1706,8 +1549,8 @@
             "visibility": "PUBLIC", 
             "references": [], 
             "location": {
-                "column": 41, 
-                "line": 249
+                "column": 38, 
+                "line": 119
             }, 
             "returnType": "SummaryReportResponse", 
             "type": null
@@ -1728,7 +1571,28 @@
             "references": [], 
             "location": {
                 "column": 37, 
-                "line": 355
+                "line": 239
+            }, 
+            "returnType": "TabularReportResponse", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "getTabularReportResponse", 
+            "parameters": [
+                {
+                    "type": "ReportResults", 
+                    "name": "results"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 38, 
+                "line": 332
             }, 
             "returnType": "TabularReportResponse", 
             "type": null
@@ -1748,10 +1612,26 @@
             "visibility": "PUBLIC", 
             "references": [], 
             "location": {
-                "column": 24, 
-                "line": 448
+                "column": 27, 
+                "line": 387
             }, 
             "returnType": "Boolean", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "getSummaryReports", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 33, 
+                "line": 395
+            }, 
+            "returnType": "LIST", 
             "type": null
         }
     ]
