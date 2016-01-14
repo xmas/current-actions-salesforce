@@ -27,6 +27,9 @@
                 <a href="javascript:void(0);" onclick="{!c.sendSelectedInsight}">Details</a>
                 <aura:if isTrue="{!false}"><c:InsightDetail /></aura:if> -->
                 <a href="javascript:void(0);" onclick="{!c.openObject}">Go To</a>
+                <a href="javascript:void(0);" onclick="{!c.sendSelectedInsight}">Detail</a>
+
+                
                 <a href="{!'omnifocus:///add?name=' + v.insight.Long_Name__c}" >Add to OmniFocus</a>
 
 

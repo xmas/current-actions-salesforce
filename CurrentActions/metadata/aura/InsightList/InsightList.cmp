@@ -1,37 +1,51 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightsController">
-    <ltng:require styles="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.css" />
-    <ltng:require styles="/resource/jquery214"/>
+<ltng:require styles="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/jquery_ui_css" scripts="/resource/jquery_js,/resource/jquery_ui_js" />
 
-     
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    <aura:attribute name="insights" type="List" />
-    <aura:attribute name="omnifocus" type="Boolean" default="true"/>
 
-    <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
 
-    
-    <div class="slds"> 
-        
-        <a href="javascript:void(0);" onclick="{!c.subscribe}">PUSHES</a>
 
-     
-        
-        <ui:message title="Confirmation" severity="confirm" closable="true">
-            This is a confirmation message.
-        </ui:message>
-        
-        <div class="slds-feed">
-            <ul class="slds-feed__list">
-                <aura:iteration items="{!v.insights}" var="insight">
-                    
-                    <li class="slds-feed__item">
-                        <c:InsightCell insight="{!insight}"/>
-                    </li>
-                    <!-- FEED LIST ITEM -->
-                </aura:iteration>
-            </ul>
-            <!-- FEED LIST -->
-        </div>
-    </div>
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:attribute name="insights" type="List" />
+<aura:attribute name="omnifocus" type="Boolean" default="true"/>
+
+<aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
+
+<aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
+
+
+
+<div class="slds"> 
+
+    <c:autocomplete sObjectType="Account" 
+    autocompleteEvent="{!c.handleAutocomplete}" 
+    fields="Phone,AccountNumber" 
+    />
+    <c:autocomplete sObjectType="Insight__c" 
+    autocompleteEvent="{!c.handleAutocomplete}" 
+    fields="Long_Name__c"
+    />
+    <div id="result"></div>
+
+    <a href="javascript:void(0);" onclick="{!c.subscribe}">PUSHES</a>
+
+
+
+    <ui:message title="Confirmation" severity="confirm" closable="true">
+    This is a confirmation message.
+</ui:message>
+
+<div class="slds-feed">
+    <ul class="slds-feed__list">
+        <aura:iteration items="{!v.insights}" var="insight">
+
+        <li class="slds-feed__item">
+            <c:InsightCell insight="{!insight}"/>
+        </li>
+        <!-- FEED LIST ITEM -->
+    </aura:iteration>
+</ul>
+<!-- FEED LIST -->
+</div>
+</div>
 
 </aura:component>

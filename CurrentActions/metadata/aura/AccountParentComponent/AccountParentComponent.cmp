@@ -1,0 +1,26 @@
+<aura:component controller="AccountContactClass">   
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>  
+        <aura:registerEvent name="accountContact" type="c:AccountContactEvent"/>
+
+    <table class="slds-table slds-max-medium-table--stacked">
+        <th>                               
+            <tr>
+                <td class="slds-cell-wrap  slds-text-body--large">
+                    <b>Account : </b>
+                </td>
+               
+                <td class="slds-cell-wrap">
+                    <ui:inputSelect change="{!c.onAccountChange}" aura:id="selectedAccount" >                                      
+                        <aura:iteration items="{!v.lstAccounts}" var="account">
+                            <ui:inputSelectOption label="{!account.Name}" text="{!account.Id}" />
+                        </aura:iteration>
+                    </ui:inputSelect>
+                </td>
+            </tr>
+        </th>       
+    </table>
+   
+    <div>                   
+        <c:ContactChildComponent selectedAccount="{!v.SelAcc}" />                                                                                                         
+    </div>
+</aura:component>

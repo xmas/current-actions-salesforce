@@ -47,8 +47,34 @@
                     component.set("v.body", body);
                 }
             }
-        );
+            );
     }, 
     
+    handleAutocomplete : function(component, event, helper) {
+        debugger;
+        console.log("HANDLE handleAutocomplete");
+        var so = event.getParam("selectedOption");
+        document.getElementById("result").innerHTML = 'Selected:' + so.Name;
+    },
+
+    assertJQ : function(component, event, helper) {
+        $(function() {
+            $( "#draggable" ).draggable();
+        });
+    },
+
+    searchKeyChange: function(component, event) {
+    var searchKey = event.getParam("searchKey");
+    var action = component.get("c.findByName");
+    action.setParams({
+      "searchKey": searchKey
+    });
+    action.setCallback(this, function(a) {
+        component.set("v.contacts", a.getReturnValue());
+    });
+    $A.enqueueAction(action);
+}
+
+
     
- })
+})

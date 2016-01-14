@@ -116,6 +116,8 @@ private void countCompare (String u_name, Insight__c insight, Integer count) {
         upsert fieldLedgerBot;
 
         List<Integer> countHistory = new List<Integer> ();
+        List<String> datesHistory = new List<String> ();
+
         Integer min = 0;
         Integer max = -1;
         for (Integer i = statsList.size()-1; i >= 0 ; i--) {
@@ -123,7 +125,11 @@ private void countCompare (String u_name, Insight__c insight, Integer count) {
             Integer countE = Integer.valueOf(statEntry.get('count'));
             max = Math.max(max, countE);
             countHistory.add(countE);
+            datesHistory.add((String)statEntry.get('date'));
         }
+        System.debug(countHistory);
+        System.debug(datesHistory);
+
 
         if (max > 100) {
             for (Integer c = 0; c < countHistory.size(); c++) {
