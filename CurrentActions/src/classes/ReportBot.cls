@@ -99,24 +99,128 @@ public with sharing class ReportBot {
 		public fieldData(){isHyperLink=false;}
 	}
 
-	public static SummaryReportGroup createSummaryReportGroup (
-		Reports.GroupingColumn groupingColumnDetail, 
-		Reports.GroupingValue groupingValue,
-		String path
-		) {
+
+	public static List<FieldDef> createFieldDefinitions(Reports.ReportMetadata metadata, Reports.ReportExtendedMetadata extendedMetadata ) {
+
+		List<FieldDef> reportFields = new List<FieldDef> ();	
+		Map<String, Reports.DetailColumn> detailColumnMap = extendedMetadata.getDetailColumnInfo();
+
+		for (String fieldName: metadata.getDetailColumns()) {
+			Reports.DetailColumn detailColumn = detailColumnMap.get(fieldName);
+			fieldDef fd = new fieldDef();
+			fd.fieldName = detailColumn.getName(); 
+			fd.fieldLabel = detailColumn.getLabel();
+			fd.dataType = detailColumn.getDataType().name();
+			reportFields.add(fd);
+		}
+
+		return reportFields;
+	}
+
+	public static SummaryReportGroup createSummaryReportGroup (Reports.GroupingColumn groupingColumnDetail, Reports.GroupingValue groupingValue, String path) {
 
 		SummaryReportGroup srg = new SummaryReportGroup();
 		srg.fieldName = groupingColumnDetail.getLabel();
-		try { srg.fieldValue = (String)groupingValue.getValue(); } catch (Exception e) { srg.fieldValue = String.valueOf(groupingValue.getValue()); }
+		//try { srg.fieldValue = (String)groupingValue.getValue(); } catch (Exception e) { srg.fieldValue = String.valueOf(groupingValue.getValue()); }
+		srg.fieldValue = String.valueOf(groupingValue.getValue());
 		srg.fieldLabel = groupingValue.getLabel();
 		srg.groupKey = groupingValue.getKey();
 		srg.isHyperLink = isHyperlink(srg.fieldValue);
 		srg.path = path+'.'+srg.fieldValue.replaceAll(' ','');
-		System.debug(LoggingLevel.ERROR, 'PARENT SRG: '+srg);
+
+		System.Debug(LoggingLevel.ERROR, '3. New srg created :  '+srg.fieldValue+ ' path: '+srg.path);
+
 		return srg;
 	}
 
-	public static SummaryReportResponse getSummaryReportResponse(Id reportId, Reports.ReportResults results) {
+	public static SummaryReportGroup populateSummaryReportGroup (SummaryReportGroup srg, SummaryReportResponse srr, Reports.ReportResults results ) {
+
+		System.Debug(LoggingLevel.ERROR, '2. populate SRG: '+srg.fieldValue);
+
+		//use our group key to get the group rows from the fact map
+		Reports.ReportFactWithDetails factDetails = (Reports.ReportFactWithDetails)results.getFactMap().get(srg.groupKey+'!T');	
+		List<Reports.ReportDetailRow> reportDetailRowList = factDetails.getRows();			
+		List<List<fieldData>> fieldDataList = new List<List<fieldData>>();
+
+		//loop over the rows
+		for (Reports.ReportDetailRow reportDetailRow : reportDetailRowList) {
+
+			Integer cellCounter = 0;
+			List<FieldData> fieldDataRow = new List<FieldData> ();
+
+			//loop over the cells in the row
+			for (Reports.ReportDataCell reportDataCell: reportDetailRow.getDataCells()) {
+				FieldData fd = new FieldData();
+				//try  { fd.fieldValue = (String)reportDataCell.getValue(); } catch (Exception e) {fd.fieldValue = String.valueOf(reportDataCell.getValue()); }
+				fd.fieldValue = String.valueOf(reportDataCell.getValue());
+				fd.fieldLabel = (String)reportDataCell.getLabel();
+				fd.dataType = srr.reportFields[cellCounter].dataType;
+				fd.isHyperLink = isHyperlink(fd.fieldValue);
+
+				cellCounter++;
+				fieldDataRow.add(fd);
+				
+			}	
+
+			//add the row to the list
+			fieldDataList.add(fieldDataRow);
+		}
+
+		System.Debug(LoggingLevel.ERROR, '2.1  rows added:  '+fieldDataList.size());
+
+		srg.fieldsInGroup = srr.reportFields.size();			
+		srg.fieldDataList = fieldDataList;
+		return srg;
+	}
+
+	public static List<SummaryReportGroup> createAndPopulateGroupingLevel (
+		SummaryReportResponse srr, 
+		List<Reports.GroupingValue> groupingValues, 
+		String parentSRGPath, 
+		Reports.ReportMetadata metadata,  
+		Reports.ReportExtendedMetadata extendedMetadata,
+		Reports.ReportResults results,
+		Integer level) {
+
+		System.Debug(LoggingLevel.ERROR, '1. createAndPopulateGroupingLevel for parentSRGpath: '+parentSRGPath + ' at level : '+ level);
+
+		Map<String, Reports.GroupingColumn> groupingColumnMap = extendedMetadata.getGroupingColumnInfo();		
+
+		List<SummaryReportGroup> groupList = new List<SummaryReportGroup>();
+
+		for (Reports.GroupingValue groupingValue : groupingValues) {
+
+			//get the grouping column info
+			Reports.GroupingInfo groupingInfo = metadata.getGroupingsDown()[level]; 
+			Reports.GroupingColumn groupingColumnDetail = groupingColumnMap.get(groupingInfo.getName());	
+			SummaryReportGroup srg = createSummaryReportGroup (groupingColumnDetail, groupingValue, parentSRGPath);
+
+			// determine if there are children groupings, if so, then wait to add the detail rows
+			// TODO: add the aggregates
+			List<Reports.GroupingValue> child_groupings = groupingValue.getGroupings();
+			if (child_groupings.size() == 0) {
+				
+				System.Debug(LoggingLevel.ERROR, '1a. no children, populate');
+				// populate the top level
+				srg = populateSummaryReportGroup (srg,  srr, results );
+				groupList.add(srg);
+
+			//
+			} else {
+				// populate child level
+				System.Debug(LoggingLevel.ERROR, '1b. children, go deeper');
+
+				String newParentSRGPath = parentSRGPath+'.'+srg.path;
+				Integer newLevel = level + 1;
+				List<SummaryReportGroup> childSRGList = createAndPopulateGroupingLevel(srr, child_groupings, newParentSRGPath, metadata, extendedMetadata, results, newLevel);
+				groupList.addAll(childSRGList);
+			} 
+		}
+
+		return groupList;
+	}
+
+	public static SummaryReportResponse getSummaryReportResponse (Id reportId, Reports.ReportResults results) {
 
     	//System.Debug(LoggingLevel.ERROR, JSON.serialize(results));
 
@@ -125,121 +229,35 @@ public with sharing class ReportBot {
     	Reports.ReportMetadata reportMetadata = results.getReportMetadata();
     	Reports.ReportExtendedMetadata reportExtendedMetadata = results.getReportExtendedMetadata();
 
-    	/* Column Details */
-		//get the map of the column names to their name and label
-		Map<String, Reports.DetailColumn> detailColumnMap = reportExtendedMetadata.getDetailColumnInfo();
 
-		//loop over the detailColumnMap and get the name, label, and data type
-		List<FieldDef> reportFields = new List<FieldDef> ();	
+    	srr.reportFields = createFieldDefinitions(reportMetadata, reportExtendedMetadata);
 
 
-		for (String fieldName: reportMetadata.getDetailColumns()) {
-			Reports.DetailColumn detailColumn = detailColumnMap.get(fieldName);
-			fieldDef fd = new fieldDef();
-			fd.fieldName = detailColumn.getName(); 
-			fd.fieldLabel = detailColumn.getLabel();
-			fd.dataType = detailColumn.getDataType().name();
-			reportFields.add(fd);
-		}
-		srr.reportFields = reportFields;
-
-
-		/* Groupings */
+    	/* Groupings */
 
 		//get the map of the grouping column names to their name and label
 		Map<String, Reports.GroupingColumn> groupingColumnMap = reportExtendedMetadata.getGroupingColumnInfo();		
 
 		//get the grouping column info
-		Reports.GroupingInfo groupingInfo = reportMetadata.getGroupingsDown()[0]; //only supports one grouping level
+		Reports.GroupingInfo groupingInfo = reportMetadata.getGroupingsDown()[0]; // start with the first level
 		Reports.GroupingColumn groupingColumnDetail = groupingColumnMap.get(groupingInfo.getName());				
-
-		//get the summary grouping down dimension grouping values.  only going 1 level deep
+		
 		List<SummaryReportGroup> groupList = new List<SummaryReportGroup>();
-		for (Reports.GroupingValue groupingValue: results.getGroupingsDown().getGroupings()) {
+		
+		List<SummaryReportGroup> childSRGList = createAndPopulateGroupingLevel(srr, results.getGroupingsDown().getGroupings(), '', reportMetadata, reportExtendedMetadata, results, 0);
+		groupList.addAll(childSRGList);
 
-			SummaryReportGroup srg = createSummaryReportGroup (groupingColumnDetail, groupingValue, reportId);
-			System.debug(LoggingLevel.ERROR, 'PARENT SRG: '+srg);
+		srr.groupList = groupList;
 
-
-			List<Reports.GroupingValue> child_groupings = groupingValue.getGroupings();
-			if (child_groupings.size() > 0) {
-				System.debug(LoggingLevel.ERROR, String.valueOf(groupingValue.getValue())+' has '+child_groupings.size()+' child_groupings');
-
-				for (Reports.GroupingValue childGrouping : child_groupings) {
-
-
-					//get the grouping column info
-					Reports.GroupingInfo childGroupingInfo = reportMetadata.getGroupingsDown()[1]; 
-					Reports.GroupingColumn childGroupingColumnDetail = groupingColumnMap.get(childGroupingInfo.getName());	
-
-
-					SummaryReportGroup childSRG = new SummaryReportGroup();
-					childSRG.fieldName = groupingColumnDetail.getLabel();
-					try { childSRG.fieldValue = (String)childGrouping.getValue(); } catch (Exception e) { childSRG.fieldValue = String.valueOf(childGrouping.getValue()); }
-					childSRG.fieldLabel = childGrouping.getLabel();
-					childSRG.groupKey = childGrouping.getKey();
-					childSRG.isHyperLink = isHyperlink(childSRG.fieldValue);
-					childSRG.path = srg.path+'.'+childSRG.fieldValue.replaceAll(' ','');
-					System.debug(LoggingLevel.ERROR, '--CHILD SRG: '+childSRG);
-
-				}
-			}
-
-
-
-			//use our group key to get the group rows from the fact map
-			System.debug(LoggingLevel.ERROR, srg.groupKey);
-			Reports.ReportFactWithDetails factDetails = (Reports.ReportFactWithDetails)results.getFactMap().get(srg.groupKey+'!T');	
-
-			System.debug(LoggingLevel.ERROR, factDetails.getAggregates());
-
-
-			List<Reports.ReportDetailRow> reportDetailRowList = factDetails.getRows();			
-
-			List<List<fieldData>> fieldDataList = new List<List<fieldData>>();
-
-			//loop over the rows
-			for (Reports.ReportDetailRow reportDetailRow : reportDetailRowList) {
-				//System.debug(LoggingLevel.ERROR, reportDetailRow);
-				Integer cellCounter = 0;
-				List<FieldData> fieldDataRow = new List<FieldData> ();
-
-				//loop over the cells in the row
-				for (Reports.ReportDataCell reportDataCell: reportDetailRow.getDataCells()) {
-					FieldData fd = new FieldData();
-					try {
-						fd.fieldValue = (String)reportDataCell.getValue();
-						fd.fieldLabel = (String)reportDataCell.getLabel();
-						fd.dataType = reportFields[cellCounter].dataType;
-						fd.isHyperLink = isHyperlink(fd.fieldValue);
-
-						} catch (Exception e) {
-							System.debug(reportDataCell + ' was a Datetime');
-							fd.fieldValue = 'DATETIME';
-							fd.fieldLabel = (String)reportDataCell.getLabel();
-							fd.dataType = reportFields[cellCounter].dataType;
-						}
-						cellCounter++;
-						//System.debug(LoggingLevel.ERROR, fd);
-						fieldDataRow.add(fd);
-					}
-
-			//add the row to the list
-			fieldDataList.add(fieldDataRow);
-		}			
-		srg.fieldsInGroup = srr.reportFields.size();			
-		srg.fieldDataList = fieldDataList;
-		groupList.add(srg);
+		return srr;
 	}
-	srr.groupList = groupList;
 
-	return srr;
-}
 
-public static TabularReportResponse getMatrixReportResponse(Reports.ReportResults results) {
-	TabularReportResponse trr = new tabularReportResponse();
-	List<fieldDef> reportFields = new List<fieldDef>();
-	List<List<fieldData>> fieldDataList = new List<List<fieldData>>();		
+
+	public static TabularReportResponse getMatrixReportResponse(Reports.ReportResults results) {
+		TabularReportResponse trr = new tabularReportResponse();
+		List<fieldDef> reportFields = new List<fieldDef>();
+		List<List<fieldData>> fieldDataList = new List<List<fieldData>>();		
 
 	//get the metadata
 	Reports.ReportMetadata reportMetadata = results.getReportMetadata();
