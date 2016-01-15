@@ -372,7 +372,7 @@
         "id": "01p61000006ZOEmAAO", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2015-12-21 11:28:06", 
+        "lastModifiedDate": "2016-01-14 21:04:14", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -619,7 +619,7 @@
         "id": "01p61000006rICWAA2", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2015-12-23 14:21:52", 
+        "lastModifiedDate": "2016-01-14 20:29:16", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -714,6 +714,19 @@
         "mmState": "clean", 
         "type": "Profile"
     }, 
+    "ReportAnalyzer.cls": {
+        "createdById": "005610000012IXIAA2", 
+        "createdByName": "Rowan Christmas", 
+        "createdDate": "2016-01-14 18:54:12", 
+        "fileName": "unpackaged/classes/ReportAnalyzer.cls", 
+        "fullName": "ReportAnalyzer", 
+        "id": "01p61000006ry04AAA", 
+        "lastModifiedById": "005610000012IXIAA2", 
+        "lastModifiedByName": "Rowan Christmas", 
+        "lastModifiedDate": "2016-01-14 21:19:24", 
+        "mmState": "clean", 
+        "type": "ApexClass"
+    }, 
     "ReportBot.cls": {
         "createdById": "005610000012IXIAA2", 
         "createdByName": "Rowan Christmas", 
@@ -723,7 +736,7 @@
         "id": "01p61000006rnjSAAQ", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2016-01-14 17:21:34", 
+        "lastModifiedDate": "2016-01-14 20:25:05", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 

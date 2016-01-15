@@ -78,7 +78,7 @@ public with sharing class DataBot {
             //System.debug('NEW INSIGHT CREATED WITH ID: '+insight.Id);
         }
         
-        
+        /*
         DateTime currentTime = system.now();
         currentTime.addMinutes(45);
         
@@ -116,7 +116,7 @@ public with sharing class DataBot {
 
         System.enqueueJob(push);
 
-         
+         */
 		
         return insight;
 

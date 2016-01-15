@@ -41,20 +41,29 @@ public with sharing class ReportBot {
 
 		if (reportType == 'tabular') { 
 			rr.tabResp = getTabularReportResponse(results); 
-			} else if (reportType == 'summary') { 
-				rr.sumResp = getSummaryReportResponse(reportId, results); 
-				} else if (reportType == 'matrix') { 
-					rr.tabResp = getMatrixReportResponse(results); 
-				}
-				return rr;
-			}
 
-			public class ReportResponse {
-				public String reportType {get; set;}
-				public TabularReportResponse tabResp {get; set;}
-				public SummaryReportResponse sumResp {get; set;}		
+		//
+		} else if (reportType == 'summary') { 
+			rr.sumResp = getSummaryReportResponse(reportId, results); 
 
-				public ReportResponse(){
+		//
+		} else if (reportType == 'matrix') { 
+			rr.tabResp = getMatrixReportResponse(results); 
+
+		}
+
+		//	
+		return rr;
+	}
+
+	//
+	public class ReportResponse {
+		public String reportType {get; set;}
+		public String reportLabel {get; set;}
+		public TabularReportResponse tabResp {get; set;}
+		public SummaryReportResponse sumResp {get; set;}		
+
+		public ReportResponse(){
 			// empty class
 		}
 	}
@@ -74,8 +83,10 @@ public with sharing class ReportBot {
 		public Boolean isHyperLink {get; set;}	
 		public Integer fieldsInGroup {get; set;}					
 		public List<List<FieldData>> fieldDataList {get; set;}
-		public List<SummaryReportGroup> groupParents {get; set;}
-		public SummaryReportGroup(){}
+		public SummaryReportGroup parent {get; set;}
+		public SummaryReportGroup(){
+			isHyperLink=false;
+		}
 	}
 
 	public class TabularReportResponse {
@@ -96,7 +107,9 @@ public with sharing class ReportBot {
 		public String fieldLabel {get; set;}
 		public String dataType  {get; set;}
 		public Boolean isHyperLink {get; set;}          
-		public fieldData(){isHyperLink=false;}
+		public fieldData(){
+			isHyperLink=false;
+		}
 	}
 
 
@@ -110,7 +123,13 @@ public with sharing class ReportBot {
 			fieldDef fd = new fieldDef();
 			fd.fieldName = detailColumn.getName(); 
 			fd.fieldLabel = detailColumn.getLabel();
-			fd.dataType = detailColumn.getDataType().name();
+			if (detailColumn.getDataType() != null) {
+				fd.dataType = detailColumn.getDataType().name();
+
+			//
+			} else {
+				fd.dataType = 'STRING_DATA';
+			}
 			reportFields.add(fd);
 		}
 
@@ -123,9 +142,15 @@ public with sharing class ReportBot {
 		srg.fieldName = groupingColumnDetail.getLabel();
 		//try { srg.fieldValue = (String)groupingValue.getValue(); } catch (Exception e) { srg.fieldValue = String.valueOf(groupingValue.getValue()); }
 		srg.fieldValue = String.valueOf(groupingValue.getValue());
+		if (srg.fieldValue == null) {
+			srg.fieldValue = '-';
+		}
 		srg.fieldLabel = groupingValue.getLabel();
 		srg.groupKey = groupingValue.getKey();
 		srg.isHyperLink = isHyperlink(srg.fieldValue);
+		System.Debug(LoggingLevel.ERROR, srg.path);
+		System.Debug(LoggingLevel.ERROR, srg.fieldValue);
+		
 		srg.path = path+'.'+srg.fieldValue.replaceAll(' ','');
 
 		System.Debug(LoggingLevel.ERROR, '3. New srg created :  '+srg.fieldValue+ ' path: '+srg.path);
@@ -213,6 +238,10 @@ public with sharing class ReportBot {
 				String newParentSRGPath = parentSRGPath+'.'+srg.path;
 				Integer newLevel = level + 1;
 				List<SummaryReportGroup> childSRGList = createAndPopulateGroupingLevel(srr, child_groupings, newParentSRGPath, metadata, extendedMetadata, results, newLevel);
+				for (SummaryReportGroup child : childSRGList) {
+					child.parent = srg;
+				}
+
 				groupList.addAll(childSRGList);
 			} 
 		}
@@ -222,18 +251,18 @@ public with sharing class ReportBot {
 
 	public static SummaryReportResponse getSummaryReportResponse (Id reportId, Reports.ReportResults results) {
 
-    	//System.Debug(LoggingLevel.ERROR, JSON.serialize(results));
+		//System.Debug(LoggingLevel.ERROR, JSON.serialize(results));
 
-    	SummaryReportResponse srr = new SummaryReportResponse();
+		SummaryReportResponse srr = new SummaryReportResponse();
 
-    	Reports.ReportMetadata reportMetadata = results.getReportMetadata();
-    	Reports.ReportExtendedMetadata reportExtendedMetadata = results.getReportExtendedMetadata();
-
-
-    	srr.reportFields = createFieldDefinitions(reportMetadata, reportExtendedMetadata);
+		Reports.ReportMetadata reportMetadata = results.getReportMetadata();
+		Reports.ReportExtendedMetadata reportExtendedMetadata = results.getReportExtendedMetadata();
 
 
-    	/* Groupings */
+		srr.reportFields = createFieldDefinitions(reportMetadata, reportExtendedMetadata);
+
+
+		/* Groupings */
 
 		//get the map of the grouping column names to their name and label
 		Map<String, Reports.GroupingColumn> groupingColumnMap = reportExtendedMetadata.getGroupingColumnInfo();		

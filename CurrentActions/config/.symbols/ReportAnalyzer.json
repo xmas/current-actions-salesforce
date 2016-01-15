@@ -1,0 +1,288 @@
+{
+    "properties": [], 
+    "externalReferences": [], 
+    "innerClasses": [], 
+    "interfaces": [], 
+    "constructors": [
+        {
+            "modifiers": [
+                "public"
+            ], 
+            "name": "ReportAnalyzer", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 3
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "ReportAnalyzer", 
+    "tableDeclaration": {
+        "type": "ReportAnalyzer", 
+        "modifiers": [
+            "public", 
+            "with sharing"
+        ], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "ReportAnalyzer"
+    }, 
+    "key": "01p61000006ry04AAA", 
+    "variables": [
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 5
+            }, 
+            "name": "summaryReports"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 6
+            }, 
+            "name": "insights"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 31, 
+                "line": 7
+            }, 
+            "name": "assocs"
+        }, 
+        {
+            "type": "Report", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 15, 
+                "line": 10
+            }, 
+            "name": "r"
+        }, 
+        {
+            "type": "ReportResponse", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 13
+            }, 
+            "name": "res"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 14
+            }, 
+            "name": "defs"
+        }, 
+        {
+            "type": "SummaryReportGroup", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 41, 
+                "line": 16
+            }, 
+            "name": "sgroup"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 40, 
+                "line": 18
+            }, 
+            "name": "fieldDataList"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 13, 
+                "line": 22
+            }, 
+            "name": "title"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 13, 
+                "line": 28
+            }, 
+            "name": "detail"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 39, 
+                "line": 40
+            }, 
+            "name": "smaller"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 41
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 13, 
+                "line": 47
+            }, 
+            "name": "tableHTML"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 14, 
+                "line": 53
+            }, 
+            "name": "nameL"
+        }, 
+        {
+            "type": "Insight__c", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 55
+            }, 
+            "name": "insight"
+        }, 
+        {
+            "type": "InsightAssociation__c", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 65
+            }, 
+            "name": "assoc"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 60, 
+                "line": 104
+            }, 
+            "name": "headers"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 100, 
+                "line": 104
+            }, 
+            "name": "rows"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 10, 
+                "line": 111
+            }, 
+            "name": "html"
+        }, 
+        {
+            "type": "FieldDef", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 27, 
+                "line": 112
+            }, 
+            "name": "header"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 34, 
+                "line": 120
+            }, 
+            "name": "row"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 122
+            }, 
+            "name": "i"
+        }
+    ], 
+    "id": "01p61000006ry04AAA", 
+    "methods": [
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "buildTable", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "headers"
+                }, 
+                {
+                    "type": "LIST", 
+                    "name": "rows"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 104
+            }, 
+            "returnType": "String", 
+            "type": null
+        }
+    ]
+}

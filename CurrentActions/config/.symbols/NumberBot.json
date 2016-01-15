@@ -572,86 +572,6 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 44, 
-                "line": 156
-            }, 
-            "name": "headers"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 63, 
-                "line": 156
-            }, 
-            "name": "ids"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 86, 
-                "line": 156
-            }, 
-            "name": "rows"
-        }, 
-        {
-            "type": "String", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 16, 
-                "line": 163
-            }, 
-            "name": "html"
-        }, 
-        {
-            "type": "String", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 21, 
-                "line": 164
-            }, 
-            "name": "header"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 23, 
-                "line": 171
-            }, 
-            "name": "row"
-        }, 
-        {
-            "type": "Integer", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 26, 
-                "line": 173
-            }, 
-            "name": "i"
-        }, 
-        {
-            "type": "Integer", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 25, 
-                "line": 175
-            }, 
-            "name": "val_index"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
                 "column": 56, 
                 "line": 188
             }, 
@@ -736,6 +656,86 @@
                 "line": 228
             }, 
             "name": "d"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 51, 
+                "line": 156
+            }, 
+            "name": "headers"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 70, 
+                "line": 156
+            }, 
+            "name": "ids"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 93, 
+                "line": 156
+            }, 
+            "name": "rows"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 163
+            }, 
+            "name": "html"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 164
+            }, 
+            "name": "header"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 171
+            }, 
+            "name": "row"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 173
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 175
+            }, 
+            "name": "val_index"
         }
     ], 
     "id": "01p61000006rICWAA2", 
@@ -820,34 +820,6 @@
             "modifiers": [
                 "public"
             ], 
-            "name": "buildTable", 
-            "parameters": [
-                {
-                    "type": "LIST", 
-                    "name": "headers"
-                }, 
-                {
-                    "type": "LIST", 
-                    "name": "ids"
-                }, 
-                {
-                    "type": "LIST", 
-                    "name": "rows"
-                }
-            ], 
-            "visibility": "PUBLIC", 
-            "references": [], 
-            "location": {
-                "column": 19, 
-                "line": 156
-            }, 
-            "returnType": "String", 
-            "type": null
-        }, 
-        {
-            "modifiers": [
-                "public"
-            ], 
             "name": "typesForValues", 
             "parameters": [
                 {
@@ -882,6 +854,35 @@
                 "line": 222
             }, 
             "returnType": "Decimal", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "buildTable", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "headers"
+                }, 
+                {
+                    "type": "LIST", 
+                    "name": "ids"
+                }, 
+                {
+                    "type": "LIST", 
+                    "name": "rows"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 156
+            }, 
+            "returnType": "String", 
             "type": null
         }
     ]
