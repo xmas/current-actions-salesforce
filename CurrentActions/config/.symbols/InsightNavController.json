@@ -1,0 +1,325 @@
+{
+    "properties": [], 
+    "externalReferences": [], 
+    "innerClasses": [
+        {
+            "properties": [
+                {
+                    "modifiers": [
+                        "public"
+                    ], 
+                    "name": "fieldName", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 17, 
+                        "line": 4
+                    }, 
+                    "type": "String"
+                }, 
+                {
+                    "modifiers": [
+                        "public"
+                    ], 
+                    "name": "fieldValue", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 17, 
+                        "line": 5
+                    }, 
+                    "type": "String"
+                }, 
+                {
+                    "modifiers": [
+                        "public"
+                    ], 
+                    "name": "isHyperlink", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 18, 
+                        "line": 6
+                    }, 
+                    "type": "Boolean"
+                }
+            ], 
+            "externalReferences": [], 
+            "innerClasses": [], 
+            "interfaces": [], 
+            "constructors": [
+                {
+                    "modifiers": [
+                        "public"
+                    ], 
+                    "name": "TypeData", 
+                    "parameters": [], 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 10, 
+                        "line": 7
+                    }, 
+                    "type": null
+                }
+            ], 
+            "namespace": null, 
+            "name": "TypeData", 
+            "tableDeclaration": {
+                "type": "TypeData", 
+                "modifiers": [
+                    "public"
+                ], 
+                "references": [], 
+                "location": {
+                    "column": 15, 
+                    "line": 3
+                }, 
+                "name": "TypeData"
+            }, 
+            "key": null, 
+            "variables": [], 
+            "id": null, 
+            "methods": []
+        }
+    ], 
+    "interfaces": [], 
+    "constructors": [], 
+    "namespace": null, 
+    "name": "InsightNavController", 
+    "tableDeclaration": {
+        "type": "InsightNavController", 
+        "modifiers": [
+            "public", 
+            "with sharing"
+        ], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "InsightNavController"
+    }, 
+    "key": "01p61000006s9y8AAA", 
+    "variables": [
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 15
+            }, 
+            "name": "assocs"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 16
+            }, 
+            "name": "assoc_ids"
+        }, 
+        {
+            "type": "Insight__c", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 17
+            }, 
+            "name": "assoc"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 21
+            }, 
+            "name": "typeVals"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 15, 
+                "line": 23
+            }, 
+            "name": "assoc_id"
+        }, 
+        {
+            "type": "Id", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 7, 
+                "line": 24
+            }, 
+            "name": "asID"
+        }, 
+        {
+            "type": "SObjectType", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 25
+            }, 
+            "name": "token"
+        }, 
+        {
+            "type": "DescribeSObjectResult", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 33, 
+                "line": 26
+            }, 
+            "name": "dr"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 11, 
+                "line": 27
+            }, 
+            "name": "type"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 11, 
+                "line": 28
+            }, 
+            "name": "queryString"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 14, 
+                "line": 30
+            }, 
+            "name": "objDBList"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 32
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "TypeData", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 14, 
+                "line": 33
+            }, 
+            "name": "tdata"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 37
+            }, 
+            "name": "tdlist"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 51
+            }, 
+            "name": "types"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 55
+            }, 
+            "name": "returnVals"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 56
+            }, 
+            "name": "type"
+        }, 
+        {
+            "type": "TypeData", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 58
+            }, 
+            "name": "tdata"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 64
+            }, 
+            "name": "dataList"
+        }, 
+        {
+            "type": "TypeData", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 65
+            }, 
+            "name": "data"
+        }
+    ], 
+    "id": "01p61000006s9y8AAA", 
+    "methods": [
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "getTypeData", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 33, 
+                "line": 13
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ]
+}

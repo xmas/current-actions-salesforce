@@ -532,6 +532,19 @@
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
+    "InsightNavController.cls": {
+        "createdById": "005610000012IXIAA2", 
+        "createdByName": "Rowan Christmas", 
+        "createdDate": "2016-01-22 00:33:10", 
+        "fileName": "unpackaged/classes/InsightNavController.cls", 
+        "fullName": "InsightNavController", 
+        "id": "01p61000006s9y8AAA", 
+        "lastModifiedById": "005610000012IXIAA2", 
+        "lastModifiedByName": "Rowan Christmas", 
+        "lastModifiedDate": "2016-01-22 01:12:26", 
+        "mmState": "clean", 
+        "type": "ApexClass"
+    }, 
     "InsightsController.cls": {
         "createdById": "005610000012IXIAA2", 
         "createdByName": "Rowan Christmas", 
@@ -541,7 +554,7 @@
         "id": "01p61000005QuGOAA0", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2016-01-05 22:41:25", 
+        "lastModifiedDate": "2016-01-14 21:24:40", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -723,7 +736,7 @@
         "id": "01p61000006ry04AAA", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2016-01-14 21:19:24", 
+        "lastModifiedDate": "2016-01-22 00:04:01", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 
@@ -736,7 +749,7 @@
         "id": "01p61000006rnjSAAQ", 
         "lastModifiedById": "005610000012IXIAA2", 
         "lastModifiedByName": "Rowan Christmas", 
-        "lastModifiedDate": "2016-01-14 20:25:05", 
+        "lastModifiedDate": "2016-01-22 00:07:39", 
         "mmState": "clean", 
         "type": "ApexClass"
     }, 

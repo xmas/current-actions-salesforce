@@ -440,7 +440,8 @@ public with sharing class ReportBot {
     }
 
     public static List <Report> getSummaryReports() {
-    	return [SELECT Id, Name FROM Report WHERE Format = 'Summary' ORDER BY Name];
+    	return [SELECT Id, Name FROM Report WHERE Format = 'Summary' LIMIT 10];
+    	//WHERE Format = 'Summary' AND //WHERE Id = '00O61000002qafHEAQ'
     }
 
     public List <Report> getTabularReports() {

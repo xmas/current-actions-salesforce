@@ -187,14 +187,34 @@
             "name": "insight"
         }, 
         {
-            "type": "InsightAssociation__c", 
+            "type": "Id", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 29, 
-                "line": 65
+                "column": 10, 
+                "line": 71
             }, 
-            "name": "assoc"
+            "name": "sid"
+        }, 
+        {
+            "type": "SObjectType", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 72
+            }, 
+            "name": "token"
+        }, 
+        {
+            "type": "DescribeSObjectResult", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 73
+            }, 
+            "name": "dr"
         }, 
         {
             "type": "LIST", 
@@ -202,7 +222,7 @@
             "references": [], 
             "location": {
                 "column": 60, 
-                "line": 104
+                "line": 108
             }, 
             "name": "headers"
         }, 
@@ -212,7 +232,7 @@
             "references": [], 
             "location": {
                 "column": 100, 
-                "line": 104
+                "line": 108
             }, 
             "name": "rows"
         }, 
@@ -222,7 +242,7 @@
             "references": [], 
             "location": {
                 "column": 10, 
-                "line": 111
+                "line": 115
             }, 
             "name": "html"
         }, 
@@ -232,7 +252,7 @@
             "references": [], 
             "location": {
                 "column": 27, 
-                "line": 112
+                "line": 116
             }, 
             "name": "header"
         }, 
@@ -242,7 +262,7 @@
             "references": [], 
             "location": {
                 "column": 34, 
-                "line": 120
+                "line": 124
             }, 
             "name": "row"
         }, 
@@ -252,7 +272,7 @@
             "references": [], 
             "location": {
                 "column": 17, 
-                "line": 122
+                "line": 126
             }, 
             "name": "i"
         }
@@ -279,7 +299,7 @@
             "references": [], 
             "location": {
                 "column": 23, 
-                "line": 104
+                "line": 108
             }, 
             "returnType": "String", 
             "type": null

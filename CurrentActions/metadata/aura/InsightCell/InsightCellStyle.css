@@ -2,3 +2,14 @@
 .THIS.toggle {
     display: none;
 }
+
+.THIS .dropdown-float {
+  float: right;
+  padding: 2px 4px;
+  margin: 6px 0;
+  display: inline-block;
+  border: 1px #0A58C7;
+  right: -6px;
+  position: relative;
+  color: white;
+  }

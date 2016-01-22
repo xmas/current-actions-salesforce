@@ -1,12 +1,12 @@
 {
     "username": "rowanxmas@gmail.com", 
+    "environment": "developer", 
     "project_name": "CurrentActions", 
+    "workspace": "/Users/xmas/Code/current-actions-salesforce", 
     "org_url": "", 
     "namespace": "", 
-    "metadata_container": "1dc61000000JPcXAAW", 
-    "environment": "developer", 
-    "workspace": "/Users/xmas/Code/current-actions-salesforce", 
     "id": "KXZ4VT1LV8JBV4VE65UW3LRS1RZ20HLW", 
+    "metadata_container": "1dc61000000JTVNAA4", 
     "subscription": [
         "ApexClass", 
         "ApexComponent", 

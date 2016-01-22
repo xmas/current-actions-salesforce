@@ -1,5 +1,5 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightsController">
-<ltng:require styles="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/jquery_ui_css" scripts="/resource/jquery_js,/resource/jquery_ui_js" />
+<ltng:require styles="/resource/SLDS0121/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/jquery_ui_css" scripts="/resource/jquery_js,/resource/jquery_ui_js" />
 
 
 
@@ -15,7 +15,7 @@
 
 
 <div class="slds"> 
-
+<!--
     <c:autocomplete sObjectType="Account" 
     autocompleteEvent="{!c.handleAutocomplete}" 
     fields="Phone,AccountNumber" 
@@ -33,19 +33,33 @@
     <ui:message title="Confirmation" severity="confirm" closable="true">
     This is a confirmation message.
 </ui:message>
+-->
 
+
+<!--
 <div class="slds-feed">
     <ul class="slds-feed__list">
         <aura:iteration items="{!v.insights}" var="insight">
-
         <li class="slds-feed__item">
+         <div class="slds-box" style="background-color:white">
             <c:InsightCell insight="{!insight}"/>
+            </div>
         </li>
-        <!-- FEED LIST ITEM -->
     </aura:iteration>
 </ul>
-<!-- FEED LIST -->
 </div>
+
+slds-has-cards space has-selections
+-->
+
+<ul class="slds-list--vertical slds-has-cards">
+    <aura:iteration items="{!v.insights}" var="insight">
+        <li class="slds-list__item" style="background:white">
+                <c:InsightCell insight="{!insight}"/>
+        </li>
+    </aura:iteration>
+</ul>
+
 </div>
 
 </aura:component>

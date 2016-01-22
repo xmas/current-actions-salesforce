@@ -25,14 +25,14 @@ public with sharing class ReportAnalyzer {
 					}
 					title = title+sgroup.fieldLabel+' has '+fieldDataList.size()+' records.';				
 
-					String detail = '<a href="https://rowan-dev-ed.my.salesforce.com'+r.Id+'">'+r.Name+'</a><br>';
+					String detail = '<a href="https://rowan-dev-ed.my.salesforce.com//'+r.Id+'">'+r.Name+'</a><br>';
 
 					if (sgroup.isHyperLink) {
-						detail = 'Grouped by: <a href="https://rowan-dev-ed.my.salesforce.com'+sgroup.fieldValue+'">'+sgroup.fieldLabel+'.</a><br>';
+						detail = '<a href="https://rowan-dev-ed.my.salesforce.com//'+sgroup.fieldValue+'">'+sgroup.fieldLabel+'.</a><br>';
 
 					//
 					} else {
-						detail = 'Grouped by: '+sgroup.fieldLabel+'.<br>';
+						detail = sgroup.fieldLabel+'.<br>';
 					}
 
 
@@ -58,23 +58,27 @@ public with sharing class ReportAnalyzer {
 						Data_Source__c = r.Name,
 						Details__c = detail
 						);
+					insight.ReportID__c = r.Id;
 					insights.add(insight);
+					//System.debug(LoggingLevel.ERROR, 'NEW INSGHT: '+insight);
+
+
+
 
 
 					if (sgroup.isHyperLink) {
-						InsightAssociation__c assoc = new InsightAssociation__c (
-							Insight__c = insight.Id,
-							RecordID__c = sgroup.fieldValue,
-							Name = r.Name
-							);
-						assocs.add(assoc);
+						
+						Id sid = Id.valueOf(sgroup.fieldValue);
+						Schema.SObjectType token = sid.getSObjectType();
+						Schema.DescribeSObjectResult dr = token.getDescribe();
+						insight.AssocTypeName__c = dr.getName();
+						insight.AssocID__c = sgroup.fieldValue;
 					}
 				}
 			}
 		}
 
 		upsert insights;
-		upsert assocs;
 	}
 
 
