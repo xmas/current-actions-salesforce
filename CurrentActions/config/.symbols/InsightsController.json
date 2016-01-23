@@ -49,6 +49,26 @@
                 "line": 51
             }, 
             "name": "object_id"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 70, 
+                "line": 56
+            }, 
+            "name": "assoc_id"
+        }, 
+        {
+            "type": "Id", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 58, 
+                "line": 71
+            }, 
+            "name": "report_id"
         }
     ], 
     "id": "01p61000005QuGOAA0", 
@@ -130,6 +150,48 @@
                 "line": 51
             }, 
             "returnType": "Integer", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "getInsightsWithAssociation", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "assoc_id"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 56
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "getInsightsByReport", 
+            "parameters": [
+                {
+                    "type": "Id", 
+                    "name": "report_id"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 35, 
+                "line": 71
+            }, 
+            "returnType": "LIST", 
             "type": null
         }
     ]

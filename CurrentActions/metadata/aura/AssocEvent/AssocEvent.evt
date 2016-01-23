@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION">
+	<aura:attribute name="assocID" type="String"/>
+	<aura:attribute name="reportID" type="Id"/>
+
+</aura:event>

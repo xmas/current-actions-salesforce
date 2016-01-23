@@ -5,27 +5,55 @@
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:attribute name="typedata" type="List" />
+<aura:attribute name="reports" type="List" />
 
-<div class="slds"> 
+<div class="slds-box slds slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium" style="background:white">
+	<div class="slds slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium"> 
 
-	<ul class="slds-list--vertical slds-has-cards">
-		<aura:iteration items="{!v.typedata}" var="tdata">
-		<li class="slds-list__item" style="background:white">
-
-			<!-- aura:if isTrue="{!tdata.isHyperlink}">
-                        <a href="{!'https://rowan-dev-ed.lightning.force.com/'+tdata.fieldValue}">{!tdata.fieldName}</a>
-                        <aura:set attribute="else"                     </aura:set>
-                </aura:if>
--->
-                        
-                        {!tdata}
-            </li>
+<div class="sslds-text-heading--label"><b>Insight Objects</b></div>
+<br></br>
 
 
-        </aura:iteration>
-    </ul>
+<ul class="slds-list--vertical">
 
+<div class="slds-text-body--small">
+<c:insightListItem objID="ALL" title="Show All"/>
 </div>
+	<aura:iteration items="{!v.typedata}" var="tdata" indexVar="indx">
 
+		<aura:if isTrue="{!tdata.isHyperlink}">
+
+			<li>
+				<div class="slds-tile slds-p-top--small slds-text-body--small">
+  						<c:insightListItem objID="{!tdata.fieldValue}" title="{!tdata.fieldName}"/> ({!tdata.count})
+				</div>
+			</li>
+			<aura:set attribute="else">
+				<aura:if isTrue="{!indx != 0}">
+						<li class="slds-list__item slds-has-divider--top-space "></li>
+				</aura:if>
+				<h3 class="slds-text-heading--label slds-p-top--small">{!tdata.fieldName}</h3>
+			</aura:set>
+		</aura:if>
+	</aura:iteration>
+</ul>
+
+<hr></hr>
+<div class="sslds-text-heading--label"><b>Reports</b></div>
+<br></br>
+
+<ul class="slds-list--vertical">
+	<aura:iteration items="{!v.reports}" var="report" indexVar="indx">
+		<li>
+			<div class="slds-tile slds-p-top--small slds-text-body--small">
+	  			<c:insightListItem report="{!report.ReportID__c}" title="{!report.Data_Source__c}"/> ({!report.expr0})
+			</div>
+		</li>
+	</aura:iteration>
+</ul>
+
+
+	</div>
+</div>
 
 </aura:component>

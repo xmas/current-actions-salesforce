@@ -4,39 +4,57 @@ public with sharing class InsightNavController {
 		public String fieldName {get; set;}
 		public String fieldValue {get; set;}
 		public Boolean isHyperlink {get; set;}
-		public TypeData(){
-			isHyperLink=true;
-		}
-	}
+        public Integer count {get; set;}
+        public TypeData() {
+
+            //   
+            isHyperLink=true;
+        }
+    }
 
     @AuraEnabled
-    public static List <String> getTypeData () {
+    public static List<AggregateResult> getReports () {
+        return [SELECT ReportID__c, Data_Source__c, count(Id)  FROM Insight__c WHERE ReportID__c != null GROUP BY ReportID__c, Data_Source__c];
+    }
 
-		List <Insight__c> assocs = [SELECT Id, AssocTypeName__c, AssocID__c FROM Insight__c WHERE AssocID__c != null];
-		Map <String, String> assoc_ids = new Map <String, String> ();
-		for (Insight__c assoc : assocs) {
-			assoc_ids.put(assoc.AssocID__c, assoc.AssocTypeName__c);
-		}
+    @AuraEnabled
+    public static String getTypeData () {
 
-		Map <String, List<TypeData>> typeVals = new Map <String, List<TypeData>> ();
+        List <AggregateResult> assocIdCount = [SELECT  count(Id), AssocID__c FROM Insight__c WHERE AssocID__c != null GROUP BY AssocID__c ];
+        Map <String, Integer> assocCounts = new Map <String, Integer> ();
+        for (Integer i = 0; i < assocIdCount.size(); i++) {
+            assocCounts.put(String.valueOf(assocIdCount[i].get('AssocID__c')), Integer.valueOf(assocIdCount[i].get('expr0')));
+        }
 
-		for (String assoc_id : assoc_ids.keySet()) {
-			Id asID = Id.valueOf(assoc_id);
-			Schema.SObjectType token = asID.getSObjectType();
-			Schema.DescribeSObjectResult dr = token.getDescribe();
-			String type = dr.getName();
-			String queryString = 'SELECT Id, Name FROM ' + type +' WHERE Id=\'' + assoc_id +'\'';
+        List <Insight__c> assocs = [SELECT Id, AssocTypeName__c, AssocID__c FROM Insight__c WHERE AssocID__c != null];
+        Map <String, String> assoc_ids = new Map <String, String> ();
+        for (Insight__c assoc : assocs) {
+            assoc_ids.put(assoc.AssocID__c, assoc.AssocTypeName__c);
+        }
 
-			SObject[] objDBList = Database.query(queryString);
+        Map <String, List<TypeData>> typeVals = new Map <String, List<TypeData>> ();
 
-			for(Integer i=0;i<objDBList.size();i++) {
-				TypeData tdata = new TypeData();
-				tdata.fieldName = (String)objDBList[i].get('Name');
-				tdata.fieldValue = objDBList[i].Id;
+        for (String assoc_id : assoc_ids.keySet()) {
 
-				List<TypeData> tdlist  = null;
-				if (typeVals.containsKey(type)) {
-					tdlist = (List<TypeData>)typeVals.get(type);
+            //
+            Id asID = Id.valueOf(assoc_id);
+            Schema.SObjectType token = asID.getSObjectType();
+            Schema.DescribeSObjectResult dr = token.getDescribe();
+            String type = dr.getLabelPlural();
+            String queryString = 'SELECT Id, Name FROM ' + dr.getName() +' WHERE Id=\'' + assoc_id +'\'';
+
+            SObject[] objDBList = Database.query(queryString);
+
+            for(Integer i=0;i<objDBList.size();i++) {
+                TypeData tdata = new TypeData();
+                tdata.fieldName = (String)objDBList[i].get('Name');
+                tdata.fieldValue = objDBList[i].Id;
+                tdata.count = assocCounts.get(tdata.fieldValue);
+
+                List<TypeData> tdlist  = null;
+                if (typeVals.containsKey(type)) {
+                    //
+                    tdlist = (List<TypeData>)typeVals.get(type);
 
     			//
     			} else {
@@ -52,18 +70,18 @@ public with sharing class InsightNavController {
     	types.addAll(typeVals.keySet());
     	types.sort();
 
-    	List <String> returnVals = new List<String> ();
+    	List <TypeData> returnVals = new List<TypeData> ();
     	for (String type : types) {
 
     		TypeData tdata = new TypeData();
     		tdata.fieldName = type;
     		tdata.isHyperlink = false;
-    		returnVals.add(tdata.fieldName);
+    		returnVals.add(tdata);
 
 
     		List<TypeData> dataList = typeVals.get(type);
     		for (TypeData data : dataList) {
-    			returnVals.add(data.fieldName);
+    			returnVals.add(data);
     		}
     	}
 
@@ -75,7 +93,7 @@ public with sharing class InsightNavController {
     	//	}
     	//}
 
-    	return returnVals;
+    	return JSON.serialize(returnVals);
     }
 
 }

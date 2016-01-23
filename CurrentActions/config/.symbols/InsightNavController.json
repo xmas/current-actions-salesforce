@@ -42,6 +42,19 @@
                         "line": 6
                     }, 
                     "type": "Boolean"
+                }, 
+                {
+                    "modifiers": [
+                        "public"
+                    ], 
+                    "name": "count", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 24, 
+                        "line": 7
+                    }, 
+                    "type": "Integer"
                 }
             ], 
             "externalReferences": [], 
@@ -57,8 +70,8 @@
                     "visibility": "PUBLIC", 
                     "references": [], 
                     "location": {
-                        "column": 10, 
-                        "line": 7
+                        "column": 16, 
+                        "line": 8
                     }, 
                     "type": null
                 }
@@ -107,8 +120,38 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 21, 
-                "line": 15
+                "column": 32, 
+                "line": 23
+            }, 
+            "name": "assocIdCount"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 31, 
+                "line": 24
+            }, 
+            "name": "assocCounts"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 25
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 27, 
+                "line": 29
             }, 
             "name": "assocs"
         }, 
@@ -117,8 +160,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 24, 
-                "line": 16
+                "column": 30, 
+                "line": 30
             }, 
             "name": "assoc_ids"
         }, 
@@ -127,8 +170,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 19, 
-                "line": 17
+                "column": 25, 
+                "line": 31
             }, 
             "name": "assoc"
         }, 
@@ -137,8 +180,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 32, 
-                "line": 21
+                "column": 38, 
+                "line": 35
             }, 
             "name": "typeVals"
         }, 
@@ -147,8 +190,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 15, 
-                "line": 23
+                "column": 21, 
+                "line": 37
             }, 
             "name": "assoc_id"
         }, 
@@ -157,8 +200,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 7, 
-                "line": 24
+                "column": 16, 
+                "line": 40
             }, 
             "name": "asID"
         }, 
@@ -167,8 +210,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 23, 
-                "line": 25
+                "column": 32, 
+                "line": 41
             }, 
             "name": "token"
         }, 
@@ -177,8 +220,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 33, 
-                "line": 26
+                "column": 42, 
+                "line": 42
             }, 
             "name": "dr"
         }, 
@@ -187,8 +230,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 11, 
-                "line": 27
+                "column": 20, 
+                "line": 43
             }, 
             "name": "type"
         }, 
@@ -197,8 +240,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 11, 
-                "line": 28
+                "column": 20, 
+                "line": 44
             }, 
             "name": "queryString"
         }, 
@@ -207,8 +250,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 14, 
-                "line": 30
+                "column": 23, 
+                "line": 46
             }, 
             "name": "objDBList"
         }, 
@@ -217,8 +260,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 16, 
-                "line": 32
+                "column": 25, 
+                "line": 48
             }, 
             "name": "i"
         }, 
@@ -227,8 +270,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 14, 
-                "line": 33
+                "column": 26, 
+                "line": 49
             }, 
             "name": "tdata"
         }, 
@@ -237,8 +280,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 20, 
-                "line": 37
+                "column": 32, 
+                "line": 54
             }, 
             "name": "tdlist"
         }, 
@@ -248,7 +291,7 @@
             "references": [], 
             "location": {
                 "column": 20, 
-                "line": 51
+                "line": 69
             }, 
             "name": "types"
         }, 
@@ -257,8 +300,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 20, 
-                "line": 55
+                "column": 22, 
+                "line": 73
             }, 
             "name": "returnVals"
         }, 
@@ -268,7 +311,7 @@
             "references": [], 
             "location": {
                 "column": 18, 
-                "line": 56
+                "line": 74
             }, 
             "name": "type"
         }, 
@@ -278,7 +321,7 @@
             "references": [], 
             "location": {
                 "column": 16, 
-                "line": 58
+                "line": 76
             }, 
             "name": "tdata"
         }, 
@@ -288,7 +331,7 @@
             "references": [], 
             "location": {
                 "column": 22, 
-                "line": 64
+                "line": 82
             }, 
             "name": "dataList"
         }, 
@@ -298,7 +341,7 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 65
+                "line": 83
             }, 
             "name": "data"
         }
@@ -310,15 +353,31 @@
                 "static", 
                 "public"
             ], 
+            "name": "getReports", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 41, 
+                "line": 16
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
             "name": "getTypeData", 
             "parameters": [], 
             "visibility": "PUBLIC", 
             "references": [], 
             "location": {
-                "column": 33, 
-                "line": 13
+                "column": 26, 
+                "line": 21
             }, 
-            "returnType": "LIST", 
+            "returnType": "String", 
             "type": null
         }
     ]

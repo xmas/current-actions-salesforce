@@ -11,6 +11,7 @@
 <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
 
 <aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 
 
 

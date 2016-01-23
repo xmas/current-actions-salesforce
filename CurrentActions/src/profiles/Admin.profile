@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
+        <apexClass>AccountContactClass</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>AccountsController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -14,6 +18,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AttachmentImageController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AutocompleteController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -57,6 +65,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InsightNavController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InsightsController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -82,6 +94,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>OpportunityAlertController_test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ReportAnalyzer</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ReportBot</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SSSCsvReader</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

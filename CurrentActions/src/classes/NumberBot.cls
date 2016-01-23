@@ -230,4 +230,3 @@ private void countCompare (String u_name, Insight__c insight, Integer count) {
         }
 
     }
-

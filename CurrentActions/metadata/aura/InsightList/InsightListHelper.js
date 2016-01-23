@@ -10,15 +10,50 @@
         });
         $A.enqueueAction(action);
     },
-    
+
+    getInsightAssocList: function(component, assoc_id) {
+
+        var action = component.get("c.getInsightsWithAssociation");
+        action.setParams({
+            "assoc_id": assoc_id
+        });
+
+        //Set up the callback
+        var self = this;
+        action.setCallback(this, function(actionResult) {
+            component.set("v.insights", actionResult.getReturnValue());            
+        });
+        $A.enqueueAction(action);
+
+        //    
+    },
+
+    getInsightReportList: function(component, report_id) {
+
+        //
+        var action = component.get("c.getInsightsByReport");
+        action.setParams({
+            "report_id": report_id
+        });
+
+        //Set up the callback
+        var self = this;
+        action.setCallback(this, function(actionResult) {
+            component.set("v.insights", actionResult.getReturnValue());            
+        });
+        $A.enqueueAction(action);
+
+        //  
+    },
+
     registerServiceWorker : function() {
-        
+
         console.log('REGISTER A SERVICE WORKER');
-        
+
         var isPushEnabled = false;
-        
-        
-        
+
+
+
 //            console.log('load event listener');
        //     var pushButton = document.querySelector('.js-push-button');  
          //   pushButton.addEventListener('click', function() {  
@@ -28,7 +63,7 @@
                    // subscribe();  
          //       }  
 //});
-            
+
             // Check that service workers are supported, if so, progressively  
             // enhance and add push messaging support, otherwise continue without it.  
             if ('serviceWorker' in navigator) {  
@@ -38,8 +73,8 @@
             } else {  
                 console.log('Service workers aren\'t supported in this browser.');  
             }  
-    },
-    
+        },
+
     // Once the service worker is registered set the initial state  
     initialiseState : function () {  
         // Are Notifications supported in the service worker?  
@@ -90,5 +125,5 @@
                 console.warn('Error during getSubscription()', err);  
             });  
         });  
-    }
+}
 })

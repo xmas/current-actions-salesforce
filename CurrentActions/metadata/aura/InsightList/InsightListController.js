@@ -31,7 +31,24 @@
         navEvt.fire();
     },
     
-    
+    assocSearch  : function(component, event, helper) {
+
+        var assoc_id = event.getParam("assocID");
+        var report_id = event.getParam("reportID");
+
+        if (assoc_id == "ALL") {
+            helper.getInsightList(component);
+
+        } else if (assoc_id != null) {
+          helper.getInsightAssocList(component, assoc_id);
+
+            //
+        } else if (report_id != null) {
+            helper.getInsightReportList(component, report_id);
+
+
+        }
+    },
 
     toggleModal : function(component, event, helper) {
         $A.createComponent(
@@ -49,7 +66,7 @@
             }
             );
     }, 
-    
+
     handleAutocomplete : function(component, event, helper) {
         debugger;
         console.log("HANDLE handleAutocomplete");
@@ -64,17 +81,17 @@
     },
 
     searchKeyChange: function(component, event) {
-    var searchKey = event.getParam("searchKey");
-    var action = component.get("c.findByName");
-    action.setParams({
-      "searchKey": searchKey
-    });
-    action.setCallback(this, function(a) {
-        component.set("v.contacts", a.getReturnValue());
-    });
-    $A.enqueueAction(action);
-}
+        var searchKey = event.getParam("searchKey");
+        var action = component.get("c.findByName");
+        action.setParams({
+          "searchKey": searchKey
+      });
+        action.setCallback(this, function(a) {
+            component.set("v.contacts", a.getReturnValue());
+        });
+        $A.enqueueAction(action);
+    }
 
 
-    
+
 })
