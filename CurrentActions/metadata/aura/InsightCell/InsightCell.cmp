@@ -5,6 +5,9 @@
 <aura:registerEvent name="selected_insight" type="c:selectInsight"/>
 
 <aura:handler event="c:modalClose" action="{!c.closeModal}"/>
+<aura:attribute name="icon" type="String" />
+<aura:attribute name="icon_class" type="String" />
+
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
 <div aura:id="modal">
     {!v.modal}
@@ -16,7 +19,7 @@
 <div class="dropdown-float">
         <div class="slds-dropdown-trigger">
             <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
-                <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#down" />
+                <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0122/assets/icons/utility-sprite/svg/symbols.svg#down" />
                 <span class="slds-assistive-text">Show More</span>
             </button>
             <div class="slds-dropdown slds-dropdown--right slds-dropdown--menu">
@@ -39,9 +42,9 @@
     <div class="slds-media slds-comment slds-hint-parent">
         <div class="slds-media__figure">
 
-            <span class="slds-icon__container slds-icon-action-call">
-                <c:svg class="slds-icon" xlinkHref="/resource/SLDS0121/assets/icons/action-sprite/svg/symbols.svg#new_custom17" />
-                <span class="slds-assistive-text">Account Icon</span>
+            <span class="{!'slds-icon__container '+ v.icon_class}">
+                <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS0122/assets/icons/'+ v.icon}" />
+                <span class="slds-assistive-text">Icon</span>
             </span>
 
         </div>
