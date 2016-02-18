@@ -10,19 +10,21 @@
 
 <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
 
-<aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 
 
 
-<div class="slds"> 
+<div class="slds">
+
+<c:InsightListHeader />
+
 <!--
-    <c:autocomplete sObjectType="Account" 
-    autocompleteEvent="{!c.handleAutocomplete}" 
-    fields="Phone,AccountNumber" 
+    <c:autocomplete sObjectType="Account"
+    autocompleteEvent="{!c.handleAutocomplete}"
+    fields="Phone,AccountNumber"
     />
-    <c:autocomplete sObjectType="Insight__c" 
-    autocompleteEvent="{!c.handleAutocomplete}" 
+    <c:autocomplete sObjectType="Insight__c"
+    autocompleteEvent="{!c.handleAutocomplete}"
     fields="Long_Name__c"
     />
     <div id="result"></div>

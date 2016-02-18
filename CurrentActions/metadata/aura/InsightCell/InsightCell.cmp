@@ -1,4 +1,4 @@
-<aura:component >    
+<aura:component >
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="insight" type="Insight__c" />
@@ -11,7 +11,7 @@
 </div>
 
 
-<div class="slds-card slds-container--medium slds-p-right--medium slds-p-top--medium slds-p-bottom--medium slds-p-left--medium" style="background:white">
+<div class="slds-container--medium slds-p-right--medium slds-p-top--medium slds-p-bottom--medium slds-p-left--medium" style="background:white">
 
 <div class="dropdown-float">
         <div class="slds-dropdown-trigger">
@@ -64,8 +64,8 @@
     <br></br>
 
     <div class="container slds-scrollable--x">
-        <aura:unescapedHtml value="{!v.insight.Details__c}"/>     
-        <aura:unescapedHtml value="{!v.insight.Insight__r.Details__c}"/>     
+        <aura:unescapedHtml value="{!v.insight.Details__c}"/>
+        <aura:unescapedHtml value="{!v.insight.Insight__r.Details__c}"/>
     </div>
 
     <div class="container">

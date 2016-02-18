@@ -1,0 +1,88 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+
+<ltng:require styles="/resource/SLDS0121/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/jquery_ui_css" scripts="/resource/jquery_js,/resource/jquery_ui_js" />
+
+
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+<aura:attribute name="title" type="String" default="All"/>
+
+<div class="slds-page-header" role="banner">
+	<div class="slds-grid">
+		<div class="slds-col slds-has-flexi-truncate">
+			<p class="slds-text-heading--label">{!v.title}</p>
+			<div class="slds-grid">
+				<div class="slds-grid slds-type-focus slds-no-space">
+					<h1 class="slds-text-heading--medium slds-truncate" title="My Leads (truncates)">{!v.title}</h1>
+					<button class="slds-button slds-button--icon-bare slds-shrink-none slds-align-middle slds-m-left--x-small">
+						<c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#down" />
+						<span class="slds-assistive-text">View More</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="slds-col slds-no-flex slds-align-bottom">
+			<div class="slds-grid">
+
+				<div class="slds-dropdown-trigger">
+					<div class="slds-button-space-left">
+						<button class="slds-button slds-button--icon-more" aria-haspopup="true">
+							<c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#table" />
+							<c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#down" />
+						</button>
+					</div>
+					<div class="slds-dropdown slds-dropdown--right slds-dropdown--menu">
+						<ul class="slds-dropdown__list" role="menu">
+							<li id="menu-0-0" class="slds-dropdown__item">
+								<a href="javascript:void(0)" role="menuitem" onclick="{!c.openObject}">Go To</a>
+							</li>
+							<li id="menu-1-1" class="slds-dropdown__item">
+								<a href="javascript:void(0)" role="menuitem" onclick="{!c.sendSelectedInsight}">Detail</a>
+							</li>
+							<li id="menu-2-2" class="slds-dropdown__item">
+								<a href="{!'omnifocus:///add?name=' + v.insight.Long_Name__c}" role="menuitem">Add to OmniFocus</a>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+
+				<div class="slds-form-element">
+					<div class="slds-form-element__control">
+						<ui:inputText label="Name" aura:id="name" placeholder="First, Last"/>
+					</div>
+				</div>
+
+
+				<div class="slds-button-group slds-button-space-left" role="group">
+
+					<button class="slds-button slds-button--icon-border slds-not-selected">
+						<c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+
+						<span class="slds-assistive-text">Filter List</span>
+					</button>
+					<button class="slds-button slds-button--icon-more">
+						<c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#sort" />
+
+						<span class="slds-assistive-text">Sort</span>
+						<c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#down" />
+
+						<span class="slds-assistive-text">More</span>
+					</button>
+				</div>
+				<div class="slds-button-group" role="group">
+					<button class="slds-button slds-button--neutral">New Lead</button>
+					<div class="slds-button--last">
+						<button class="slds-button slds-button--icon-border-filled">
+							<c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0121/assets/icons/utility-sprite/svg/symbols.svg#down" />
+
+							<span class="slds-assistive-text">More Actions</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="slds-text-body--small slds-m-top--x-small">10 items • Sorted by Name</p>
+</div>
+
+</aura:component>
