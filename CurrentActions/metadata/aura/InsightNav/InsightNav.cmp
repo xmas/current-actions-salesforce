@@ -14,7 +14,7 @@
 <aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
 
 
-<div class="slds-box slds slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium" style="background:#081430">
+<div class="slds slds-box slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium" style="background:#081430">
 	<div class="slds slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium">
 
 	<c:SearchBar/>

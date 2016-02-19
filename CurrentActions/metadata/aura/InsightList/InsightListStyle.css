@@ -4,5 +4,8 @@
     padding-right: 50px;
     padding-bottom: 25px;
     padding-left: 50px;
-    
+
+}
+.THIS li + li {
+     border-top: 1px solid #CED3DF;
 }
