@@ -19,16 +19,36 @@
 <div class="slds slds-box slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium" style="background:#081430">
 <div class="slds slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium">
 
-<c:SearchBar />
+<!-- c:SearchBar / -->
 
-<div class="sslds-text-heading--label" style="color:white"><b>Insight Objects</b></div>
-<br></br>
+<ul>
+<div class="slds-text-body--small">
+	<c:insightListItem objID="ALL" title="Show All"/>
+</div>
+<li class="slds-list__item slds-has-divider--top-space "></li>
+</ul>
+
+<h3 class="slds-text-heading--label slds-p-top--small">Action Items</h3>
+
+<aura:renderIf isTrue="{!v.typelabels.length > 0}">
+	<ul class="slds-list--vertical">
+	 <SPAN>
+		<aura:iteration items="{!v.typelabels}" var="type" indexVar="indx">
+		<li>
+			<div class="slds-tile slds-p-top--small slds-text-body--small">
+				<c:insightListItem label="{!type.Report_Type_Label__c}" title="{!type.Report_Type_Label__c}"/> ({!type.expr0})
+			</div>
+		</li>
+	</aura:iteration>
+	      </SPAN>
+	      <li class="slds-list__item slds-has-divider--top-space "></li>
+
+	</ul>
+</aura:renderIf>
 
 <aura:renderIf isTrue="{!v.typedata.length > 0}">
 	<ul class="slds-list--vertical">
-		<div class="slds-text-body--small">
-			<c:insightListItem objID="ALL" title="Show All"/>
-		</div>
+
 		<SPAN>
 		<aura:iteration items="{!v.typedata}" var="tdata" indexVar="indx">
 			<aura:if isTrue="{!tdata.isHyperlink}">
@@ -49,27 +69,9 @@
 	</ul>
 </aura:renderIf>
 
-<hr></hr>
-<div class="sslds-text-heading--label" style="color:white"><b>Action Items</b></div>
-<br></br>
+<ul><li class="slds-list__item slds-has-divider--top-space "></li></ul>
 
-<aura:renderIf isTrue="{!v.typelabels.length > 0}">
-	<ul class="slds-list--vertical">
-	 <SPAN>
-		<aura:iteration items="{!v.typelabels}" var="type" indexVar="indx">
-		<li>
-			<div class="slds-tile slds-p-top--small slds-text-body--small">
-				<c:insightListItem label="{!type.Report_Type_Label__c}" title="{!type.Report_Type_Label__c}"/> ({!type.expr0})
-			</div>
-		</li>
-	</aura:iteration>
-	      </SPAN>
-	</ul>
-</aura:renderIf>
-
-<hr></hr>
-<div class="sslds-text-heading--label" style="color:white"><b>Reports</b></div>
-<br></br>
+<h3 class="slds-text-heading--label slds-p-top--small">Reports</h3>
 
 <aura:renderIf isTrue="{!v.reports.length > 0}">
 	<ul class="slds-list--vertical">
