@@ -28,3 +28,14 @@
     margin-left: 300px;
     width:100%;
 }
+
+.THIS #header-wrap {
+    position: fixed;
+    height: 110px;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.THIS #container{
+    margin-top: 110px;
+}
