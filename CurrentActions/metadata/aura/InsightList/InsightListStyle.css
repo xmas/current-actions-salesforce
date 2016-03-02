@@ -6,6 +6,6 @@
     padding-left: 50px;
 
 }
-.THIS li + li {
+.THIS  li.insight + li.insight {
      border-top: 1px solid #CED3DF;
 }

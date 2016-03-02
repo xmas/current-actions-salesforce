@@ -46,6 +46,28 @@
         //
     },
 
+    getInsightTypeLabelList: function(component, label) {
+
+        console.log("get insights for type label: "+label);
+
+        //
+        var action = component.get("c.getInsightsForTypeLabel");
+        action.setParams({
+            "labelID": label
+        });
+
+
+
+        //Set up the callback
+        var self = this;
+        action.setCallback(this, function(actionResult) {
+            component.set("v.insights", actionResult.getReturnValue());
+        });
+        $A.enqueueAction(action);
+
+        //
+    },
+
     registerServiceWorker : function() {
 
         console.log('REGISTER A SERVICE WORKER');

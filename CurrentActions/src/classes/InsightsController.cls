@@ -1,83 +1,73 @@
 public class InsightsController {
 
-    @AuraEnabled
-    public static List <Insight__c> getInsight (Id recordID) {
-        System.debug('find the insight for the page we\'re on: '+recordID);
-        return [SELECT Id,
-        Long_Name__c,
-        Data_Source__c,
-        Details__c,
-        LastModifiedDate,
-        Data_Source_Icon_URL__c,
-        Directly_Responsible_User__c,
-        OwnerId, Chart__c, AssocTypeName__c
-        FROM Insight__c
-        WHERE Id =:recordID];
-    }
 
-    @AuraEnabled
-    public static List<Insight__c> getInsights() {
-        return [SELECT Id,
-        Long_Name__c,
-        Data_Source__c,
-        Details__c,
-        LastModifiedDate,
-        Data_Source_Icon_URL__c,
-        Directly_Responsible_User__c,
-        OwnerId, Chart__c, AssocTypeName__c
-        FROM Insight__c
-        ORDER BY CreatedDate DESC LIMIT 25];
-    }
+  public static String typeNameForID (String assoc_string) {
 
-    @AuraEnabled
-    public static List<InsightAssociation__c> getInsightsForRecord( Id recordID ) {
+    Id assoc_id = Id.valueOf(assoc_string);
+    Schema.SObjectType token = assoc_id.getSObjectType();
+    Schema.DescribeSObjectResult dr = token.getDescribe();
+    return dr.getLabelPlural();
+  }
 
-        return [SELECT RecordID__c,
-        Insight__r.Long_Name__c,
-        Insight__r.Data_Source__c,
-        Insight__r.Details__c,
-        Insight__r.LastModifiedDate,
-        Insight__r.Data_Source_Icon_URL__c,
-        Insight__r.Directly_Responsible_User__c,
-        Insight__r.OwnerId, Insight__r.Chart__c,
-        Insight__r.Name
-        FROM InsightAssociation__c
-        WHERE RecordID__c = :recordID
-        ORDER BY CreatedDate DESC LIMIT 3];
+  static String insightQueryString = 'SELECT Id, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c FROM Insight__c';
 
-    }
 
-    @AuraEnabled
-    public static Integer getFeedItemCountForObject(String object_id) {
-        return [SELECT count() FROM FeedItem WHERE ParentId =:object_id];
-    }
+  @AuraEnabled
+  public static List <Insight__c> getInsight (Id recordID) {
+    String query = insightQueryString + ' WHERE Id = \''+recordID+'\'';
+    return Database.query(query);
+  }
 
-    @AuraEnabled
-    public static List<Insight__c> getInsightsWithAssociation(String assoc_id) {
-       return [SELECT Id,
-       Long_Name__c,
-       Data_Source__c,
-       Details__c,
-       LastModifiedDate,
-       Data_Source_Icon_URL__c,
-       Directly_Responsible_User__c,
-       OwnerId, Chart__c, AssocTypeName__c
-       FROM Insight__c
-       WHERE AssocID__c = :assoc_id
-       ORDER BY CreatedDate DESC LIMIT 25];
-   }
+  @AuraEnabled
+  public static List<Insight__c> getInsights() {
 
-   @AuraEnabled
-   public static List<Insight__c> getInsightsByReport(Id report_id) {
-       return [SELECT Id,
-       Long_Name__c,
-       Data_Source__c,
-       Details__c,
-       LastModifiedDate,
-       Data_Source_Icon_URL__c,
-       Directly_Responsible_User__c,
-       OwnerId, Chart__c, AssocTypeName__c
-       FROM Insight__c
-       WHERE ReportID__c = :report_id
-       ORDER BY CreatedDate DESC LIMIT 25];    }
-   }
+    Id user_id = UserInfo.getUserId();
+
+   String query = insightQueryString + ' WHERE AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\' ORDER BY CreatedDate DESC LIMIT 25';
+   return Database.query(query);
+ }
+
+ @AuraEnabled
+ public static Integer getFeedItemCountForObject(String object_id) {
+
+  return [SELECT count() FROM FeedItem WHERE ParentId =:object_id];
+
+    //
+  }
+
+  @AuraEnabled
+  public static List<Insight__c> getInsightsWithAssociation(String assoc_id) {
+
+    Id user_id = UserInfo.getUserId();
+
+    String query = insightQueryString + ' WHERE (AssocID__c = \''+assoc_id+'\' OR Assoc2ID__c = \''+assoc_id+'\' OR Assoc3ID__c = \''+assoc_id+'\') AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC LIMIT 25';
+
+    return Database.query(query);
+
+  }
+
+  @AuraEnabled
+  public static List<Insight__c> getInsightsByReport(Id report_id) {
+    Id user_id = UserInfo.getUserId();
+    String id_match = ' (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ';
+    String query = insightQueryString + ' WHERE '+id_match+' AND (ReportID__c = \''+report_id+'\') ORDER BY CreatedDate DESC LIMIT 25';
+    return Database.query(query);
+  }
+
+  @AuraEnabled
+  public static List<InsightAssociation__c> getInsightsForRecord( Id recordID ) {
+    return null;
+  }
+
+  @AuraEnabled
+  public static List<Insight__c> getInsightsForTypeLabel (String labelID) {
+    Id user_id = UserInfo.getUserId();
+    String id_match = ' (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ';
+    String query = insightQueryString + ' WHERE '+id_match+' AND (Report_Type_Label__c = \''+labelID+'\') ORDER BY CreatedDate DESC LIMIT 25';
+    System.debug(query);
+    return Database.query(query);
+
+  }
+
+
+}

@@ -16,7 +16,7 @@
 
 <div class="slds">
 
-<c:InsightListHeader />
+<!-- c:InsightListHeader / -->
 
 <!--
     <c:autocomplete sObjectType="Account"
@@ -57,7 +57,7 @@ slds-has-cards space has-selections
 
 <ul class="slds-list--vertical">
     <aura:iteration items="{!v.insights}" var="insight">
-        <li class="slds-list__item slds-p-bottom--medium" style="background:white">
+        <li class="insight slds-list__item slds-p-bottom--medium" style="background:white">
                 <c:InsightCell insight="{!insight}"/>
         </li>
     </aura:iteration>

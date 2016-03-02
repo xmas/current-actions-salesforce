@@ -1,3 +1,3 @@
 <aura:application >
- <c:AccountParentComponent/>
+ <c:AccountParentComponent />
 </aura:application>

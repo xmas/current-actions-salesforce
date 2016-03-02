@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="slds-media slds-comment slds-hint-parent">
+    <div class="slds-media slds-comment slds-hint-parent slds-p-bottom--large">
         <div class="slds-media__figure">
 
             <span class="{!'slds-icon__container '+ v.icon_class}">
@@ -50,33 +50,41 @@
         </div>
         <div class="slds-media__body">
             <div class="slds-grid slds-grid--align-spread">
-                <div class="slds-text-longform slds-text-body--regular" style="font-weight:700"><a href="javascript:void(0)" title="source link">{!v.insight.Data_Source__c}{!v.insight.Insight__r.Data_Source__c}</a></div>
+                <div class="slds-text-longform slds-text-body--regular"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></div>
             </div>
 
+            <aura:unescapedHtml value="{!v.insight.Parents__c}"/>
 
+            <div class="slds-text-body--small" style="color:#8E99A6" >
+                <ul class="slds-list--horizontal slds-has-dividers--right slds-has-inline-block-links">
+                 <li class="slds-list__item" >
+                   generated on: <ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/>
+               </li>
+               <li class="slds-list__item" >
+                  generated using report: <a href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.ReportID__c}">{!v.insight.Data_Source__c}</a>
+              </li>
+              <li class="slds-list__item" >
+              <a href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">direct link</a>
+           </li>
 
-
-            <div style="color:#EAEDF4">
-                <ui:outputDateTime value="{!v.insight.LastModifiedDate}" class="slds-text-body--small"/>
-            </div>
+       </ul>
+   </div>
 
         </div>
     </div>
 
-     <div class="slds-comment__content slds-text-longform slds-text-body--regular slds-p-top--medium slds-p-bottom--medium">
-                {!v.insight.Long_Name__c}{!v.insight.Insight__r.Long_Name__c}
-    </div>
-
-<div class="slds-card slds-p-top--small slds-p-left--small ">
-    <div class="container slds-scrollable--x">
+<!--
+     <div class="slds-comment__content slds-text-longform slds-text-body- -regular slds-p-top- -medium slds-p-bottom- -medium">
         <aura:unescapedHtml value="{!v.insight.Details__c}"/>
-        <aura:unescapedHtml value="{!v.insight.Insight__r.Details__c}"/>
+    </div>
+-->
+
+    <div class="slds-card slds-scrollable--x slds-p-top--small slds-p-bottom--small">
+        <aura:unescapedHtml value="{!v.insight.Table_Data__c}"/>
     </div>
 
     <div class="container">
         <aura:unescapedHtml value="{!v.insight.Chart__c}"/>
-        <aura:unescapedHtml value="{!v.insight.Insight__r.Chart__c}"/>
     </div>
-</div>
 </div>
 </aura:component>

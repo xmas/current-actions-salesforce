@@ -1,5 +1,5 @@
 <aura:application >
-<ltng:require styles="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.css" />
+<ltng:require styles="/resource/SLDS0121/assets/styles/salesforce-lightning-design-system-ltng.css" />
 
 <div class="slds" style="background:#EAEDF4">
 	<div class="slds-grid slds-p-right--medium lds-p-left--medium slds-p-top--medium slds-p-bottom--medium">

@@ -12,3 +12,19 @@
 	font-size: 12px;
 	color: #3c3d3e;
 }
+
+.THIS .slds a {
+	color:#D9DEEA;
+}
+
+.THIS .slds a:hover {
+	color:#FCCD9C;
+}
+
+.THIS .slds h3 {
+	color:#FDA94B;
+}
+
+.THIS .slds .slds-has-divider--top-space {
+	border-top: 1px solid rgba(250, 245, 255, 0.33);
+}

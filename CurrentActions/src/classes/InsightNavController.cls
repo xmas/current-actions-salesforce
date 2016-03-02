@@ -7,93 +7,146 @@ public with sharing class InsightNavController {
         public Integer count {get; set;}
         public TypeData() {
 
-            //   
+            //
             isHyperLink=true;
         }
     }
 
     @AuraEnabled
     public static List<AggregateResult> getReports () {
-        return [SELECT ReportID__c, Data_Source__c, count(Id)  FROM Insight__c WHERE ReportID__c != null GROUP BY ReportID__c, Data_Source__c];
+        Id user_id = UserInfo.getUserId();
+        return [SELECT ReportID__c, Data_Source__c, count(Id)  FROM Insight__c WHERE (ReportID__c != null) AND (AssocID__c =:user_id OR Assoc2ID__c =:user_id OR Assoc3ID__c =:user_id) GROUP BY ReportID__c, Data_Source__c];
+    }
+
+    @AuraEnabled
+     public static List<AggregateResult> getTypeLabels () {
+        Id user_id = UserInfo.getUserId();
+        return [SELECT Report_Type_Label__c, count(Id)  FROM Insight__c WHERE (Report_Type_Label__c != null) AND (AssocID__c =:user_id OR Assoc2ID__c =:user_id OR Assoc3ID__c =:user_id) GROUP BY Report_Type_Label__c];
+    }
+
+
+    public static void addTypeDataToList(Map <String, List<TypeData>> typeVals, TypeData typeData, String type) {
+
+        List<TypeData> tdlist  = null;
+        if (typeVals.containsKey(type)) {
+            tdlist = (List<TypeData>)typeVals.get(type);
+
+        //
+        } else {
+            tdlist = new List<TypeData> ();
+        }
+
+        tdlist.add(typeData);
+        typeVals.put(type, tdlist);
+
+    }
+
+    public static void processAssoc(String assoc_id, String assoc_name, String assoc_label, Map <String, List<TypeData>> typeVals, Map <String, Integer> assocCounts, Map<String, Integer> added_ids) {
+
+        if (assoc_id != null && assoc_name != null) {
+
+            if (!added_ids.containsKey(assoc_id)) {
+                TypeData tdata = new TypeData();
+                tdata.fieldName = assoc_label;
+                tdata.fieldValue = assoc_id;
+                tdata.count = assocCounts.get(assoc_id);
+
+                addTypeDataToList(typeVals, tdata, assoc_name);
+                added_ids.put(assoc_id, 1);
+            }
+        }
     }
 
     @AuraEnabled
     public static String getTypeData () {
 
-        List <AggregateResult> assocIdCount = [SELECT  count(Id), AssocID__c FROM Insight__c WHERE AssocID__c != null GROUP BY AssocID__c ];
         Map <String, Integer> assocCounts = new Map <String, Integer> ();
+
+        // one
+        //List <AggregateResult> assocIdCount = [SELECT  count(Id), AssocID__c FROM Insight__c WHERE AssocID__c != null GROUP BY AssocID__c ];
+        Id user_id = UserInfo.getUserId();
+
+        List <AggregateResult> assocIdCount = [SELECT  count(Id), AssocID__c FROM Insight__c WHERE (AssocID__c != null) AND ( AssocID__c = :user_id OR Assoc2ID__c = :user_id OR Assoc3ID__c = :user_id) GROUP BY AssocID__c ];
+
         for (Integer i = 0; i < assocIdCount.size(); i++) {
             assocCounts.put(String.valueOf(assocIdCount[i].get('AssocID__c')), Integer.valueOf(assocIdCount[i].get('expr0')));
         }
 
-        List <Insight__c> assocs = [SELECT Id, AssocTypeName__c, AssocID__c FROM Insight__c WHERE AssocID__c != null];
-        Map <String, String> assoc_ids = new Map <String, String> ();
-        for (Insight__c assoc : assocs) {
-            assoc_ids.put(assoc.AssocID__c, assoc.AssocTypeName__c);
+        // two
+        //        assocIdCount = [SELECT  count(Id), Assoc2ID__c FROM Insight__c WHERE Assoc2ID__c != null GROUP BY Assoc2ID__c ];
+        assocIdCount = [SELECT  count(Id), Assoc2ID__c FROM Insight__c WHERE (Assoc2ID__c != null) AND ( AssocID__c = :user_id OR Assoc2ID__c = :user_id OR Assoc3ID__c = :user_id)  GROUP BY Assoc2ID__c ];
+
+        System.debug(assocIdCount);
+        for (Integer i = 0; i < assocIdCount.size(); i++) {
+            String key = String.valueOf(assocIdCount[i].get('Assoc2ID__c'));
+            Integer count = Integer.valueOf(assocIdCount[i].get('expr0'));
+            Integer current_count = Integer.valueOf(assocCounts.get(key));
+            if (current_count == null) {
+                current_count = 0;
+            }
+
+            assocCounts.put(key, count + current_count);
+            //System.debug('key: '+key+' count: '+count+' current_count: '+current_count+' final: '+assocCounts.get(key));
         }
 
+        // three
+        //assocIdCount = [SELECT  count(Id), Assoc3ID__c FROM Insight__c WHERE Assoc3ID__c != null GROUP BY Assoc3ID__c ];
+        assocIdCount = [SELECT  count(Id), Assoc3ID__c FROM Insight__c WHERE (Assoc3ID__c != null) AND ( AssocID__c = :user_id OR Assoc2ID__c = :user_id OR Assoc3ID__c = :user_id) GROUP BY Assoc3ID__c ];
+
+        System.debug(assocIdCount);
+        for (Integer i = 0; i < assocIdCount.size(); i++) {
+            String key = String.valueOf(assocIdCount[i].get('Assoc3ID__c'));
+            Integer count = Integer.valueOf(assocIdCount[i].get('expr0'));
+            Integer current_count = Integer.valueOf(assocCounts.get(key));
+            if (current_count == null) {
+                current_count = 0;
+            }
+
+            assocCounts.put(key, count + current_count);
+            //System.debug('key: '+key+' count: '+count+' current_count: '+current_count+' final: '+assocCounts.get(key));
+        }
+
+
         Map <String, List<TypeData>> typeVals = new Map <String, List<TypeData>> ();
+        Map<String, Integer> added_ids = new Map <String, Integer> ();
 
-        for (String assoc_id : assoc_ids.keySet()) {
+        List <Insight__c> assocs = [SELECT Id, AssocID__c, Assoc2ID__c, Assoc3ID__c, AssocTypeName__c, AssocTypeName2__c, AssocTypeName3__c, AssocLabel__c, AssocLabel2__c, AssocLabel3__c FROM Insight__c WHERE (AssocID__c != null) AND ( AssocID__c = :user_id OR Assoc2ID__c = :user_id OR Assoc3ID__c = :user_id)];
+        for (Insight__c assoc : assocs) {
 
-            //
-            Id asID = Id.valueOf(assoc_id);
-            Schema.SObjectType token = asID.getSObjectType();
-            Schema.DescribeSObjectResult dr = token.getDescribe();
-            String type = dr.getLabelPlural();
-            String queryString = 'SELECT Id, Name FROM ' + dr.getName() +' WHERE Id=\'' + assoc_id +'\'';
+            processAssoc(assoc.AssocID__c, assoc.AssocTypeName__c, assoc.AssocLabel__c, typeVals, assocCounts, added_ids);
+            processAssoc(assoc.Assoc2ID__c, assoc.AssocTypeName2__c, assoc.AssocLabel2__c, typeVals, assocCounts, added_ids);
+            processAssoc(assoc.Assoc3ID__c, assoc.AssocTypeName3__c, assoc.AssocLabel3__c, typeVals, assocCounts, added_ids);
 
-            SObject[] objDBList = Database.query(queryString);
+        }
 
-            for(Integer i=0;i<objDBList.size();i++) {
-                TypeData tdata = new TypeData();
-                tdata.fieldName = (String)objDBList[i].get('Name');
-                tdata.fieldValue = objDBList[i].Id;
-                tdata.count = assocCounts.get(tdata.fieldValue);
+        List <String> types = new List<String> ();
+        types.addAll(typeVals.keySet());
+        types.sort();
 
-                List<TypeData> tdlist  = null;
-                if (typeVals.containsKey(type)) {
-                    //
-                    tdlist = (List<TypeData>)typeVals.get(type);
+        List <TypeData> returnVals = new List<TypeData> ();
+        for (String type : types) {
 
-    			//
-    			} else {
-    				tdlist = new List<TypeData> ();
-    			}
-    			tdlist.add(tdata);
-    			typeVals.put(type, tdlist);
-    		}
-    	}
+          TypeData tdata = new TypeData();
+          tdata.fieldName = type;
+          tdata.isHyperlink = false;
+          returnVals.add(tdata);
 
 
-    	List <String> types = new List<String> ();
-    	types.addAll(typeVals.keySet());
-    	types.sort();
+          List<TypeData> dataList = typeVals.get(type);
+          for (TypeData data : dataList) {
+             returnVals.add(data);
+         }
+     }
 
-    	List <TypeData> returnVals = new List<TypeData> ();
-    	for (String type : types) {
+     for (String type : types) {
+      System.debug('Type: '+type);
+      List<TypeData> dataList = typeVals.get(type);
+      for (TypeData data : dataList) {
+         System.debug('name: '+data.fieldName+' val: '+data.fieldValue+' count: '+data.count);
+     }
+ }
 
-    		TypeData tdata = new TypeData();
-    		tdata.fieldName = type;
-    		tdata.isHyperlink = false;
-    		returnVals.add(tdata);
-
-
-    		List<TypeData> dataList = typeVals.get(type);
-    		for (TypeData data : dataList) {
-    			returnVals.add(data);
-    		}
-    	}
-
-    	//for (String type : types) {
-    	//	System.debug('Type: '+type);
-    	//	List<TypeData> dataList = typeVals.get(type);
-    	//	for (TypeData data : dataList) {
-    	//		System.debug('name: '+data.fieldName+' val: '+data.fieldValue);
-    	//	}
-    	//}
-
-    	return JSON.serialize(returnVals);
-    }
+ return JSON.serialize(returnVals);
+}
 
 }

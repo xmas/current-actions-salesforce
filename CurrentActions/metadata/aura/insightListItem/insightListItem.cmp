@@ -3,6 +3,7 @@
     <aura:attribute name="objID" type="String"/>
     <aura:attribute name="report" type="Id"/>
     <aura:attribute name="title" type="String"/>
+    <aura:attribute name="label" type="String"/>
 
     <a href="javascript:void(0)" onclick="{!c.select}">{!v.title}</a>
 

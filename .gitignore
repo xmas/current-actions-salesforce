@@ -3,3 +3,7 @@ config/
 *.log 
 deploy/ 
 debug/
+*.manifest
+*.profile
+.symbols/
+

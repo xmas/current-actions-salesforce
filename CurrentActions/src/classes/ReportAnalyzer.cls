@@ -7,6 +7,8 @@ public with sharing class ReportAnalyzer {
 		List<InsightAssociation__c> assocs = new List<InsightAssociation__c> ();
 
 
+		//
+
 		for (Report r : summaryReports) {
     		//System.debug(LoggingLevel.ERROR, r.Name + ' - '+r.Id);
 
@@ -62,10 +64,6 @@ public with sharing class ReportAnalyzer {
 					insights.add(insight);
 					//System.debug(LoggingLevel.ERROR, 'NEW INSGHT: '+insight);
 
-
-
-
-
 					if (sgroup.isHyperLink) {
 						
 						Id sid = Id.valueOf(sgroup.fieldValue);
@@ -82,58 +80,53 @@ public with sharing class ReportAnalyzer {
 	}
 
 
- //   		System.debug(LoggingLevel.ERROR, '---------');
- //   		System.debug(LoggingLevel.ERROR, sgroup.path);
- //   		ReportBot.SummaryReportGroup parent = sgroup.parent;
- //   		if (parent != null) {
- //   			System.debug(LoggingLevel.ERROR, parent.fieldLabel);
- //   		}
- //   		System.debug(LoggingLevel.ERROR, sgroup.fieldLabel);
- //   		System.debug(LoggingLevel.ERROR, sgroup.groupKey+'!T');
- //   		System.debug(LoggingLevel.ERROR, sgroup.fieldDataList.size()+' records');
+	public String imageForType (String typeName) {
 
- //   		List<List<ReportBot.FieldData>> fieldDataList = sgroup.fieldDataList;
+		if (typeName == 'Account') {
 
- //   		for (List<ReportBot.FieldData> row : fieldDataList) {
- //   			System.debug(LoggingLevel.ERROR, '-------->');
- //   			Integer cellInt = 0;
- //   			for (ReportBot.FieldData cell : row ) {
- //   				System.debug(LoggingLevel.ERROR, '-------->  '+defs[cellInt].fieldLabel+' = '+cell.fieldValue);
- //   				cellInt++;
- //   			}
- //   		}
- //   	}
+		}
+		if (typeName == 'User') {
 
+		}
+		if (typeName == 'Lead') {
 
- public static String buildTable (List<ReportBot.FieldDef> headers, List<List<ReportBot.FieldData>>rows) {
+		}
+		if (typeName == 'Oppurtunity') {
+			
+		}
+		return null;
 
- 	if (headers.size() != rows[0].size()) {
- 		System.debug('Attempting to build table with different numbers of headers and cells');
- 		return null;
- 	}
+	}
 
- 	String html = '<div class="slds"><table class="slds-table slds-table--bordered"><thead> <tr class="slds-text-heading--label">';
- 	for (ReportBot.FieldDef header : headers) {
+	public static String buildTable (List<ReportBot.FieldDef> headers, List<List<ReportBot.FieldData>>rows) {
 
- 		html = html + '<th scope="col"><span class="slds-truncate">';
- 		html = html + header.fieldLabel;
- 		html = html + '</span></th>';
- 	}
- 	html = html + '  </thead><tbody>';
+		if (headers.size() != rows[0].size()) {
+			System.debug('Attempting to build table with different numbers of headers and cells');
+			return null;
+		}
 
- 	for (List<ReportBot.FieldData> row : rows) {
- 		html = html + '<tr class="slds-hint-parent">';
- 		for (Integer i = 0; i < row.size(); i++) {
+		String html = '<div class="slds"><table class="slds-table slds-table--bordered"><thead> <tr class="slds-text-heading--label">';
+		for (ReportBot.FieldDef header : headers) {
 
- 			html = html + '<td data-label="'+headers[i].fieldLabel+'">';
- 			html = html + '<span class="slds-truncate">'+row[i].fieldLabel+'</span></td>';
- 		}
- 		html = html + '</tr>';
- 	}
- 	html = html + '</tbody></table></div>';
+			html = html + '<th scope="col"><span class="slds-truncate">';
+			html = html + header.fieldLabel;
+			html = html + '</span></th>';
+		}
+		html = html + '  </thead><tbody>';
 
- 	return html;
- }
+		for (List<ReportBot.FieldData> row : rows) {
+			html = html + '<tr class="slds-hint-parent">';
+			for (Integer i = 0; i < row.size(); i++) {
+
+				html = html + '<td data-label="'+headers[i].fieldLabel+'">';
+				html = html + '<span class="slds-truncate">'+row[i].fieldLabel+'</span></td>';
+			}
+			html = html + '</tr>';
+		}
+		html = html + '</tbody></table></div>';
+
+		return html;
+	}
 
 
 }

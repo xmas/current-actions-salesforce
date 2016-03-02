@@ -1,6 +1,6 @@
 <aura:component controller="AccountContactClass">
-<link rel="stylesheet" href="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.css" />
-<link rel="stylesheet" href="/resource/SLDS0120/assets/styles/style.css" />
+<link rel="stylesheet" href="/resource/SLDS0121/assets/styles/salesforce-lightning-design-system-ltng.css" />
+<link rel="stylesheet" href="/resource/SLDS0121/assets/styles/style.css" />
 <link rel="stylesheet" href="/resource/basicstyle/css/Style2/styles.css" />   
 
 <aura:attribute name="selectedAccount" type="String"/>

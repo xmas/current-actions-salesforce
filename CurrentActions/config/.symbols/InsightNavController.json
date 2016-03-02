@@ -116,154 +116,124 @@
     "key": "01p61000006s9y8AAA", 
     "variables": [
         {
-            "type": "LIST", 
+            "type": "Id", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 32, 
-                "line": 23
+                "column": 12, 
+                "line": 17
             }, 
-            "name": "assocIdCount"
-        }, 
-        {
-            "type": "Map", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 31, 
-                "line": 24
-            }, 
-            "name": "assocCounts"
-        }, 
-        {
-            "type": "Integer", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 22, 
-                "line": 25
-            }, 
-            "name": "i"
-        }, 
-        {
-            "type": "LIST", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 27, 
-                "line": 29
-            }, 
-            "name": "assocs"
-        }, 
-        {
-            "type": "Map", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 30, 
-                "line": 30
-            }, 
-            "name": "assoc_ids"
-        }, 
-        {
-            "type": "Insight__c", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 25, 
-                "line": 31
-            }, 
-            "name": "assoc"
-        }, 
-        {
-            "type": "Map", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 38, 
-                "line": 35
-            }, 
-            "name": "typeVals"
-        }, 
-        {
-            "type": "String", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 21, 
-                "line": 37
-            }, 
-            "name": "assoc_id"
+            "name": "user_id"
         }, 
         {
             "type": "Id", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 16, 
-                "line": 40
+                "column": 12, 
+                "line": 23
             }, 
-            "name": "asID"
+            "name": "user_id"
         }, 
         {
-            "type": "SObjectType", 
+            "type": "Map", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 32, 
-                "line": 41
+                "column": 71, 
+                "line": 28
             }, 
-            "name": "token"
+            "name": "typeVals"
         }, 
         {
-            "type": "DescribeSObjectResult", 
+            "type": "TypeData", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 42, 
-                "line": 42
+                "column": 90, 
+                "line": 28
             }, 
-            "name": "dr"
+            "name": "typeData"
         }, 
         {
             "type": "String", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 20, 
-                "line": 43
+                "column": 107, 
+                "line": 28
             }, 
             "name": "type"
-        }, 
-        {
-            "type": "String", 
-            "modifiers": [], 
-            "references": [], 
-            "location": {
-                "column": 20, 
-                "line": 44
-            }, 
-            "name": "queryString"
         }, 
         {
             "type": "LIST", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 23, 
-                "line": 46
+                "column": 24, 
+                "line": 30
             }, 
-            "name": "objDBList"
+            "name": "tdlist"
         }, 
         {
-            "type": "Integer", 
+            "type": "String", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 25, 
-                "line": 48
+                "column": 44, 
+                "line": 44
             }, 
-            "name": "i"
+            "name": "assoc_id"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 61, 
+                "line": 44
+            }, 
+            "name": "assoc_name"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 80, 
+                "line": 44
+            }, 
+            "name": "assoc_label"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 122, 
+                "line": 44
+            }, 
+            "name": "typeVals"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 154, 
+                "line": 44
+            }, 
+            "name": "assocCounts"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 188, 
+                "line": 44
+            }, 
+            "name": "added_ids"
         }, 
         {
             "type": "TypeData", 
@@ -276,22 +246,172 @@
             "name": "tdata"
         }, 
         {
-            "type": "LIST", 
+            "type": "Map", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 32, 
-                "line": 54
+                "column": 31, 
+                "line": 63
             }, 
-            "name": "tdlist"
+            "name": "assocCounts"
+        }, 
+        {
+            "type": "Id", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 67
+            }, 
+            "name": "user_id"
         }, 
         {
             "type": "LIST", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 20, 
+                "column": 32, 
                 "line": 69
+            }, 
+            "name": "assocIdCount"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 71
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 80
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 81
+            }, 
+            "name": "key"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 82
+            }, 
+            "name": "count"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 83
+            }, 
+            "name": "current_count"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 97
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 98
+            }, 
+            "name": "key"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 99
+            }, 
+            "name": "count"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 100
+            }, 
+            "name": "current_count"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 38, 
+                "line": 110
+            }, 
+            "name": "typeVals"
+        }, 
+        {
+            "type": "Map", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 30, 
+                "line": 111
+            }, 
+            "name": "added_ids"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 27, 
+                "line": 113
+            }, 
+            "name": "assocs"
+        }, 
+        {
+            "type": "Insight__c", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 114
+            }, 
+            "name": "assoc"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 122
             }, 
             "name": "types"
         }, 
@@ -300,8 +420,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 22, 
-                "line": 73
+                "column": 25, 
+                "line": 126
             }, 
             "name": "returnVals"
         }, 
@@ -310,8 +430,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 18, 
-                "line": 74
+                "column": 21, 
+                "line": 127
             }, 
             "name": "type"
         }, 
@@ -320,8 +440,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 16, 
-                "line": 76
+                "column": 20, 
+                "line": 129
             }, 
             "name": "tdata"
         }, 
@@ -330,8 +450,38 @@
             "modifiers": [], 
             "references": [], 
             "location": {
+                "column": 26, 
+                "line": 135
+            }, 
+            "name": "dataList"
+        }, 
+        {
+            "type": "TypeData", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 136
+            }, 
+            "name": "data"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 141
+            }, 
+            "name": "type"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
                 "column": 22, 
-                "line": 82
+                "line": 143
             }, 
             "name": "dataList"
         }, 
@@ -341,7 +491,7 @@
             "references": [], 
             "location": {
                 "column": 21, 
-                "line": 83
+                "line": 144
             }, 
             "name": "data"
         }
@@ -369,13 +519,99 @@
                 "static", 
                 "public"
             ], 
+            "name": "getTypeLabels", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 42, 
+                "line": 22
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "addTypeDataToList", 
+            "parameters": [
+                {
+                    "type": "Map", 
+                    "name": "typeVals"
+                }, 
+                {
+                    "type": "TypeData", 
+                    "name": "typeData"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "type"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 28
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
+            "name": "processAssoc", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "assoc_id"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "assoc_name"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "assoc_label"
+                }, 
+                {
+                    "type": "Map", 
+                    "name": "typeVals"
+                }, 
+                {
+                    "type": "Map", 
+                    "name": "assocCounts"
+                }, 
+                {
+                    "type": "Map", 
+                    "name": "added_ids"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 44
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "static", 
+                "public"
+            ], 
             "name": "getTypeData", 
             "parameters": [], 
             "visibility": "PUBLIC", 
             "references": [], 
             "location": {
                 "column": 26, 
-                "line": 21
+                "line": 61
             }, 
             "returnType": "String", 
             "type": null

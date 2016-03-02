@@ -13,3 +13,13 @@
   position: relative;
   color: white;
   }
+
+.THIS .data-source {
+  font-weight: bold;
+  font-size: 72px;
+}
+
+.THIS div.slds-card.slds-p-right--medium.slds-p-top--medium.slds-p-bottom--medium.slds-p-left--medium.query-card.query-card:hover {
+  background-color: pink;
+  border-color: red;
+}

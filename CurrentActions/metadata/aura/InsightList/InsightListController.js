@@ -1,19 +1,19 @@
 ({
-    doInit : function(component, event, helper) {      
-        //Fetch the insight list from the Apex controller   
+    doInit : function(component, event, helper) {
+        //Fetch the insight list from the Apex controller
         helper.getInsightList(component);
         //helper.registerServiceWorker();
     },
-    
+
     subscribe : function (component, event, helper) {
         helper.registerServiceWorker();
     },
-    
+
     myButtonHandler: function(component, event, helper) {
         //Get data via "data-data" attribute
         alert(event.target.getAttribute("data-data") + " was passed");
     },
-    
+
     getInsight : function(component, event, helper) {
         var selected = event.getParam("insight");
         console.log(selected);
@@ -21,7 +21,7 @@
         arr.push(selected);
         component.set("v.selected", arr);
     },
-    
+
     openObject : function(component, event, helper) {
         var navEvt = $A.get("e.force:navigateToSObject");
         navEvt.setParams({
@@ -30,11 +30,13 @@
         });
         navEvt.fire();
     },
-    
+
     assocSearch  : function(component, event, helper) {
 
         var assoc_id = event.getParam("assocID");
         var report_id = event.getParam("reportID");
+        var label_id = event.getParam("label");
+
 
         if (assoc_id == "ALL") {
             helper.getInsightList(component);
@@ -44,9 +46,12 @@
 
             //
         } else if (report_id != null) {
+            console.log("get Insights by reports");
             helper.getInsightReportList(component, report_id);
+        } else if (label_id != null) {
+            console.log("get Insights by type labels");
 
-
+            helper.getInsightTypeLabelList(component, label_id);
         }
     },
 
@@ -65,7 +70,7 @@
                 }
             }
             );
-    }, 
+    },
 
     handleAutocomplete : function(component, event, helper) {
         debugger;

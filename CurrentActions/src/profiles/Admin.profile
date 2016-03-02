@@ -65,6 +65,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InsightMail</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InsightNavController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -117,6 +121,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <custom>false</custom>
+    <pageAccesses>
+        <apexPage>Insights</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <pageAccesses>
         <apexPage>Job_Candidate_Help</apexPage>
         <enabled>true</enabled>
@@ -332,6 +340,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>ImportCustomObjects</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ImportLeads</name>
     </userPermissions>
     <userPermissions>
@@ -468,6 +480,14 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>ManagePvtRptsAndDashbds</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageQuotas</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ManageRemoteAccess</name>
     </userPermissions>
     <userPermissions>
@@ -496,6 +516,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>ManageTerritories</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ManageUnlistedGroups</name>
     </userPermissions>
     <userPermissions>
@@ -521,6 +545,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>NewReportBuilder</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>OverrideForecasts</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -577,6 +605,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ViewAllData</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewAllForecasts</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

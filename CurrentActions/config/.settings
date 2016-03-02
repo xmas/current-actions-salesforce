@@ -2,18 +2,18 @@
     "username": "rowanxmas@gmail.com", 
     "environment": "developer", 
     "project_name": "CurrentActions", 
-    "workspace": "/Users/xmas/Code/current-actions-salesforce", 
+    "workspace": "/Users/xmas/Salesforce/current-actions-salesforce", 
     "org_url": "", 
     "namespace": "", 
-    "id": "KXZ4VT1LV8JBV4VE65UW3LRS1RZ20HLW", 
+    "id": "IJTX2DAJWT63OSB9MDH5VQDTJ2BFKRVU", 
     "metadata_container": "1dc61000000JTVNAA4", 
     "subscription": [
         "ApexClass", 
         "ApexComponent", 
         "ApexPage", 
         "ApexTrigger", 
+        "StaticResource", 
         "CustomObject", 
-        "Profile", 
-        "StaticResource"
+        "Profile"
     ]
 }

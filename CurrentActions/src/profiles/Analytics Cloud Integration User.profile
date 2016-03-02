@@ -65,6 +65,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InsightMail</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InsightNavController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -118,6 +122,10 @@
     </classAccesses>
     <custom>false</custom>
     <pageAccesses>
+        <apexPage>Insights</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Job_Candidate_Help</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
@@ -133,6 +141,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>PasswordNeverExpires</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewAllForecasts</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
