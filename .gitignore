@@ -9,3 +9,4 @@ debug/
 *-meta.xml
 .DS_Store
 *.sublime-workspace
+CurrentActions/config/
