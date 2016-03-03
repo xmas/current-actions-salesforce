@@ -1,0 +1,26 @@
+<aura:component implements="force:appHostable">
+	<aura:attribute name="DayOfTheWeek" type="String"/>
+    <aura:if isTrue="{!v.DayOfTheWeek != ''}">
+        <aura:if isTrue="{!v.DayOfTheWeek == 'Monday'}">
+        	Today is {!v.DayOfTheWeek}
+        </aura:if>
+        <aura:if isTrue="{!v.DayOfTheWeek == 'Tuesday'}">
+        	Today is {!v.DayOfTheWeek}
+        </aura:if>
+        <aura:if isTrue="{!v.DayOfTheWeek == 'Wednesday'}">
+        	Today is {!v.DayOfTheWeek}
+        </aura:if>
+        <aura:if isTrue="{!v.DayOfTheWeek == 'Thursday'}">
+        	Today is {!v.DayOfTheWeek}
+        </aura:if>
+        <aura:if isTrue="{!v.DayOfTheWeek == 'Friday'}">
+        	Today is {!v.DayOfTheWeek}
+        </aura:if>
+        <aura:if isTrue="{!v.DayOfTheWeek == 'Saturday'}">
+        	Today is {!v.DayOfTheWeek}
+        </aura:if>
+        <aura:if isTrue="{!v.DayOfTheWeek == 'Sunday'}">
+        	Today is {!v.DayOfTheWeek}
+        </aura:if>
+    </aura:if>
+</aura:component>

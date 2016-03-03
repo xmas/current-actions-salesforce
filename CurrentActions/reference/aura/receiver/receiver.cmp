@@ -1,0 +1,15 @@
+<!-- receiver.cmp
+<aura:component>
+    <aura:attribute name="myText" type="String" default="None"/>
+    <aura:handler event="c:message" action="{!c.answer}"/>
+    Message: {!v.myText}
+</aura:component>
+ -->
+
+<!-- receiver.cmp -->
+<aura:component >   
+    <aura:attribute name="myText" type="String" default="None"/>
+    <aura:handler name="messageEvent" event="c:theMessage" action="{!c.answer}"/>
+    <c:sender />
+    Message: {!v.myText}
+</aura:component>
