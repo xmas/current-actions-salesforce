@@ -6,4 +6,4 @@ debug/
 *.manifest
 *.profile
 .symbols/
-
+*-meta.xml
