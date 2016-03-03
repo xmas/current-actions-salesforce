@@ -7,9 +7,10 @@ public class MathUtil {
 	{
 		return Math.round(Math.random() * (upper - lower)) + lower;
 	}
-    
+
     public static Decimal getRandomDecimal (Decimal lower, Decimal upper)
 	{
 		return Math.random() * (upper - lower) + lower;
 	}
+
 }

@@ -5,10 +5,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>AccountsController</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>AsyncChart</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -27,14 +23,6 @@
     <classAccesses>
         <apexClass>CSVReader</apexClass>
         <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>ContactsTodayController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>ContactsTodayController_test</apexClass>
-        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CurrencyBot</apexClass>
@@ -73,6 +61,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InsightTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InsightsController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -89,16 +81,12 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>NumberBot</apexClass>
+        <apexClass>MathUtilTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>OpportunityAlertController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>OpportunityAlertController_test</apexClass>
-        <enabled>true</enabled>
+        <apexClass>NumberBot</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ReportAnalyzer</apexClass>

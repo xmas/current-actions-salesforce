@@ -30,7 +30,9 @@ public class InsightsController {
  @AuraEnabled
  public static Integer getFeedItemCountForObject(String object_id) {
 
-  return [SELECT count() FROM FeedItem WHERE ParentId =:object_id];
+  List <FeedItem> items = [SELECT Id, createdDate FROM FeedItem WHERE ParentId =:object_id];
+  return items.size();
+  // SELECT  ParentId,  Id, createdDate FROM FeedItem WHERE (ParentId IN ('a0E61000002N2oWEAS' , 'a0E61000002N2oXEAS')) and  GROUP BY ParentId
 
     //
   }
