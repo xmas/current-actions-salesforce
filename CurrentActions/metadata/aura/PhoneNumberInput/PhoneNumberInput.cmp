@@ -1,9 +1,0 @@
-<aura:component >
-    <aura:registerEvent name="phoneNumber" type="c:PhoneNumberEvent"/>
-    <ui:inputPhone aura:id="phone" label="phone" />
-    <ui:button label="Show Phone" press="{!c.send}"/>
-    
-    <ui:button label="Toggle" press="{!c.toggle}"/>
-    <p aura:id="toggleText">Now you see me</p>
-    
-</aura:component>
