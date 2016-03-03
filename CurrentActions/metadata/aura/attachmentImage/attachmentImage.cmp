@@ -1,5 +1,0 @@
-<aura:component controller="AttachmentImageController">
-    <aura:attribute name="imageURL" type="String" />
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    
-</aura:component>
