@@ -7,3 +7,5 @@ debug/
 *.profile
 .symbols/
 *-meta.xml
+.DS_Store
+*.sublime-workspace
