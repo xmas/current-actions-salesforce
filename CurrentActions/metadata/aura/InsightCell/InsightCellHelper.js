@@ -47,5 +47,25 @@
         component.set("v.icon_class", icon_class);
 
         console.log(insight["AssocTypeName__c"]+" icon: "+icon+" class: "+icon_class);
+    },
+
+    getDataFromS3 : function(component) {
+
+          //
+        var action = component.get("c.getFromS3");
+        action.setParams({
+            "path": "string"
+        });
+
+        //Set up the callback
+        var self = this;
+        action.setCallback(this, function(actionResult) {
+            component.set("v.accounts", actionResult.getReturnValue());
+        });
+        $A.enqueueAction(action);
+
+        //
+    
     }
+
 })
