@@ -9,7 +9,7 @@ public class InsightsController {
     return dr.getLabelPlural();
   }
 
-  static String insightQueryString = 'SELECT Id, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c FROM Insight__c';
+  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c FROM Insight__c';
 
 
   @AuraEnabled
@@ -23,15 +23,15 @@ public class InsightsController {
 
     Id user_id = UserInfo.getUserId();
 
-   String query = insightQueryString + ' WHERE AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\' ORDER BY CreatedDate DESC LIMIT 25';
-   return Database.query(query);
- }
+    String query = insightQueryString + ' WHERE AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\' ORDER BY CreatedDate DESC LIMIT 25';
+    return Database.query(query);
+  }
 
- @AuraEnabled
- public static Integer getFeedItemCountForObject(String object_id) {
+  @AuraEnabled
+  public static Integer getFeedItemCountForObject(String object_id) {
 
-  List <FeedItem> items = [SELECT Id, createdDate FROM FeedItem WHERE ParentId =:object_id];
-  return items.size();
+    List <FeedItem> items = [SELECT Id, createdDate FROM FeedItem WHERE ParentId =:object_id];
+    return items.size();
   // SELECT  ParentId,  Id, createdDate FROM FeedItem WHERE (ParentId IN ('a0E61000002N2oWEAS' , 'a0E61000002N2oXEAS')) and  GROUP BY ParentId
 
     //
@@ -57,11 +57,6 @@ public class InsightsController {
   }
 
   @AuraEnabled
-  public static List<InsightAssociation__c> getInsightsForRecord( Id recordID ) {
-    return null;
-  }
-
-  @AuraEnabled
   public static List<Insight__c> getInsightsForTypeLabel (String labelID) {
     Id user_id = UserInfo.getUserId();
     String id_match = ' (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ';
@@ -71,5 +66,106 @@ public class InsightsController {
 
   }
 
+  @AuraEnabled
+  public static List<Account> getFromS3 (String path) {
 
-}
+
+    CurrentActionsAdmin__c admin = [SELECT AWS_accessKeyId__c, AWS_secretAccessKey__c, AWS_region__c FROM CurrentActionsAdmin__c WHERE Active__c = TRUE][0];
+
+    String formattedDateString = Datetime.now().format('EEE, dd MMM yyyy HH:mm:ss z','America/Denver');    
+    String filename = 'sobjects.json';
+    String bucketname = 'current-actions';
+    HttpRequest req = new HttpRequest();
+    String region = admin.AWS_region__c;
+    String contentType = 'application/json';
+    String method = 'GET';
+
+    String key = admin.AWS_accessKeyId__c;
+    String secret = admin.AWS_secretAccessKey__c;
+
+    req.setHeader('Content-Type', contentType);
+    req.setMethod(method);
+    req.setHeader('Host','s3-' + region + '.amazonaws.com'); 
+    req.setEndpoint('https://s3-' + region + '.amazonaws.com' + '/'+ bucketname + '/' + filename);  
+    req.setHeader('Date', formattedDateString);
+    req.setHeader('Authorization',createAuthHeader(method,contentType,filename,formattedDateString,bucketname,key,secret));
+
+
+    Http http = new Http();
+    HTTPResponse res = http.send(req);
+
+    String body = String.ValueOF(res.getBody());
+    System.debug('*Resp:' + body);
+    System.debug('RESPONSE STRING: ' + res.toString());
+    System.debug('RESPONSE STATUS: ' + res.getStatus());
+    System.debug('STATUS_CODE: ' + res.getStatusCode());
+
+
+    List <Object> objects = (List <Object> )JSON.deserializeUntyped(body);
+    List <Id> accounts = new List <Id> ();
+    for (Object obj : objects) {
+      Id acc = (Id)obj;
+      accounts.add(acc);
+    }
+    return [SELECT Id, Name FROM Account WHERE Id IN :accounts];
+
+    //return res.toString();
+  }
+
+
+////method to use the S3 webservice and save pdf file
+//public void saveToS3(String binaryPDF,String docName,String bucketname,String method,String contentType,String region,String key,String secret){
+//        /*  Input Variable Explanations
+//        binaryPDF -- this is a base64 Encoded binary string representation of a PDF I get from a different web service
+//        docName --  any name you want to use as the saved document name
+//        bucketname --  the Amazon S3 bucket you are saving to
+//        method --  I currently only use PUT
+//        contentType --  I leave this blank and it seems to work fine
+//        region --  !!!Important, this needs to be the region that the S3 bucket is set to, for example '-us-west-2'
+//        key --  this is the key you generate in the AWS console under Identity & Access Management for the user account setup to access the S3 bucket
+//        secret --  this is the secret you generate during the same process
+//        */
+
+//        //setup variables
+//        String formattedDateString = Datetime.now().format('EEE, dd MMM yyyy HH:mm:ss z','America/Denver');    //this is needed for the PUT operation and the generation of the signature.  I use my local time zone.
+//        String filename;
+//        HttpRequest req = new HttpRequest();
+//        Http http = new Http();
+//        filename = 'TEST_BUCKET_FOLDER_1/TEST_SUBFOLDER_1/' +    //Include any folders and subfolders you are using in your S3 Bucket
+//            docName.replace(' ', '+') + '.pdf';   //this replaces any spaces in the desired document name with a Plus symbol '+', as the filename needs to be URL friendly
+
+//            req.setHeader('Content-Type', contentType);
+//            req.setMethod(method);
+//        req.setHeader('Host','s3' + region + '.amazonaws.com');  //path style
+//        req.setEndpoint('https://s3' + region + '.amazonaws.com' + '/'+ bucketname + '/' + filename);   //path style
+//        req.setHeader('Date', formattedDateString);
+//        req.setHeader('Authorization',createAuthHeader(method,contentType,filename,formattedDateString,bucketname,key,secret));
+        
+//        if(binaryPDF != null && binaryPDF != ''){
+//          Blob pdfBlob = EncodingUtil.base64Decode(binaryPDF);
+//          req.setBodyAsBlob(pdfBlob);
+//          req.setHeader('Content-Length', string.valueOf(binaryPDF.length()));
+
+//            //Execute web service call
+//            try {
+//              HTTPResponse res = http.send(req);
+//              System.debug('MYDEBUG: ' + docName + ' RESPONSE STRING: ' + res.toString());
+//              System.debug('MYDEBUG: ' + docName + ' RESPONSE STATUS: '+res.getStatus());
+//              System.debug('MYDEBUG: ' + docName + ' STATUS_CODE:'+res.getStatusCode());
+
+//              } catch(System.CalloutException e) {
+//                system.debug('MYDEBUG: AWS Service Callout Exception on ' + docName + 'ERROR: ' + e.getMessage());
+//              }
+//            }
+//          }
+
+    //create authorization header for Amazon S3 REST API
+    public static String createAuthHeader(String method,String contentType,String filename,String formattedDateString,String bucket,String key,String secret){
+      string auth;
+      String stringToSign = method+'\n\n'+contentType+'\n'+formattedDateString+'\n/'+bucket+'/'+filename;
+      Blob mac = Crypto.generateMac('HMACSHA1', blob.valueof(stringToSign),blob.valueof(secret));
+      String sig = EncodingUtil.base64Encode(mac);
+      auth = 'AWS' + ' ' + key + ':' + sig;
+      return auth;
+    }
+  }
