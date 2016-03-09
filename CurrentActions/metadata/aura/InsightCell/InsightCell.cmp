@@ -1,5 +1,4 @@
-<aura:component >
-<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:component controller="InsightsController">
 
 <aura:attribute name="insight" type="Insight__c" />
 <aura:registerEvent name="selected_insight" type="c:selectInsight"/>
@@ -8,7 +7,13 @@
 <aura:attribute name="icon" type="String" />
 <aura:attribute name="icon_class" type="String" />
 
+
+<aura:attribute name="accounts" type="SObject[]" />
+
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
 <div aura:id="modal">
     {!v.modal}
 </div>
@@ -50,7 +55,7 @@
         </div>
         <div class="slds-media__body">
             <div class="slds-grid slds-grid--align-spread">
-                <div class="slds-text-longform slds-text-body--regular"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></div>
+                <div class="slds-text-longform slds-text-body--regular"><aura:unescapedHtml value="{!v.insight.Name}"/></div>
             </div>
 
             <aura:unescapedHtml value="{!v.insight.Parents__c}"/>
@@ -73,15 +78,23 @@
         </div>
     </div>
 
-<!--
      <div class="slds-comment__content slds-text-longform slds-text-body- -regular slds-p-top- -medium slds-p-bottom- -medium">
-        <aura:unescapedHtml value="{!v.insight.Details__c}"/>
+         {!v.insight.Long_Name__c}
     </div>
--->
-
+   
     <div class="slds-card slds-scrollable--x slds-p-top--small slds-p-bottom--small">
+
+      <ul class="slds-list--vertical">
+        <aura:iteration items="{!v.accounts}" var="account">
+        <li class="slds-list__item slds-p-bottom--medium">
+        {!account.Name}
+        </li>
+      </aura:iteration>
+    </ul>
+  </div>
+<!-- 
         <aura:unescapedHtml value="{!v.insight.Table_Data__c}"/>
-    </div>
+   -->
 
     <div class="container">
         <aura:unescapedHtml value="{!v.insight.Chart__c}"/>
