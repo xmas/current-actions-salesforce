@@ -10,3 +10,5 @@ debug/
 .DS_Store
 *.sublime-workspace
 CurrentActions/config/
+mm.log
+package.xml
