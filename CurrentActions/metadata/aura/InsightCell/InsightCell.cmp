@@ -3,21 +3,12 @@
 <aura:attribute name="insight" type="Insight__c" />
 <aura:registerEvent name="selected_insight" type="c:selectInsight"/>
 
-<aura:handler event="c:modalClose" action="{!c.closeModal}"/>
 <aura:attribute name="icon" type="String" />
 <aura:attribute name="icon_class" type="String" />
 
 
 <aura:attribute name="accounts" type="SObject[]" />
 <aura:attribute name="rows" type="List" />
-
-<aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
-
-<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-
-<div aura:id="modal">
-    {!v.modal}
-</div>
 
 
 <div class="slds-container--medium slds-p-right--medium slds-p-top--medium slds-p-bottom--medium slds-p-left--medium" style="background:white">
@@ -83,7 +74,7 @@
          {!v.insight.Long_Name__c}
     </div>
 
-     <ui:button aura:id="button" buttonTitle="See More" class="button" label="See More" press="{!c.toggleModal}"/>
+     <ui:button aura:id="button" buttonTitle="See More" class="button" label="See More" press="{!c.showModal}"/>
 
 
     <table class="slds-table slds-table--bordered">

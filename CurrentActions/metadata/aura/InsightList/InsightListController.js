@@ -50,6 +50,29 @@
 
     },
 
+    openModal : function(component, event, helper) {
+        $A.createComponent(
+            "c:InsightModal",
+            {
+                "aura:id": "modal",
+                "insight": event.getParam("modal_open")
+
+            },
+            function(newModal){
+                //Add the new button to the body array
+                if (component.isValid()) {
+                    component.set("v.modal", [newModal]);
+                    //newModal.set("v.parent", [component]);
+                }
+            }
+            );
+    },
+
+    closeModal : function(component, event, helper) {
+        component.set("v.modal",[]);
+    },
+
+
     subscribe : function (component, event, helper) {
         helper.registerServiceWorker();
     },

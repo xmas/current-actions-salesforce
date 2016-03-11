@@ -10,8 +10,19 @@
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 <aura:attribute name="inited" type="Boolean" default="false"/>
 
+<aura:handler event="c:modalClose" action="{!c.closeModal}"/>
+<aura:handler event="c:modalOpen" action="{!c.openModal}"/>
+
+<aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
+
+
 
 <div class="slds">
+
+<div aura:id="modal">
+    {!v.modal}
+</div>
+
 
 <div id="ticket-event-list">
 

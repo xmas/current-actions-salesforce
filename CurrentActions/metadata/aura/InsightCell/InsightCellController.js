@@ -11,28 +11,14 @@
 
     },
 
-    toggleModal : function(component, event, helper) {
-        $A.createComponent(
-            "c:InsightModal",
-            {
-                "aura:id": "modal",
-            },
-            function(newModal){
-                //Add the new button to the body array
-                if (component.isValid()) {
-                    component.set("v.modal", [newModal]);
-                    //newModal.set("v.parent", [component]);
-                }
-            }
-        );
-    },
+    showModal : function(component, event, helper) {
 
-    closeModal : function(component, event, helper) {
-        var insight = component.get("v.insight");
-        console.log("MODAL CLOSE EVENT RECEIVED ON CELL WITH INSIGHT: "+insight.Long_Name__c);
-        component.set("v.modal",[]);
-    },
+        var modalCloseEvent = $A.get("e.c:modalOpen");
+                var insight = component.get("v.insight");
 
+       modalCloseEvent.setParams({modal_open: insight});
+       modalCloseEvent.fire();      
+   },
     openObject : function(component, event, helper) {
         var navEvt = $A.get("e.force:navigateToSObject");
         navEvt.setParams({
