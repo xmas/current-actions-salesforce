@@ -1,21 +1,25 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightsController">
-<ltng:require styles="/resource/SLDS0121/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/jquery_ui_css" scripts="/resource/jquery_js,/resource/jquery_ui_js" />
-
-
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/jquery_ui_css" scripts="/resource/jquery_js,/resource/jquery_ui_js" afterScriptsLoaded="{!c.postScript}"/>
 
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:attribute name="insights" type="List" />
+<aura:handler name="change" value="{!v.insights}" action="{!c.handleValueChange}"/>
+
 <aura:attribute name="omnifocus" type="Boolean" default="true"/>
-
 <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
-
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
-
 
 
 <div class="slds">
 
+<div id="ticket-event-list">
+
+    <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+        <div class="event" id="{!'event'+indx}">{!insight.Name}</div>
+        <div class="content"> <c:InsightCell insight="{!insight}"/></div>
+    </aura:iteration>
+</div>
 <!-- c:InsightListHeader / -->
 
 <!--
@@ -55,14 +59,14 @@
 slds-has-cards space has-selections
 -->
 
-<ul class="slds-list--vertical">
+<!-- <ul class="slds-list- -vertical">
     <aura:iteration items="{!v.insights}" var="insight">
-        <li class="insight slds-list__item slds-p-bottom--medium" style="background:white">
+        <li class="insight slds-list__item slds-p-bottom- -medium" style="background:white">
                 <c:InsightCell insight="{!insight}"/>
         </li>
     </aura:iteration>
 </ul>
-
+ -->
 </div>
 
 </aura:component>

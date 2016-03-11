@@ -5,6 +5,27 @@
         //helper.registerServiceWorker();
     },
 
+    postScript: function(component, event, helper) {
+
+        $(document).ready(function() {
+            $(function() {
+                $("#ticket-event-list").accordion({
+                    header: '.event'
+                });
+            });
+        });
+
+    },
+
+    handleValueChange : function (component, event, helper) {
+        //debugger;
+        //$( ".selector" ).accordion( "refresh" );
+
+        $("#ticket-event-list").accordion("refresh");
+        console.log('value change event') ;  
+
+    },
+
     subscribe : function (component, event, helper) {
         helper.registerServiceWorker();
     },

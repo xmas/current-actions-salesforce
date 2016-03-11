@@ -1,0 +1,13 @@
+<aura:component>
+
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/jquery_ui_css" scripts="/resource/jquery_js,/resource/jquery_ui_js" afterScriptsLoaded="{!c.postScript}" />
+
+<div id="ticket-event-list">
+  <div class="event" id="event1">First event</div>
+  <div class="content">The content</div>
+  <div class="event" id="event2">Second event</div>
+  <div class="content">The other content</div>
+</div>
+
+
+</aura:component>

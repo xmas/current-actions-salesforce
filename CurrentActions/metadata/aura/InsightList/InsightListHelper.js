@@ -39,7 +39,11 @@
         //Set up the callback
         var self = this;
         action.setCallback(this, function(actionResult) {
-            component.set("v.insights", actionResult.getReturnValue());
+
+            var result = actionResult.getReturnValue(); 
+            console.log("setting new insights");
+            component.set("v.insights", result);
+
         });
         $A.enqueueAction(action);
 
@@ -147,5 +151,5 @@
                 console.warn('Error during getSubscription()', err);
             });
         });
-}
+    }
 })
