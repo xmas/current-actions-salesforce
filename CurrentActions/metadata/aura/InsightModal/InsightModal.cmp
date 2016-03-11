@@ -33,8 +33,7 @@
                 <div class="slds-modal__footer">
                     <div class="slds-x-small-buttons--horizontal">
                         <button class="slds-button slds-button--neutral" onclick="{!c.close}">Cancel</button>
-                        <button class="slds-button slds-button--neutral slds-button--brand">Save</button>
-                        <a href="javascript:void(0);" onclick="{!c.close}">Close</a>
+                        <button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.close}">Save</button>
 
                     </div>
                 </div>
