@@ -1,12 +1,14 @@
 ({
 
     doInit : function(component, event, helper) {
+
         //var modal = component.find("modal");
         //console.log("toggle" + modal);
         //$A.util.toggleClass(modal, "toggle");
         var insight = component.get("v.insight");
         helper.assignIcon(component, insight);
-       // helper.getDataFromS3(component, insight);
+        //helper.getDataFromS3(component, insight);
+
     },
 
     toggleModal : function(component, event, helper) {

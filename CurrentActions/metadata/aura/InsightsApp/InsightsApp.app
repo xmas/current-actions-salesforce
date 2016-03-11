@@ -17,8 +17,6 @@
 		</div>
 		<div class="slds-col" id="right">
 			<c:InsightList />
-			<!-- <c:Accordian /> -->
-
 		</div>
 
 

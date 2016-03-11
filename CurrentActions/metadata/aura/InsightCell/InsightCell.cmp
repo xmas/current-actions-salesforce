@@ -83,6 +83,9 @@
          {!v.insight.Long_Name__c}
     </div>
 
+     <ui:button aura:id="button" buttonTitle="See More" class="button" label="See More" press="{!c.toggleModal}"/>
+
+
     <table class="slds-table slds-table--bordered">
      <tbody>
       <aura:iteration items="{!v.rows}" var="row">

@@ -1,28 +1,52 @@
 ({
     doInit : function(component, event, helper) {
+
+
         //Fetch the insight list from the Apex controller
         helper.getInsightList(component);
         //helper.registerServiceWorker();
+        helper.sampleControllerAction(component);
     },
 
     postScript: function(component, event, helper) {
 
+        // init the accordion
         $(document).ready(function() {
             $(function() {
                 $("#ticket-event-list").accordion({
-                    header: '.event'
+                    header: '.event',
+                    animate : false,
+                    collapsible: true,
+                    active: false,
+                    heightStyle: "content",
+                    beforeActivate: function( event, ui ) {
+
+                        // defer loading
+                        console.log(event);
+                        console.log(ui);
+                        //debugger;
+                        ui.oldHeader.toggleClass('active');
+                        ui.newHeader.toggleClass('active');
+                    }
                 });
             });
         });
 
+        $(document).ready(function() {
+            $(".content").hide();
+            $(".event").click(function() {
+                console.log("TOGGLE???");
+                $(this).next(".content").slideToggle("normal");
+            $(this).toggleClass('active'); //toggle class active
+            });
+        });
     },
 
     handleValueChange : function (component, event, helper) {
-        //debugger;
-        //$( ".selector" ).accordion( "refresh" );
-
-        $("#ticket-event-list").accordion("refresh");
-        console.log('value change event') ;  
+       
+        setTimeout(function () {
+            $("#ticket-event-list").accordion("refresh");
+        }, 0);
 
     },
 

@@ -1,0 +1,32 @@
+<aura:component>
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/jquery_js,/resource/jquery_ui_js" afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:attribute name="insight" type="Insight__c" />
+
+<div class="slds">
+
+  <div class="feeditem-list item-listview-combo feeditem--hdr">
+    <div class="feeditem-feedtitle">
+      <span class="feeditem-feedtitle-src">{!v.insight.Data_Source__c}</span>
+    </div>
+
+
+    <div class="story-data ">
+      <span class="story-content-mask">
+            <span itemprop="headline" class="feeditem-headline">{!v.insight.Long_Name__c}</span>
+
+      <span class="feeditem-description" itemprop="description">{!v.insight.Description__c}</span>
+
+      </span>
+    </div>
+
+    <div class="story-metadata js--btn-expand">
+      <time class="feeditem-fuzzytime">
+                <a target="_blank" class="timestamp" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.insight.LastModifiedDate}</a>
+            </time>
+    </div>
+  </div>
+
+</div>
+
+</aura:component>
