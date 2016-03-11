@@ -9,7 +9,7 @@ public class InsightsController {
     return dr.getLabelPlural();
   }
 
-  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c FROM Insight__c';
+  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c FROM Insight__c';
 
 
   @AuraEnabled
@@ -67,14 +67,22 @@ public class InsightsController {
   }
 
   @AuraEnabled
-  public static List<Account> getFromS3 (String path) {
+  public static String getFromS3 (String path) {
 
 
     CurrentActionsAdmin__c admin = [SELECT AWS_accessKeyId__c, AWS_secretAccessKey__c, AWS_region__c FROM CurrentActionsAdmin__c WHERE Active__c = TRUE][0];
 
     String formattedDateString = Datetime.now().format('EEE, dd MMM yyyy HH:mm:ss z','America/Denver');    
-    String filename = 'sobjects.json';
-    String bucketname = 'current-actions';
+    String filename = path+'/store.json';
+    //String bucketname = UserInfo.getOrganizationId().toLowerCase();
+
+     //String filename = '00O61000003tHIaEAM/Other/005610000012IXIAA2/store.json';
+    String bucketname = '00d61000000adm6eai';
+
+    System.debug(path);
+    //00O61000003tGYdEAM/005610000012IXIAA2/Other
+    //00O61000003tHimEAE/Agriculture/005610000012IXIAA2
+
     HttpRequest req = new HttpRequest();
     String region = admin.AWS_region__c;
     String contentType = 'application/json';
@@ -91,6 +99,8 @@ public class InsightsController {
     req.setHeader('Authorization',createAuthHeader(method,contentType,filename,formattedDateString,bucketname,key,secret));
 
 
+  // https://s3-us-west-2.amazonaws.com/00d61000000adm6eai/00O61000003tHIaEAM/Other/005610000012IXIAA2/store.json
+
     Http http = new Http();
     HTTPResponse res = http.send(req);
 
@@ -101,15 +111,17 @@ public class InsightsController {
     System.debug('STATUS_CODE: ' + res.getStatusCode());
 
 
-    List <Object> objects = (List <Object> )JSON.deserializeUntyped(body);
-    List <Id> accounts = new List <Id> ();
-    for (Object obj : objects) {
-      Id acc = (Id)obj;
-      accounts.add(acc);
-    }
-    return [SELECT Id, Name FROM Account WHERE Id IN :accounts];
+    //List <Object> objects = (List <Object> )JSON.deserializeUntyped(body);
+    //List <Id> accounts = new List <Id> ();
+    //for (Object obj : objects) {
+    //  Id acc = (Id)obj;
+    //  accounts.add(acc);
+    //}
+    //return [SELECT Id, Name FROM Account WHERE Id IN :accounts];
 
     //return res.toString();
+
+    return body;
   }
 
 

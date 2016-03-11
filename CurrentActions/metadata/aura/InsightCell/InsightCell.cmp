@@ -9,6 +9,7 @@
 
 
 <aura:attribute name="accounts" type="SObject[]" />
+<aura:attribute name="rows" type="List" />
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
 
@@ -81,17 +82,25 @@
      <div class="slds-comment__content slds-text-longform slds-text-body- -regular slds-p-top- -medium slds-p-bottom- -medium">
          {!v.insight.Long_Name__c}
     </div>
-   
-    <div class="slds-card slds-scrollable--x slds-p-top--small slds-p-bottom--small">
 
-      <ul class="slds-list--vertical">
-        <aura:iteration items="{!v.accounts}" var="account">
-        <li class="slds-list__item slds-p-bottom--medium">
-        {!account.Name}
-        </li>
-      </aura:iteration>
-    </ul>
-  </div>
+    <table class="slds-table slds-table--bordered">
+     <tbody>
+      <aura:iteration items="{!v.rows}" var="row">
+      <tr>
+       <aura:iteration items="{!row.dataCells}" var="cell">
+      <td> <a href="{!cell.value}">{!cell.label}</a></td>
+     </aura:iteration>
+   </tr>
+     </aura:iteration>
+
+
+ </tbody>
+</table>  
+
+   
+
+
+   
 <!-- 
         <aura:unescapedHtml value="{!v.insight.Table_Data__c}"/>
    -->

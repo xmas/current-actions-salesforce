@@ -49,18 +49,23 @@
         console.log(insight["AssocTypeName__c"]+" icon: "+icon+" class: "+icon_class);
     },
 
-    getDataFromS3 : function(component) {
+    getDataFromS3 : function(component, insight) {
 
           //
         var action = component.get("c.getFromS3");
+        //debugger;
         action.setParams({
-            "path": "string"
+            "path": insight["Path__c"]
         });
+        console.log(insight["Path__c"]);
 
         //Set up the callback
         var self = this;
         action.setCallback(this, function(actionResult) {
-            component.set("v.accounts", actionResult.getReturnValue());
+
+            var store = JSON.parse(actionResult.getReturnValue());
+            //debugger;
+            component.set("v.rows", store.data.rows);
         });
         $A.enqueueAction(action);
 
