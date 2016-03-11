@@ -12,3 +12,5 @@ debug/
 CurrentActions/config/
 mm.log
 package.xml
+
+CurrentActions/src/package.xml
