@@ -13,7 +13,7 @@
 <aura:attribute name="rows" type="List" />
 
 
-<div class="insight-content" style="margin: auto; width: 100%; min-width: 100%; padding: 1rem 0rem 2rem 3rem;">
+<div class="center" style="width:60%">
 
 
   <div class="dropdown-float">

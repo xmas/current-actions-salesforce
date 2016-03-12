@@ -12,9 +12,9 @@
 
 .THIS .event:active,
 .THIS .active { /* Added .active rule */
-    background: lightblue;
+    background: #EAEDF4;
 }
 
 .THIS .event:hover {
-	background: pink;
+	background: #F1F4F7;
 }
