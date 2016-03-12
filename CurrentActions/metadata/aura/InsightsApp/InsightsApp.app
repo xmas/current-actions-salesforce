@@ -2,7 +2,7 @@
 <ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" />
 
 
-<div class="slds" style="background:#EAEDF4">
+<div class="slds" style="background:white">
 
 
 <div class="slds-grid" id="header-wrap" >

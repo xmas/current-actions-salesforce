@@ -15,14 +15,11 @@
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
 
-
-
 <div class="slds">
 
 <div aura:id="modal">
     {!v.modal}
 </div>
-
 
 <div id="ticket-event-list">
 
@@ -31,53 +28,6 @@
         <div class="content"> <c:InsightCell insight="{!insight}"/></div>
     </aura:iteration>
 </div>
-<!-- c:InsightListHeader / -->
-
-<!--
-    <c:autocomplete sObjectType="Account"
-    autocompleteEvent="{!c.handleAutocomplete}"
-    fields="Phone,AccountNumber"
-    />
-    <c:autocomplete sObjectType="Insight__c"
-    autocompleteEvent="{!c.handleAutocomplete}"
-    fields="Long_Name__c"
-    />
-    <div id="result"></div>
-
-    <a href="javascript:void(0);" onclick="{!c.subscribe}">PUSHES</a>
-
-
-
-    <ui:message title="Confirmation" severity="confirm" closable="true">
-    This is a confirmation message.
-</ui:message>
--->
-
-
-<!--
-<div class="slds-feed">
-    <ul class="slds-feed__list">
-        <aura:iteration items="{!v.insights}" var="insight">
-        <li class="slds-feed__item">
-         <div class="slds-box" style="background-color:white">
-            <c:InsightCell insight="{!insight}"/>
-            </div>
-        </li>
-    </aura:iteration>
-</ul>
-</div>
-
-slds-has-cards space has-selections
--->
-
-<!-- <ul class="slds-list- -vertical">
-    <aura:iteration items="{!v.insights}" var="insight">
-        <li class="insight slds-list__item slds-p-bottom- -medium" style="background:white">
-                <c:InsightCell insight="{!insight}"/>
-        </li>
-    </aura:iteration>
-</ul>
- -->
 </div>
 
 <aura:handler name="change" value="{!v.insights}" action="{!c.handleValueChange}"/>

@@ -10,8 +10,11 @@
      border-top: 1px solid #CED3DF;
 }
 
-.THIS .content:hover,
 .THIS .event:active,
 .THIS .active { /* Added .active rule */
     background: lightblue;
+}
+
+.THIS .event:hover {
+	background: pink;
 }

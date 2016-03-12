@@ -22,8 +22,8 @@
                     beforeActivate: function( event, ui ) {
 
                         // defer loading
-                        console.log(event);
-                        console.log(ui);
+                        // console.log(event);
+                        // console.log(ui);
                         //debugger;
                         ui.oldHeader.toggleClass('active');
                         ui.newHeader.toggleClass('active');
@@ -32,14 +32,6 @@
             });
         });
 
-        $(document).ready(function() {
-            $(".content").hide();
-            $(".event").click(function() {
-                console.log("TOGGLE???");
-                $(this).next(".content").slideToggle("normal");
-            $(this).toggleClass('active'); //toggle class active
-            });
-        });
     },
 
     handleValueChange : function (component, event, helper) {

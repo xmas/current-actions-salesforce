@@ -13,9 +13,9 @@
 
     <div class="story-data ">
       <span class="story-content-mask">
-            <span itemprop="headline" class="feeditem-headline">{!v.insight.Long_Name__c}</span>
+            <span itemprop="headline" class="feeditem-headline">{!v.insight.Name}</span>
 
-      <span class="feeditem-description" itemprop="description">{!v.insight.Description__c}</span>
+      <span class="feeditem-description" itemprop="description">{!v.insight.Long_Name__c}</span>
 
       </span>
     </div>

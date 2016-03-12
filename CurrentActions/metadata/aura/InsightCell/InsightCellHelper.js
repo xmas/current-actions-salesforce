@@ -45,8 +45,6 @@
 
         component.set("v.icon", icon);
         component.set("v.icon_class", icon_class);
-
-        console.log(insight["AssocTypeName__c"]+" icon: "+icon+" class: "+icon_class);
     },
 
     getDataFromS3 : function(component, insight) {
