@@ -4,7 +4,7 @@
 
 
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
-<aura:attribute name="title" type="String" default="All"/>
+<aura:attribute name="title" type="String" default="Show All"/>
 
 <!--
 <div class="slds-page-header" role="banner">
