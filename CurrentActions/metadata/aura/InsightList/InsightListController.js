@@ -36,10 +36,11 @@
 
     handleValueChange : function (component, event, helper) {
        
-        setTimeout(function () {
-            $("#ticket-event-list").accordion("refresh");
-        }, 0);
-
+       if($) {
+             setTimeout(function () {
+                $("#ticket-event-list").accordion("refresh");
+            }, 0);
+        }
     },
 
     openModal : function(component, event, helper) {
@@ -97,6 +98,8 @@
         var report_id = event.getParam("reportID");
         var label_id = event.getParam("label");
 
+        var title = event.getParam("title");
+        component.set("v.title", title);
 
         if (assoc_id == "ALL") {
             helper.getInsightList(component);
@@ -114,6 +117,7 @@
             helper.getInsightTypeLabelList(component, label_id);
         }
     },
+
 
     toggleModal : function(component, event, helper) {
         $A.createComponent(
