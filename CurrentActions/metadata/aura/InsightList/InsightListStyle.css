@@ -6,12 +6,18 @@
     padding-left: 50px;
 
 }
+
+.THIS .center {
+  margin: 0px auto;
+}
+
 .THIS  li.insight + li.insight {
      border-top: 1px solid #CED3DF;
 }
 
 .THIS .event:active,
 .THIS .active { /* Added .active rule */
+.THIS .active {
     background: #EAEDF4;
 }
 
