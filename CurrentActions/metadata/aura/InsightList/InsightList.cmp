@@ -1,9 +1,10 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightsController">
-<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/jquery_js,/resource/jquery_ui_js" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/digg/digg.css" scripts="/resource/jquery_js,/resource/jquery_ui_js" afterScriptsLoaded="{!c.postScript}"/>
 
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:attribute name="insights" type="List" />
+<aura:attribute name="title" type="String" default="Show All"/>
 
 <aura:attribute name="omnifocus" type="Boolean" default="true"/>
 <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
@@ -21,6 +22,11 @@
     {!v.modal}
 </div>
 
+<header class="feed-stream-header">
+    <div class="slds-text-heading--label">{!v.title}</div>
+</header>
+
+
 <div id="ticket-event-list">
 
     <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
@@ -28,6 +34,10 @@
         <div class="content"> <c:InsightCell insight="{!insight}"/></div>
     </aura:iteration>
 </div>
+
+
+
+
 </div>
 
 <aura:handler name="change" value="{!v.insights}" action="{!c.handleValueChange}"/>
