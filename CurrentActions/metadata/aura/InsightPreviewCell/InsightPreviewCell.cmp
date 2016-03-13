@@ -25,8 +25,17 @@
                 <a target="_blank" class="timestamp" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.insight.LastModifiedDate}</a>
             </time>
     </div>
-  </div>
 
+
+
+<div class="post">
+    <div class="options">
+              <span> actions go here</span>
+    </div>
+</div>
+
+<!-- TABLE END -->
+  </div>
 </div>
 
 </aura:component>
