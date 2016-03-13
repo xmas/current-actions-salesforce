@@ -14,11 +14,11 @@
     showModal : function(component, event, helper) {
 
         var modalCloseEvent = $A.get("e.c:modalOpen");
-                var insight = component.get("v.insight");
+        var insight = component.get("v.insight");
 
-       modalCloseEvent.setParams({modal_open: insight});
-       modalCloseEvent.fire();      
-   },
+        modalCloseEvent.setParams({modal_open: insight});
+        modalCloseEvent.fire();      
+    },
     openObject : function(component, event, helper) {
         var navEvt = $A.get("e.force:navigateToSObject");
         navEvt.setParams({
@@ -26,6 +26,23 @@
             "slideDevName": "chatter"
         });
         navEvt.fire();
+    },
+
+    markUnread : function(component, event, helper) {
+       var action = component.get("c.setInsightReadStatus");
+       var insight = component.get("v.insight");
+
+       action.setParams({
+        "insight_id": insight.Id,
+        "status" : false
+    });
+
+        //Set up the callback
+        var self = this;
+        action.setCallback(this, function(actionResult) {
+            component.set("v.unread", true);
+        });
+        $A.enqueueAction(action);
     },
 
     OLDtoggleModal : function(component, event, helper) {
@@ -43,7 +60,7 @@
                     newModal.set("v.parent", [component]);
                 }
             }
-        );
+            );
     },
 
     removeModal : function(component, event, helper) {

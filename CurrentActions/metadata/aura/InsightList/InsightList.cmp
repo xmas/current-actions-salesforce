@@ -16,6 +16,8 @@
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
 
+<!-- <aura:registerEvent name="insight_read_event" type="c:InsightReadEvent"/> -->
+
 <div class="slds">
 
 <div aura:id="modal">

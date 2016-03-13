@@ -27,6 +27,7 @@
                         //debugger;
                         ui.oldHeader.toggleClass('active');
                         ui.newHeader.toggleClass('active');
+                        //helper.markUnread(component, event, helper);
                     }
                 });
             });

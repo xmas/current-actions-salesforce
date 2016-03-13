@@ -72,6 +72,22 @@
         //
     },
 
+    markUnread : function(component, event, helper) {
+        var action = component.get("c.setInsightReadStatus");
+        var insight = component.get("v.insight");
+        action.setParams({
+            "insight_id": insight.Id,
+            "status" : true
+        });
+
+        //Set up the callback
+        var self = this;
+        action.setCallback(this, function(actionResult) {
+            component.set("v.unread", true);
+        });
+        $A.enqueueAction(action);
+    },
+
     registerServiceWorker : function() {
 
         console.log('REGISTER A SERVICE WORKER');

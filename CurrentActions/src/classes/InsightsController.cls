@@ -9,7 +9,7 @@ public class InsightsController {
     return dr.getLabelPlural();
   }
 
-  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c FROM Insight__c';
+  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c, SObject_Count__c, Is_Read__c FROM Insight__c';
 
 
   @AuraEnabled
@@ -64,6 +64,14 @@ public class InsightsController {
     System.debug(query);
     return Database.query(query);
 
+  }
+
+  @AuraEnabled
+  public static Boolean setInsightReadStatus (Id insight_id, Boolean status) {
+    Insight__c insight = [SELECT Id, Name, Is_Read__c FROM Insight__c WHERE Id =:insight_id];
+    insight.Is_Read__c = status;
+    update insight;
+    return insight.Is_Read__c;
   }
 
   @AuraEnabled
