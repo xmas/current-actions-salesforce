@@ -12,11 +12,11 @@
 <aura:attribute name="accounts" type="SObject[]" />
 <aura:attribute name="rows" type="List" />
 
+<div class="slds">
+<div class="center slds-p-top--xx-large slds-p-bottom--xx-large" style="width:75%">
 
-<div class="center" style="width:60%">
 
-
-  <div class="dropdown-float">
+  <div class="dropdown-float ">
     <div class="slds-dropdown-trigger">
       <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
         <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0122/assets/icons/utility-sprite/svg/symbols.svg#down" />
@@ -82,5 +82,5 @@
 </div>
 
 
-
+</div>
 </aura:component>
