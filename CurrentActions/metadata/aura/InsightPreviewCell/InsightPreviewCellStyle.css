@@ -1,3 +1,18 @@
+.THIS .options {
+    display: none;
+}
+
+.THIS .post:hover .options {
+    display: block;
+}
+
+.THIS .post {
+    cursor: pointer;
+    display: table-cell;
+    padding-right: 20px;
+    vertical-align: middle;
+    width: 120px  
+}
 
 .THIS .story-content-mask {
     line-height: 2em;
