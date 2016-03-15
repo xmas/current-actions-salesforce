@@ -11,6 +11,8 @@
     postScript: function(component, event, helper) {
 
         // init the accordion
+        console.log('are we crashing on init?');
+
         $(document).ready(function() {
             $(function() {
                 $("#ticket-event-list").accordion({
@@ -38,6 +40,11 @@
     handleValueChange : function (component, event, helper) {
        
        if($) {
+            $("#ticket-event-list").accordion({
+                active: false,
+                collapsible: true    
+            });
+            console.log('are we crashing on value change?');
              setTimeout(function () {
                 $("#ticket-event-list").accordion("refresh");
             }, 0);

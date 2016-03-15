@@ -13,10 +13,8 @@
 
     <div class="story-data ">
       <span class="story-content-mask">
-            <span itemprop="headline" class="feeditem-headline">{!v.insight.Name}</span>
-
-      <span class="feeditem-description" itemprop="description">{!v.insight.Long_Name__c}</span>
-
+            <!-- <span itemprop="headline" class="feeditem-headline">{!v.insight.Data_Source__c}</span> -->
+            <span class="headline" itemprop="description"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></span>
       </span>
     </div>
 

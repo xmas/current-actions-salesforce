@@ -63,7 +63,8 @@
          <li class="slds-list__item" >
           <a href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.ReportID__c}">{!v.insight.Data_Source__c}</a>
         </li>
-            </ul>
+      </ul>
+
 
 
           <!-- <ul class="slds-list- -horizontal slds-has-dividers- -right slds-has-inline-block-links"> -->
@@ -74,6 +75,7 @@
 
   </div>
 </div>
+
 
 <div class="slds-comment__content slds-text-longform slds-text-body--regular slds-p-top--medium slds-p-bottom--xx-large">
  {!v.insight.Long_Name__c}

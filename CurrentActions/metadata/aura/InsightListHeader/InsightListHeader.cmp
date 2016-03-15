@@ -21,7 +21,7 @@
 
 	<div class="yamm navbar-left" style="min-width:200px">
 		<ul class="nav navbar-nav">
-			<li><a href="">{!v.title}</a></li>
+			<li><a href="">Current Actions</a></li>
 		</ul>
 	</div>
 

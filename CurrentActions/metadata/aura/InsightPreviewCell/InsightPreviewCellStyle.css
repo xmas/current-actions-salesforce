@@ -78,7 +78,7 @@
     cursor: pointer;
     display: table-cell;
     padding: 0.95em 0 0.3em 20px;
-    width: 191px;
+    width: 225px;
     vertical-align: middle
 }
 
@@ -91,4 +91,13 @@
     padding-right: 20px;
     padding-left: 20px;
     width: auto;
+}
+
+.THIS .sobject-link a
+{
+      color: #11244A;
+}
+
+.THIS .feeditem-feedtitle-src {
+    font-weight: 800;
 }

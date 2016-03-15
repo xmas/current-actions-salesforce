@@ -10,7 +10,7 @@
         <c:InsightListHeader />
         </nav>
         </div>
-	<div class="slds-grid slds-p-top--medium" id ="container">
+	<div class="slds-grid" id ="container">
 
 		<div class="slds-col" id="left">
 			<c:InsightNav />

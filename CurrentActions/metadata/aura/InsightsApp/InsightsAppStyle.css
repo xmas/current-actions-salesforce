@@ -9,7 +9,7 @@
 }
 
 .THIS .content {
-	font-size: 12px;
+	/*font-size: 12px;*/
 	color: #3c3d3e;
 }
 
@@ -31,12 +31,37 @@
 
 .THIS #header-wrap {
     position: fixed;
-    height: 54px;
+    height: 58px;
     top: 0;
     width: 100%;
     z-index: 100;
 }
 
 .THIS #container{
-    margin-top: 36px;
+    margin-top: 58px;
+}
+
+.THIS .feed-stream-header {
+    *zoom: 1;
+    position: relative;
+    padding: 1.5em 0;
+    border-bottom: 1px solid #ebebeb
+}
+
+.THIS .feed-stream-header:before,
+.THIS .feed-stream-header:after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.THIS .feed-stream-header:after {
+    clear: both
+}
+.THIS .feed-stream-header .dr-feed-badge {
+    left: 14px;
+    top: 17px
+}
+
+.THIS .sobject-link {
+    font-weight: 800;
 }
