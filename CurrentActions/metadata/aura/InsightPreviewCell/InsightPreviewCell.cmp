@@ -1,5 +1,5 @@
 <aura:component>
-<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/jquery_js,/resource/jquery_ui_js" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js" afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:attribute name="insight" type="Insight__c" />
 

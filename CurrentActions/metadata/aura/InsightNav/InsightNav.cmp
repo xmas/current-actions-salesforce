@@ -1,6 +1,6 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightNavController">
 
-<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/jquery_js,/resource/jquery_ui_js" />
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js" />
 
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />

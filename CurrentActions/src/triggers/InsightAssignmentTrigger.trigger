@@ -6,7 +6,9 @@ trigger InsightAssignmentTrigger on Insight__c (before insert, before update) {
 
 		String one = new_insight.AssocID__c;
 		if (one != null) {
+
 			new_insight.AssocTypeName__c = InsightsController.typeNameForID(one);
+
 		}
 
 		String two = new_insight.Assoc2ID__c;
@@ -18,6 +20,9 @@ trigger InsightAssignmentTrigger on Insight__c (before insert, before update) {
 		if (three != null) {
 			new_insight.AssocTypeName3__c = InsightsController.typeNameForID(three);
 		}
+
+		System.debug('Assoc one: '+one+' Assoc label: '+new_insight.AssocLabel__c+' Assoc type name: '+new_insight.AssocTypeName__c);
+
 
 		lastVals.put(new_insight.Path__c, 1);
 	}

@@ -6,16 +6,6 @@
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 <aura:attribute name="title" type="String" default="Show All"/>
 
-<!--
-<div class="slds-page-header" role="banner">
-	<div class="slds-grid">
-		<div class="slds-col slds-has-flexi-truncate">
-			<p class="slds-text-heading- -label">{!v.title}</p>
-		</div>
-	</div>
-</div>
--->
-
 
 <header id="topnav" class="navbar navbar-blue navbar-fixed-top">
 
