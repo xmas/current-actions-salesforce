@@ -16,6 +16,7 @@
 
         var insight = component.get("v.insight");
         helper.getDataFromS3(component, insight);
+        helper.getDataFromS3(component, event, helper, insight);
 
     },
 
