@@ -1,7 +1,10 @@
 <aura:component>
-<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/moment" afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="insight" type="Insight__c" />
+<aura:attribute name="time" type="String" />
 
 <div class="slds">
 
@@ -18,10 +21,13 @@
       </span>
     </div>
 
-    <div class="story-metadata js--btn-expand">
-      <time class="feeditem-fuzzytime">
+    <div class="story-metadata ">
+
+       <a href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.time}</a>
+
+      <!-- <time class="feeditem-fuzzytime">
                 <a target="_blank" class="timestamp" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.insight.LastModifiedDate}</a>
-            </time>
+            </time> -->
     </div>
 
 
