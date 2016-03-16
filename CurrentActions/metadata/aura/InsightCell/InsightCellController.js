@@ -1,4 +1,14 @@
 ({
+    postScript : function(component, event, helper) {
+        var fullinit = component.get("v.fullinit");
+        if (fullinit) {
+            helper.chartjs(component, event, helper);
+        } else {
+            component.set("v.fullinit", 'true');
+        }
+
+
+    },
 
     doInit : function(component, event, helper) {
 
@@ -8,6 +18,13 @@
         var insight = component.get("v.insight");
         helper.assignIcon(component, insight);
         //helper.getDataFromS3(component, insight);
+
+        var fullinit = component.get("v.fullinit");
+        if (fullinit) {
+            helper.chartjs(component, event, helper);
+        } else {
+            component.set("v.fullinit", 'true');
+        }
 
     },
 

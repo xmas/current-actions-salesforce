@@ -32,8 +32,8 @@
 <div id="ticket-event-list">
 
     <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-        <div class="event" id="{!'event'+indx}"><c:InsightPreviewCell insight="{!insight}"/></div>
-        <div class="content"> <c:InsightCell insight="{!insight}"/></div>
+        <div class="event" id="{!'event'+indx}"><c:InsightPreviewCell insight="{!insight}" /></div>
+        <div class="content"> <c:InsightCell insight="{!insight}"  index="{!indx}" /></div>
     </aura:iteration>
 </div>
 

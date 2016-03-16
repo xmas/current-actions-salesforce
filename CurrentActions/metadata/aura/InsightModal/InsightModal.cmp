@@ -17,7 +17,7 @@
             </div>
             <div class="slds-modal__content">
 
-                <table id="example" class="display slds-table slds-table- -bordered" width="100%"></table>
+                <table id="example" class="display slds-table slds-table--bordered" width="100%"></table>
 
              </div>
              <div class="slds-modal__footer">

@@ -1,5 +1,7 @@
 <aura:component controller="InsightsController">
 
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
+
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="insight" type="Insight__c" />
@@ -8,10 +10,14 @@
 <aura:attribute name="icon" type="String" />
 <aura:attribute name="icon_class" type="String" />
 
+<aura:attribute name="index" type="String" />
 
 <aura:attribute name="accounts" type="SObject[]" />
 <aura:attribute name="rows" type="List" />
 <aura:attribute name="unread" type="Boolean" />
+
+<aura:attribute name="fullinit" type="Boolean" default='false'/>
+
 
 <div class="slds">
 <div class="center slds-p-top--xx-large slds-p-bottom--xx-large" style="width:75%">
@@ -65,8 +71,6 @@
         </li>
       </ul>
 
-
-
           <!-- <ul class="slds-list- -horizontal slds-has-dividers- -right slds-has-inline-block-links"> -->
           <aura:unescapedHtml value="{!v.insight.Parents__c}"/>
           <!-- </ul> -->
@@ -75,10 +79,10 @@
 
   </div>
 </div>
+      <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
 
 
 <div class="slds-comment__content slds-text-longform slds-text-body--regular slds-p-top--medium slds-p-bottom--xx-large">
- {!v.insight.Long_Name__c}
 </div>
 
 <button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.showModal}">{!'See all '+v.insight.SObject_Count__c}</button>
