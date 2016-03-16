@@ -31,14 +31,14 @@
 
 .THIS #header-wrap {
     position: fixed;
-    height: 58px;
+    height: 87px;
     top: 0;
     width: 100%;
     z-index: 100;
 }
 
 .THIS #container{
-    margin-top: 58px;
+    margin-top: 87px;
 }
 
 .THIS .feed-stream-header {

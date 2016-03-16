@@ -7,7 +7,7 @@
 
 <div class="slds-grid" id="header-wrap" >
         <nav class="slds-col slds-size--1-of-1">
-        <!-- <c:InsightListHeader /> -->
+        <c:InsightListHeader />
         </nav>
         </div>
 	<div class="slds-grid" id ="container">

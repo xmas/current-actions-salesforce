@@ -89,7 +89,7 @@
        //chart = chart.splice(0, 5);
 
         var data = {
-            labels: ['one', 'two', '3', '4', '5'],
+            labels: ['Thu', 'Fri', 'Mon', 'Tue', 'Wed'],
             datasets: [
             {
                 label: "My First dataset",

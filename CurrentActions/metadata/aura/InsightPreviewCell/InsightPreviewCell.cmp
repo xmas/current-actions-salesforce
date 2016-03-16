@@ -25,9 +25,6 @@
 
        <a href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.time}</a>
 
-      <!-- <time class="feeditem-fuzzytime">
-                <a target="_blank" class="timestamp" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.insight.LastModifiedDate}</a>
-            </time> -->
     </div>
 
 

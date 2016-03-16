@@ -75,6 +75,11 @@ public class InsightsController {
   }
 
   @AuraEnabled
+  public static String getUserName() {
+    return UserInfo.getUserName();
+  }
+
+  @AuraEnabled
   public static String getFromS3 (String path) {
 
 
