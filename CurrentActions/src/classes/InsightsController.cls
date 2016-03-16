@@ -23,7 +23,7 @@ public class InsightsController {
 
     Id user_id = UserInfo.getUserId();
 
-    String query = insightQueryString + ' WHERE AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\' ORDER BY CreatedDate';
+    String query = insightQueryString + ' WHERE AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\' ORDER BY CreatedDate DESC';
     return Database.query(query);
   }
 
