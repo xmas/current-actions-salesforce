@@ -14,10 +14,7 @@
         action.setCallback(this, function(actionResult) {
 
         	var store = JSON.parse(actionResult.getReturnValue());
-            //debugger;
             component.set("v.rows", store.data.rows);
-            // component.set("v.headers", store.data.rows);
-            //debugger;
 
             var headers = this.headersFromKey(store.headers, "label");
             console.log(headers);
@@ -29,8 +26,6 @@
                     col_vis_array.push(i);
                 }
             }
-            //console.log(col_vis_array);
-            var myRe = /(\d\d\d\d\d)/;
 
             $('#example').DataTable( {
                 data: data,
