@@ -27,7 +27,10 @@
                 }
             }
 
-            $('#example').DataTable( {
+            $('#example').DataTable( {                
+                "createdRow": function ( row, data, index ) {
+                    $('td', row).eq(3).addClass('highlight');
+                },
                 data: data,
                 columns: headers,
                 "columnDefs": [

@@ -50,7 +50,7 @@
     getDataFromS3 : function(component, insight) {
 
           //
-        var action = component.get("c.getFromS3");
+          var action = component.get("c.getFromS3");
         //debugger;
         action.setParams({
             "path": insight["Path__c"]
@@ -68,11 +68,11 @@
         $A.enqueueAction(action);
 
         //
-    
+
     }, 
 
     chartjs : function (component, event, helper) {
-           // Get context with jQuery - using jQuery's .get() method.
+        // Get context with jQuery - using jQuery's .get() method.
         // This will get the first returned node in the jQuery collection.
 
         var index = component.get("v.index");
@@ -83,30 +83,37 @@
         var insight = component.get("v.insight");
         //debugger;
 
-        var chart = JSON.parse(insight.Chart__c);
-        //debugger;
-        chart = [chart[0], chart[1],chart[2],chart[3],chart[4]];
-       //chart = chart.splice(0, 5);
+        try {
+            var chart = JSON.parse(insight.Chart__c);
 
-        var data = {
-            labels: ['Thu', 'Fri', 'Mon', 'Tue', 'Wed'],
-            datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: chart
-            }
 
-            ]
-        };
+            //debugger;
+            chart = [chart[0], chart[1],chart[2],chart[3],chart[4]];
+            //chart = chart.splice(0, 5);
+
+            var data = {
+                labels: ['Thu', 'Fri', 'Mon', 'Tue', 'Wed'],
+                datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: chart
+                }
+
+                ]
+            };
 
         //debugger;
         var myLineChart = new Chart(ctx).Line(data);
+
+    }  catch (e) {
+        console.log(insight.Chart__c);
     }
+}
 
 })
