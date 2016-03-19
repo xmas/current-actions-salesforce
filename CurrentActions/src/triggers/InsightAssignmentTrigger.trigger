@@ -24,14 +24,14 @@ trigger InsightAssignmentTrigger on Insight__c (before insert, before update) {
 		System.debug('Assoc one: '+one+' Assoc label: '+new_insight.AssocLabel__c+' Assoc type name: '+new_insight.AssocTypeName__c);
 
 
-		lastVals.put(new_insight.Path__c, 1);
+		//lastVals.put(new_insight.Path__c, 1);
 	}
 
-	List <Insight__c> flagged = new List <Insight__c> ();
-	for (Insight__c old : [SELECT Id, Path__c FROM Insight__c]) {
-		if (lastVals.containsKey(old.Path__c)) {
-			flagged.add(old);
-		}
-	}
-	delete flagged;
+	//List <Insight__c> flagged = new List <Insight__c> ();
+	//for (Insight__c old : [SELECT Id, Path__c FROM Insight__c]) {
+	//	if (lastVals.containsKey(old.Path__c)) {
+	//		flagged.add(old);
+	//	}
+	//}
+	//delete flagged;
 }
