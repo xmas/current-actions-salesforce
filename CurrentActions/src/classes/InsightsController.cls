@@ -9,8 +9,9 @@ public class InsightsController {
     return dr.getLabelPlural();
   }
 
-  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c, SObject_Count__c, Is_Read__c FROM Insight__c';
+  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Directly_Responsible_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c, SObject_Count__c, Is_Read__c, Today_New__c, Today_Changed__c, Today_Total__c, Today_Deleted__c, History_New__c, History_Changed__c, History_Deleted__c, History_Total__c,History_Labels__c FROM Insight__c';
 
+  static String newOrChangedQueryWhereString = '((Today_New__c > 0) OR (Today_Changed__c > 0))';
 
   @AuraEnabled
   public static List <Insight__c> getInsight (Id recordID) {
@@ -23,7 +24,7 @@ public class InsightsController {
 
     Id user_id = UserInfo.getUserId();
 
-    String query = insightQueryString + ' WHERE AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\' ORDER BY CreatedDate DESC';
+    String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC';
     return Database.query(query);
   }
 

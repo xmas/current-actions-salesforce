@@ -13,24 +13,32 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
 
-        	var store = JSON.parse(actionResult.getReturnValue());
+            //debugger;
+
+            var store = JSON.parse(actionResult.getReturnValue());
             component.set("v.rows", store.data.rows);
 
             var headers = this.headersFromKey(store.headers, "label");
             console.log(headers);
             var data = this.data(store.data.rows);
 
+            var col_hide_array = [];
             var col_vis_array = [];
             for (var i = 0; i < headers.length; i++) {
                 if ((i % 3)){
-                    col_vis_array.push(i);
+                    col_hide_array.push(i);
+                } else {
+                    col_vis_array.push(i);                    
                 }
-            }
+            }            
 
+            //console.log('vis cols: '+col_vis_array);
+            //debugger;
             $('#example').DataTable( {                
-                "createdRow": function ( row, data, index ) {
-                    $('td', row).eq(3).addClass('highlight');
-                },
+                // "createdRow": function ( row, data, index ) {
+                //     if ()
+                //     $('td', row).eq(3).addClass('highlight');
+                // },
                 data: data,
                 columns: headers,
                 "columnDefs": [
@@ -43,21 +51,28 @@
                         // console.log('row: '+row);
                         // console.log('meta: '+meta);
 
-                        if(type === 'display') {
-                            return '<a href="https://rowan-dev-ed.my.salesforce.com/'+row[meta.col+1]+'">'+data+'</a>';
-                        } else {
-                            return data;
-                        }
+                        //if(type === 'display') {
+                            if (meta.col === 0) {
+                                return '<a href="https://rowan-dev-ed.my.salesforce.com/'+row[meta.col+1]+'">'+data+'</a>';
+                            } else {      
+
+                                var delta = row[meta.col+2];
+                                if (delta != 0) {
+                                    return '<span style="color:red; font-weight:900">'+data+'</span>';
+                                }
+                                return data;
+
+                            }
 
                         // END RENDER FUNCTION
                     },
-                    "targets": 0
+                    "targets": col_vis_array
                 },
-                { "visible": false,  "targets": col_vis_array}
+                { "visible": false,  "targets": col_hide_array}
                 ]
             });
 
-    });
+        });
         $A.enqueueAction(action);
 
         //
@@ -83,7 +98,11 @@
             for (var cell_index = 0; cell_index < dataCells.length; cell_index++) {
                 data_row.push(dataCells[cell_index].label);
                 data_row.push(dataCells[cell_index].value);
-                data_row.push('DELTA');
+                if (dataCells[cell_index].delta) {
+                    data_row.push(dataCells[cell_index].delta);
+                } else {
+                    data_row.push('0');
+                }
             }
 
             data_rows.push(data_row);

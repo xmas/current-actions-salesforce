@@ -4,7 +4,7 @@
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+<!-- <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/> -->
 <aura:attribute name="name" type="String" default="you"/>
 
 
