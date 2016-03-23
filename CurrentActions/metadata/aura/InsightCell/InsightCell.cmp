@@ -64,10 +64,10 @@
         <div class="slds-text-body--small" style="color:#8E99A6" >
           <ul class="slds-list--horizontal slds-has-dividers--right slds-has-inline-block-links">
            <li class="slds-list__item" >
-             <a href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
+             <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
            </li>
            <li class="slds-list__item" >
-            <a href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.ReportID__c}">{!v.insight.Data_Source__c}</a>
+            <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.ReportID__c}">{!v.insight.Data_Source__c}</a>
           </li>
         </ul>
 
@@ -80,7 +80,7 @@
     </div>
   </div>
 
-<div>
+<div class="slds-p-bottom--xx-large">
   <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
 </div>
   <aura:unescapedHtml value="{!v.insight.Details__c}"/>
