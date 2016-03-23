@@ -41,6 +41,9 @@
                 // },
                 data: data,
                 columns: headers,
+                buttons: [
+                'copy', 'excel', 'pdf'
+                ],
                 "columnDefs": [
                 {
                     "render": function ( data, type, row, meta ) {
@@ -53,7 +56,7 @@
 
                         //if(type === 'display') {
                             if (meta.col === 0) {
-                                return '<a href="https://rowan-dev-ed.my.salesforce.com/'+row[meta.col+1]+'">'+data+'</a>';
+                                return '<a target="_blank" href="https://rowan-dev-ed.my.salesforce.com/'+row[meta.col+1]+'">'+data+'</a>';
                             } else {      
 
                                 var delta = row[meta.col+2];
