@@ -1,5 +1,5 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightsController">
-<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/jqueryui/jquery-ui.js"  afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/jqueryui/jquery-ui.js,/resource/underscore"  afterScriptsLoaded="{!c.postScript}"/>
 
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -37,8 +37,9 @@
     </aura:iteration>
 </div>
 
-
-
+   <!--  <div class="center slds-p-top- -large">
+        <img src="/resource/ca/brain_shadow_large.png" style="max-width: 25%"/>
+    </div> -->
 
 </div>
 

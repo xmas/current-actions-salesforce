@@ -61,7 +61,11 @@
 
                                 var delta = row[meta.col+2];
                                 if (delta != 0) {
-                                    return '<span style="color:red; font-weight:900">'+data+'</span>';
+                                    if (!_.isNumber(delta)) {
+                                        delta = delta.old;
+                                    }
+
+                                    return '<span class="wrapper"style="color:red; font-weight:900">'+data+'<div class="tooltip">'+delta+'</div></span>';
                                 }
                                 return data;
 
@@ -103,6 +107,7 @@
                 data_row.push(dataCells[cell_index].value);
                 if (dataCells[cell_index].delta) {
                     data_row.push(dataCells[cell_index].delta);
+                    console.log(JSON.stringify(dataCells[cell_index].delta, null, 4));
                 } else {
                     data_row.push('0');
                 }
