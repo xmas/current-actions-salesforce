@@ -39,6 +39,13 @@ public class InsightsController {
   }
 
   @AuraEnabled
+  public static String getInsightCounts () {
+
+    return InsightData.getInsightCounts();
+  }
+
+
+  @AuraEnabled
   public static List<Insight__c> getInsightsWithAssociation(String assoc_id) {
 
     Id user_id = UserInfo.getUserId();
