@@ -30,11 +30,11 @@
     </div>
   </div>
 
-    <div class="slds-box slds-theme--info slds-size--3-of-4">
+<!--     <div class="slds-box slds-theme- -info slds-size- -3-of-4">
     <p>Today we processed <strong>{!v.global_total}</strong> (<strong>{!v.user_total}</strong> were yours) data objects! <strong>{!v.global_new_changed}</strong> (<strong>{!v.user_new_changed}</strong> of yours) of them were new or changed! So much!  
       </p>
   </div>
-
+ -->
 
 </div>
 

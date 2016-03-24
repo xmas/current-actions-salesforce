@@ -1,39 +1,40 @@
 
 .THIS .slds-modal__container .slds-modal__header .slds-modal__content .slds-modal__footer{
-   width: 100%;
-   margin: 0;
-   padding: 0;
-   top: 0;
-   left: 0;
+ width: 100%;
+ margin: 0;
+ padding: 0;
+ top: 0;
+ left: 0;
 }
 
 .THIS .slds-modal__content {
-height: 100%;
+  height: 100%;
 }
 
 @media (min-width: 48em) {
-    .THIS .slds-modal__container  {
+  .THIS .slds-modal__container  {
 
-        width: 100%;
-        max-width: 100%;
+    width: 100%;
+    max-width: 100%;
 
-    }
+  }
 }
 
 .THIS .slds-modal__container  {
-background-color: lightblue;
+  background-color: lightblue;
 }
 
 .THIS td.highlight {
-        font-weight: bold;
-        background-color: blue;
-    }
+  font-weight: bold;
+  background-color: blue;
+}
 
-.THIS .wrapper {
+/*.THIS .wrapper {
   cursor: help;
   position: relative;
   text-align: center;
 }
+
 
 
 .THIS  .tooltip {
@@ -68,6 +69,7 @@ background-color: lightblue;
 
 /* This bridges the gap so you can mouse into the tooltip without it disappearing */
 
+/*
 .THIS .wrapper .tooltip:before {
   bottom: -20px;
   content: " ";
@@ -79,7 +81,6 @@ background-color: lightblue;
 }
 
 
-/* CSS Triangles - see Trevor's post */
 
 .THIS .wrapper .tooltip:after {
   border-left: solid transparent 10px;
@@ -97,10 +98,49 @@ background-color: lightblue;
 .THIS .wrapper:hover .tooltip {
   opacity: 1;
   pointer-events: auto;
-  -webkit-transform: translateY(0px);
-  -moz-transform: translateY(0px);
-  -ms-transform: translateY(0px);
-  -o-transform: translateY(0px);
   transform: translateY(0px);
+}
+*/
+
+
+.THIS .wrapper {
+  position: relative;
+  display: inline;
+  cursor: help;
+}
+
+.THIS .wrapper .tooltip {
+  position: absolute;
+  color: #FFFFFF;
+  background: #404040;
+  min-height: 30px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-weight: 400;
+}
+
+.THIS .wrapper .tooltip:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -8px;
+  width: 0; height: 0;
+  border-left: 8px solid #404040;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.THIS :hover.wrapper .tooltip {
+  visibility: visible;
+  display: inline-block;
+  opacity: 1.0;
+  right: 100%;
+  top: 50%;
+  margin-top: -15px;
+  margin-right: 15px;
+  z-index: 999;
 }
 

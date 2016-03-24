@@ -16,8 +16,8 @@
 <aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
 
 
-<div class="slds slds-box slds-p-right--medium lds-p-left--medium slds-p-bottom--medium" style="background:#081430">
-<div class="slds slds-p-right--medium lds-p-left--medium slds-p-bottom--medium">
+<div class="slds left-nav-bar slds-p-right--medium lds-p-left--medium slds-p-bottom--medium">
+
 
 <!-- c:SearchBar / -->
 
@@ -88,6 +88,6 @@
 </aura:renderIf>
 
 </div>
-</div>
+
 
 </aura:component>

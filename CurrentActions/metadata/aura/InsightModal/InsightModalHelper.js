@@ -65,7 +65,7 @@
                                         delta = delta.old;
                                     }
 
-                                    return '<span class="wrapper"style="color:red; font-weight:900">'+data+'<div class="tooltip">'+delta+'</div></span>';
+                                    return '<span class="wrapper"style="color:red; font-weight:900">'+data+'<div class="tooltip"> &Delta; '+delta+'</div></span>';
                                 }
                                 return data;
 

@@ -16,6 +16,11 @@
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
 
+<aura:attribute name="global_total" type="String" default="lots"/>
+<aura:attribute name="global_new_changed" type="String" default="some"/>
+<aura:attribute name="user_total" type="String" default="many"/>
+<aura:attribute name="user_new_changed" type="String" default="most"/>
+
 <!-- <aura:registerEvent name="insight_read_event" type="c:InsightReadEvent"/> -->
 
 <div class="slds">
@@ -40,6 +45,18 @@
    <!--  <div class="center slds-p-top- -large">
         <img src="/resource/ca/brain_shadow_large.png" style="max-width: 25%"/>
     </div> -->
+
+<div class="ornamental-rule"><hr></hr><span></span></div>
+
+
+    <div style="padding-left: 10%; padding-right: 10%; padding-bottom: 40px">
+    <div class="slds-box slds-theme--info" >
+    <p>Today we processed <strong>{!v.global_total}</strong> data objects (<strong>{!v.user_total}</strong> were yours)! <strong>{!v.global_new_changed}</strong> of them were new or changed (<strong>{!v.user_new_changed}</strong> of yours)! So much!  
+      </p>
+  </div>  
+  </div>
+
+
 
 </div>
 

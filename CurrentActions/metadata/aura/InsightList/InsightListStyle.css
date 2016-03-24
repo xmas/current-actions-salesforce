@@ -16,11 +16,37 @@
 }
 
 .THIS .event:active,
-.THIS .active { /* Added .active rule */
 .THIS .active {
     background: #EAEDF4;
 }
 
 .THIS .event:hover {
 	background: #F1F4F7;
+}
+
+.THIS .ornamental-rule {
+    text-align: center;
+    clear: both;
+    margin-top: 100px;
+}
+
+.THIS .ornamental-rule hr {
+    border: 0;
+    border-top: 1px solid #c4c5c4;
+    top: 8px;
+    position: relative;
+}
+
+.THIS .ornamental-rule span {
+    background-image: url("/resource/ca/brain_shadow_large.png");
+    background-size: 150px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    top: -80px;
+    position: relative;
+    margin-bottom: -20px;
 }
