@@ -28,4 +28,8 @@ public with sharing class InsightData {
 
    }
 
+  // public static List <Object> getTopics () {
+  //  return [SELECT Topic.Name, Topic.TalkingAbout, EntityId FROM TopicAssignment WHERE EntityType = 'Insight__c'];
+  //}
+
 }

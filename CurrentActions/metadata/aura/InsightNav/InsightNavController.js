@@ -4,7 +4,7 @@
 		helper.getTypes(component);
 		helper.getReports(component);
         helper.getTypeLabels(component);
-	},
+    },
 
     searchKeyChange: function(component, event, helper) {
        console.log('in InsightNavController:searchKeyChange');
@@ -16,7 +16,7 @@
 
        if (searchKey === "") {
             // reset the sidebar
-             console.log("reset sidebar types: "+ types_base.length);
+            console.log("reset sidebar types: "+ types_base.length);
 
             component.set("v.reports", reports_base);
             component.set("v.typedata", types_base);
@@ -77,37 +77,43 @@
 
     },
 
-     onSearchKeyChange: function(component, event, helper) {
+    onSearchKeyChange: function(component, event, helper) {
        var searchKey = event.getParam("searchKey");
        var reports_base = component.get("v.reports-base");
        var types_base = component.get("v.typedata-base");
 
        if (searchKey === "") {
-            component.set("v.reports", reports_base);
-            return;
-        }
-
-        var reports_filtered = [];
-        var typedata_filtered = [];
-
-        for (var i = 0; i < reports_base.length; i++) {
-            var report = reports_base[i];
-            if (report["Data_Source__c"].startsWith(searchKey)) {
-                reports_filtered.push(report);
-            }
-        }
-
-        for (var i = 0; i < types_base.length; i++) {
-            var type = types_base[i];
-            if (type["fieldName"].startsWith(searchKey)) {
-                typedata_filtered.push(type);
-            }
-        }
-
-        component.set("v.reports", reports_filtered);
-        component.set("v.typedata", typedata_filtered);
-
-
+        component.set("v.reports", reports_base);
+        return;
     }
+
+    var reports_filtered = [];
+    var typedata_filtered = [];
+
+    for (var i = 0; i < reports_base.length; i++) {
+        var report = reports_base[i];
+        if (report["Data_Source__c"].startsWith(searchKey)) {
+            reports_filtered.push(report);
+        }
+    }
+
+    for (var i = 0; i < types_base.length; i++) {
+        var type = types_base[i];
+        if (type["fieldName"].startsWith(searchKey)) {
+            typedata_filtered.push(type);
+        }
+    }
+
+    component.set("v.reports", reports_filtered);
+    component.set("v.typedata", typedata_filtered);
+
+
+},
+
+tabClick :  function(component, event, helper) {
+
+    $("#tab1, #tab2").toggleClass("slds-active");
+    $("#tab-scoped-1, #tab-scoped-2").toggleClass("slds-show slds-hide");
+}
 
 })

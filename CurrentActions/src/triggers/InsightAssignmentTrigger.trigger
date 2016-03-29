@@ -8,6 +8,9 @@ trigger InsightAssignmentTrigger on Insight__c (before insert, before update) {
 		if (one != null) {
 
 			new_insight.AssocTypeName__c = InsightsController.typeNameForID(one);
+			if (new_insight.AssocID__c.startsWith('005') ) {
+				new_insight.Assigned_User__c = Id.valueOf(new_insight.AssocID__c);
+			}
 
 		}
 
