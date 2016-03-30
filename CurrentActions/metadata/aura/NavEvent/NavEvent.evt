@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="direction" type="String"/>
+    <aura:attribute name="type" type="String"/>
+    <aura:attribute name="params" type="String"/>
+
+</aura:event>

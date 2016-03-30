@@ -1,0 +1,12 @@
+<aura:component>
+
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:attribute name="nav_stack" type="List" />
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:handler event="c:NavEvent" action="{!c.navEvent}"/>
+
+{!v.body}
+
+</aura:component>
