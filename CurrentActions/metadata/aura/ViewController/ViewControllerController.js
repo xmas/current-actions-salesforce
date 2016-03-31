@@ -8,24 +8,12 @@
     doInit : function(component, event, helper) {
         helper.sampleControllerAction(component);
 
-        // $A.createComponent(
-        //     "c:TestView",
-        //     {
-        //         "aura:id": "level1",
-        //         "colors": ["green", "red", "blue", "orange"]
-        //     },
-        //     function(view){
-        //         //Add the new b utton to the body array
-        //         if (component.isValid()) {
-        //             var body = component.get("v.body");
-        //             body.push(view);
-        //             component.set("v.body", body);
-        //         }
-        //     });
+        // var params = {level: 0, head_color: "pink",
+        // color_array: ["green", "red", "blue", "orange"]};
+        // var view = { type: "c:TestView", params: JSON.stringify(params)};
 
-        var params = {level: 0, head_color: "pink",
-        color_array: ["green", "red", "blue", "orange"]};
-        var view = { type: "c:TestView", params: JSON.stringify(params)};
+         var params = {assoc_id: "ALL"};
+         var view = { type: "c:MInsightList", params: JSON.stringify(params)};
 
         helper.push_nav(component, event, helper, view);   
 

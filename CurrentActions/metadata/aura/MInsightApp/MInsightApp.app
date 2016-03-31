@@ -2,5 +2,4 @@
 
 <c:ViewController/>  
 
-
 </aura:application>
