@@ -13,10 +13,10 @@
 	<div class="slds-grid" id ="container">
 
 		<div class="slds-col" id="left">
-			<c:InsightNav />
+			<c:InsightList />
 		</div>
 		<div class="slds-col" id="right">
-			<c:InsightList />
+			<c:InsightDetail />
 		</div>
 
 

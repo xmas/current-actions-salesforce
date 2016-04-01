@@ -101,6 +101,11 @@
         var insight = insights[index];
 
         console.log(index+" Accordion selected: "+insight.Name);
+
+        var selectEvent = $A.get("e.c:InsightEvent");
+        selectEvent.setParams({ "insight": insight });
+        selectEvent.fire();
+
     },
 
     registerServiceWorker : function() {

@@ -8,6 +8,7 @@
 
 <aura:attribute name="omnifocus" type="Boolean" default="true"/>
 <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
+
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 <aura:attribute name="inited" type="Boolean" default="false"/>
 
@@ -20,6 +21,8 @@
 <aura:attribute name="global_new_changed" type="String" default="some"/>
 <aura:attribute name="user_total" type="String" default="many"/>
 <aura:attribute name="user_new_changed" type="String" default="most"/>
+
+
 
 <!-- <aura:registerEvent name="insight_read_event" type="c:InsightReadEvent"/> -->
 

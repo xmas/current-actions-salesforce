@@ -1,25 +1,27 @@
 ({
     //Fetch the insights from the Apex controller
     doInit : function(component, event, helper) {
-        var action = component.get("c.getInsight");
-        action.setParams({
-            "recordID": component.get("v.recordId")
-        });
-        console.log(component.get("v.recordId"));
-        
+       var action = component.get("c.getInsights");
+
         //Set up the callback
         var self = this;
         action.setCallback(this, function(actionResult) {
-            
-            console.log(actionResult.getReturnValue());
-            component.set("v.insights", actionResult.getReturnValue());            
+            var new_insight = [];
+            new_insight.push(actionResult.getReturnValue()[0]);
+            component.set("v.insights", new_insight);
+            window.scrollTo(0,0);
         });
         $A.enqueueAction(action);
     },
-        
-	setSelectedInsight : function(component, event, helper) {
-		var insight = event.getParam("insight");
-        console.log("insight set to: "+insight);
-        component.set("v.selected_insight", insight);
-	}
+    
+    setSelectedInsight : function(component, event, helper) {
+      var insight = event.getParam("insight");
+      var new_insight = [];
+      new_insight.push(insight);
+      console.log("insight set to: "+insight);
+
+      component.set("v.insights", new_insight);
+      window.scrollTo(0,0);
+
+  }
 })
