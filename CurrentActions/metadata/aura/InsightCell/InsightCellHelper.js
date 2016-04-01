@@ -81,7 +81,7 @@
         var ctx = $(chartid).get(0).getContext("2d");
 
         var insight = component.get("v.insight");
-        console.log('insight: '+insight);
+        //console.log('insight: '+insight);
 
 
         try {
@@ -90,10 +90,10 @@
             var newones = JSON.parse(insight.History_New__c);
             var total = JSON.parse(insight.History_Total__c);
 
-            console.log('changed; '+changed);
-            console.log('deleted; '+deleted);
-            console.log('newones; '+newones);
-            console.log('total; '+total);
+            // console.log('changed; '+changed);
+            // console.log('deleted; '+deleted);
+            // console.log('newones; '+newones);
+            // console.log('total; '+total);
 
 
             // labels
@@ -110,7 +110,7 @@
                     labels[label_i] = date.format('D');
                 }
             }
-            console.log('labels; '+labels);
+            //console.log('labels; '+labels);
 
             var t_color = 'rgba(39, 65, 238';
             var n_color = 'rgba(48, 131, 251';

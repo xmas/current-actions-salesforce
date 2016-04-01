@@ -19,12 +19,16 @@ controller="InsightsController">
         </li>
 
     </ul>
-    <div id="tab-default-1" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">CHARTS GO HERE</div>
+    <div id="tab-default-1" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+        <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+        <c:InsightCharts insight="{!insight}" />
+     </aura:iteration>
+    </div>
     <div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
 
-       <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-       <c:InsightCell insight="{!insight}" index="{!indx}" />
-   </aura:iteration>
+     <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+        <c:InsightData insight="{!insight}" />
+     </aura:iteration>
 </div>
 </div>
 
