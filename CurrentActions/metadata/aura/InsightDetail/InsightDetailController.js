@@ -13,9 +13,9 @@
         });
         $A.enqueueAction(action);
     },
-    
+
     setSelectedInsight : function(component, event, helper) {
-      var insight = event.getParam("insight");
+        var insight = event.getParam("insight");
       var new_insight = [];
       new_insight.push(insight);
       console.log("insight set to: "+insight);

@@ -32,8 +32,8 @@
             $(function() {
                 $("#ticket-event-list").accordion({
                     header: '.event',
-                    animate : false,
-                    collapsible: true,
+                    //animate : false,
+                    //collapsible: true,
                     active: false,
                     heightStyle: "content",
                     beforeActivate: function( ui_event, ui ) {

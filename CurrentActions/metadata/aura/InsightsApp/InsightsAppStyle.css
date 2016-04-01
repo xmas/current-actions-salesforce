@@ -1,7 +1,7 @@
 .THIS.container {	
     width: 100%;
-	padding: 0px 0px;
-	margin: 0px;
+    padding: 0px 0px;
+    margin: 0px;
 }
 
 .THIS .center {
@@ -19,15 +19,31 @@
     top: 87px;
     bottom: 0;
     left: 0;
-    width:300px;
-    background-color: #081430;
+    width:800px;
+    /*background-color: #081430;*/
+}
+
+.THIS #main {
+/*    flex: auto;
+    max-width: 70%;
+    min-width: 564px;*/
+}
+
+.THIS #sidebar {
+    flex: 0 0 auto;
+    width: calc(100%/3);
+    min-width: 404px;
+}
+
+.THIS .left-border {
+    border-left: 1px solid rgb(216, 221, 230);
 }
 
 .THIS #right {
     float: left;
     height: 100%;
     overflow: scroll;
-    margin-left: 300px;
+    margin-left: 800px;
     width:100%;
 }
 
