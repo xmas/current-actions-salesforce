@@ -48,6 +48,7 @@
     $A.enqueueAction(data_action);
 
 
+    window.scrollTo(0,0);
 
 },
 
