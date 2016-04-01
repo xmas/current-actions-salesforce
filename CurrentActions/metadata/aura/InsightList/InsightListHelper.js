@@ -7,6 +7,8 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
             component.set("v.insights", actionResult.getReturnValue());
+            window.scrollTo(0,0);
+
         });
         $A.enqueueAction(action);
     },
@@ -22,6 +24,8 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
             component.set("v.insights", actionResult.getReturnValue());
+            window.scrollTo(0,0);
+
         });
         $A.enqueueAction(action);
 
@@ -43,6 +47,8 @@
             var result = actionResult.getReturnValue(); 
             console.log("setting new insights");
             component.set("v.insights", result);
+            window.scrollTo(0,0);
+
 
         });
         $A.enqueueAction(action);
@@ -60,12 +66,12 @@
             "labelID": label
         });
 
-
-
         //Set up the callback
         var self = this;
         action.setCallback(this, function(actionResult) {
             component.set("v.insights", actionResult.getReturnValue());
+            window.scrollTo(0,0);
+
         });
         $A.enqueueAction(action);
 
@@ -86,6 +92,15 @@
             component.set("v.unread", true);
         });
         $A.enqueueAction(action);
+    },
+
+
+    clickInsight : function (component, index) {
+
+        var insights = component.get("v.insights");
+        var insight = insights[index];
+
+        console.log(index+" Accordion selected: "+insight.Name);
     },
 
     registerServiceWorker : function() {
