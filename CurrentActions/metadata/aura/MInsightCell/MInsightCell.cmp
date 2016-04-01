@@ -50,15 +50,22 @@
   </li>
 </ul>
 
-<ul class="slds-list--horizontal slds-has-dividers--right slds-has-inline-block-links">
+<!-- <ul class="slds-list- -horizontal slds-has-dividers- -right slds-has-inline-block-links"> -->
 <aura:unescapedHtml value="{!v.insight.Parents__c}"/>
-</ul>
+<!-- </ul> -->
 
 </div>
 
-<div class="slds-p-bottom--xx-large slds-m-left--x-small slds-m-top--small">
+<div class="slds-p-bottom--x-small slds-m-left--x-small slds-m-top--small">
+
+    <aura:unescapedHtml value="{!v.insight.Details__c}"/>
+</div>
+
+
+<div class="slds-p-bottom--x-small slds-m-left--x-small slds-m-top--small">
   <canvas id="{!'chart-'+v.index}" width="320" height="120"></canvas>
 </div>
+
 
 </div>
 <div class="slds-card__footer">

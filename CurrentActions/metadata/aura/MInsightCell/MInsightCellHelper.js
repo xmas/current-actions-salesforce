@@ -166,7 +166,7 @@
                 ]
             };
 
-            var scale_min = 25;
+            var scale_min = 5;
             if (_.max(total) < 5) {
                 scale_min = 5
             } 
@@ -177,6 +177,8 @@
                 Chart.defaults.global.scaleSteps = 5;
                 Chart.defaults.global.scaleStepWidth = scale_min/5;
                 Chart.defaults.global.scaleStartValue = 0;
+                Chart.defaults.global.responsive = true;
+                Chart.defaults.global.showTooltips = false;
             } else {
                 Chart.defaults.global.scaleOverride = false;
             }

@@ -6,7 +6,7 @@
 <aura:attribute name="insight" type="Insight__c" />
 <aura:attribute name="time" type="String" />
 
-<div class="slds">
+<div class="slds ignore">
 
   <div class="feeditem-list item-listview-combo feeditem--hdr">
     <div class="feeditem-feedtitle">

@@ -26,7 +26,8 @@
 
         // init the accordion
         console.log('are we crashing on init?');
-
+        var h = helper;
+        var c = component;
         $(document).ready(function() {
             $(function() {
                 $("#ticket-event-list").accordion({
@@ -35,15 +36,22 @@
                     collapsible: true,
                     active: false,
                     heightStyle: "content",
-                    beforeActivate: function( event, ui ) {
+                    beforeActivate: function( ui_event, ui ) {
 
+                        //   var index = ui_event.target.index;
+                        // debugger;
+
+                        // self.clickInsight(component, event, helper, index);
                         // defer loading
                         // console.log(event);
-                        // console.log(ui);
-                        //debugger;
+                        // console.log(ui); 
                         ui.oldHeader.toggleClass('active');
                         ui.newHeader.toggleClass('active');
                         //helper.markUnread(component, event, helper);
+                    },
+                    activate: function( event, ui ) {
+                        var index = ui.newHeader[0].id.substring(5);
+                        h.clickInsight(c, index);
                     }
                 });
             });
@@ -51,29 +59,31 @@
 
     },
 
+
+
     handleValueChange : function (component, event, helper) {
-       
+
        if($) {
-            $("#ticket-event-list").accordion({
-                active: false,
-                collapsible: true    
-            });
-            console.log('are we crashing on value change?');
-             setTimeout(function () {
-                $("#ticket-event-list").accordion("refresh");
-            }, 0);
-        }
-    },
+        $("#ticket-event-list").accordion({
+            active: false,
+            collapsible: true    
+        });
+        console.log('are we crashing on value change?');
+        setTimeout(function () {
+            $("#ticket-event-list").accordion("refresh");
+        }, 0);
+    }
+},
 
-    openModal : function(component, event, helper) {
-        $A.createComponent(
-            "c:InsightModal",
-            {
-                "aura:id": "modal",
-                "insight": event.getParam("modal_open")
+openModal : function(component, event, helper) {
+    $A.createComponent(
+        "c:InsightModal",
+        {
+            "aura:id": "modal",
+            "insight": event.getParam("modal_open")
 
-            },
-            function(newModal){
+        },
+        function(newModal){
                 //Add the new button to the body array
                 if (component.isValid()) {
                     component.set("v.modal", [newModal]);
@@ -81,18 +91,18 @@
                 }
             }
             );
-    },
+},
 
-    closeModal : function(component, event, helper) {
-        component.set("v.modal",[]);
-    },
+closeModal : function(component, event, helper) {
+    component.set("v.modal",[]);
+},
 
 
-    subscribe : function (component, event, helper) {
-        helper.registerServiceWorker();
-    },
+subscribe : function (component, event, helper) {
+    helper.registerServiceWorker();
+},
 
-    myButtonHandler: function(component, event, helper) {
+myButtonHandler: function(component, event, helper) {
         //Get data via "data-data" attribute
         alert(event.target.getAttribute("data-data") + " was passed");
     },
@@ -138,6 +148,7 @@
 
             helper.getInsightTypeLabelList(component, label_id);
         }
+
     },
 
 
