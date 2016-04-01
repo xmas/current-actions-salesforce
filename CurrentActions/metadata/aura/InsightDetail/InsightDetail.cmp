@@ -9,9 +9,26 @@ controller="InsightsController">
 
 <div class="slds"> 
 
-    <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-        <c:InsightCell insight="{!insight}" index="{!indx}" />
-    </aura:iteration>
+    <div class="slds-tabs--default">
+        <ul class="slds-tabs--default__nav" role="tablist">
+          <li id="tab1" class="slds-tabs--default__item slds-text-heading--label slds-active" title="Item One" role="presentation">
+            <a class="slds-tabs--default__link" onclick="{!c.tabClick}" href="#void" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Charts</a>
+        </li>
+        <li id="tab2" class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation">
+            <a class="slds-tabs--default__link" onclick="{!c.tabClick}" href="#void" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Details</a>
+        </li>
+
+    </ul>
+    <div id="tab-default-1" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">CHARTS GO HERE</div>
+    <div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
+
+       <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+       <c:InsightCell insight="{!insight}" index="{!indx}" />
+   </aura:iteration>
+</div>
+</div>
+
+
 
 </div>
 

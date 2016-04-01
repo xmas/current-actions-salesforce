@@ -23,5 +23,11 @@
       component.set("v.insights", new_insight);
       window.scrollTo(0,0);
 
-  }
+  },
+
+  tabClick :  function(component, event, helper) {
+    $("#tab1, #tab2").toggleClass("slds-active");
+    $("#tab-default-1, #tab-default-2").toggleClass("slds-show slds-hide");
+}
+
 })
