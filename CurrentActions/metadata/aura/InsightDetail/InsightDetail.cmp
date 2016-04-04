@@ -9,6 +9,7 @@ controller="InsightsController">
 
 <div class="slds"> 
 
+<div class="slds-p-around--small ">
     <div class="slds-tabs--default">
         <ul class="slds-tabs--default__nav" role="tablist">
           <li id="tab1" class="slds-tabs--default__item slds-text-heading--label slds-active" title="Item One" role="presentation">
@@ -32,7 +33,7 @@ controller="InsightsController">
 </div>
 </div>
 
-
+</div>
 
 </div>
 

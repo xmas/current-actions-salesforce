@@ -15,7 +15,7 @@
 		<div class="slds-col" id="left">
 			<c:InsightList />
 		</div>
-		<div class="slds-col left-border" id="right">
+		<div class="slds-col slds-p-around--small left-border" id="right">
 			<c:InsightDetail />
 		</div>
 

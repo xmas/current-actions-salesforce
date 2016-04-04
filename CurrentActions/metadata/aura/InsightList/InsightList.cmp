@@ -40,8 +40,10 @@
 <div id="ticket-event-list">
 
     <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-        <div class="event" id="{!'event'+indx}"><c:InsightPreviewCell insight="{!insight}" /></div>
+    <div class="slds-p-around--small" >
+        <div class="event " id="{!'event'+indx}"><c:InsightPreviewCell insight="{!insight}" /></div>
         <div class="content"> <c:InsightCell insight="{!insight}"  index="{!indx}" /></div>
+        </div>
     </aura:iteration>
 </div>
 

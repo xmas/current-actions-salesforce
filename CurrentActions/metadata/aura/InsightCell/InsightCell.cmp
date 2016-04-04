@@ -11,9 +11,6 @@
 <aura:attribute name="icon_class" type="String" />
 
 <aura:attribute name="index" type="String" />
-
-<aura:attribute name="accounts" type="SObject[]" />
-<aura:attribute name="rows" type="List" />
 <aura:attribute name="unread" type="Boolean" />
 
 <aura:attribute name="fullinit" type="Boolean" default='false'/>

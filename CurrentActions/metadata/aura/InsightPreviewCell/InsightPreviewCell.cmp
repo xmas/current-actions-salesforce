@@ -6,9 +6,12 @@
 <aura:attribute name="insight" type="Insight__c" />
 <aura:attribute name="time" type="String" />
 
-<div class="slds ignore">
+<aura:attribute name="icon" type="String" />
+<aura:attribute name="icon_class" type="String" />
 
-  <div class="feeditem-list item-listview-combo feeditem--hdr">
+<!-- <div class="slds ignore">
+
+  <div class="feeditem-list item-listview-combo feeditem- -hdr">
     <div class="feeditem-feedtitle">
       <span class="feeditem-feedtitle-src">{!v.insight.Data_Source__c}</span>
     </div>
@@ -16,7 +19,7 @@
 
     <div class="story-data ">
       <span class="story-content-mask">
-            <!-- <span itemprop="headline" class="feeditem-headline">{!v.insight.Data_Source__c}</span> -->
+            <!- - <span itemprop="headline" class="feeditem-headline">{!v.insight.Data_Source__c}</span> 
             <span class="headline" itemprop="description"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></span>
       </span>
     </div>
@@ -35,8 +38,32 @@
     </div>
 </div>
 
-<!-- TABLE END -->
   </div>
-</div>
+</div> -->
 
+<div class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+<!-- 
+          <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon- -small">
+            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+          </svg> -->
+
+
+        <span class="{!'slds-icon__container '+ v.icon_class}">
+          <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS0122/assets/icons/'+ v.icon}" />
+          <span class="slds-assistive-text">Icon</span>
+        </span>
+
+
+
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading--small slds-longform"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></h2>
+        </div>
+      </div>
+     
+    </div>
+ </div>
 </aura:component>

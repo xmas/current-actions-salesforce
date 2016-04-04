@@ -29,7 +29,7 @@
             for (var h_index = 0; h_index < headers.length; h_index++) {
                 var header = headers[h_index];
                 if (header.dataType === "int" || header.dataType === "currency") {
-                    var chart = {
+                    var chart_data = {
                         labels : labels,
                         datasets: [
                         {
@@ -43,6 +43,10 @@
                             data: this.getValuesAtCol(rows, h_index)
                         }]
                     };
+                    var chart = {
+                        title : header.label,
+                        data : chart_data
+                    };
                     charts.push(chart);
                 }
             }
@@ -52,13 +56,14 @@
             component.set("v.charts", charts);
 
            _.defer(function () {
-                var setCharts = component.get("v.charts");
+                var setCharts = component.get("v.charts");  
+                Chart.defaults.global.scaleOverride = false;
                 for (var chart_index = 0; chart_index < setCharts.length; chart_index++) {
 
                     var chartid = '#detail-chart-'+chart_index;
                   var ctx = $(chartid).get(0).getContext("2d");
                   //var ctx = document.getElementById(chartid).getContext("2d");
-                  var myLineChart = new Chart(ctx).Line(setCharts[chart_index]);
+                  var myLineChart = new Chart(ctx).Bar(setCharts[chart_index].data);
 
               }
           }, 0);

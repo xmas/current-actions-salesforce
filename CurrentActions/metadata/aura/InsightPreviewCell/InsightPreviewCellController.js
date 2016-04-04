@@ -39,6 +39,8 @@
 	},
 	doInit : function(component, event, helper) {
 
+		var insight = component.get("v.insight");
+        helper.assignIcon(component, insight);
 
 	},
 
