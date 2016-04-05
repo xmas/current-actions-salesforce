@@ -7,9 +7,9 @@ controller="InsightsController">
 
 <aura:handler event="c:InsightEvent" action="{!c.setSelectedInsight}"/>
 
-<div class="slds"> 
+<div class="slds slds-p-around--small"> 
 
-<div class="slds-p-around--small ">
+
     <div class="slds-tabs--default">
         <ul class="slds-tabs--default__nav" role="tablist">
           <li id="tab1" class="slds-tabs--default__item slds-text-heading--label slds-active" title="Item One" role="presentation">
@@ -30,7 +30,6 @@ controller="InsightsController">
      <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
         <c:InsightData insight="{!insight}" />
      </aura:iteration>
-</div>
 </div>
 
 </div>

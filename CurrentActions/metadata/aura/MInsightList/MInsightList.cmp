@@ -1,5 +1,5 @@
 <aura:component controller="InsightsController">
-<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/jqueryui/jquery-ui.js,/resource/underscore"  afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/jqueryui/jquery-ui.js,/resource/underscore"  afterScriptsLoaded="{!c.postScript}"/>
 
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />

@@ -1,6 +1,6 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightNavController">
 
-<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js" />
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js" />
 
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -16,78 +16,60 @@
 <aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
 
 
-<div class="slds left-nav-bar slds-p-right--medium lds-p-left--medium slds-p-bottom--medium">
+<!-- <div class="slds left-nav-bar slds-p-right- -medium lds-p-left- -medium slds-p-bottom- -medium"> -->
 
 
-<!-- c:SearchBar / -->
-
-<ul>
-<div class="slds-text-body--small">
-	<c:insightListItem objID="ALL" title="Show All"/>
-</div>
-<li class="slds-list__item slds-has-divider--top-space "></li>
+<ul class="dropdown__list" role="menu">
+  <li class="slds-dropdown__item">
+    <c:insightListItem objID="ALL" title="Show All"/>
+  </li>
 </ul>
 
-<h3 class="slds-text-heading--label slds-p-top--small">Action Items</h3>
+<div class="slds-dropdown__header">
+  <span class="slds-text-heading--label">Action Items</span>
+</div>
+
 
 <aura:renderIf isTrue="{!v.typelabels.length > 0}">
-	<ul class="slds-list--vertical">
-	 <SPAN>
-		<aura:iteration items="{!v.typelabels}" var="type" indexVar="indx">
-		<li>
-			<div class="slds-tile slds-p-top--small slds-text-body--small">
-				<c:insightListItem label="{!type.Report_Type_Label__c}" title="{!type.Report_Type_Label__c}"/> ({!type.expr0})
-			</div>
-		</li>
-	</aura:iteration>
-	      </SPAN>
-	      <li class="slds-list__item slds-has-divider--top-space "></li>
-
-	</ul>
+<ul class="dropdown__list" role="menu">
+  <aura:iteration items="{!v.typelabels}" var="type" indexVar="indx">
+  <li class="slds-dropdown__item">
+      <c:insightListItem label="{!type.Report_Type_Label__c}" title="{!type.Report_Type_Label__c}" count="{!type.expr0}"/>
+  </li>
+</aura:iteration>
+</ul>
 </aura:renderIf>
 
 <aura:renderIf isTrue="{!v.typedata.length > 0}">
-	<ul class="slds-list--vertical">
-
-		<SPAN>
-		<aura:iteration items="{!v.typedata}" var="tdata" indexVar="indx">
-			<aura:if isTrue="{!tdata.isHyperlink}">
-				<li>
-					<div class="slds-tile slds-p-top--small slds-text-body--small">
-						<c:insightListItem objID="{!tdata.fieldValue}" title="{!tdata.fieldName}"/> ({!tdata.count})
-					</div>
-				</li>
-				<aura:set attribute="else">
-					<aura:if isTrue="{!indx != 0}">
-						<li class="slds-list__item slds-has-divider--top-space "></li>
-					</aura:if>
-					<h3 class="slds-text-heading--label slds-p-top--small">{!tdata.fieldName}</h3>
-				</aura:set>
-			</aura:if>
-		</aura:iteration>
-		</SPAN>
-	</ul>
+<ul class="slds-list--vertical">
+<aura:iteration items="{!v.typedata}" var="tdata" indexVar="indx">
+    <aura:if isTrue="{!tdata.isHyperlink}">
+    <li class="slds-dropdown__item">
+        <c:insightListItem objID="{!tdata.fieldValue}" title="{!tdata.fieldName}" count="{!tdata.count}"/>
+    </li>
+    <aura:set attribute="else">
+    <aura:if isTrue="{!indx != 0}">
+    <li class="slds-list__item slds-has-divider--top-space "></li>
+  </aura:if>
+   <span class="slds-text-heading--label">{!tdata.fieldName}</span>
+</aura:set>
+</aura:if>
+</aura:iteration>
+</ul>
 </aura:renderIf>
 
-<ul><li class="slds-list__item slds-has-divider--top-space "></li></ul>
 
-<h3 class="slds-text-heading--label slds-p-top--small">Reports</h3>
+ <span class="slds-text-heading--label">Reports</span>
 
 <aura:renderIf isTrue="{!v.reports.length > 0}">
-	<ul class="slds-list--vertical">
-	 <SPAN>
-		<aura:iteration items="{!v.reports}" var="report" indexVar="indx">
-		<li>
-			<div class="slds-tile slds-p-top--small slds-text-body--small">
-				<c:insightListItem report="{!report.ReportID__c}" title="{!report.Data_Source__c}"/> ({!report.expr0})
-			</div>
-		</li>
-	</aura:iteration>
-	      </SPAN>
-	</ul>
+<ul class="slds-list--vertical">
+  <aura:iteration items="{!v.reports}" var="report" indexVar="indx">
+  <li class="slds-dropdown__item">
+      <c:insightListItem report="{!report.ReportID__c}" title="{!report.Data_Source__c}" count="{!report.expr0}"/>
+  </li>
+</aura:iteration>
+</ul>
 </aura:renderIf>
-
-</div>
 
 
 </aura:component>

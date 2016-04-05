@@ -1,6 +1,6 @@
 <aura:component controller="InsightsController">
 
-<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
@@ -16,14 +16,12 @@
 <aura:attribute name="fullinit" type="Boolean" default='false'/>
 
 
-<div class="slds">
-  <div class="center slds-p-top--xx-large slds-p-bottom--xx-large" style="width:75%">
-
+<div class="slds-card__body center slds-p-around--medium" style="background-color:white">
 
     <div class="dropdown-float ">
       <div class="slds-dropdown-trigger">
         <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
-          <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS0122/assets/icons/utility-sprite/svg/symbols.svg#down" />
+          <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
           <span class="slds-assistive-text">Show More</span>
         </button>
         <div class="slds-dropdown slds-dropdown--right slds-dropdown--menu">
@@ -47,7 +45,7 @@
       <div class="slds-media__figure">
 
         <span class="{!'slds-icon__container '+ v.icon_class}">
-          <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS0122/assets/icons/'+ v.icon}" />
+          <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
           <span class="slds-assistive-text">Icon</span>
         </span>
 
@@ -92,5 +90,4 @@
 </div>
 
 
-</div>
 </aura:component>

@@ -32,14 +32,17 @@
 
     postScript : function(component, event, helper) {
 
-		//var AWS;
-
 	},
 
 
 	assocSearch  : function(component, event, helper) {
 
-		// var title = event.getParam("title");
-		// component.set("v.title", title);
-	}
+		var title = event.getParam("title");
+		component.set("v.title", title);
+	},
+
+    menu : function(component, event, helper) {
+        //console.log(event.target);
+        $("#nav-dropdown").toggleClass("slds-is-open");
+    }
 })

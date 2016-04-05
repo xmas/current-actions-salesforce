@@ -1,5 +1,5 @@
 <aura:application >
-<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" />
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" />
 
 
 <div class="slds" style="background:white">
@@ -12,10 +12,10 @@
         </div>
 	<div class="slds-grid" id ="container">
 
-		<div class="slds-col" id="left">
+		<div class="slds-col right-border" id="left">
 			<c:InsightList />
 		</div>
-		<div class="slds-col slds-p-around--small left-border" id="right">
+		<div class="slds-col " id="right">
 			<c:InsightDetail />
 		</div>
 

@@ -16,7 +16,7 @@
 .THIS #left {
     overflow: scroll;
     position:fixed;
-    top: 87px;
+    top: 131px;
     bottom: 0;
     left: 0;
     width:800px;
@@ -35,8 +35,8 @@
     min-width: 404px;
 }
 
-.THIS .left-border {
-    border-left: 1px solid rgb(216, 221, 230);
+.THIS .right-border {
+    border-right: 1px solid rgb(216, 221, 230);
 }
 
 .THIS #right {
@@ -49,14 +49,14 @@
 
 .THIS #header-wrap {
     position: fixed;
-    height: 87px;
+    height: 131px;
     top: 0;
     width: 100%;
     z-index: 100;
 }
 
 .THIS #container{
-    margin-top: 87px;
+    margin-top: 131px;
 }
 
 .THIS .feed-stream-header {
@@ -81,5 +81,5 @@
 }
 
 .THIS .sobject-link {
-    font-weight: 800;
+    font-weight: 500;
 }
