@@ -9,9 +9,9 @@ public class InsightsController {
     return dr.getLabelPlural();
   }
 
-  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Assigned_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c, SObject_Count__c, Is_Read__c, Today_New__c, Today_Changed__c, Today_Total__c, Today_Deleted__c, History_New__c, History_Changed__c, History_Deleted__c, History_Total__c,History_Labels__c, AssocID__c, Assoc2ID__c, Assoc3ID__c, AssocLabel__c, AssocLabel2__c, AssocLabel3__c FROM Insight__c';
+  static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Assigned_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c, SObject_Count__c, Is_Read__c, Today_New__c, Today_Changed__c, Today_Total__c, Today_Deleted__c, History_New__c, History_Changed__c, History_Deleted__c, History_Total__c,History_Labels__c, AssocID__c, Assoc2ID__c, Assoc3ID__c, AssocLabel__c, AssocLabel2__c, AssocLabel3__c, Today_Updated__c FROM Insight__c';
 
-  static String newOrChangedQueryWhereString = '((Today_New__c > 0) OR (Today_Changed__c > 0))';
+  static String newOrChangedQueryWhereString = '(Today_Updated__c > 0)';
 
   @AuraEnabled
   public static List <Insight__c> getInsight (Id recordID) {
@@ -44,6 +44,13 @@ public class InsightsController {
     return InsightData.getInsightCounts();
   }
 
+  @AuraEnabled
+  public static Integer getMaxUpdateCount () {
+
+    List <Insight__c> max = [SELECT Today_Updated__c FROM Insight__c WHERE Today_Updated__c > 0 ORDER BY Today_Updated__c DESC LIMIT 1];
+    return Integer.valueOf(max[0].Today_Updated__c);
+
+  }
 
   @AuraEnabled
   public static List<Insight__c> getInsightsWithAssociation(String assoc_id) {
@@ -119,8 +126,6 @@ public class InsightsController {
     req.setHeader('Date', formattedDateString);
     req.setHeader('Authorization',createAuthHeader(method,contentType,filename,formattedDateString,bucketname,key,secret));
 
-
-  // https://s3-us-west-2.amazonaws.com/00d61000000adm6eai/00O61000003tHIaEAM/Other/005610000012IXIAA2/store.json
 
     Http http = new Http();
     HTTPResponse res = http.send(req);
