@@ -1,7 +1,5 @@
 public with sharing class InsightData {
-	public InsightData() {
-		
-	}
+
 
     public static String getInsightCounts () {
 
