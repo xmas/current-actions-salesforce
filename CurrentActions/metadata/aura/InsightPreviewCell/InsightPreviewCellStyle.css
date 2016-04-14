@@ -69,11 +69,6 @@
 }
 
 .THIS .feeditem-feedtitle {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     cursor: pointer;
     display: table-cell;
@@ -100,4 +95,20 @@
 
 .THIS .feeditem-feedtitle-src {
     font-weight: 800;
+}
+
+.THIS .parent {
+  position: relative;
+}
+
+.THIS .bg {
+  position: absolute;
+  height: 20px;
+  z-index: 100;
+}
+
+.THIS .fg {
+  position: absolute;
+  height: 20px;
+  z-index: 100;
 }

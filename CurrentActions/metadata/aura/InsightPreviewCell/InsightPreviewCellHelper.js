@@ -39,5 +39,10 @@
 
         component.set("v.icon", icon);
         component.set("v.icon_class", icon_class);
+    },
+
+    normalized : function (number, min, max) {
+      return (number * (max - min)) + min;
     }
+
 })

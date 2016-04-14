@@ -20,6 +20,12 @@
         });
         $A.enqueueAction(data_action);
 
+        var max_action = component.get("c.getMaxUpdateCount");
+        max_action.setCallback(this, function(actionResult) {
+            component.set("v.max_updated", actionResult.getReturnValue());
+        });
+        $A.enqueueAction(max_action);
+
     },
 
     postScript: function(component, event, helper) {
