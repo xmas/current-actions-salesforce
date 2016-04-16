@@ -1,4 +1,4 @@
-public class MathUtil {
+public with sharing class MathUtil {
 
 	/**
 	 * Gets a random integer number between lower (inclusive) and upper (exclusive)

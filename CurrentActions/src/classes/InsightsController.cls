@@ -1,4 +1,4 @@
-public class InsightsController {
+public with sharing class InsightsController {
 
 
   public static String typeNameForID (String assoc_string) {

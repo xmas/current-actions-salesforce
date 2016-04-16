@@ -1,5 +1,5 @@
 @isTest
-public class InsightTest {
+public with sharing class InsightTest {
 
 
 	public static testMethod void TESTtypeNameForID() {

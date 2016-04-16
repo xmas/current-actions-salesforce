@@ -1,4 +1,4 @@
-public class Util {
+public with sharing class Util {
 
     public static List <Object> push (List <Object> listt, Object item) {
         if (listt == null) {

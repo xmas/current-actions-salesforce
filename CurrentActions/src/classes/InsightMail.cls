@@ -1,4 +1,4 @@
-public class InsightMail {
+public with Sharing class InsightMail {
     
     
     public InsightMail () {
