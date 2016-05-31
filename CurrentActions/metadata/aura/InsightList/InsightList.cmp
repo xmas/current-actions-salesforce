@@ -30,32 +30,22 @@
     {!v.modal}
 </div>
 
-<div id="ticket-event-list">
-
-    <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-    <div class="slds-p-around--small" >
-      <div class="slds-card">
-
-        <div class="event " id="{!'event'+indx}"><c:InsightPreviewCell insight="{!insight}" /></div>
-        <div class="content"> <c:InsightCell insight="{!insight}"  index="{!indx}" /></div>
-      </div>
-    </div>
-    </aura:iteration>
+<div>
+<aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+<c:InsightCell insight="{!insight}"  index="{!indx}"/>
+</aura:iteration>
 </div>
 
-   <!--  <div class="center slds-p-top- -large">
-        <img src="/resource/ca/brain_shadow_large.png" style="max-width: 25%"/>
-    </div> -->
 
 <div class="ornamental-rule"><hr></hr><span></span></div>
 
 
-    <div style="padding-left: 10%; padding-right: 10%; padding-bottom: 40px">
-    <div class="slds-box slds-theme--info" >
-    <p>Today we processed <strong>{!v.global_total}</strong> data objects (<strong>{!v.user_total}</strong> were yours)! <strong>{!v.global_new_changed}</strong> of them were new or changed (<strong>{!v.user_new_changed}</strong> of yours)! So much!  
-      </p>
-  </div>  
+<div style="padding-left: 10%; padding-right: 10%; padding-bottom: 40px">
+  <div class="slds-box slds-theme--info" >
+    <p>Today we processed <strong>{!v.global_total}</strong> data objects (<strong>{!v.user_total}</strong> were yours)! <strong>{!v.global_new_changed}</strong> of them were new or changed (<strong>{!v.user_new_changed}</strong> of yours)! So much!
+    </p>
   </div>
+</div>
 
 
 

@@ -1,0 +1,42 @@
+<aura:component >
+
+<ltng:require styles="/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:attribute name="colors" type="List" />
+<aura:attribute name="head_color" type="String" />
+<aura:attribute name="level" type="Integer" />
+
+<aura:attribute name="init_params" type="String" />
+
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+<div class="slds" id="in">
+
+
+
+<div style="{!'background-color:'+ v.head_color+';min-height: 75px'}">
+
+<aura:renderIf isTrue="{!v.level > 0}">
+
+   <button class="slds-button slds-button--neutral slds-button--brand" direction="back" id="back" onclick="{!c.nav}">Back</button>    
+</aura:renderIf> 
+
+   <span> Level: {!v.level} </span>
+
+   </div>
+<aura:iteration items="{!v.colors}" var="color">
+
+
+<div style="{!'background-color:'+ color+';min-height: 75px'}">
+
+    <span>{!color}</span>
+    <button class="slds-button slds-button--neutral slds-button--brand" direction="forward" id="{!color}" onclick="{!c.nav}">Forward</button>
+  
+
+</div>
+
+</aura:iteration>
+</div>
+
+</aura:component>

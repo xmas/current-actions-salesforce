@@ -14,7 +14,7 @@
         action.setCallback(this, function(actionResult) {
 
             //debugger;
-
+            try {
             var store = JSON.parse(actionResult.getReturnValue());
 
             var headers = this.headersFromKey(store.headers, "label");
@@ -27,13 +27,13 @@
                 if ((i % 3)){
                     col_hide_array.push(i);
                 } else {
-                    col_vis_array.push(i);                    
+                    col_vis_array.push(i);
                 }
-            }            
+            }
 
             //console.log('vis cols: '+col_vis_array);
             //debugger;
-            $('#example').DataTable( {                
+            $('#example').DataTable( {
                 // "createdRow": function ( row, data, index ) {
                 //     if ()
                 //     $('td', row).eq(3).addClass('highlight');
@@ -56,7 +56,7 @@
                         //if(type === 'display') {
                             if (meta.col === 0) {
                                 return '<a target="_blank" href="https://rowan-dev-ed.my.salesforce.com/'+row[meta.col+1]+'">'+data+'</a>';
-                            } else {      
+                            } else {
 
                                 var delta = row[meta.col+2];
                                 if (delta != 0) {
@@ -78,11 +78,15 @@
                 ]
             });
 
+        } catch (error) {
+            console.log('error on getting data from S3: '+error);
+        }
+
         });
         $A.enqueueAction(action);
 
         //
-        
+
     },
 
     headersFromKey : function (array, key) {

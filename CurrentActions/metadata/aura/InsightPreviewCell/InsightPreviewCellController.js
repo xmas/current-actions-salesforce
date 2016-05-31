@@ -5,12 +5,12 @@
 		var today = moment();
 		//debugger;
 
-		
-				
+
+
 
 		// 	component.set("v.time", "SAME");
 		// } else {
-		// 	component.set("v.time", "NOT SAME");			
+		// 	component.set("v.time", "NOT SAME");
 		// }
 
 		//debugger;
@@ -28,10 +28,10 @@
 				component.set("v.time", '<1hr');
 				return ;
 			} else if (hoursAgo > -6){
-				component.set("v.time", Math.abs(hoursAgo)+'hrs');				
+				component.set("v.time", Math.abs(hoursAgo)+'hrs');
 				return;
-			} 
-		
+			}
+
 		}
 		component.set("v.time", mod.format('ddd h:mm a'));
 
@@ -43,5 +43,17 @@
         helper.assignIcon(component, insight);
 
 	},
+
+
+    clickInsight : function(component, event, helper) {
+
+        var insight = component.get("v.insight");
+
+
+        var selectEvent = $A.get("e.c:InsightEvent");
+        selectEvent.setParams({ "insight": insight });
+        selectEvent.fire();
+
+    },
 
 })

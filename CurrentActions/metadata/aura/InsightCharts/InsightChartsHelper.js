@@ -8,16 +8,17 @@
             "path": insight["Path__c"]
         });
         console.log(insight["Path__c"]);
-          
+
         //Set up the callback
         var self = this;
         action.setCallback(this, function(actionResult) {
 
 
+            try {
             var store = JSON.parse(actionResult.getReturnValue());
             var charts = [];
             var rows = store.data.rows;
-            
+
             var headers = store.headers;
             var labels = this.getLabels(rows);
 
@@ -55,13 +56,13 @@
 
             component.set("v.charts", charts);
 
-           _.defer(function () {
-                var setCharts = component.get("v.charts");  
+            _.defer(function () {
+                var setCharts = component.get("v.charts");
                 Chart.defaults.global.scaleOverride = false;
                 for (var chart_index = 0; chart_index < setCharts.length; chart_index++) {
 
                     var chartid = '#detail-chart-'+chart_index;
-                  var ctx = $(chartid).get(0).getContext("2d");
+                    var ctx = $(chartid).get(0).getContext("2d");
                   //var ctx = document.getElementById(chartid).getContext("2d");
                   var myLineChart = new Chart(ctx).Bar(setCharts[chart_index].data);
 
@@ -69,13 +70,16 @@
           }, 0);
 
             //
-      
 
-    });
+        } catch (error) {
+            console.log('error on getting data from S3: '+error);
+        }
+
+        });
         $A.enqueueAction(action);
 
         //
-        
+
     },
 
     getValuesAtCol : function (rows, col) {
@@ -85,7 +89,7 @@
             var cell = dataCells[col];
             var value = cell.value;
             if (_.isNumber(value)) {
-                values.push(cell.value);                
+                values.push(cell.value);
             } else {
                 values.push(cell.value.amount);
             }
@@ -97,24 +101,61 @@
     getLabels : function (rows) {
         var labels = [];
        // debugger;
-        for (var i = 0; i < rows.length; i++) {
-            var dataCells = rows[i].dataCells;
-            console.log('dataCells: '+dataCells);
-            var nameCell = dataCells[0];
-            labels.push(nameCell.label);
-        }
-        return labels;
-    }, 
-
-      exampleData : function() {
-  return {
-    "title":"Revenue",      //Label the bullet chart
-    "subtitle":"US$, in thousands",     //sub-label for bullet chart
-    "ranges":[150,225,300],  //Minimum, mean and maximum values.
-    "measures":[220],        //Value representing current measurement (the thick blue line in the example)
-    "markers":[250]          //Place a marker on the chart (the white triangle marker)
-  };
+       for (var i = 0; i < rows.length; i++) {
+        var dataCells = rows[i].dataCells;
+        console.log('dataCells: '+dataCells);
+        var nameCell = dataCells[0];
+        labels.push(nameCell.label);
+    }
+    return labels;
 },
+
+exampleDataBar : function() {
+  return {
+        "title":"Revenue",      //Label the bullet chart
+        "subtitle":"US$, in thousands",     //sub-label for bullet chart
+        "ranges":[150,225,300],  //Minimum, mean and maximum values.
+        "measures":[220],        //Value representing current measurement (the thick blue line in the example)
+        "markers":[250]          //Place a marker on the chart (the white triangle marker)
+    };
+},
+
+exampleData : function() {     return  [
+    {
+      label: "Sample A",
+      values: {
+        Q1: 120,
+        Q2: 150,
+        Q3: 200,
+        whisker_low: 115,
+        whisker_high: 210,
+        outliers: [50, 100, 225]
+    },
+},
+{
+  label: "Sample B",
+  values: {
+    Q1: 300,
+    Q2: 350,
+    Q3: 400,
+    whisker_low: 225,
+    whisker_high: 425,
+    outliers: [175]
+},
+},
+{
+  label: "Sample C",
+  values: {
+    Q1: 50,
+    Q2: 100,
+    Q3: 125,
+    whisker_low: 25,
+    whisker_high: 175,
+    outliers: [0]
+},
+}
+];
+}
 
     // headersFromKey : function (array, key) {
     //     var new_array = [];

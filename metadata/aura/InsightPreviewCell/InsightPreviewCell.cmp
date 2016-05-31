@@ -1,0 +1,45 @@
+<aura:component >
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/moment,/resource/chroma" afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+<aura:attribute name="insight" type="Insight__c" />
+<aura:attribute name="time" type="String" />
+
+<aura:attribute name="icon" type="String" />
+<aura:attribute name="icon_class" type="String" />
+<aura:attribute name="max_updated" type="Integer" />
+
+
+<aura:attribute name="tint" type="String" default="rgb(82, 121, 187)" />
+
+
+<!-- <div class="slds-card"> -->
+<div class="slds-card__header slds-grid ignore slds-p-around--medium">
+  <div class="slds-grid slds-grid--align-spread">
+    <div class="slds-media slds-media--center slds-has-flexi-truncate">
+      <div class="slds-media__figure">
+
+        <span class="{!'slds-icon__container '+ v.icon_class}">
+          <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
+          <span class="slds-assistive-text">Icon</span>
+        </span>
+
+      </div>
+      <div class="slds-media__body">
+        <h2 class="slds-text-body--regular slds-longform"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></h2>
+      </div>
+    </div>
+    <div class="slds-container--right slds-container--small">
+      {!v.time}
+
+      <div class="parent">
+        <div class="bg" style="width:100px; background-color:white"> </div>
+        <div class="fg" style="{!'width:10px; background-color:'+v.tint}"> </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</aura:component>

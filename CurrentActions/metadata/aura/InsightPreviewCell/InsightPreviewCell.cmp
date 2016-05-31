@@ -14,7 +14,7 @@
 <aura:attribute name="tint" type="String" default="rgb(82, 121, 187)" />
 
 
-<!-- <div class="slds-card"> -->
+<div class="slds-card" onclick="{!c.clickInsight}">
 <div class="slds-card__header slds-grid ignore slds-p-around--medium">
   <div class="slds-grid slds-grid--align-spread">
     <div class="slds-media slds-media--center slds-has-flexi-truncate">
@@ -27,7 +27,10 @@
 
       </div>
       <div class="slds-media__body">
+
+      <!-- <a href="javascript:void(0)" onclick="{!c.clickInsight}"> -->
         <h2 class="slds-text-body--regular slds-longform"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></h2>
+        <!-- </a> -->
       </div>
     </div>
     <div class="slds-container--right slds-container--small">
@@ -42,4 +45,6 @@
   </div>
 
 </div>
+</div>
+
 </aura:component>

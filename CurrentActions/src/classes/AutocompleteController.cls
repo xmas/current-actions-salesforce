@@ -3,12 +3,12 @@ public with sharing class AutocompleteController {
     public static List<sObject> getSuggestions(String sObjectType, String term, String fieldsToGet, Integer limitSize) {
         // could add in logic to remove possible duplicate fields
         System.debug('term: '+term+' field: '+fieldsToGet);
-        String fields = fieldsToGet.length() > 0 ? ',' + fieldsToGet : ''; 
-    	String soql = 
+        String fields = fieldsToGet.length() > 0 ? ',' + fieldsToGet : '';
+    	String soql =
             ' SELECT Name, Id ' + String.escapeSingleQuotes(fields) +
             ' FROM '   + String.escapeSingleQuotes(sObjectType) +
             ' WHERE Name Like \'' + String.escapeSingleQuotes(term) + '%\'' +
             ' LIMIT ' + limitSize;
         return Database.query(soql);
-    } 
+    }
 }

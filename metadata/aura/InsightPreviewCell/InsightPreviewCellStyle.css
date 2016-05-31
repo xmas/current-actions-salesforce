@@ -1,0 +1,114 @@
+.THIS .options {
+    display: none;
+}
+
+.THIS .post:hover .options {
+    display: block;
+}
+
+.THIS .post {
+    cursor: pointer;
+    display: table-cell;
+    padding-right: 20px;
+    vertical-align: middle;
+    width: 120px  
+}
+
+.THIS .story-content-mask {
+    line-height: 2em;
+    height: 1em;
+    overflow: hidden
+}
+
+.THIS .feeditem-list {
+    border-top: 1px solid #f7f7f7;
+    font-size: 0.813rem;
+    width: 100%;
+}
+
+.THIS .feeditem-description {
+    color: #929292
+}
+
+.THIS .story-metadata {
+    width: 65px;
+ 	cursor: pointer;
+    display: table-cell;
+    padding-right: 20px;
+    vertical-align: middle;
+    width: 120px  
+}
+
+.THIS .feeditem-headline {
+    margin-right: .6em;
+    font-weight: bold
+}
+
+.THIS .feeditem--hdr {
+    display: table;
+    width: 100%;
+}
+
+.THIS .feeditem-fuzzytime {
+    display: inline-block;
+    padding-top: 1px;
+    white-space: nowrap;
+    float:right;
+}
+
+.THIS .feeditem-fuzzytime a {
+    color: #232323;
+    border-bottom: 1px solid #fff;
+    text-decoration: none;
+    color: #666;
+    border-bottom: 1px dotted #fff
+}
+
+.THIS .feeditem-fuzzytime a:hover {
+    border-bottom-color: #232323
+}
+
+.THIS .feeditem-feedtitle {
+    user-select: none;
+    cursor: pointer;
+    display: table-cell;
+    padding: 0.95em 0 0.3em 20px;
+    width: 225px;
+    vertical-align: middle
+}
+
+.THIS .story-data {
+    cursor: pointer;
+    display: block;
+    height: 2em;
+    margin-top: .7em;
+    overflow: hidden;
+    padding-right: 20px;
+    padding-left: 20px;
+    width: auto;
+}
+
+.THIS .sobject-link a
+{
+      color: #11244A;
+}
+
+.THIS .feeditem-feedtitle-src {
+    font-weight: 800;
+}
+
+.THIS .parent {
+  position: relative;
+}
+
+.THIS .bg {
+  position: absolute;
+  height: 20px;
+  z-index: 100;
+}
+
+.THIS .fg {
+  position: absolute;
+  height: 20px;
+  z-index: 100;
+}

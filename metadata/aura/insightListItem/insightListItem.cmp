@@ -1,0 +1,12 @@
+<aura:component >
+<aura:registerEvent name="assoc_obj" type="c:AssocEvent"/>
+<aura:attribute name="objID" type="String"/>
+<aura:attribute name="report" type="Id"/>
+<aura:attribute name="title" type="String"/>
+<aura:attribute name="label" type="String"/>
+<aura:attribute name="count" type="String"/>
+
+<a href="javascript:void(0)" onclick="{!c.select}">{!v.title} ({!v.count}) </a>
+
+<!-- ui:outputText value="{!v.title}" click="{!c.select}"/ -->
+</aura:component>

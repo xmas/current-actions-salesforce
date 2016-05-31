@@ -1,0 +1,51 @@
+<aura:component controller="InsightsController">
+<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS0122/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/jqueryui/jquery-ui.js,/resource/underscore"  afterScriptsLoaded="{!c.postScript}"/>
+
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:attribute name="insights" type="List" />
+<aura:attribute name="title" type="String" default="Show All"/>
+
+<aura:attribute name="omnifocus" type="Boolean" default="true"/>
+<aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+<aura:attribute name="inited" type="Boolean" default="false"/>
+
+<aura:handler event="c:modalClose" action="{!c.closeModal}"/>
+<aura:handler event="c:modalOpen" action="{!c.openModal}"/>
+
+<aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
+
+<aura:attribute name="global_total" type="String" default="lots"/>
+<aura:attribute name="global_new_changed" type="String" default="some"/>
+<aura:attribute name="user_total" type="String" default="many"/>
+<aura:attribute name="user_new_changed" type="String" default="most"/>
+
+
+<aura:attribute name="init_params" type="String"/>
+
+
+<div class="slds">
+
+    <div class="slds-m-top--x-small slds-m-right--x-small slds-m-left--x-small">
+        <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+        <div class="slds-m-bottom--x-small">
+        <c:MInsightCell insight="{!insight}"  index="{!indx}" />
+        </div>
+        </aura:iteration>
+</div>
+
+<div class="ornamental-rule"><hr></hr><span></span></div>
+<div style="padding-left: 10%; padding-right: 10%; padding-bottom: 40px">
+    <div class="slds-box slds-theme--info" >
+        <p>Today we processed <strong>{!v.global_total}</strong> data objects (<strong>{!v.user_total}</strong> were yours)! <strong>{!v.global_new_changed}</strong> of them were new or changed (<strong>{!v.user_new_changed}</strong> of yours)! So much!  
+        </p>
+    </div>  
+</div>
+
+
+</div>
+
+<aura:handler name="change" value="{!v.insights}" action="{!c.handleValueChange}"/>
+
+</aura:component>

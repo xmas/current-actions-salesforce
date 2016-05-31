@@ -1,0 +1,43 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="InsightsController">
+
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+<aura:attribute name="name" type="String" default="you"/>
+
+<aura:attribute name="global_total" type="String" default="lots"/>
+<aura:attribute name="global_new_changed" type="String" default="some"/>
+<aura:attribute name="user_total" type="String" default="many"/>
+<aura:attribute name="user_new_changed" type="String" default="most"/>
+
+<aura:attribute name="title" type="String" default="Recent New and Changed"/>
+
+<div class="slds-page-header" role="banner">
+  <div class="slds-grid">
+    <div class="slds-col slds-has-flexi-truncate">
+      <p class="slds-text-heading--label slds-p-bottom--x-small">Current Actions</p>
+      <div class="slds-grid">
+
+        <div class="slds-grid slds-type-focus slds-no-space no-wrap slds-dropdown-trigger slds-dropdown-trigger--click" id="nav-dropdown" onclick="{!c.menu}">
+          <h1 class="slds-page-header__title slds-longform" title="{!v.title}" onclick="{!c.menu}">{!v.title}
+            <button class="slds-button slds-button--icon-bare slds-shrink-none slds-align-middle slds-p-left--x-small" onclick="{!c.menu}">
+              <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+            </button>
+          </h1>
+          <div class="slds-dropdown slds-dropdown--left slds-dropdown--small nav-menu">
+           <c:InsightNav />
+          </div>
+        </div>
+
+
+      </div>
+      <p class="slds-text-body--small slds-page-header__info">Today we processed <strong>{!v.global_total}</strong> data objects (<strong>{!v.user_total}</strong> were yours)! <strong>{!v.global_new_changed}</strong> of them were new or changed (<strong>{!v.user_new_changed}</strong> of yours)! So much!  </p>
+    </div>
+
+  </div>
+</div>
+
+
+</aura:component>

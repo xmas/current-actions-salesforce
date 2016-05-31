@@ -1,6 +1,7 @@
 ({
-  
+
     postScript : function(component, event, helper) {
+
 
 	  // var data = [
 	  //   {"year": 1991, "name":"alpha", "value": 15},
@@ -30,28 +31,52 @@
 	  //   .x("year")
 	  //   .y("value")
 	  //   .time("year")
-	  //   .ui([{ 
+	  //   .ui([{
 	  //       "label": "Visualization Type",
-	  //       "method": "type", 
+	  //       "method": "type",
 	  //       "value": ["scatter","box"]
 	  //     }])
 	  //   .draw();
 
- nv.addGraph(function() {  
-  var chart = nv.models.bulletChart();
+//  nv.addGraph(function() {
+//   var chart = nv.models.bulletChart();
 
-  d3.select('#chart1 svg')
-      .datum(helper.exampleData())
-      .transition().duration(1000)
-      .call(chart);
+//   d3.select('#chart1 svg')
+//       .datum(helper.exampleData())
+//       .transition().duration(1000)
+//       .call(chart);
 
-  return chart;
-});
+//   return chart;
+// });
+
+
+    //  nv.addGraph(function() {
+    //   var chart = nv.models.boxPlotChart()
+    //       .x(function(d) { return d.label })
+    //       .staggerLabels(true)
+    //       .maxBoxWidth(75) // prevent boxes from being incredibly wide
+    //       .yDomain([0, 500])
+    //       ;
+    //   d3.select('#chart1 svg')
+    //       .datum(helper.exampleData())
+    //       .call(chart);
+    //   nv.utils.windowResize(chart.update);
+    //   return chart;
+    // });
+
+        TESTER = document.getElementById('tester');
+    Plotly.plot( TESTER, [{
+    x: [1, 2, 3, 4, 5],
+    y: [1, 2, 4, 8, 16] }], {
+    margin: { t: 0 } },
+    { displaylogo: false} );
+
+
 
 
     },
 
-   
+
 
      doInit : function(component, event, helper) {
 
