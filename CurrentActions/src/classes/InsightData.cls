@@ -23,8 +23,9 @@ public with sharing class InsightData {
        vals.put('user', user);
 
        return JSON.serialize(vals);
-
+ 
    }
+   
 
   // public static List <Object> getTopics () {
   //  return [SELECT Topic.Name, Topic.TalkingAbout, EntityId FROM TopicAssignment WHERE EntityType = 'Insight__c'];

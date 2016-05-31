@@ -8,6 +8,8 @@
         action.setCallback(this, function(actionResult) {
             component.set("v.insights", actionResult.getReturnValue());
             window.scrollTo(0,0);
+            //$("#ticket-event-list").accordion('activate', 0 );
+            jQuery(".selector").accordion("option", {active: 0});
 
         });
         $A.enqueueAction(action);

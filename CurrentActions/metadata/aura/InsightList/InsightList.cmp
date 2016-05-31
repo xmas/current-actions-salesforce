@@ -21,7 +21,6 @@
 <aura:attribute name="global_new_changed" type="String" default="some"/>
 <aura:attribute name="user_total" type="String" default="many"/>
 <aura:attribute name="user_new_changed" type="String" default="most"/>
-<aura:attribute name="max_updated" type="Integer" default="0"/>
 
 <!-- <aura:registerEvent name="insight_read_event" type="c:InsightReadEvent"/> -->
 
@@ -37,7 +36,7 @@
     <div class="slds-p-around--small" >
       <div class="slds-card">
 
-        <div class="event " id="{!'event'+indx}"><c:InsightPreviewCell insight="{!insight}" max="{!v.max_updated}"/></div>
+        <div class="event " id="{!'event'+indx}"><c:InsightPreviewCell insight="{!insight}" /></div>
         <div class="content"> <c:InsightCell insight="{!insight}"  index="{!indx}" /></div>
       </div>
     </div>

@@ -1,5 +1,5 @@
-<aura:application>
+<aura:application >
 
-<c:ViewController/>  
+<c:ViewController />  
 
 </aura:application>

@@ -1,0 +1,63 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+
+        .button {
+            text-align: center;
+        }
+    </style>
+  
+
+    <link href="{!URLFOR($Resource.AngularMP, 'css/bootstrap.min.css')}" rel="stylesheet" />
+    <link href="{!URLFOR($Resource.AngularMP, 'css/bootstrap-responsive.min.css')}" rel="stylesheet" />
+ 
+
+</head>
+<body ng-app="AngularSFDemo">
+    <div  class="navbar navbar-inverse navbar-fixed-top" ng-controller="LoginCtrl">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">Salesforce Contacts</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="ngView"></div>
+    </div>
+
+
+<script type="text/javascript">
+    //Get configuration from environment variables (via heroku or localhost env)
+    var configFromEnv = {};
+    configFromEnv.client_id = '<%= client_id %>';
+    configFromEnv.app_url = '<%= app_url %>';
+    configFromEnv.sessionId = "{!$API.session_Id}";
+
+
+</script>
+
+
+<script src="{!URLFOR($Resource.AngularMP, 'js/vendor/jquery-2.0.0.min.js')}"></script>
+<script src="{!URLFOR($Resource.AngularMP, 'js/vendor/underscore-1.4.4.min.js')}"></script>
+<script src="{!URLFOR($Resource.AngularMP, 'js/vendor/angular.1.0.6.min.js')}"></script>
+<script src="{!URLFOR($Resource.AngularMP, 'js/vendor/dropdownToggle.js')}"></script>
+
+
+<script src="{!URLFOR($Resource.AngularMP, 'js/sdk/forcetk.mobilesdk.js')}"></script>
+<script src="{!URLFOR($Resource.AngularMP, 'js/sdk/smartsync.js')}"></script>
+<script src="{!URLFOR($Resource.AngularMP, 'js/sdk/angular-force.js')}"></script>
+<script src="{!URLFOR($Resource.AngularMP, 'js/sdk/forcetk.ui.js')}"></script>
+
+
+<script src="{!URLFOR($Resource.AngularMP, 'js/init.js')}"></script>
+<script src="{!URLFOR($Resource.AngularMP, 'js/app.js')}"></script>
+
+
+</body>
+</apex:page>

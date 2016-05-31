@@ -10,5 +10,5 @@ public with sharing class AutocompleteController {
             ' WHERE Name Like \'' + String.escapeSingleQuotes(term) + '%\'' +
             ' LIMIT ' + limitSize;
         return Database.query(soql);
-    }
+    } 
 }

@@ -1,6 +1,8 @@
 <aura:component controller="InsightsController">
 
-<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}" />
+<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/nvd3/nv.d3.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore,/resource/d3/d3plus.v1.9.3/js/d3plus.full.min.js,/resource/nvd3/nv.d3.js" afterScriptsLoaded="{!c.postScript}" />
+
+<!-- resource/d3/d3plus.v1.9.3/js/d3plus.full.min.js -->
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
@@ -11,6 +13,14 @@
 
 <div class="slds">
  
+<div id="viz"></div>
+
+<hr></hr>
+
+ <div class="gallery" id="chart1">
+    <c:svg></c:svg>
+  </div>
+
 <aura:iteration items="{!v.charts}" var="chart" indexVar="indx">
 <div class="slds-text-heading--label">{!chart.title}</div>
 <div class="slds-p-bottom--xx-large">
