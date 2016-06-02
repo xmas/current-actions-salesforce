@@ -37,6 +37,10 @@
     position: relative;
 }
 
+.THIS .seperator {
+    background-color: #fff;
+}
+
 .THIS .ornamental-rule span {
     background-image: url("/resource/ca/brain_shadow_large.png");
     background-size: 150px;

@@ -30,54 +30,54 @@
 
     postScript: function(component, event, helper) {
 
-        // init the accordion
-        console.log('are we crashing on init?');
-        var h = helper;
-        var c = component;
-        $(document).ready(function() {
-            $(function() {
-                $("#ticket-event-list").accordion({
-                    header: '.event',
-                    //animate : false,
-                    //collapsible: true,
-                    active: false,
-                    heightStyle: "content",
-                    beforeActivate: function( ui_event, ui ) {
+        // // init the accordion
+        // console.log('are we crashing on init?');
+        // var h = helper;
+        // var c = component;
+        // $(document).ready(function() {
+        //     $(function() {
+        //         $("#ticket-event-list").accordion({
+        //             header: '.event',
+        //             //animate : false,
+        //             //collapsible: true,
+        //             active: false,
+        //             heightStyle: "content",
+        //             beforeActivate: function( ui_event, ui ) {
 
-                        //   var index = ui_event.target.index;
-                        // debugger;
+        //                 //   var index = ui_event.target.index;
+        //                 // debugger;
 
-                        // self.clickInsight(component, event, helper, index);
-                        // defer loading
-                        // console.log(event);
-                        // console.log(ui);
-                        ui.oldHeader.toggleClass('active');
-                        ui.newHeader.toggleClass('active');
-                        //helper.markUnread(component, event, helper);
-                    },
-                    activate: function( event, ui ) {
-                        var index = ui.newHeader[0].id.substring(5);
-                        h.clickInsight(c, index);
-                    }
-                });
-            });
-        });
+        //                 // self.clickInsight(component, event, helper, index);
+        //                 // defer loading
+        //                 // console.log(event);
+        //                 // console.log(ui);
+        //                 ui.oldHeader.toggleClass('active');
+        //                 ui.newHeader.toggleClass('active');
+        //                 //helper.markUnread(component, event, helper);
+        //             },
+        //             activate: function( event, ui ) {
+        //                 var index = ui.newHeader[0].id.substring(5);
+        //                 h.clickInsight(c, index);
+        //             }
+        //         });
+        //     });
+        // });
 
     },
 
 
     handleValueChange : function (component, event, helper) {
 
-       if($) {
-        $("#ticket-event-list").accordion({
-            active: false,
-            collapsible: true
-        });
-        console.log('are we crashing on value change?');
-        setTimeout(function () {
-            $("#ticket-event-list").accordion("refresh");
-        }, 0);
-    }
+    //  if($) {
+    //     $("#ticket-event-list").accordion({
+    //         active: false,
+    //         collapsible: true
+    //     });
+    //     console.log('are we crashing on value change?');
+    //     setTimeout(function () {
+    //         $("#ticket-event-list").accordion("refresh");
+    //     }, 0);
+    // }
 },
 
 openModal : function(component, event, helper) {
