@@ -12,15 +12,12 @@
 <aura:attribute name="index" type="String" />
 
 <aura:handler event="c:InsightEvent" action="{!c.setSelectedInsight}"/>
-
-
-
 <aura:attribute name="tint" type="String" default="rgb(82, 121, 187)" />
 
 
 <div id="{!'preview-cell-'+v.index}" class="slds-card__body center slds-p-around--medium" onclick="{!c.clickInsight}">
 
-  <div class="slds-media slds-comment slds-hint-parent slds-p-bottom--large">
+  <div class="slds-media slds-comment slds-hint-parent">
 
     <div class="slds-media__figure">
         <span class="{!'slds-icon__container '+ v.icon_class}">
