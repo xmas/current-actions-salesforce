@@ -9,42 +9,38 @@
 <aura:attribute name="icon" type="String" />
 <aura:attribute name="icon_class" type="String" />
 <aura:attribute name="max_updated" type="Integer" />
+<aura:attribute name="index" type="String" />
+
+<aura:handler event="c:InsightEvent" action="{!c.setSelectedInsight}"/>
+
 
 
 <aura:attribute name="tint" type="String" default="rgb(82, 121, 187)" />
 
 
-<div class="slds-card" onclick="{!c.clickInsight}">
-<div class="slds-card__header slds-grid ignore slds-p-around--medium">
-  <div class="slds-grid slds-grid--align-spread">
-    <div class="slds-media slds-media--center slds-has-flexi-truncate">
-      <div class="slds-media__figure">
+<div id="{!'preview-cell-'+v.index}" class="slds-card__body center slds-p-around--medium" onclick="{!c.clickInsight}">
 
+  <div class="slds-media slds-comment slds-hint-parent slds-p-bottom--large">
+
+    <div class="slds-media__figure">
         <span class="{!'slds-icon__container '+ v.icon_class}">
           <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
-          <span class="slds-assistive-text">Icon</span>
         </span>
-
-      </div>
-      <div class="slds-media__body">
-
-      <!-- <a href="javascript:void(0)" onclick="{!c.clickInsight}"> -->
-        <h2 class="slds-text-body--regular slds-longform"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></h2>
-        <!-- </a> -->
-      </div>
     </div>
-    <div class="slds-container--right slds-container--small">
-      {!v.time}
 
-      <div class="parent">
-        <div class="bg" style="width:100px; background-color:white"> </div>
-        <div class="fg" style="{!'width:10px; background-color:'+v.tint}"> </div>
+    <div class="slds-media__body">
+      <div class="slds-text-longform slds-text-body--regular slds-p-bottom--x-small" style="display: inline-block"><strong>{!v.insight.Name}</strong></div>
+
+       <div class="slds-text-body--small slds-p-left--x-small" style="color:#8E99A6; display: inline-block" >
+
+             <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
       </div>
+
+      <p>{!v.insight.Details__c}</p>
 
     </div>
   </div>
+</div>
 
-</div>
-</div>
 
 </aura:component>

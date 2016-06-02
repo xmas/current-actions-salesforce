@@ -16,15 +16,21 @@
 
 <div class="slds">
 
-<div id="viz"></div>
+<!-- <div id="viz"></div> -->
 
-<hr></hr>
+<!-- <hr></hr>
 
  <div class="gallery" id="chart1">
     <c:svg></c:svg>
   </div>
+ -->
+ <div class="slds-text-heading--label">Distrubution</div>
+<div class="slds-p-bottom--xx-large" id="box" style="width:300px;height:600px;"></div>
 
-<div id="tester" style="width:600px;height:250px;"></div>
+ <div class="slds-text-heading--label">Box Stuff</div>
+<div class="slds-p-bottom--xx-large" id="bar" style="width:600px;height:600px;"></div>
+
+<!-- <div id="map"></div> -->
 
 <aura:iteration items="{!v.charts}" var="chart" indexVar="indx">
 <div class="slds-text-heading--label">{!chart.title}</div>

@@ -6,12 +6,16 @@
     display: block;
 }
 
+.THIS.selected {
+    background-color: #f0f8fc;
+}
+
 .THIS .post {
     cursor: pointer;
     display: table-cell;
     padding-right: 20px;
     vertical-align: middle;
-    width: 120px  
+    width: 120px
 }
 
 .THIS .story-content-mask {
@@ -36,7 +40,7 @@
     display: table-cell;
     padding-right: 20px;
     vertical-align: middle;
-    width: 120px  
+    width: 120px
 }
 
 .THIS .feeditem-headline {

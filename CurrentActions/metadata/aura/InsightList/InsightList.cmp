@@ -32,7 +32,8 @@
 
 <div>
 <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-<c:InsightCell insight="{!insight}"  index="{!indx}"/>
+<!-- <c:InsightCell insight="{!insight}"  index="{!indx}"/> -->
+<c:InsightPreviewCell insight="{!insight}" index="{!indx}" />
 </aura:iteration>
 </div>
 

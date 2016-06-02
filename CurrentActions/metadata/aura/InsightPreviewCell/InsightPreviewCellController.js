@@ -35,25 +35,58 @@
 		}
 		component.set("v.time", mod.format('ddd h:mm a'));
 
+		let index = component.get("v.index");
+		if (index === 0) {
+			console.log('select first');
+			let index_class = '#preview-cell-'+index;
+			$(index_class).addClass('selected');
+		}
+
 
 	},
 	doInit : function(component, event, helper) {
 
 		var insight = component.get("v.insight");
-        helper.assignIcon(component, insight);
+		helper.assignIcon(component, insight);
+
+
+
+
+	},
+
+	setSelectedInsight : function(component, event, helper) {
+		let selected_insight = event.getParam("insight");
+		let current_insight = component.get("v.insight");
+		let index = component.get("v.index");
+
+
+		let index_class = '#preview-cell-'+index;
+
+
+
+		if (selected_insight === current_insight) {
+			$(index_class).addClass('selected');
+			console.log('INSIGHTS MATCH '+index_class);
+			console.log(selected_insight.Path__c);
+			console.log(current_insight.Path__c);
+
+		} else {
+			$(index_class).removeClass('selected');
+		}
 
 	},
 
 
-    clickInsight : function(component, event, helper) {
 
-        var insight = component.get("v.insight");
+	clickInsight : function(component, event, helper) {
+
+		var insight = component.get("v.insight");
 
 
-        var selectEvent = $A.get("e.c:InsightEvent");
-        selectEvent.setParams({ "insight": insight });
-        selectEvent.fire();
+		var selectEvent = $A.get("e.c:InsightEvent");
+		selectEvent.setParams({ "insight": insight });
+		selectEvent.fire();
 
-    },
+	},
 
 })

@@ -24,7 +24,8 @@ public with sharing class InsightsController {
 
     Id user_id = UserInfo.getUserId();
 
-    String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC';
+    String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' ORDER BY CreatedDate DESC';
+    //+' AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC';
     return Database.query(query);
   }
 
@@ -95,13 +96,13 @@ public with sharing class InsightsController {
   }
 
   @AuraEnabled
-  public static String getFromS3 (String path) {
+  public static String getFromS3 (String path, String file) {
 
 
     CurrentActionsAdmin__c admin = [SELECT AWS_accessKeyId__c, AWS_secretAccessKey__c, AWS_region__c FROM CurrentActionsAdmin__c WHERE Active__c = TRUE][0];
 
-    String formattedDateString = Datetime.now().format('EEE, dd MMM yyyy HH:mm:ss z','America/Denver');    
-    String filename = path+'/store.json';
+    String formattedDateString = Datetime.now().format('EEE, dd MMM yyyy HH:mm:ss z','America/Denver');
+    String filename = path+'/'+file;
     //String bucketname = UserInfo.getOrganizationId().toLowerCase();
 
      //String filename = '00O61000003tHIaEAM/Other/005610000012IXIAA2/store.json';
@@ -121,8 +122,8 @@ public with sharing class InsightsController {
 
     req.setHeader('Content-Type', contentType);
     req.setMethod(method);
-    req.setHeader('Host','s3-' + region + '.amazonaws.com'); 
-    req.setEndpoint('https://s3-' + region + '.amazonaws.com' + '/'+ bucketname + '/' + filename);  
+    req.setHeader('Host','s3-' + region + '.amazonaws.com');
+    req.setEndpoint('https://s3-' + region + '.amazonaws.com' + '/'+ bucketname + '/' + filename);
     req.setHeader('Date', formattedDateString);
     req.setHeader('Authorization',createAuthHeader(method,contentType,filename,formattedDateString,bucketname,key,secret));
 
@@ -178,7 +179,7 @@ public with sharing class InsightsController {
 //        req.setEndpoint('https://s3' + region + '.amazonaws.com' + '/'+ bucketname + '/' + filename);   //path style
 //        req.setHeader('Date', formattedDateString);
 //        req.setHeader('Authorization',createAuthHeader(method,contentType,filename,formattedDateString,bucketname,key,secret));
-        
+
 //        if(binaryPDF != null && binaryPDF != ''){
 //          Blob pdfBlob = EncodingUtil.base64Decode(binaryPDF);
 //          req.setBodyAsBlob(pdfBlob);

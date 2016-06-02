@@ -17,7 +17,7 @@
 <div class="slds-page-header" role="banner">
   <div class="slds-grid">
     <div class="slds-col slds-has-flexi-truncate">
-      <p class="slds-text-heading--label slds-p-bottom--x-small">Current Actions</p>
+      <p class="slds-text-heading--label slds-p-bottom--x-small">Rezza</p>
       <div class="slds-grid">
 
         <div class="slds-grid slds-type-focus slds-no-space no-wrap slds-dropdown-trigger slds-dropdown-trigger--click" id="nav-dropdown" onclick="{!c.menu}">

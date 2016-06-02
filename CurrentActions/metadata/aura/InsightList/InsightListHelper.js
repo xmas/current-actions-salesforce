@@ -7,9 +7,11 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
             component.set("v.insights", actionResult.getReturnValue());
+
             window.scrollTo(0,0);
             //$("#ticket-event-list").accordion('activate', 0 );
-            jQuery(".selector").accordion("option", {active: 0});
+            //jQuery(".selector").accordion("option", {active: 0});
+
 
         });
         $A.enqueueAction(action);
@@ -46,7 +48,7 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
 
-            var result = actionResult.getReturnValue(); 
+            var result = actionResult.getReturnValue();
             console.log("setting new insights");
             component.set("v.insights", result);
             window.scrollTo(0,0);
@@ -201,7 +203,7 @@
 
 
         function logCustom(level, message, error) {
-            console.log(getTimestamp(), "logCustom: ", arguments); 
+            console.log(getTimestamp(), "logCustom: ", arguments);
         }
 
         function getTimestamp() {

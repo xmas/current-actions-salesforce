@@ -5,7 +5,8 @@
           var action = component.get("c.getFromS3");
         //debugger;
         action.setParams({
-            "path": insight["Path__c"]
+            "path": insight["Path__c"],
+            "file": "stats.json"
         });
         console.log(insight["Path__c"]);
 
@@ -13,61 +14,74 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
 
+            console.log('returned in charts helper');
+            console.log(actionResult.getReturnValue());
 
             try {
-            var store = JSON.parse(actionResult.getReturnValue());
-            var charts = [];
-            var rows = store.data.rows;
 
-            var headers = store.headers;
-            var labels = this.getLabels(rows);
+                let data = JSON.parse(actionResult.getReturnValue());
+                console.log(data);
+                let bar = data.bar;
 
-            var t_color = 'rgba(39, 65, 238';
-            var n_color = 'rgba(48, 131, 251';
-            var c_color = 'rgba(83, 81, 135';
-            var d_color = 'rgba(179, 37, 40';
+                Plotly.newPlot('bar', bar,  {margin: { t: 40 } }, { displaylogo: false});
 
-            for (var h_index = 0; h_index < headers.length; h_index++) {
-                var header = headers[h_index];
-                if (header.dataType === "int" || header.dataType === "currency") {
-                    var chart_data = {
-                        labels : labels,
-                        datasets: [
-                        {
-                            label: header.label,
-                            fillColor: t_color+",0.2)",
-                            strokeColor: t_color+",1)",
-                            pointColor: t_color+",1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: t_color+",1)",
-                            data: this.getValuesAtCol(rows, h_index)
-                        }]
-                    };
-                    var chart = {
-                        title : header.label,
-                        data : chart_data
-                    };
-                    charts.push(chart);
-                }
-            }
+                let box = data.box;
+                Plotly.newPlot('box', box,  {margin: { t: 40 } }, { displaylogo: false});
 
-            console.log('render charts: '+JSON.stringify(charts, null, 4));
 
-            component.set("v.charts", charts);
+          //   var store = JSON.parse(actionResult.getReturnValue());
+          //   var charts = [];
+          //   var rows = store.data.rows;
 
-            _.defer(function () {
-                var setCharts = component.get("v.charts");
-                Chart.defaults.global.scaleOverride = false;
-                for (var chart_index = 0; chart_index < setCharts.length; chart_index++) {
+          //   var headers = store.headers;
+          //   var labels = this.getLabels(rows);
 
-                    var chartid = '#detail-chart-'+chart_index;
-                    var ctx = $(chartid).get(0).getContext("2d");
-                  //var ctx = document.getElementById(chartid).getContext("2d");
-                  var myLineChart = new Chart(ctx).Bar(setCharts[chart_index].data);
+          //   var t_color = 'rgba(39, 65, 238';
+          //   var n_color = 'rgba(48, 131, 251';
+          //   var c_color = 'rgba(83, 81, 135';
+          //   var d_color = 'rgba(179, 37, 40';
 
-              }
-          }, 0);
+          //   for (var h_index = 0; h_index < headers.length; h_index++) {
+          //       var header = headers[h_index];
+          //       if (header.dataType === "int" || header.dataType === "currency") {
+          //           var chart_data = {
+          //               labels : labels,
+          //               datasets: [
+          //               {
+          //                   label: header.label,
+          //                   fillColor: t_color+",0.2)",
+          //                   strokeColor: t_color+",1)",
+          //                   pointColor: t_color+",1)",
+          //                   pointStrokeColor: "#fff",
+          //                   pointHighlightFill: "#fff",
+          //                   pointHighlightStroke: t_color+",1)",
+          //                   data: this.getValuesAtCol(rows, h_index)
+          //               }]
+          //           };
+          //           var chart = {
+          //               title : header.label,
+          //               data : chart_data
+          //           };
+          //           charts.push(chart);
+          //       }
+          //   }
+
+          //   console.log('render charts: '+JSON.stringify(charts, null, 4));
+
+          //   component.set("v.charts", charts);
+
+          //   _.defer(function () {
+          //       var setCharts = component.get("v.charts");
+          //       Chart.defaults.global.scaleOverride = false;
+          //       for (var chart_index = 0; chart_index < setCharts.length; chart_index++) {
+
+          //           var chartid = '#detail-chart-'+chart_index;
+          //           var ctx = $(chartid).get(0).getContext("2d");
+          //         //var ctx = document.getElementById(chartid).getContext("2d");
+          //         var myLineChart = new Chart(ctx).Bar(setCharts[chart_index].data);
+
+          //     }
+          // }, 0);
 
             //
 

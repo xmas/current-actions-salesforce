@@ -7,7 +7,10 @@ controller="InsightsController">
 
 <aura:handler event="c:InsightEvent" action="{!c.setSelectedInsight}"/>
 
-<div class="slds slds-p-around--small"> 
+<div class="slds slds-p-around--small">
+        <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+<c:InsightCell insight="{!insight}"  index="{!indx}"/>
+     </aura:iteration>
 
 
     <div class="slds-tabs--default">

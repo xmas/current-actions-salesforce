@@ -10,7 +10,7 @@
         var data_action = component.get("c.getInsightCounts");
         data_action.setCallback(this, function(actionResult) {
 
-            var result = JSON.parse(actionResult.getReturnValue()); 
+            var result = JSON.parse(actionResult.getReturnValue());
 
             component.set("v.global_total", result.all_users.total);
             component.set("v.global_new_changed", result.all_users.changed+result.all_users.new);
@@ -20,11 +20,11 @@
         });
         $A.enqueueAction(data_action);
 
-        var max_action = component.get("c.getMaxUpdateCount");
-        max_action.setCallback(this, function(actionResult) {
-            component.set("v.max_updated", actionResult.getReturnValue());
-        });
-        $A.enqueueAction(max_action);
+        // var max_action = component.get("c.getMaxUpdateCount");
+        // max_action.setCallback(this, function(actionResult) {
+        //     component.set("v.max_updated", actionResult.getReturnValue());
+        // });
+        // $A.enqueueAction(max_action);
 
     },
 
@@ -50,7 +50,7 @@
                         // self.clickInsight(component, event, helper, index);
                         // defer loading
                         // console.log(event);
-                        // console.log(ui); 
+                        // console.log(ui);
                         ui.oldHeader.toggleClass('active');
                         ui.newHeader.toggleClass('active');
                         //helper.markUnread(component, event, helper);
@@ -66,13 +66,12 @@
     },
 
 
-
     handleValueChange : function (component, event, helper) {
 
        if($) {
         $("#ticket-event-list").accordion({
             active: false,
-            collapsible: true    
+            collapsible: true
         });
         console.log('are we crashing on value change?');
         setTimeout(function () {
