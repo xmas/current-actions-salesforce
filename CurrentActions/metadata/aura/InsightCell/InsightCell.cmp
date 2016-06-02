@@ -75,17 +75,18 @@
     </div>
   </div>
 
-<div class="slds-p-bottom--xx-large">
+<div class="slds-p-bottom--x-small">
   <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
 </div>
-  <aura:unescapedHtml value="{!v.insight.Details__c}"/>
+
+  <!-- <aura:unescapedHtml value="{!v.insight.Details__c}"/> -->
 
 
-  <div class="slds-comment__content slds-text-longform slds-text-body--regular slds-p-top--medium slds-p-bottom--xx-large">
+<!--   <div class="slds-comment__content slds-text-longform slds-text-body-%-regular slds-p-top-%-medium slds-p-bottom-%-xx-large">
   </div>
 
-  <button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.showModal}">{!'See all '+v.insight.SObject_Count__c}</button>
-  <button class="dropdown-float slds-button slds-button--neutral slds-button--brand " onclick="{!c.markUnread}">Mark Unread</button>
+  <button class="slds-button slds-button-%-neutral slds-button-%-brand" onclick="{!c.showModal}">{!'See all '+v.insight.SObject_Count__c}</button>
+  <button class="dropdown-float slds-button slds-button-%-neutral slds-button-%-brand " onclick="{!c.markUnread}">Mark Unread</button> -->
 
 </div>
 
