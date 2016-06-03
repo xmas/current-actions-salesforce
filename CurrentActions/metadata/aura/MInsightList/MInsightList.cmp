@@ -18,40 +18,39 @@
 
 
 <div class="slds">
-     <!-- Swiper -->
-    <div class="swiper-container swiper-container-v sizer">
-        <div class="swiper-wrapper sizer">
-            <div class="swiper-slide sizer">
-                <div class="slds-page-header" role="banner">
+   <!-- Swiper -->
+   <div class="swiper-container swiper-container-v sizer">
+    <div class="swiper-wrapper sizer">
+        <div class="swiper-slide sizer" style="background-color:#E9003E">
+            <div class="slds-page-header" role="banner">
                 <div class="slds-media__body">
                   <p class="slds-page-header__title slds-truncate slds-align-middle" >Insights</p>
                   <p class="slds-text-body--small slds-page-header__info">There are {!v.insights.length} available.</p>
-
-
-
               </div>
           </div>
-                           <div style="justify-content: center ; align-items: center;">
-                   <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
-                   </div>
+          <div style="justify-content: center ; align-items: center;">
+             <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+         </div>
 
-      </div>
+     </div>
 
-            <div class="swiper-slide sizer">
-                <div class="swiper-container swiper-container-h sizer">
-                    <div class="swiper-wrapper sizer">
-                        <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-                        <div class="swiper-slide sizer">
-                            <c:InsightPreviewCell insight="{!insight}" index="{!indx}" />
-                            <c:InsightCell insight="{!insight}" index="{!indx}" />
+     <div class="swiper-slide sizer">
+        <div class="swiper-container swiper-container-h sizer">
+            <div class="swiper-wrapper sizer">
+                <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+                <div class="swiper-slide sizer">
+                    <c:InsightPreviewCell insight="{!insight}" index="{!indx}" />
+                    <c:InsightCell insight="{!insight}" index="{!indx}" />
 
-                        </div>
-                        </aura:iteration>
-                    </div>
                 </div>
-            </div>
+            </aura:iteration>
         </div>
+        <div class="swiper-pagination"></div>
+
     </div>
+</div>
+</div>
+</div>
 </div>
 
 </aura:component>

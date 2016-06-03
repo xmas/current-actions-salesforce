@@ -14,7 +14,9 @@
                 var swiperH = new Swiper('.swiper-container-h', {
                     pagination: '.swiper-pagination-h',
                     paginationClickable: true,
-                    spaceBetween: 50
+                    spaceBetween: 50,
+                    pagination: '.swiper-pagination',
+                    paginationType: 'progress'
                 });
                 var swiperV = new Swiper('.swiper-container-v', {
                     pagination: '.swiper-pagination-v',

@@ -1,9 +1,17 @@
+.THIS {
+    position:absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.THIS.slds {
+    height: 100%;
+}
 
 .THIS .swiper-container {
     width: 100%;
     height: 100%;
 }
-
 
 .THIS .swiper-slide {
     text-align: center;
@@ -21,7 +29,6 @@
     top: 50%;
 }
 
-
 .THIS .sizer {
     position: relative;
     height: 100%;
@@ -29,12 +36,11 @@
     padding: 0;
 }
 
-.THIS.slds {
-    height: 100%;
+.THIS .swiper-pagination-progress .swiper-pagination-progressbar {
+    background: #E9003E;
 }
 
-.THIS {
-    position:absolute;
-    height: 100%;
-    width: 100%;
+.THIS .swiper-pagination-progress {
+    background: #CDCDCD;
 }
+
