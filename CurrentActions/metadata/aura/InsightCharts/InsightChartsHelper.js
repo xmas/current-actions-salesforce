@@ -19,14 +19,14 @@
 
             try {
 
-                let data = JSON.parse(actionResult.getReturnValue());
+                var data = JSON.parse(actionResult.getReturnValue());
                 console.log(data);
-                let bar = data.bar;
+                var bar = data.bar;
                 bar[0].autosize = true;
 
                 Plotly.newPlot('bar', bar,  {margin: { t: 40 } }, { displaylogo: false});
 
-                let box = data.box;
+                var box = data.box;
                 box[0].autosize = true;
 
                 Plotly.newPlot('box', box,  {margin: { t: 40 } }, { displaylogo: false});
