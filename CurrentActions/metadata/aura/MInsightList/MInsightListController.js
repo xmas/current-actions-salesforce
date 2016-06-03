@@ -1,22 +1,15 @@
 ({
   doInit : function(component, event, helper) {
 
-
+        //Fetch the insight list from the Apex controller
+        helper.getInsightList(component);
+        //helper.registerServiceWorker();
+        helper.sampleControllerAction(component);
   },
 
   postScript: function(component, event, helper) {
 
-    var swiperH = new Swiper('.swiper-container-h', {
-        pagination: '.swiper-pagination-h',
-        paginationClickable: true,
-        spaceBetween: 50
-    });
-    var swiperV = new Swiper('.swiper-container-v', {
-        pagination: '.swiper-pagination-v',
-        paginationClickable: true,
-        direction: 'vertical',
-        spaceBetween: 50
-    });
+
   },
 
 

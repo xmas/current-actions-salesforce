@@ -1,18 +1,52 @@
 <aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes">
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/Swiper/css/swiper.min.css" scripts="/resource/Swiper/js/swiper.min.js"  afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/Swiper/css/swiper.min.css" scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore"  afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:attribute name="insights" type="List" />
+
+<aura:attribute name="title" type="String" default="Show All"/>
+
+<aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
+
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+<aura:attribute name="inited" type="Boolean" default="false"/>
+
+<aura:handler event="c:modalClose" action="{!c.closeModal}"/>
+<aura:handler event="c:modalOpen" action="{!c.openModal}"/>
+
+<aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
+
 
 <div class="slds">
      <!-- Swiper -->
     <div class="swiper-container swiper-container-v sizer">
         <div class="swiper-wrapper sizer">
-            <div class="swiper-slide sizer" style="background-color:red">HOME PAGE</div>
+            <div class="swiper-slide sizer">
+                <div class="slds-page-header" role="banner">
+                <div class="slds-media__body">
+                  <p class="slds-page-header__title slds-truncate slds-align-middle" >Insights</p>
+                  <p class="slds-text-body--small slds-page-header__info">There are {!v.insights.length} available.</p>
+
+
+
+              </div>
+          </div>
+                           <div style="justify-content: center ; align-items: center;">
+                   <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+                   </div>
+
+      </div>
 
             <div class="swiper-slide sizer">
                 <div class="swiper-container swiper-container-h sizer">
                     <div class="swiper-wrapper sizer">
-                        <div class="swiper-slide sizer" style="background-color:green">Horizontal Slide 1</div>
-                        <div class="swiper-slide" style="background-color:orange">Horizontal Slide 3</div>
-                        <div class="swiper-slide" style="background-color:gray">Horizontal Slide 4</div>
+                        <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+                        <div class="swiper-slide sizer">
+                            <c:InsightPreviewCell insight="{!insight}" index="{!indx}" />
+                            <c:InsightCell insight="{!insight}" index="{!indx}" />
+
+                        </div>
+                        </aura:iteration>
                     </div>
                 </div>
             </div>

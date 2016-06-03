@@ -6,7 +6,23 @@
         //Set up the callback
         var self = this;
         action.setCallback(this, function(actionResult) {
-            component.set("v.insights", actionResult.getReturnValue());
+            var results =actionResult.getReturnValue();
+
+            component.set("v.insights", results);
+
+            _.defer(function () {
+                var swiperH = new Swiper('.swiper-container-h', {
+                    pagination: '.swiper-pagination-h',
+                    paginationClickable: true,
+                    spaceBetween: 50
+                });
+                var swiperV = new Swiper('.swiper-container-v', {
+                    pagination: '.swiper-pagination-v',
+                    paginationClickable: true,
+                    direction: 'vertical',
+                    spaceBetween: 50
+                });
+            });
         });
         $A.enqueueAction(action);
     },
