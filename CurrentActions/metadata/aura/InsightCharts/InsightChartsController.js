@@ -64,15 +64,15 @@
     //   return chart;
     // });
 
-    // let data = {"bar":[{"x":["Customer - Direct","Customer - Direct","Customer - Direct","Customer - Direct","Customer - Channel","","Customer - Channel","Customer - Direct","Customer - Channel","Customer - Direct","Customer - Direct","Customer - Channel"],"y":["","500000000","","","950000000","","30000000","350000000","50000000","139000000","5600000000","950000000"],"type":"bar"}],"box":[{"y":["","500000000","","","950000000","","30000000","350000000","50000000","139000000","5600000000","950000000"],"name":"Annual Revenue","type":"box"}],"choropleth":[{"type":"choropleth","locationmode":"USA-states","locations":["UK","IL","Singapore","AZ","","CA","CA","NC","KS","TX","NY","OR"],"z":["","500000000","","","950000000","","30000000","350000000","50000000","139000000","5600000000","950000000"],"text":["Customer - Direct","Customer - Direct","Customer - Direct","Customer - Direct","Customer - Channel","","Customer - Channel","Customer - Direct","Customer - Channel","Customer - Direct","Customer - Direct","Customer - Channel"],"zmin":null,"zmax":null,"colorscale":[[0,"rgb(242,240,247)"],[0.2,"rgb(218,218,235)"],[0.4,"rgb(188,189,220)"],[0.6,"rgb(158,154,200)"],[0.8,"rgb(117,107,177)"],[1,"rgb(84,39,143)"]],"colorbar":{"title":"Dollars USD","thickness":0.2},"marker":{"line":{"color":"rgb(255,255,255)","width":2}}}]};
+    // var data = {"bar":[{"x":["Customer - Direct","Customer - Direct","Customer - Direct","Customer - Direct","Customer - Channel","","Customer - Channel","Customer - Direct","Customer - Channel","Customer - Direct","Customer - Direct","Customer - Channel"],"y":["","500000000","","","950000000","","30000000","350000000","50000000","139000000","5600000000","950000000"],"type":"bar"}],"box":[{"y":["","500000000","","","950000000","","30000000","350000000","50000000","139000000","5600000000","950000000"],"name":"Annual Revenue","type":"box"}],"choropleth":[{"type":"choropleth","locationmode":"USA-states","locations":["UK","IL","Singapore","AZ","","CA","CA","NC","KS","TX","NY","OR"],"z":["","500000000","","","950000000","","30000000","350000000","50000000","139000000","5600000000","950000000"],"text":["Customer - Direct","Customer - Direct","Customer - Direct","Customer - Direct","Customer - Channel","","Customer - Channel","Customer - Direct","Customer - Channel","Customer - Direct","Customer - Direct","Customer - Channel"],"zmin":null,"zmax":null,"colorscale":[[0,"rgb(242,240,247)"],[0.2,"rgb(218,218,235)"],[0.4,"rgb(188,189,220)"],[0.6,"rgb(158,154,200)"],[0.8,"rgb(117,107,177)"],[1,"rgb(84,39,143)"]],"colorbar":{"title":"Dollars USD","thickness":0.2},"marker":{"line":{"color":"rgb(255,255,255)","width":2}}}]};
 
-    // let bar = data.bar;
+    // var bar = data.bar;
     // Plotly.newPlot('bar', bar,  {margin: { t: 40 } }, { displaylogo: false});
 
-    // let box = data.box;
+    // var box = data.box;
     // Plotly.newPlot('box', box,  {margin: { t: 40 } }, { displaylogo: false});
 
-    // let map = data.choropleth;
+    // var map = data.choropleth;
     // var layout = {
     //   title: 'Accounts Export',
     //   geo:{
