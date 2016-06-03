@@ -40,7 +40,7 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
 
-            var result = actionResult.getReturnValue(); 
+            var result = actionResult.getReturnValue();
             console.log("setting new insights");
             component.set("v.insights", result);
 
@@ -83,7 +83,7 @@
 
 
         function logCustom(level, message, error) {
-            console.log(getTimestamp(), "logCustom: ", arguments); 
+            console.log(getTimestamp(), "logCustom: ", arguments);
         }
 
         function getTimestamp() {

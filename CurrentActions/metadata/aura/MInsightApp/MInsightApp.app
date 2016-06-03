@@ -1,5 +1,5 @@
 <aura:application >
 
-<c:ViewController />  
+<c:MInsightList />
 
 </aura:application>
