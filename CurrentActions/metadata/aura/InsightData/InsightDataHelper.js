@@ -79,7 +79,7 @@
             });
 
         } catch (error) {
-            console.log('error on getting data from S3: '+error);
+            console.log('Data Helper: error on getting data from S3: '+error);
         }
 
         });
