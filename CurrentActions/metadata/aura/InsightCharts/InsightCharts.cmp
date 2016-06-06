@@ -1,59 +1,26 @@
 <aura:component controller="InsightsController">
 
-<ltng:require styles="/resource/DataTables/datatables.css,/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/nvd3/nv.d3.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore,/resource/plotly" afterScriptsLoaded="{!c.postScript}" />
-
-<!-- resource/d3/d3plus.v1.9.3/js/d3plus.full.min.js -->
-<!-- /resource/d3/d3plus.v1.9.3/js/d3plus.full.min.js,/resource/nvd3/nv.d3.js, -->
-
-
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/underscore,/resource/plotly" afterScriptsLoaded="{!c.postScript}" />
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-
 <aura:registerEvent name="modal_close" type="c:modalClose"/>
 <aura:attribute name="insight" type="Insight__c" />
-
 <aura:attribute name="charts" type="List" />
 
 <div class="slds">
+  <div class="slds-grid slds-wrap slds-grid--pull-padded">
 
-<!-- <div id="viz"></div> -->
+    <aura:iteration items="{!v.charts}" var="chart" indexVar="indx">
+      <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2">
+        <div class="slds-box slds-p-around--small">
+          <div class="slds-text-heading--label">{!indx}</div>
+          <div class="slds-p-bottom--xx-large" id="{!'foo-chart-'+indx}" style="width: 100%; height: 300px;"></div>
+        </div>
+      </div>
+    </aura:iteration>
 
-<!-- <hr></hr>
-
- <div class="gallery" id="chart1">
-    <c:svg></c:svg>
   </div>
- -->
-
- <div class="slds-grid slds-wrap slds-grid--pull-padded">
-
-  <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2">
-      <div class="slds-box slds-p-around--small">
-         <div class="slds-text-heading--label">Distrubution</div>
-         <div class="slds-p-bottom--xx-large" id="box" style="width: 100%; height: 300px;"></div>
-     </div>
- </div>
-
-
- <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2">
-   <div class="slds-box slds-p-around--small">
-       <div class="slds-text-heading--label">Box Stuff</div>
-       <div class="slds-p-bottom--xx-large" id="bar" style="width: 100%; height: 300px;"></div>
-   </div>
-</div>
-
 </div>
 
 
-
-<!-- <div id="map"></div> -->
-
-<aura:iteration items="{!v.charts}" var="chart" indexVar="indx">
-<div class="slds-text-heading--label">{!chart.title}</div>
-<div class="slds-p-bottom--xx-large">
-  <canvas id="{!'detail-chart-'+indx}" width="600" height="300"></canvas>
-</div>
-</aura:iteration>
-
-</div>
 </aura:component>
