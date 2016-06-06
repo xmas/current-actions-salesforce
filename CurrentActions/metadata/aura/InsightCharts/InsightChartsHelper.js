@@ -24,7 +24,29 @@
             charts.push(store.stats[chart]);
           }
         } else {
-          debugger;
+
+          for (var member in store) {
+            if (member === "insght") {
+              continue;
+            }
+
+            var chart_obj = store[member];
+            console.log(chart_obj);
+
+            var stats = chart_obj.stats;
+            console.log(stats);
+
+            for (var chart in stats) {
+                var chart_push = stats[chart];
+                chart_push.title = member;
+                console.log(chart_push);
+                charts.push(chart_push);
+            }
+
+
+          }
+
+
         }
 
         component.set("v.charts", charts);

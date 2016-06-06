@@ -1,6 +1,6 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId"
 controller="InsightsController">
-<ltng:require styles="/resource/SLDS0121/assets/styles/salesforce-lightning-design-system-ltng.css" />
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" />
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:attribute name="insights" type="List" />
