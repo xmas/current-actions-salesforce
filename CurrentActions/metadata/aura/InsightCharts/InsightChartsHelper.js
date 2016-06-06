@@ -42,11 +42,7 @@
                 console.log(chart_push);
                 charts.push(chart_push);
             }
-
-
           }
-
-
         }
 
         component.set("v.charts", charts);
@@ -62,7 +58,7 @@
           } else {
             console.log('delaying render charts from the deferred');
 
-            _.delay(helper.renderCharts(component), 10000);
+            //_.delay(helper.renderCharts(component), 10000);
           }
         })
 
@@ -89,6 +85,7 @@
 
         console.log(chart_id+':' + chart);
         console.log(document.readyState);
+
         Plotly.newPlot(chart_id.toLowerCase(), chart,  {margin: { t: 40 } }, { displaylogo: false});
       }
     } catch (error) {
