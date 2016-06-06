@@ -79,9 +79,10 @@
   <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
 </div>
 
+<div class="slds-p-bottom--small">
 <aura:unescapedHtml value="{!v.insight.Long_Name__c}"/>
-
-  <aura:unescapedHtml value="{!v.insight.Details__c}"/>
+</div>
+<aura:unescapedHtml value="{!v.insight.Details__c}"/>
 
 
 <!--   <div class="slds-comment__content slds-text-longform slds-text-body-%-regular slds-p-top-%-medium slds-p-bottom-%-xx-large">
