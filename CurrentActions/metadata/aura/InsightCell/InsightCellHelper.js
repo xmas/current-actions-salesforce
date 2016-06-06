@@ -185,7 +185,7 @@
         var myLineChart = new Chart(ctx).Line(data);
 
     }  catch (e) {
-        console.log(insight.Chart__c);
+        console.log(insight);
     }
 }
 
