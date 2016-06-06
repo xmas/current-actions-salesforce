@@ -41,6 +41,8 @@
                 <div class="swiper-slide sizer">
                     <c:InsightPreviewCell insight="{!insight}" index="{!indx}" />
                     <c:InsightCell insight="{!insight}" index="{!indx}" />
+                    <!-- <c:InsightCharts insight="{!insight}" /> -->
+
 
                 </div>
             </aura:iteration>

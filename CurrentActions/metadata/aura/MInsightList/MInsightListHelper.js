@@ -16,13 +16,14 @@
                     paginationClickable: true,
                     spaceBetween: 50,
                     pagination: '.swiper-pagination',
-                    paginationType: 'progress'
+                    paginationType: 'progress',
+                    mousewheelControl : true
                 });
                 var swiperV = new Swiper('.swiper-container-v', {
                     pagination: '.swiper-pagination-v',
                     paginationClickable: true,
                     direction: 'vertical',
-                    spaceBetween: 50
+                    spaceBetween: 50,
                 });
             });
         });

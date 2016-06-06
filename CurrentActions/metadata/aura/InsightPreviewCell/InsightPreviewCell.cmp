@@ -33,7 +33,7 @@
              <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
       </div>
 
-      <p>{!v.insight.Details__c}</p>
+      <p>{!v.insight.Long_Name__c}</p>
 
     </div>
   </div>
