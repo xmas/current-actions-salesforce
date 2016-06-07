@@ -1,8 +1,9 @@
 <aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes">
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/Swiper/css/swiper.min.css" scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore"  afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/Swiper/css/swiper.min.css" scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore,/resource/ga"  afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:attribute name="insights" type="List" />
+<aura:attribute name="chart_data" type="List" />
 
 <aura:attribute name="title" type="String" default="Show All"/>
 
@@ -22,7 +23,7 @@
 
 <div class="slds">
 
-    <div aria-hidden="true" role="dialog" class="slds-modal allow-scroll slds-modal--prompt slds-fade-in-hide" aura:id="modaldialog">
+    <div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide" aura:id="modaldialog">
         <div class="slds-modal__header slds-theme--info">
           <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="{!c.hidePopup}">
             <c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close">
@@ -63,8 +64,8 @@
             <div class="swiper-wrapper sizer">
                 <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
                 <div class="swiper-slide sizer">
-                    <c:InsightPreviewCell insight="{!insight}" index="{!indx}" />
-                    <c:InsightCell insight="{!insight}" index="{!indx}" />
+                    <c:InsightPreviewCell aura:id="{!indx}-minsight-cell" insight="{!insight}" index="{!indx}" />
+                    <!-- <c:InsightCell insight="{!insight}" index="{!indx}" /> -->
                     <!-- <c:InsightCharts insight="{!insight}" /> -->
 
 

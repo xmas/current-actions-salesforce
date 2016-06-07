@@ -16,7 +16,10 @@
                     spaceBetween: 50,
                     pagination: '.swiper-pagination',
                     paginationType: 'progress',
-                    onSlideChangeStart : helper.swiperSlideChangeStartForward
+                    onSlideChangeStart : helper.swiperSlideChangeStartForward,
+                    onTouchStart: helper.onTouchStart,
+                    onTouchMove: helper.onTouchStart,
+                    onSlideChangeEnd : helper.onSlideChangeEnd
 
                 });
                 component.set("v.swiperH", swiperH);
@@ -24,6 +27,7 @@
                     pagination: '.swiper-pagination-v',
                     direction: 'vertical',
                     spaceBetween: 50,
+                    onSlideChangeEnd : helper.onSlideChangeEnd
                 });
                 component.set("v.swiperV", swiperH);
 
@@ -32,9 +36,19 @@
         $A.enqueueAction(action);
     },
 
+    onSlideChangeEnd : function (swiper) {
+         ga('send', 'event', 'Swiper', 'swipe', swiper.activeIndex);
+         ga(function(tracker) {
+          console.log(tracker.get('clientId'));
+      });
+     },
 
-    swiperSlideChangeStartForward : function (component, swiper) {
+    swiperSlideChangeStartForward : function (swiper) {
         console.log('got start envent');
+    },
+
+    onTouchStart : function(swiper, event) {
+        console.log(event);
     },
 
     showPopupHelper: function(component, componentId, className){
@@ -68,6 +82,7 @@
 
         $A.util.removeClass(modal, className+'hide');
         $A.util.addClass(modal, className+'open');
+        $A.util.toggleClass(modal, 'allow-scroll');
     },
 
     hidePopupHelper: function(component, componentId, className){
@@ -77,6 +92,8 @@
         var swiperV = component.get("v.swiperV");
         swiperH.attachEvents();
         swiperV.attachEvents();
+
+        $A.util.toggleClass(modal, 'allow-scroll');
 
         $A.util.addClass(modal, className+'hide');
         $A.util.removeClass(modal, className+'open');
