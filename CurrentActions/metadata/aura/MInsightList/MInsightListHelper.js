@@ -1,6 +1,6 @@
 ({
     //Fetch the insights from the Apex controller
-    getInsightList: function(component) {
+    getInsightList: function(component, helper) {
         var action = component.get("c.getInsights");
 
         //Set up the callback
@@ -13,21 +13,74 @@
             _.defer(function () {
                 var swiperH = new Swiper('.swiper-container-h', {
                     pagination: '.swiper-pagination-h',
-                    paginationClickable: true,
                     spaceBetween: 50,
                     pagination: '.swiper-pagination',
                     paginationType: 'progress',
-                    mousewheelControl : true
+                    onSlideChangeStart : helper.swiperSlideChangeStartForward
+
                 });
+                component.set("v.swiperH", swiperH);
                 var swiperV = new Swiper('.swiper-container-v', {
                     pagination: '.swiper-pagination-v',
-                    paginationClickable: true,
                     direction: 'vertical',
                     spaceBetween: 50,
                 });
+                component.set("v.swiperV", swiperH);
+
             });
         });
         $A.enqueueAction(action);
+    },
+
+
+    swiperSlideChangeStartForward : function (component, swiper) {
+        console.log('got start envent');
+    },
+
+    showPopupHelper: function(component, componentId, className){
+        var modal = component.find(componentId);
+        var swiperH = component.get("v.swiperH");
+        var swiperV = component.get("v.swiperV");
+        swiperH.detachEvents();
+        swiperV.detachEvents();
+
+        var index = swiperH.activeIndex;
+        console.log('swuper index: '+index);
+        var insights = component.get("v.insights");
+        var insight = insights[index];
+        console.log(insight)
+
+         $A.createComponent(
+            "c:InsightCharts",
+            {
+                "insight": insight,
+            },
+            function(newChart){
+                //Add the new button to the body array
+                if (component.isValid()) {
+                    var body = component.get("v.body");
+                    body.push(newChart);
+                    component.set("v.body", newChart);
+                    //newModal.set("v.parent", [component]);
+                }
+            }
+            );
+
+        $A.util.removeClass(modal, className+'hide');
+        $A.util.addClass(modal, className+'open');
+    },
+
+    hidePopupHelper: function(component, componentId, className){
+        var modal = component.find(componentId);
+
+        var swiperH = component.get("v.swiperH");
+        var swiperV = component.get("v.swiperV");
+        swiperH.attachEvents();
+        swiperV.attachEvents();
+
+        $A.util.addClass(modal, className+'hide');
+        $A.util.removeClass(modal, className+'open');
+        component.set("v.body", "");
     },
 
     getInsightAssocList: function(component, assoc_id) {

@@ -8,13 +8,17 @@
     height: 100%;
 }
 
+.THIS .slds-modal.allow-scroll {
+    overflow-y: scroll;
+}
+
 .THIS .swiper-container {
     width: 100%;
     height: 100%;
 }
 
 .THIS .swiper-slide {
-    text-align: center;
+    text-align: left;
     font-size: 18px;
 }
 
@@ -44,3 +48,47 @@
     background: #CDCDCD;
 }
 
+.THIS .insight-count {
+    font-size:200px;
+    color:#E9003E;
+    font-weight:800;
+    text-align: center;
+}
+
+.THIS .valign {
+}
+
+.THIS .insight-tag.slds-text-heading--label {
+    font-size:50px;
+    color:#292731;
+    font-weight:800
+}
+
+.THIS .cta-tag {
+    font-size:30px;
+    color:#292731;
+    font-weight:800
+}
+
+@media (max-width:680px) { /* smartphones, iPhone, portrait 480x320 phones */
+    .THIS .valign {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  .THIS .insight-count {
+    font-size:100px;
+    color:#E9003E;
+    font-weight:800;
+}
+
+.THIS .insight-tag.slds-text-heading--label {
+    font-size:20px;
+}
+
+.THIS .cta-tag {
+    font-size:16px;
+}
+
+}

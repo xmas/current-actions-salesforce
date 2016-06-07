@@ -14,13 +14,15 @@
 <aura:handler event="c:modalClose" action="{!c.closeModal}"/>
 <aura:handler event="c:modalOpen" action="{!c.openModal}"/>
 
-<aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
+<aura:attribute name="swiperH" type="Object" />
+<aura:attribute name="swiperV" type="Object" />
 
+<aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <div class="slds">
 
-    <div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide" aura:id="modaldialog">
-      <div class="slds-modal__container">
+    <div aria-hidden="true" role="dialog" class="slds-modal allow-scroll slds-modal--prompt slds-fade-in-hide" aura:id="modaldialog">
         <div class="slds-modal__header slds-theme--info">
           <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="{!c.hidePopup}">
             <c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close">
@@ -29,30 +31,30 @@
         </button>
         <h2 class="slds-text-heading--medium">Your Title</h2>
       </div>
-      <div class="slds-modal__content slds-p-around--medium">
+      <div class="slds-modal__content slds-p-around--medium" >
         <div>
           <p>{!v.body}</p>
         </div>
       </div>
-    </div>
   </div>
 
     <div class="slds-backdrop slds-backdrop--hide" aura:id="backdrop">
     </div>
 
+    <!-- <button class="slds-button " onclick="{!c.showPopup}"> Open </button> -->
+    <ui:button aura:id="button" buttonTitle="Open" class="slds-button slds-button--brand"  label="Details" press="{!c.showPopup}"/>
+
    <!-- Swiper -->
    <div class="swiper-container swiper-container-v sizer">
     <div class="swiper-wrapper sizer">
-        <div class="swiper-slide sizer" style="background-color:#E9003E">
-            <div class="slds-page-header" role="banner">
-                <div class="slds-media__body">
-                  <p class="slds-page-header__title slds-truncate slds-align-middle" >Insights</p>
-                  <p class="slds-text-body--small slds-page-header__info">There are {!v.insights.length} available.</p>
+        <div class="swiper-slide sizer" style="background-color:white">
+                <div class="slds-media__body valign">
+                  <p class="slds-align-middle insight-count" >{!v.insights.length}</p>
+                  <p class="slds-m-horizontal--large slds-text-heading--label insight-tag">Personalized Insights.</p>
+                  <p class="slds-m-horizontal--large cta-tag" >Swipe up to review.</p>
+
               </div>
-          </div>
-          <div style="justify-content: center ; align-items: center;">
-             <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
-         </div>
+
 
      </div>
 
