@@ -49,6 +49,8 @@
 
     onTouchStart : function(swiper, event) {
         console.log(event);
+        var current_index = swiper.activeIndex + 1;
+
     },
 
     showPopupHelper: function(component, componentId, className){
