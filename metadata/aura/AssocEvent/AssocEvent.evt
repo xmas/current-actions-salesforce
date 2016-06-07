@@ -1,7 +1,0 @@
-<aura:event type="APPLICATION">
-	<aura:attribute name="assocID" type="String"/>
-	<aura:attribute name="reportID" type="Id"/>
-    <aura:attribute name="label" type="String"/>
-	<aura:attribute name="title" type="String"/>
-
-</aura:event>

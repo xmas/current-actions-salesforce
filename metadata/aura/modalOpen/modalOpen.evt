@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="Event template">
-    <aura:attribute name="modal_open" type="Insight__c"/>
-</aura:event>

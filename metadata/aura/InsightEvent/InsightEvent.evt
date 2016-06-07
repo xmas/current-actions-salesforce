@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="Insight selection event">
-    <aura:attribute name="insight" type="Insight__c" />
-</aura:event>

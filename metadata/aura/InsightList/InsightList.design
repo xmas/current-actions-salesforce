@@ -1,5 +1,0 @@
-<design:component label="Insight List">
-    <design:attribute name="omnifocus" label="omnifocus" description="Show OmniFocus button" />
-
-
-</design:component>
