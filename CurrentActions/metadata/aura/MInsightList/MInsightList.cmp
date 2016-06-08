@@ -1,10 +1,12 @@
-<aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes">
+<aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes,force:appHostable" >
 <ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/Swiper/css/swiper.min.css" scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore,/resource/ga"  afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:attribute name="insights" type="List" />
 <aura:attribute name="chart_data" type="List" />
 <aura:attribute name="user_name" type="String" default="Kevin" />
+<aura:attribute name="sf1_color" type="String" />
+
 
 <aura:attribute name="title" type="String" default="Show All"/>
 
@@ -20,31 +22,32 @@
 <aura:attribute name="swiperV" type="Object" />
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
 
 <div class="slds">
 
-    <div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide" aura:id="modaldialog">
-        <div class="slds-modal__header slds-theme--info">
-          <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="{!c.hidePopup}">
-            <c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close">
-          </c:svg>
-          <span class="slds-assistive-text">Close</span>
-        </button>
-        <h2 class="slds-text-heading--medium">Your Title</h2>
+  <div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide allow-scroll" aura:id="modaldialog">
+  <div class=" scroller ">
+      <div class="slds-modal__header slds-theme--info">
+        <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="{!c.hidePopup}">
+          <c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close">
+        </c:svg>
+        <span class="slds-assistive-text">Close</span>
+      </button>
+      <h2 class="slds-text-heading--medium">Your Title</h2>
+    </div>
+    <div class="slds-modal__content slds-p-around--medium" >
+      <div>
+        <p>{!v.body}</p>
       </div>
-      <div class="slds-modal__content slds-p-around--medium" >
-        <div>
-          <p>{!v.body}</p>
-        </div>
-      </div>
+    </div>
   </div>
+</div>
 
     <div class="slds-backdrop slds-backdrop--hide" aura:id="backdrop">
     </div>
 
     <!-- <button class="slds-button " onclick="{!c.showPopup}"> Open </button> -->
-    <ui:button aura:id="button" buttonTitle="Open" class="slds-button slds-button--brand"  label="Details" press="{!c.showPopup}"/>
 
    <!-- Swiper -->
    <div class="swiper-container swiper-container-v sizer">
@@ -59,6 +62,7 @@
                   <div class="insight-count" >{!v.insights.length}</div>
                   <div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
                   <p class="cta-tag" >Swipe up to review.</p>
+    <ui:button aura:id="button" buttonTitle="Open" class="slds-button slds-button--brand"  label="Details" press="{!c.showPopup}"/>
 
             </div>
 
@@ -70,7 +74,8 @@
             <div class="swiper-wrapper sizer">
                 <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
                 <div class="swiper-slide sizer">
-                    <c:InsightPreviewCell aura:id="{!indx}-minsight-cell" insight="{!insight}" index="{!indx}" />
+                    <c:MInsightCell aura:id="{!indx}-minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+
                     <!-- <c:InsightCell insight="{!insight}" index="{!indx}" /> -->
                     <!-- <c:InsightCharts insight="{!insight}" /> -->
 

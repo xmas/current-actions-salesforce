@@ -10,6 +10,7 @@
 
 .THIS .slds-modal.allow-scroll {
     overflow-y: scroll;
+    height: 100%;
 }
 
 .THIS .swiper-container {

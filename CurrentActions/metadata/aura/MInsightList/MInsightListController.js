@@ -5,6 +5,20 @@
         helper.getInsightList(component, helper);
         //helper.registerServiceWorker();
         helper.sampleControllerAction(component);
+
+        var oneHeader = document.getElementById('oneHeader');
+        oneHeader.style.backgroundColor='#292731';
+        oneHeader.style.transition = 0.5;
+
+        var x = document.getElementsByClassName("toggleNav")[0];
+        var sf1_color = x.style.color;
+        component.set("v.sf1_color", sf1_color);
+        x.addEventListener("click", function(){
+          if (component.isValid()) {
+            oneHeader.style.backgroundColor = component.get("v.sf1_color");
+            document.getElementById('oneHeader').style.transition = 0.5;
+          }
+        });
   },
 
   postScript: function(component, event, helper) {

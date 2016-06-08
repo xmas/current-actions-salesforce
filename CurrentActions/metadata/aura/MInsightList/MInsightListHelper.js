@@ -84,7 +84,12 @@
 
         $A.util.removeClass(modal, className+'hide');
         $A.util.addClass(modal, className+'open');
-        $A.util.toggleClass(modal, 'allow-scroll');
+       // $A.util.toggleClass(modal, 'allow-scroll');
+
+       var targetEl = component.getElement();
+       targetEl.addEventListener("touchmove", function(e) {
+        e.stopPropagation();
+    }, false);
     },
 
     hidePopupHelper: function(component, componentId, className){
@@ -95,11 +100,14 @@
         swiperH.attachEvents();
         swiperV.attachEvents();
 
-        $A.util.toggleClass(modal, 'allow-scroll');
+      //  $A.util.toggleClass(modal, 'allow-scroll');
 
         $A.util.addClass(modal, className+'hide');
         $A.util.removeClass(modal, className+'open');
         component.set("v.body", "");
+
+         var targetEl = component.getElement();
+       targetEl.removeEventListener("touchmove");
     },
 
     getInsightAssocList: function(component, assoc_id) {
