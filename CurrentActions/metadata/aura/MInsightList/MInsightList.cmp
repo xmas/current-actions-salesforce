@@ -22,7 +22,7 @@
 <aura:attribute name="swiperV" type="Object" />
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <div class="slds">
 
@@ -62,7 +62,6 @@
                   <div class="insight-count" >{!v.insights.length}</div>
                   <div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
                   <p class="cta-tag" >Swipe up to review.</p>
-    <ui:button aura:id="button" buttonTitle="Open" class="slds-button slds-button--brand"  label="Details" press="{!c.showPopup}"/>
 
             </div>
 
