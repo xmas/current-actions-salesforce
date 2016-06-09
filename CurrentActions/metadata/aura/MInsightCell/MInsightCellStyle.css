@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Arimo;
+    src: url(/resource/RezzaFonts/fonts/Arimo/Arimo-Regular.tff);
+}
+
+
 .THIS.selected {
     background-color: #f0f8fc;
 }
@@ -31,10 +37,11 @@
     color:#292731;
 }
 
-.THIS .detail-name.slds-text-heading--label {
- font-size:25px;
+.THIS .detail-name {
+ font-size:16px;
  color:#292731;
- font-weight:800
+ font-weight:600;
+ font-family: Arimo;
 }
 
 .THIS.details,
