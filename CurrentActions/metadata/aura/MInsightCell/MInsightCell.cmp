@@ -51,7 +51,7 @@
     <div class="slds-media__body">
      <div class="detail-name" styledetail-name="display: inline-block">{!v.insight.Long_Name__c}</div>
 
-     <div class="slds-text-body--small" style="color:#8E99A6; display: inline-block" >
+     <div class="slds-text-body--small" style="color:#9b9b9b; display: inline-block" >
        <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
      </div>
    </div>

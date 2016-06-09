@@ -77,8 +77,11 @@
             var this_slide = component.get("v.index");
 
             component.set("v.preloaded", false);
+            var chart_div = $(chartid_lookup);
+            if (chart_div) {
+                chart_div.remove();
+            }
 
-            $(chartid_lookup).remove();
         }
 
     },

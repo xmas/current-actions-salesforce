@@ -27,14 +27,23 @@
                     onSlideChangeEnd : function(swiper, event) {
                       var slides = component.find("minsight-cell");
 
-                      var last_index = swiper.activeIndex - 1;
-                      if (last_index >= 0) {
-                        var last_slide = slides[last_index];
-                        last_slide.unload(last_index);
+                      var activeIndex = swiper.activeIndex;
+                      if ((activeIndex - 1) >= 0) {
+                        var last_slide = slides[activeIndex - 1];
+                        last_slide.unload(activeIndex - 1);
                     }
 
-                    var this_slide = slides[swiper.activeIndex];
-                    this_slide.preload(last_index);
+                    var this_slide = slides[activeIndex];
+                    this_slide.preload(activeIndex);
+                },
+                onSlidePrevEnd : function (swiper) {
+                     var slides = component.find("minsight-cell");
+                      var lastIndex = swiper.activeIndex + 1;
+                      if (!swiper.atEnd) {
+                        var last_slide = slides[lastIndex];
+                        last_slide.unload(lastIndex);
+                    }
+
                 }
             });
 

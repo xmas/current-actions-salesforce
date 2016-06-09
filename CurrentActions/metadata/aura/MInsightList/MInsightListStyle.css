@@ -62,26 +62,31 @@
 }
 
 .THIS .insight-tag.slds-text-heading--label {
-    font-size:50px;
-    color:#292731;
-    font-weight:800
+    font-size:35px;
+    color:#515458;
+    font-weight:800;
+    font-family: Arimo-Bold;
+
 }
 
 .THIS .cta-tag {
     font-size:30px;
-    color:#292731;
+    color:#515458;
     font-weight:200;
+    font-family: Arimo;
+
 }
 
 .THIS .greeting {
-    text-align: right;
-    font-size: 14px;
-    color:#292731;
+   text-align: right;
+   font-size: 16px;
+   color:#515458;
+   font-family: Arimo;
 }
 
 .THIS .greeting-bar {
     margin-top: 0;
-    color:#292731;
+    color:#515458;
 }
 
 @media (max-width:680px) { /* smartphones, iPhone, portrait 480x320 phones */
@@ -94,6 +99,7 @@
   .THIS .insight-count {
     font-size:270px;
     font-weight:800;
+    font-family: Arimo-Bold;
 }
 
 .THIS .insight-tag.slds-text-heading--label {
@@ -102,6 +108,7 @@
 
 .THIS .cta-tag {
     font-size:16px;
+
 }
 
 }

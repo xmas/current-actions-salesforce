@@ -1,5 +1,5 @@
 <aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes,force:appHostable" >
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/Swiper/css/swiper.min.css" scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore,/resource/ga"  afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/Swiper/css/swiper.min.css,/resource/rezza_fonts_css" scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore,/resource/ga"  afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:attribute name="insights" type="List" />

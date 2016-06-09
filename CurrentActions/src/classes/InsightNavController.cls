@@ -149,4 +149,5 @@ public with sharing class InsightNavController {
  return JSON.serialize(returnVals);
 }
 
+
 }

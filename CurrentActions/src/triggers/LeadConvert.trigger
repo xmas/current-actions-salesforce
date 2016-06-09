@@ -24,4 +24,3 @@ trigger LeadConvert on Lead (before update) {
   List<Database.LeadConvertResult> lcr = Database.convertLead(leadConverts);
 }
 }
-

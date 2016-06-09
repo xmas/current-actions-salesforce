@@ -1,8 +1,8 @@
-@font-face {
-    font-family: Arimo;
-    src: url(/resource/RezzaFonts/fonts/Arimo/Arimo-Regular.tff);
+/*@font-face {
+    font-family: 'Arimo';
+    font-family: 'DidactGothic';
 }
-
+*/
 
 .THIS.selected {
     background-color: #f0f8fc;
@@ -28,26 +28,34 @@
 
 .THIS .greeting {
     text-align: right;
-    font-size: 14px;
-    color:#292731;
+    font-size: 16px;
+    color:#515458;
+    font-family: Arimo;
+}
+
+.THIS span.slds-badge {
+  background-color: #e8e8e8;
+  color:#515458;
 }
 
 .THIS .greeting-bar {
     margin-top: 0;
-    color:#292731;
+    color:#515458;
 }
 
 .THIS .detail-name {
  font-size:16px;
- color:#292731;
- font-weight:600;
- font-family: Arimo;
+ font-weight:800;
+ font-family: Arimo-Bold;
+ line-height: 1.2em;
+ color: #515458;
 }
 
 .THIS.details,
 .THIS .details{
-    font-size:16px;
+    font-size:14px;
     font-weight:200;
+    color: #515458;
 }
 
 .THIS .footer, .THIS.footer {
