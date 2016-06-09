@@ -1,4 +1,4 @@
-<aura:application >
+<aura:application implements="force:appHostable">
 
 <c:MInsightList />
 

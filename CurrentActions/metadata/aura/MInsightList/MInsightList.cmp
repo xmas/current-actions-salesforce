@@ -7,10 +7,16 @@
 <aura:attribute name="user_name" type="String" default="Kevin" />
 <aura:attribute name="sf1_color" type="String" />
 
-
 <aura:attribute name="title" type="String" default="Show All"/>
 
+<!-- <aura:method name="showModalForInsight" action="{!c.showModalForInsight}"
+      description="Show the modal view for the current insight">
+        <aura:attribute name="insight" type="Insight__c"/>
+</aura:method>
+ -->
 <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
+
+<aura:handler event="c:MInsightDetails" action="{!c.showModalForInsight}"/>
 
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 <aura:attribute name="inited" type="Boolean" default="false"/>

@@ -25,14 +25,22 @@
   showPopup :  function(component, event, helper) {
     //called on clicking your button
     //run your form render code after that, run the following lines
-    helper.showPopupHelper(component, 'modaldialog', 'slds-fade-in-');
-    helper.showPopupHelper(component,'backdrop','slds-backdrop--');
+    helper.showPopupHelper(component, helper, 'modaldialog', 'slds-fade-in-');
+    helper.showPopupHelper(component, helper, 'backdrop','slds-backdrop--');
     },
 
     hidePopup :  function(component, event, helper) {
+      //debugger;
+    helper.hidePopupHelper(component, helper, 'modaldialog', 'slds-fade-in-');
+    helper.hidePopupHelper(component, helper, 'backdrop', 'slds-backdrop--');
+    },
 
-    helper.hidePopupHelper(component, 'modaldialog', 'slds-fade-in-');
-    helper.hidePopupHelper(component, 'backdrop', 'slds-backdrop--');
+    showModalForInsight : function(component, event, helper) {
+      //debugger;
+     var insight = event.getParam("insight");
+     helper.showPopupHelper(component, helper, 'modaldialog', 'slds-fade-in-', insight);
+     helper.showPopupHelper(component, helper, 'backdrop','slds-backdrop--');
+
     }
 
 })

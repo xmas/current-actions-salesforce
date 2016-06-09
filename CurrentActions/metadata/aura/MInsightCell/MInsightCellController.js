@@ -51,6 +51,17 @@
 
     },
 
+    showDetails :  function(component, event, helper) {
+
+        //debugger;
+        var detailsEvent = $A.get("e.c:MInsightDetails");
+        detailsEvent.setParams({
+            "insight": component.get("v.insight"),
+        });
+        detailsEvent.fire();
+
+    },
+
     preload : function(component, event, helper) {
         var params = event.getParam('arguments');
         console.log('called preload: '+component.get("v.index")+' on '+params.index);

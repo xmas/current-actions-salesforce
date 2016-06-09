@@ -14,6 +14,9 @@
 </aura:method>
 
 
+<aura:registerEvent name="detailsEvent" type="c:MInsightDetails"/>
+
+
 <aura:attribute name="insight" type="Insight__c" />
 <aura:attribute name="time" type="String" />
 

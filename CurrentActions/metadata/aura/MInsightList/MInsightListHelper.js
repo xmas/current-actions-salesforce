@@ -72,17 +72,12 @@
      ga('send', 'event', 'Swiper', 'swipe', swiper.activeIndex);
  },
 
- showPopupHelper: function(component, componentId, className){
-    var modal = component.find(componentId);
-    var swiperH = component.get("v.swiperH");
-    var swiperV = component.get("v.swiperV");
-    swiperH.detachEvents();
-    swiperV.detachEvents();
+ loadInsightData : function (component, insight) {
 
-    var index = swiperH.activeIndex;
-    console.log('swuper index: '+index);
-    var insights = component.get("v.insights");
-    var insight = insights[index];
+    // var index = swiperH.activeIndex;
+    // console.log('swiper index: '+index);
+    // var insights = component.get("v.insights");
+    // var insight = insights[index];
     console.log(insight)
 
     $A.createComponent(
@@ -91,27 +86,44 @@
             "insight": insight,
         },
         function(newChart){
-                //Add the new button to the body array
-                if (component.isValid()) {
-                    var body = component.get("v.body");
-                    body.push(newChart);
-                    component.set("v.body", newChart);
-                    //newModal.set("v.parent", [component]);
-                }
+            //Add the new button to the body array
+            if (component.isValid()) {
+                var body = component.get("v.body");
+                body.push(newChart);
+                component.set("v.body", newChart);
+                //newModal.set("v.parent", [component]);
             }
-            );
+        }
+    );
+ },
+
+ showPopupHelper: function(component, helper, componentId, className, insight){
+    var modal = component.find(componentId);
+    var swiperH = component.get("v.swiperH");
+    var swiperV = component.get("v.swiperV");
+    swiperH.detachEvents();
+    swiperV.detachEvents();
+
+    if (insight) {
+        helper.loadInsightData(component, insight);
+    }
 
     $A.util.removeClass(modal, className+'hide');
     $A.util.addClass(modal, className+'open');
        // $A.util.toggleClass(modal, 'allow-scroll');
 
        var targetEl = component.getElement();
-       targetEl.addEventListener("touchmove", function(e) {
-        e.stopPropagation();
-    }, false);
+    //    targetEl.addEventListener("touchmove", function(e) {
+    //     e.stopPropagation();
+    // }, false);
+       targetEl.addEventListener("touchmove", helper.touchMoveFunction, false);
    },
 
-   hidePopupHelper: function(component, componentId, className){
+   touchMoveFunction : function (e) {
+        e.stopPropagation();
+   },
+
+   hidePopupHelper: function(component, helper, componentId, className){
     var modal = component.find(componentId);
 
     var swiperH = component.get("v.swiperH");
@@ -119,15 +131,13 @@
     swiperH.attachEvents();
     swiperV.attachEvents();
 
-      //  $A.util.toggleClass(modal, 'allow-scroll');
+    $A.util.addClass(modal, className+'hide');
+    $A.util.removeClass(modal, className+'open');
+    component.set("v.body", "");
 
-      $A.util.addClass(modal, className+'hide');
-      $A.util.removeClass(modal, className+'open');
-      component.set("v.body", "");
-
-      var targetEl = component.getElement();
-      targetEl.removeEventListener("touchmove");
-  },
+    var targetEl = component.getElement();
+    targetEl.removeEventListener("touchmove", helper.touchMoveFunction);
+    },
 
   getInsightAssocList: function(component, assoc_id) {
 
