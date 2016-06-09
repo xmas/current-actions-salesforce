@@ -17,9 +17,22 @@
                     pagination: '.swiper-pagination',
                     paginationType: 'progress',
                     onSlideChangeStart : helper.swiperSlideChangeStartForward,
-                    onTouchStart: helper.onTouchStart,
-                    onTouchMove: helper.onTouchStart,
-                    onSlideChangeEnd : helper.onSlideChangeEnd
+                    onTouchStart: function(swiper, event) {
+                        console.log(event);
+                        var next_index = swiper.activeIndex + 1;
+                        var slides = component.find("minsight-cell");
+                        var next_slide = slides[next_index];
+                        next_slide.preload(next_index);
+
+                    },
+                    onSlideChangeEnd : function(swiper, event) {
+                      var last_index = swiper.activeIndex - 1;
+                      if (last_index >= 0) {
+                         var slides = component.find("minsight-cell");
+                         var last_slide = slides[last_index];
+                         last_slide.unload(last_index);
+                     }
+                 }
 
                 });
                 component.set("v.swiperH", swiperH);
@@ -37,10 +50,10 @@
     },
 
     onSlideChangeEnd : function (swiper) {
-         ga('send', 'event', 'Swiper', 'swipe', swiper.activeIndex);
-         ga(function(tracker) {
-          console.log(tracker.get('clientId'));
-      });
+       ga('send', 'event', 'Swiper', 'swipe', swiper.activeIndex);
+
+
+
      },
 
     swiperSlideChangeStartForward : function (swiper) {
@@ -49,7 +62,11 @@
 
     onTouchStart : function(swiper, event) {
         console.log(event);
-        var current_index = swiper.activeIndex + 1;
+        var next_index = swiper.activeIndex + 1;
+        var next_id = next_index+'-minsight-cell';
+        debugger;
+        var next_slide = component.find(next_id);
+        next_slide.preload(next_id);
 
     },
 

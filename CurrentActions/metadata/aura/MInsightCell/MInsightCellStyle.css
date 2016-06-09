@@ -6,6 +6,10 @@
     background-color: #f4f6f9;
 }
 
+.THIS .slds-icon.slds-icon--large.icon-larger {
+    width: 3.5rem;
+    height: 3.5rem;
+}
 
 .THIS .sobject-link a {
   color: #11244A;
@@ -36,14 +40,14 @@
 
 .THIS .footer, .THIS.footer {
    position:absolute;
-   bottom:0;
+   bottom:3.5em;
    width: 100%;
 }
 
 .THIS .right-bottom{
   position: absolute;
   right: 0px;
-  bottom: 3.5em;
+  bottom: 0px;
 }
 
 .THIS .dropdown-float {

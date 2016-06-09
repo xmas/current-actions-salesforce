@@ -73,7 +73,7 @@
             <div class="swiper-wrapper sizer">
                 <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
                 <div class="swiper-slide sizer">
-                    <c:MInsightCell aura:id="{!indx}-minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+                    <c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
 
                     <!-- <c:InsightCell insight="{!insight}" index="{!indx}" /> -->
                     <!-- <c:InsightCharts insight="{!insight}" /> -->

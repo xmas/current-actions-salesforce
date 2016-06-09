@@ -49,8 +49,24 @@
         var insight = component.get("v.insight");
         helper.assignIcon(component, insight);
 
+    },
 
+    preload : function(component, event, helper) {
+        var params = event.getParam('arguments');
+        console.log('called preload: '+component.get("v.index")+' on '+params.index);
+        console.log('preload: '+component.get("v.index"));
 
+        var this_slide = component.get("v.index");
+
+        component.set("v.preloaded", "this slide: "+this_slide+" was preloaded");
+    },
+
+    unload : function(component, event, helper) {
+        var params = event.getParam('arguments');
+        console.log('called UNLOAD: '+component.get("v.index")+' on '+params.index);
+        var this_slide = component.get("v.index");
+
+        component.set("v.preloaded", "this slide: "+this_slide+" was UNLOAED");
 
     },
 
