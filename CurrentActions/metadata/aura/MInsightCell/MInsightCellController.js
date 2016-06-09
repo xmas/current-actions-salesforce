@@ -58,15 +58,28 @@
 
         var this_slide = component.get("v.index");
 
-        component.set("v.preloaded", "this slide: "+this_slide+" was preloaded");
+        if (component.get("v.preloaded") === false ) {
+            component.set("v.preloaded", true);
+            helper.chartjs(component, event, helper);
+        }
     },
 
     unload : function(component, event, helper) {
-        var params = event.getParam('arguments');
-        console.log('called UNLOAD: '+component.get("v.index")+' on '+params.index);
-        var this_slide = component.get("v.index");
 
-        component.set("v.preloaded", "this slide: "+this_slide+" was UNLOAED");
+
+        if (component.get("v.preloaded") === true ) {
+            var index = component.get("v.index");
+            var chartid = 'chart-'+index;
+            var chartid_lookup = '#'+chartid;
+
+            var params = event.getParam('arguments');
+            console.log('called UNLOAD: '+component.get("v.index")+' on '+params.index);
+            var this_slide = component.get("v.index");
+
+            component.set("v.preloaded", false);
+
+            $(chartid_lookup).remove();
+        }
 
     },
 

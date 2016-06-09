@@ -1,5 +1,5 @@
 <aura:component >
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/moment,/resource/chroma" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/moment,/resource/chroma,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
@@ -24,7 +24,7 @@
 <aura:attribute name="maxCount" type="Integer" />
 
 
-<aura:attribute name="preloaded" type="String" default="NOT PRELOADED"/>
+<aura:attribute name="preloaded" type="Boolean" default="false"/>
 
 
 <aura:handler event="c:InsightEvent" action="{!c.setSelectedInsight}"/>
@@ -59,8 +59,7 @@
 </div>
 <div class="details slds-p-bottom--large">{!v.insight.Details__c}</div>
 
-<div class="slds-p-bottom--large">
-  <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
+<div class="slds-p-bottom--large" id="{!'chart-parent-'+v.index}">
 </div>
 
 
