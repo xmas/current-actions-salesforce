@@ -16,15 +16,56 @@
 <aura:attribute name="fullinit" type="Boolean" default='false'/>
 
 
-<div class="slds-card__body center slds-p-around--medium" style="background-color:white">
+<div class="slds" style="background-color:white">
 
-    <div class="dropdown-float ">
+
+<div class="cell-table slds-p-around--large">
+
+  <div class="cell-title" >
+  <div class="cell-title-text pink">Source: Opportunitiy </div>
+  <div class="cell-title-text">{!v.insight.Long_Name__c}</div>
+  </div>
+
+  <div class="cell-data">
+   <a class="cell-data-text" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
+   <div class="count-badge">
+   4
+   </div>
+ </div>
+
+ </div> <!-- table -->
+
+
+ <div class="slds-p-left--large">
+ <hr class="cell-divider" />
+ </div>
+
+
+<div class="slds-p-around--large">
+<aura:unescapedHtml value="{!v.insight.Details__c}"/>
+</div>
+
+
+<div class="slds-p-around--large">
+  <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
+</div>
+
+<div class="slds-p-around--large">
+<aura:unescapedHtml value="{!v.insight.Long_Name__c}"/>
+</div>
+
+</div>
+
+
+</aura:component>
+
+<!--     <div class="dropdown-float ">
       <div class="slds-dropdown-trigger">
-        <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
-          <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+        <button class="slds-button slds-button-GGG-icon-border-filled" aria-haspopup="true">
+          <c:svg class="slds-button__icon slds-button__icon-GGG-hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
           <span class="slds-assistive-text">Show More</span>
         </button>
-        <div class="slds-dropdown slds-dropdown--right slds-dropdown--menu">
+        <div class="slds-dropdown slds-dropdown-GGG-right slds-dropdown-GGG-menu">
           <ul class="slds-dropdown__list" role="menu">
             <li id="menu-0-0" class="slds-dropdown__item">
               <a href="javascript:void(0)" role="menuitem" onclick="{!c.openObject}">Go To</a>
@@ -39,59 +80,4 @@
 
         </div>
       </div>
-    </div>
-
-    <div class="slds-media slds-comment slds-hint-parent slds-p-bottom--large">
-      <div class="slds-media__figure">
-
-        <span class="{!'slds-icon__container '+ v.icon_class}">
-          <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
-          <span class="slds-assistive-text">Icon</span>
-        </span>
-
-      </div>
-      <div class="slds-media__body">
-        <div class="slds-grid slds-grid--align-spread">
-          <div class="slds-text-longform slds-text-heading--medium"><aura:unescapedHtml value="{!v.insight.Long_Name__c}"/></div>
-        </div>
-
-
-        <div class="slds-text-body--small" style="color:#8E99A6" >
-          <ul class="slds-list--horizontal slds-has-dividers--right slds-has-inline-block-links">
-           <li class="slds-list__item" >
-             <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
-           </li>
-           <li class="slds-list__item" >
-            <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.ReportID__c}">{!v.insight.Data_Source__c}</a>
-          </li>
-        </ul>
-
-        <!-- <ul class="slds-list- -horizontal slds-has-dividers- -right slds-has-inline-block-links"> -->
-        <aura:unescapedHtml value="{!v.insight.Parents__c}"/>
-        <!-- </ul> -->
-
-      </div>
-
-    </div>
-  </div>
-
-<div class="slds-p-bottom--x-small">
-  <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
-</div>
-
-<div class="slds-p-bottom--small">
-<aura:unescapedHtml value="{!v.insight.Long_Name__c}"/>
-</div>
-<aura:unescapedHtml value="{!v.insight.Details__c}"/>
-
-
-<!--   <div class="slds-comment__content slds-text-longform slds-text-body-%-regular slds-p-top-%-medium slds-p-bottom-%-xx-large">
-  </div>
-
-  <button class="slds-button slds-button-%-neutral slds-button-%-brand" onclick="{!c.showModal}">{!'See all '+v.insight.SObject_Count__c}</button>
-  <button class="dropdown-float slds-button slds-button-%-neutral slds-button-%-brand " onclick="{!c.markUnread}">Mark Unread</button> -->
-
-</div>
-
-
-</aura:component>
+    </div> -->
