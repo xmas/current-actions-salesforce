@@ -15,6 +15,13 @@
     vertical-align: top;
 }
 
+.THIS .cell-action {
+  display: table-cell;
+  text-align: right;
+  width: 7rem;
+  vertical-align: top;
+}
+
 .THIS .cell-title-text {
     font-size: 24px;
     color:#515458;
@@ -65,21 +72,21 @@
     color: #515458;
 }
 
+.THIS .slds-list--horizontal {
+    flex-wrap: wrap;
+}
+ .THIS li{
+    padding-bottom: .7em;
+    padding-right: .7em;
+ }
+
 .THIS.toggle {
     display: none;
 }
 
 .THIS .dropdown-float {
-  float: right;
-  padding: 2px 4px;
-  margin: 6px 0;
-  display: inline-block;
-  border: 1px #0A58C7;
-  right: -6px;
-  position: relative;
   color: white;
-  }
-
+}
 
 .THIS .container {
   width: 100%;
