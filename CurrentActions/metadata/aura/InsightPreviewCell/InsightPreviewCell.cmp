@@ -15,29 +15,32 @@
 <aura:attribute name="tint" type="String" default="rgb(82, 121, 187)" />
 
 
-<div id="{!'preview-cell-'+v.index}" class="slds-card__body center slds-p-around--medium" onclick="{!c.clickInsight}">
+<div class="list-cell slds-p-around--large" id="{!'preview-cell-'+v.index}" onclick="{!c.clickInsight}">
 
-  <div class="slds-media slds-comment slds-hint-parent">
+<div class="cell-table ">
 
-    <div class="slds-media__figure">
-        <span class="{!'slds-icon__container '+ v.icon_class}">
-          <c:svg class="slds-icon" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
-        </span>
-    </div>
-
-    <div class="slds-media__body">
-      <div class="slds-text-longform slds-text-body--regular slds-p-bottom--x-small" style="display: inline-block"><strong>{!v.insight.Name}</strong></div>
-
-       <div class="slds-text-body--small slds-p-left--x-small" style="color:#8E99A6; display: inline-block" >
-
-             <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
-      </div>
-
-      <p>{!v.insight.Long_Name__c}</p>
-
+  <div class="cell-icon">
+  <div class="">
+    <span class="{!'slds-icon__container '+ v.icon_class}">
+      <c:svg class="slds-icon slds-icon--large" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
+    </span>
     </div>
   </div>
-</div>
+  <div class="cell-title" >{!v.insight.Long_Name__c}</div>
+
+  <div class="cell-data">
+   <a class="cell-data-text" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
+   <div class="count-badge">
+   4
+   </div>
+ </div>
+
+ </div> <!-- table -->
+ <div class="slds-p-top--small cell-detail">
+   The [evaluated field] for [line item] was recently changed.
+ </div>
+
+ </div>
 
 
-</aura:component>
+ </aura:component>

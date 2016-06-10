@@ -1,5 +1,95 @@
+.THIS .cell-table {
+    display: table;
+    width: 100%;
+}
+
+.THIS .cell-icon {
+   display: table-cell;
+   width: 3.75rem;
+   vertical-align: top;
+}
+
+.THIS .cell-title {
+    font-size: 16px;
+    color:#515458;
+    font-family: Arimo;
+    display: block;
+    overflow: hidden;
+    line-height: 1.25;
+    font-weight: 700;
+    vertical-align: top;
+
+}
+
+.THIS .cell-data {
+   display: table-cell;
+   text-align: right;
+   width: 7rem;
+   vertical-align: top;
+}
+
+.THIS a.cell-data-text {
+   font-size: 12px;
+   color:#515458;
+   font-family: Arimo;
+   cursor: pointer;
+}
+
+.THIS .cell-detail {
+    font-size: 14px;
+    color:#515458;
+    padding-left: 3.75rem;
+}
+
+
+.THIS .count-badge {
+    background-color: #515458;
+    font-size: 12px;
+    color: white;
+    font-family: Arimo;
+    width: 1rem;
+    height: 1rem;
+    position: relative;
+    left: 6rem;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.THIS .inline {
+    display: inline-block;
+}
+
+
+.THIS .read {
+    color:#9B9B9B;
+}
+
+/*.THIS.list-cell {
+     border-bottom: thin solid white;
+     border-top: thin solid white;
+}*/
+
+.THIS.list-cell:after {
+    content:"";
+  display:block;
+  position: absolute;
+  left    : 5rem;
+  height  : 1.5625rem;
+  width   : 23.25rem;
+  border-bottom:1px solid #CDCDCD;
+  z-index: -5000;
+}
+.THIS.list-cell.selected:after {
+    border:none;
+}
+.THIS.list-cell:last-child:after {
+    border:none;
+}
+
 .THIS.selected {
-    background-color: #f0f8fc;
+    background-color: #EBEBEB;
+    border-top: thin solid #515458;
+    border-bottom: thin solid #515458;
 }
 
 .THIS.slds-card__body:hover {
