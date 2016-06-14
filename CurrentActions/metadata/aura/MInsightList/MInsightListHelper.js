@@ -69,7 +69,7 @@
     },
 
     onSlideChangeEnd : function (swiper) {
-     ga('send', 'event', 'Swiper', 'swipe', swiper.activeIndex);
+     //ga('send', 'event', 'Swiper', 'swipe', swiper.activeIndex);
  },
 
  loadInsightData : function (component, insight) {

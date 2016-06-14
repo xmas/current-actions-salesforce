@@ -1,8 +1,10 @@
 <aura:component >
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/moment,/resource/chroma,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
 
+<!-- init -->
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
+<!-- methods for doing pre/post loading -->
+<aura:attribute name="preloaded" type="Boolean" default="false"/>
 <aura:method name="preload" action="{!c.preload}"
       description="Preload a cell when it's about to be shown">
         <aura:attribute name="index" type="String" default="-1" />
@@ -13,26 +15,19 @@
         <aura:attribute name="index" type="String" default="-1" />
 </aura:method>
 
-
+<!-- fire the event for showing the detail modal -->
 <aura:registerEvent name="detailsEvent" type="c:MInsightDetails"/>
 
-
+<!-- general attributes -->
 <aura:attribute name="insight" type="Insight__c" />
 <aura:attribute name="time" type="String" />
-
 <aura:attribute name="icon" type="String" />
 <aura:attribute name="icon_class" type="String" />
 <aura:attribute name="max_updated" type="Integer" />
 <aura:attribute name="index" type="Integer" />
 <aura:attribute name="maxCount" type="Integer" />
 
-
-<aura:attribute name="preloaded" type="Boolean" default="false"/>
-
-
-<aura:handler event="c:InsightEvent" action="{!c.setSelectedInsight}"/>
-<aura:attribute name="tint" type="String" default="rgb(82, 121, 187)" />
-
+<!-- layout -->
 <div class="slds slds-p-around--large">
 
   <div >
@@ -42,49 +37,47 @@
 
   <div id="{!'preview-cell-'+v.index}" class="slds-card__body center" onclick="{!c.clickInsight}">
 
+    <div class="slds-media slds-comment slds-hint-parent">
 
-  <div class="slds-media slds-comment slds-hint-parent">
+      <div class="slds-media__figure">
+        <span class="{!'slds-icon__container '+ v.icon_class}">
+          <c:svg class="slds-icon slds-icon--large icon-larger" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
+        </span>
+      </div>
 
-    <div class="slds-media__figure">
-      <span class="{!'slds-icon__container '+ v.icon_class}">
-        <c:svg class="slds-icon slds-icon--large icon-larger" xlinkHref="{!'/resource/SLDS100/assets/icons/'+ v.icon}" />
-      </span>
-    </div>
+      <div class="slds-media__body">
+       <div class="detail-name" styledetail-name="display: inline-block">{!v.insight.Long_Name__c}</div>
 
-    <div class="slds-media__body">
-     <div class="detail-name" styledetail-name="display: inline-block">{!v.insight.Long_Name__c}</div>
-
-     <div class="slds-text-body--small" style="color:#9b9b9b; display: inline-block" >
-       <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
+       <div class="slds-text-body--small" style="color:#9b9b9b; display: inline-block" >
+         <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
+       </div>
      </div>
    </div>
  </div>
-</div>
-<div class="details slds-p-bottom--large">{!v.insight.Details__c}</div>
 
-<div class="slds-p-bottom--large" id="{!'chart-parent-'+v.index}">
-</div>
+ <div class="details slds-p-bottom--large">{!v.insight.Details__c}</div>
 
+ <div class="slds-p-bottom--large" id="{!'chart-parent-'+v.index}"></div>
 
-<div>
-<ul class="slds-list--horizontal slds-has-block-links--space">
-<li><span class="slds-badge">{!v.insight.Data_Source__c}</span></li>
-<li><span class="slds-badge">{!v.insight.OwnerId}</span></li>
-<li><span class="slds-badge">{!v.insight.LastModifiedDate}</span></li>
-</ul>
+ <div>
+  <ul class="slds-list--horizontal slds-has-block-links--space">
+    <li><span class="slds-badge">{!v.insight.Data_Source__c}</span></li>
+    <li><span class="slds-badge">{!v.insight.OwnerId}</span></li>
+    <li><span class="slds-badge">{!v.insight.LastModifiedDate}</span></li>
+  </ul>
 </div>
 
 
 </div>
 
 <div class="slds">
-<div class="footer  slds-p-right--large slds-p-left--large">
-  <hr class="greeting-bar"/>
+  <div class="footer  slds-p-right--large slds-p-left--large">
+    <hr class="greeting-bar"/>
   </div>
 
   <div class="right-bottom slds-p-right--large slds-p-bottom--large">
-  <button class="slds-button slds-button--neutral pink-button" onclick="{!c.showDetails}">Details</button>
- </div>
+    <button class="slds-button slds-button--neutral pink-button" onclick="{!c.showDetails}">Details</button>
+  </div>
 </div>
 
 

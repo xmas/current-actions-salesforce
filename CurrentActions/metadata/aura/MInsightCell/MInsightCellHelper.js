@@ -45,6 +45,31 @@
       return (number * (max - min)) + min;
     },
 
+    setRelativeTime : function(component, event, helper) {
+        var insight = component.get("v.insight");
+        var mod = moment(insight.LastModifiedDate);
+        var today = moment();
+
+        var daysAgo = mod.diff(today, 'day');
+        if (Math.abs(daysAgo) === 1) {
+            component.set("v.time", 'Yesterday');
+            return;
+        } else if (daysAgo < 1) {
+
+            var hoursAgo = mod.diff(today, 'hour');
+            if (hoursAgo > -1) {
+                component.set("v.time", '<1hr');
+                return ;
+            } else if (hoursAgo > -6){
+                component.set("v.time", Math.abs(hoursAgo)+'hrs');
+                return;
+            }
+
+        }
+        component.set("v.time", mod.format('ddd h:mm a'));
+
+    },
+
 
  chartjs : function (component, event, helper) {
         // Get context with jQuery - using jQuery's .get() method.
