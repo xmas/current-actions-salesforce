@@ -1,5 +1,5 @@
 <aura:component >
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/moment,/resource/chroma" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/jq3,/resource/moment,/resource/chroma" afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
@@ -36,9 +36,9 @@
  </div>
 
  </div> <!-- table -->
- <div class="slds-p-top--small cell-detail">
+<!--  <div class="slds-p-top- -small cell-detail">
    The [evaluated field] for [line item] was recently changed.
- </div>
+ </div> -->
 
  </div>
 

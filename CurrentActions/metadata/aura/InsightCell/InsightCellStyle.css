@@ -31,7 +31,10 @@
 }
 
 .THIS .pink {
-  color: #ED1652;
+  color: #9b9b9b;
+  font-weight: 400;
+  font-family: Arimo;
+
 }
 
 .THIS .cell-data {
@@ -68,8 +71,12 @@
     border-radius: 3px;
 }
 
-.THIS .cell-divider {
+.THIS hr .slds.cell-divider {
     color: #515458;
+}
+
+.THIS hr {
+   margin: 0px;
 }
 
 .THIS .slds-list--horizontal {

@@ -71,34 +71,29 @@
 
     },
 
-    chartjs : function (component, event, helper) {
+    historyChart : function (component, event, helper) {
         // Get context with jQuery - using jQuery's .get() method.
         // This will get the first returned node in the jQuery collection.
 
-        var index = component.get("v.index");
-        var chartid = '#chart-'+index;
+        // var index = component.get("v.index");
+        // var chartid = '#chart-'+index;
+        // debugger;
+        // var ctx = $(chartid).get(0).getContext("2d");
 
-        var ctx = $(chartid).get(0).getContext("2d");
+        // //console.log('insight: '+insight);
 
-        var insight = component.get("v.insight");
-        //console.log('insight: '+insight);
+        console.log('CREATE HISTORY CHART');
 
 
         try {
+            var insight = component.get("v.insight");
+
             var changed = JSON.parse(insight.History_Changed__c);
             var deleted = JSON.parse(insight.History_Deleted__c);
             var newones = JSON.parse(insight.History_New__c);
             var total = JSON.parse(insight.History_Total__c);
-
-            // console.log('changed; '+changed);
-            // console.log('deleted; '+deleted);
-            // console.log('newones; '+newones);
-            // console.log('total; '+total);
-
-
-            // labels
-            //debugger;
             var labels = JSON.parse(insight.History_Labels__c);
+
             var lastMonth = 0;
             for (var label_i = 0; label_i < labels.length; label_i++) {
                 var date = moment(labels[label_i]);
@@ -107,85 +102,32 @@
                     lastMonth = month;
                     labels[label_i] = date.format('MMM D');
                 } else {
-                    labels[label_i] = date.format('D');
+                    labels[label_i] = date.format('MMM D');
                 }
             }
-            //console.log('labels; '+labels);
 
-            var t_color = 'rgba(39, 65, 238';
-            var n_color = 'rgba(48, 131, 251';
-            var c_color = 'rgba(83, 81, 135';
-            var d_color = 'rgba(179, 37, 40';
+            console.log(total);
+            console.log(labels);
 
-
-            var data = {
-
-                labels: labels,
-                datasets: [
-                {
-                    label: "Total",
-                    fillColor: t_color+",0.2)",
-                    strokeColor: t_color+",1)",
-                    pointColor: t_color+",1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: t_color+",1)",
-                    data: total
-                },
-                {
-                    label: "New",
-                    fillColor: n_color+",0.2)",
-                    strokeColor: n_color+",1)",
-                    pointColor: n_color+",1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: n_color+",1)",
-                    data: newones
-                },
-                {
-                    label: "Changed",
-                    fillColor: c_color+",0.2)",
-                    strokeColor: c_color+",1)",
-                    pointColor: c_color+",1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: c_color+",1)",
-                    data: changed
-                },
-                {
-                    label: "Deleted",
-                    fillColor: d_color+",0.2)",
-                    strokeColor: d_color+",1)",
-                    pointColor: d_color+",1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: d_color+",1)",
-                    data: deleted
-                }
-
-                ]
-            };
-
-            var scale_min = 25;
-            if (_.max(total) < 5) {
-                scale_min = 5
+            var total_trace = {
+                y: total,
+                x: labels,
+                //text: labels,
+                type: "scatter"
             }
+            var data = [total_trace];
 
-            if (_.max(total) < scale_min) {
+            var chart_id = 'history-chart-'+component.get("v.index");
 
-                Chart.defaults.global.scaleOverride = true;
-                Chart.defaults.global.scaleSteps = 5;
-                Chart.defaults.global.scaleStepWidth = scale_min/5;
-                Chart.defaults.global.scaleStartValue = 0;
-            } else {
-                Chart.defaults.global.scaleOverride = false;
-            }
+            console.log(document.readyState);
 
-        //debugger;
-        var myLineChart = new Chart(ctx).Line(data);
+           console.log(data);
+           //debugger;
+            Plotly.newPlot(chart_id.toLowerCase(), data,  {margin: { t: 0 } }, {displayModeBar: false});
+
 
     }  catch (e) {
-        console.log(insight);
+        console.log(e);
     }
 }
 

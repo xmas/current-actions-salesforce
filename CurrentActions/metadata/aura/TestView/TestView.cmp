@@ -1,6 +1,6 @@
 <aura:component >
 
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/jq3,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:attribute name="colors" type="List" />
 <aura:attribute name="head_color" type="String" />

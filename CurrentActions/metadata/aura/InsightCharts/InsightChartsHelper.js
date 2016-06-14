@@ -26,7 +26,7 @@
         } else {
 
           for (var member in store) {
-            if (member === "insght") {
+            if (member === "insight") {
               continue;
             }
 

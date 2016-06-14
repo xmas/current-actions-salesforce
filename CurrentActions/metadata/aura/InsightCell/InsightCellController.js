@@ -1,30 +1,16 @@
 ({
-    postScript : function(component, event, helper) {
-        var fullinit = component.get("v.fullinit");
-        if (fullinit) {
-            helper.chartjs(component, event, helper);
-        } else {
-            component.set("v.fullinit", 'true');
-        }
-
-
-    },
 
     doInit : function(component, event, helper) {
 
-        //var modal = component.find("modal");
-        //console.log("toggle" + modal);
-        //$A.util.toggleClass(modal, "toggle");
-        var insight = component.get("v.insight");
-        helper.assignIcon(component, insight);
-        //helper.getDataFromS3(component, insight);
+        //debugger;
+        //var insight = component.get("v.insight");
 
-        var fullinit = component.get("v.fullinit");
-        if (fullinit) {
-            helper.chartjs(component, event, helper);
-        } else {
-            component.set("v.fullinit", 'true');
-        }
+        // if (insight) {
+        //     helper.assignIcon(component, insight);
+        _.defer(function () {
+            helper.historyChart(component, event, helper);
+       });
+        // }
 
     },
 
@@ -34,8 +20,9 @@
         var insight = component.get("v.insight");
 
         modalCloseEvent.setParams({modal_open: insight});
-        modalCloseEvent.fire();      
+        modalCloseEvent.fire();
     },
+
     openObject : function(component, event, helper) {
         var navEvt = $A.get("e.force:navigateToSObject");
         navEvt.setParams({
@@ -61,29 +48,6 @@
         });
         $A.enqueueAction(action);
     },
-
-    OLDtoggleModal : function(component, event, helper) {
-        $A.createComponent(
-            "c:InsightModal",
-            {
-                "aura:id": "modal",
-            },
-            function(newModal){
-                //Add the new button to the body array
-                if (component.isValid()) {
-                    var body = component.get("v.body");
-                    body.push(newModal);
-                    component.set("v.body", body);
-                    newModal.set("v.parent", [component]);
-                }
-            }
-            );
-    },
-
-    removeModal : function(component, event, helper) {
-
-    },
-
 
     sendSelectedInsight : function(component, event, helper) {
 

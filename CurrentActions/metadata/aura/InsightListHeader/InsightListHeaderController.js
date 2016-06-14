@@ -1,5 +1,5 @@
 ({
-	
+
 	doInit : function(component, event, helper) {
 
      var action = component.get("c.getUserName");
@@ -8,7 +8,7 @@
         var self = this;
         action.setCallback(this, function(actionResult) {
 
-            var result = actionResult.getReturnValue(); 
+            var result = actionResult.getReturnValue();
             component.set("v.name", result);
 
         });
@@ -17,7 +17,7 @@
         var data_action = component.get("c.getInsightCounts");
         data_action.setCallback(this, function(actionResult) {
 
-            var result = JSON.parse(actionResult.getReturnValue()); 
+            var result = JSON.parse(actionResult.getReturnValue());
 
             component.set("v.global_total", result.all_users.total);
             component.set("v.global_new_changed", result.all_users.changed+result.all_users.new);
@@ -29,11 +29,6 @@
 
 
     },
-
-    postScript : function(component, event, helper) {
-
-	},
-
 
 	assocSearch  : function(component, event, helper) {
 

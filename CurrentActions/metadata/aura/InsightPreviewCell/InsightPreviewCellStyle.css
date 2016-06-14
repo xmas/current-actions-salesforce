@@ -10,13 +10,13 @@
 }
 
 .THIS .cell-title {
-    font-size: 16px;
+    font-size: 14px;
     color:#515458;
     font-family: Arimo;
     display: block;
     overflow: hidden;
     line-height: 1.25;
-    font-weight: 700;
+    font-weight: 400;
     vertical-align: top;
 
 }
@@ -70,7 +70,7 @@
 }*/
 
 .THIS.list-cell:after {
-    content:"";
+  content:"";
   display:block;
   position: absolute;
   left    : 5rem;
@@ -87,9 +87,9 @@
 }
 
 .THIS.selected {
-    background-color: #EBEBEB;
-    border-top: thin solid #515458;
-    border-bottom: thin solid #515458;
+    background-color: #f2f2f2;
+    border-top: thin solid #cfcfcf;
+    border-bottom: thin solid #cfcfcf;
 }
 
 .THIS.slds-card__body:hover {

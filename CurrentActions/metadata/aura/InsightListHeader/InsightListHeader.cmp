@@ -1,6 +1,6 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightsController">
 
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/rezza_fonts_css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
+<!-- <ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/rezza_fonts_css" scripts="/resource/jq3,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/> -->
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 

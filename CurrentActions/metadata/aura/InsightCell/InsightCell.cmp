@@ -1,11 +1,9 @@
 <aura:component controller="InsightsController">
 
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" scripts="/resource/DataTables/datatables.js,/resource/Chartjs,/resource/moment,/resource/underscore" afterScriptsLoaded="{!c.postScript}"/>
-
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="insight" type="Insight__c" />
-<aura:registerEvent name="selected_insight" type="c:selectInsight"/>
+<!-- <aura:registerEvent name="selected_insight" type="c:selectInsight"/> -->
 
 <aura:attribute name="icon" type="String" />
 <aura:attribute name="icon_class" type="String" />
@@ -13,17 +11,18 @@
 <aura:attribute name="index" type="String" />
 <aura:attribute name="unread" type="Boolean" />
 
-<aura:attribute name="fullinit" type="Boolean" default='false'/>
+
+<div class="slds slds-p-around--large" style="background-color:white">
 
 
-<div class="slds" style="background-color:white">
-
-
-  <div class="cell-table slds-p-around--large">
+  <div class="cell-table">
 
     <div class="cell-title" >
       <div class="cell-title-text pink">Source: Opportunitiy </div>
+         <hr class="cell-divider" />
+
       <div class="cell-title-text">{!v.insight.Long_Name__c}</div>
+
     </div>
 
     <div class="cell-data">
@@ -36,22 +35,26 @@
  </div> <!-- table -->
 
 
- <div class="slds-p-left--large">
    <hr class="cell-divider" />
- </div>
 
 
- <div class="slds-p-around--large">
+ <div class="slds-p-top--large">
   <aura:unescapedHtml value="{!v.insight.Details__c}"/>
 </div>
 
 
-<div class="slds-p-around--large">
-  <canvas id="{!'chart-'+v.index}" width="500" height="150"></canvas>
+<div class="slds-grid slds-wrap slds-grid--pull-padded">
+  <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 slds-p-around--small">
+    <div class="slds-box slds-p-around--small">
+      <div class="slds-text-heading--label slds-text-longform slds-p-bottom--small">History</div>
+      <div id="{!'history-chart-'+v.index}" style="width: 100%; height: 250px;"></div>
+    </div>
+  </div>
 </div>
 
 
-<div class="cell-table slds-p-around--large">
+
+<div class="cell-table slds-p-top--large">
 
   <div class="cell-title">
     <ul class="slds-list--horizontal slds-has-block-links--space">
