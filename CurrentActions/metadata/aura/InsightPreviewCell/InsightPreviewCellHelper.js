@@ -5,49 +5,37 @@
         var icon = "";
         var icon_class = "";
 
-        var max = 7;
-        var min = 0;
-        var type = Math.floor(Math.random() * (max - min)) + min;
+        // var max = 7;
+        // var min = 0;
+        // var type = Math.floor(Math.random() * (max - min)) + min;
 
-        switch (type) {
-            case 0:
+        var insight = component.get("v.insight");
+        var type = insight.Data_Source__c;
+         if (type === "Accounts") {
             icon =  "standard-sprite/svg/symbols.svg#account";
             icon_class = "slds-icon-standard-account";
-            break;
-
-            case 1:
-            icon = "standard-sprite/svg/symbols.svg#lead";
-            icon_class = "slds-icon-standard-lead";
-            break;
-
-            case 2:
+        } else if (type === "Campaigns") {
             icon = "standard-sprite/svg/symbols.svg#campaign";
             icon_class = "slds-icon-standard-campaign";
-            break;
-
-            case 3:
+        } else if (type === "Leads") {
+            icon = "standard-sprite/svg/symbols.svg#lead";
+            icon_class = "slds-icon-standard-lead";
+        } else if (type === "Opportunities" || type === "Opportunity History") {
             icon = "standard-sprite/svg/symbols.svg#opportunity";
             icon_class = "slds-icon-standard-opportunity";
-            break;
-
-            case 4:
+        } else if (type === "Users") {
             icon = "standard-sprite/svg/symbols.svg#people";
             icon_class = "slds-icon-standard-people";
-            break;
-
-            case 5:
+        } else if (type === "Contacts & Accounts") {
             icon = "standard-sprite/svg/symbols.svg#team_member";
             icon_class = "slds-icon-standard-team-member";
-
-            case 6:
+        } else if (type === "Cases") {
             icon = "standard-sprite/svg/symbols.svg#case";
             icon_class = "slds-icon-standard-case";
-
-            case 7:
+        } else if (type.startsWith("Activities")) {
             icon = "action-sprite/svg/symbols.svg#check";
             icon_class = "slds-icon-action-new-task";
-
-            default:
+        } else {
             icon = "custom-sprite/svg/symbols.svg#custom97";
             icon_class = "slds-icon-custom-4";
         }

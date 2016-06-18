@@ -24,7 +24,7 @@ public with sharing class InsightsController {
 
     Id user_id = UserInfo.getUserId();
 
-    String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' ORDER BY CreatedDate DESC LIMIT 26';
+    String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' ORDER BY CreatedDate DESC';// LIMIT 26';
     //+' AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC';
     return Database.query(query);
   }

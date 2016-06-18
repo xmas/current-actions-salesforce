@@ -26,12 +26,12 @@
     </span>
     </div>
   </div>
-  <div class="cell-title" >{!v.insight.Long_Name__c}</div>
+  <div class="cell-title" >{!v.insight.Name}</div>
 
   <div class="cell-data">
    <a class="cell-data-text" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
    <div class="count-badge">
-   4
+   {!v.insight.Today_Changed__c}
    </div>
  </div>
 

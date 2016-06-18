@@ -19,6 +19,7 @@
 
         var store = JSON.parse(actionResult.getReturnValue());
         var charts = [];
+        //debugger;
         if (_.has(store, 'stats')) {
           for (var chart in store.stats) {
             charts.push(store.stats[chart]);
@@ -85,8 +86,14 @@
 
         console.log(chart_id+':' + chart);
         console.log(document.readyState);
+        //debugger;
 
-        Plotly.newPlot(chart_id.toLowerCase(), chart,  {margin: { t: 40 } }, { displaylogo: false});
+        var chart_data = chart.data;
+        var chart_layout = chart.layout;
+
+        Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, { displaylogo: false});
+
+        // Plotly.newPlot(chart_id.toLowerCase(), chart,  {margin: { t: 40 } }, { displaylogo: false});
       }
     } catch (error) {
       var charts = component.get("v.charts");
