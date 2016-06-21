@@ -26,20 +26,25 @@
         of 500,000 signficant insights.
       </div>
     </div>
-      <img src="/resource/gray_r" class="gray-r"/>
+      <img src="/resource/gray_r" class="gray-r slds-p-right--large"/>
   </div>
 
   <div class="filter">
+    <div class="filter-menu slds-p-left--x-large">
+    <c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+
+
    <div class="slds-grid slds-type-focus slds-no-space no-wrap slds-dropdown-trigger slds-dropdown-trigger--click" id="nav-dropdown" onclick="{!c.menu}">
-          <h1 class="slds-page-header__title slds-longform" title="{!v.title}" onclick="{!c.menu}">{!v.title}
+          <div class="slds-longform filter-text" title="{!v.title}" onclick="{!c.menu}">{!v.title}
             <button class="slds-button slds-button--icon-bare slds-shrink-none slds-align-middle slds-p-left--x-small" onclick="{!c.menu}">
-              <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+              <c:svg class="slds-button__icon slds-button__icon--hint" style="fill:#515458;" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
             </button>
-          </h1>
+          </div>
           <div class="slds-dropdown slds-dropdown--left slds-dropdown--small nav-menu">
            <c:InsightNav />
           </div>
         </div>
+  </div>
   </div>
 
 </div>

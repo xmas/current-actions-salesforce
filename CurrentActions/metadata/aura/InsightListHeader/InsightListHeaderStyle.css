@@ -24,6 +24,24 @@
     font-weight: 200;
 }
 
+.THIS .filter-menu {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+.THIS .filter-text {
+   font-size: 14px;
+   color:#515458;
+   font-family: Arimo;
+   cursor: pointer;
+}
+
+.THIS .slds .slds-icon .filter-icon{
+  fill: #515458;
+}
+
 .THIS .inline {
     display: inline-block;
 }

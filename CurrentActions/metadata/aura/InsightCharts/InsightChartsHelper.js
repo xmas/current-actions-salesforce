@@ -66,7 +66,7 @@
       } catch (error) {
         console.log('error on getting data from S3: '+error);
         console.log(store);
-        debugger;
+        //debugger;
       }
     });
 
