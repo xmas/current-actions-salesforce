@@ -11,7 +11,7 @@
 <aura:attribute name="global_new_changed" type="String" default="some"/>
 <aura:attribute name="user_total" type="String" default="many"/>
 <aura:attribute name="user_new_changed" type="String" default="most"/>
-
+<aura:attribute name="count" type="String" default="14"/>
 <aura:attribute name="title" type="String" default="Recent New and Changed"/>
 
 <div class="slds rezza-header">
@@ -26,7 +26,22 @@
         of 500,000 signficant insights.
       </div>
     </div>
+      <img src="/resource/gray_r" class="gray-r"/>
   </div>
+
+  <div class="filter">
+   <div class="slds-grid slds-type-focus slds-no-space no-wrap slds-dropdown-trigger slds-dropdown-trigger--click" id="nav-dropdown" onclick="{!c.menu}">
+          <h1 class="slds-page-header__title slds-longform" title="{!v.title}" onclick="{!c.menu}">{!v.title}
+            <button class="slds-button slds-button--icon-bare slds-shrink-none slds-align-middle slds-p-left--x-small" onclick="{!c.menu}">
+              <c:svg class="slds-button__icon slds-button__icon--hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+            </button>
+          </h1>
+          <div class="slds-dropdown slds-dropdown--left slds-dropdown--small nav-menu">
+           <c:InsightNav />
+          </div>
+        </div>
+  </div>
+
 </div>
 
 
@@ -36,16 +51,7 @@
       <p class="slds-text-heading- -label slds-p-bottom- -x-small">Rezza</p>
       <div class="slds-grid">
 
-        <div class="slds-grid slds-type-focus slds-no-space no-wrap slds-dropdown-trigger slds-dropdown-trigger- -click" id="nav-dropdown" onclick="{!c.menu}">
-          <h1 class="slds-page-header__title slds-longform" title="{!v.title}" onclick="{!c.menu}">{!v.title}
-            <button class="slds-button slds-button- -icon-bare slds-shrink-none slds-align-middle slds-p-left- -x-small" onclick="{!c.menu}">
-              <c:svg class="slds-button__icon slds-button__icon- -hint" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
-            </button>
-          </h1>
-          <div class="slds-dropdown slds-dropdown- -left slds-dropdown- -small nav-menu">
-           <c:InsightNav />
-          </div>
-        </div>
+
 
 
       </div>

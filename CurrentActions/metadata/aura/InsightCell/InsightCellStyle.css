@@ -33,7 +33,7 @@
 .THIS .pink {
   color: #9b9b9b;
   font-weight: 400;
-  font-family: Arimo;
+  font-family: Arimo, Salesforce Sans;
 
 }
 
@@ -57,7 +57,6 @@
     padding-left: 3.75rem;
 }
 
-
 .THIS .count-badge {
     background-color: #515458;
     font-size: 12px;
@@ -71,12 +70,13 @@
     border-radius: 3px;
 }
 
-.THIS hr .slds.cell-divider {
+.THIS hr .slds .cell-divider {
     color: #515458;
+    margin: 1rem;
 }
 
 .THIS hr {
-   margin: 0px;
+   margin: 1rem;
 }
 
 .THIS .slds-list--horizontal {

@@ -16,12 +16,11 @@
 
 <div class="slds slds-p-around--large" style="background-color:white">
 
-
   <div class="cell-table">
 
     <div class="cell-title" >
       <div class="cell-title-text pink">{!v.insight.Data_Source__c}</div>
-         <hr class="cell-divider" />
+      <hr style="margin:1rem 0 1rem 0"/>
 
       <div class="cell-title-text">{!v.insight.Field_Labels__c}{!v.grouping}{!v.insight.Child_Label__c}</div>
 
@@ -36,17 +35,11 @@
 
  </div> <!-- table -->
 
+ <hr style="margin:1rem 0 1rem 0"/>
 
-   <hr class="cell-divider" />
-
-
- <div class="slds-p-top--large">
+ <div>
   <aura:unescapedHtml value="{!v.insight.Details__c}"/>
 </div>
-
-
-
-
 
 <div class="cell-table slds-p-top--large">
 

@@ -1,7 +1,6 @@
 .THIS.rezza-header {
     height: 108px;
     width: 100%;
-    border-bottom: thin solid #515458;
     background-color: white;
 }
 
@@ -37,4 +36,17 @@
     overflow: scroll;
     max-height: 100%;
     min-height: 500px;
+}
+
+.THIS .gray-r {
+    height: 108px;
+    float: right;
+}
+
+.THIS .filter {
+    height: 34px;
+    background-color: #F2F2F2;
+    border-top: thin solid #CDCDCD;
+    border-bottom: thin solid #CDCDCD;
+
 }

@@ -16,7 +16,7 @@
 .THIS #left {
     overflow: scroll;
     position:fixed;
-    top: 108px;
+    top: 138px;
     bottom: 0;
     left: 0;
     width:450px;
@@ -49,14 +49,14 @@
 
 .THIS #header-wrap {
     position: fixed;
-    height: 108px;
+    height: 138px;
     top: 0;
     width: 100%;
     z-index: 100;
 }
 
 .THIS #container{
-    margin-top: 131px;
+    margin-top: 138px;
 }
 
 .THIS .feed-stream-header {
