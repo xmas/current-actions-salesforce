@@ -1,16 +1,19 @@
 ({
 
     doInit : function(component, event, helper) {
-
-        //debugger;
-        //var insight = component.get("v.insight");
-
-        // if (insight) {
-        //     helper.assignIcon(component, insight);
         _.defer(function () {
             helper.historyChart(component, event, helper);
        });
-        // }
+
+        var insight = component.get("v.insight");
+        if (insight) {
+            if (insight.Parent_Type__c === 'all' && insight.Child_Type__c === "group") {
+                component.set("v.grouping", " grouped by ");
+            }
+            else if (insight.Parent_Type__c === 'group' && insight.Child_Type__c === "leaf") {
+                component.set("v.grouping", " where ");
+            }
+        }
 
     },
 

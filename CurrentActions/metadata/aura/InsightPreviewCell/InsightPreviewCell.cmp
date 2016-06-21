@@ -14,6 +14,9 @@
 <aura:handler event="c:InsightEvent" action="{!c.setSelectedInsight}"/>
 <aura:attribute name="tint" type="String" default="rgb(82, 121, 187)" />
 
+<aura:attribute name="grouping" type="String" default=" for "/>
+<aura:attribute name="space" type="String" default=" "/>
+
 
 <div class="list-cell slds-p-around--large" id="{!'preview-cell-'+v.index}" onclick="{!c.clickInsight}">
 
@@ -26,7 +29,7 @@
     </span>
     </div>
   </div>
-  <div class="cell-title" >{!v.insight.Name}</div>
+      <div class="cell-title">{!v.insight.Value_Label__c} for {!v.insight.Field_Labels__c}{!v.grouping}{!v.insight.Child_Label__c}</div>
 
   <div class="cell-data">
    <a class="cell-data-text" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>

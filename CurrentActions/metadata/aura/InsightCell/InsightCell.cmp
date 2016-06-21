@@ -10,6 +10,8 @@
 
 <aura:attribute name="index" type="String" />
 <aura:attribute name="unread" type="Boolean" />
+<aura:attribute name="grouping" type="String" default=" for "/>
+<aura:attribute name="space" type="String" default=" "/>
 
 
 <div class="slds slds-p-around--large" style="background-color:white">
@@ -18,10 +20,10 @@
   <div class="cell-table">
 
     <div class="cell-title" >
-      <div class="cell-title-text pink">{!v.insight.Path__c}</div>
+      <div class="cell-title-text pink">{!v.insight.Data_Source__c}</div>
          <hr class="cell-divider" />
 
-      <div class="cell-title-text">{!v.insight.Name}</div>
+      <div class="cell-title-text">{!v.insight.Field_Labels__c}{!v.grouping}{!v.insight.Child_Label__c}</div>
 
     </div>
 
@@ -43,14 +45,6 @@
 </div>
 
 
-<div class="slds-grid slds-wrap slds-grid--pull-padded">
-  <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 slds-p-around--small">
-    <div class="slds-box slds-p-around--small">
-      <div class="slds-text-heading--label slds-text-longform slds-p-bottom--small">History</div>
-      <div id="{!'history-chart-'+v.index}" style="width: 100%; height: 250px;"></div>
-    </div>
-  </div>
-</div>
 
 
 
