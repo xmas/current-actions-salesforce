@@ -38,6 +38,6 @@
 
 </div>
 
-<aura:handler name="change" value="{!v.insights}" action="{!c.handleValueChange}"/>
-
+<!-- <aura:handler name="change" value="{!v.insights}" action="{!c.handleValueChange}"/>
+ -->
 </aura:component>
