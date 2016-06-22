@@ -2,7 +2,7 @@
 
 	doInit : function(component, event, helper) {
 
-     var action = component.get("c.getUserName");
+       var action = component.get("c.getUserName");
 
         //Set up the callback
         var self = this;
@@ -27,16 +27,18 @@
         });
         $A.enqueueAction(data_action);
 
+        //debugger;
+     //  _.defer(function () {$('#search-select').dropdown();});
 
     },
 
-	assocSearch  : function(component, event, helper) {
+    assocSearch  : function(component, event, helper) {
 
-		var title = event.getParam("title");
-		component.set("v.title", title);
-	},
+      var title = event.getParam("title");
+      component.set("v.title", title);
+  },
 
-    menu : function(component, event, helper) {
+  menu : function(component, event, helper) {
         //console.log(event.target);
         $("#nav-dropdown").toggleClass("slds-is-open");
     }
