@@ -20,6 +20,10 @@
         });
         $A.enqueueAction(total_action);
 
+        helper.getTypes(component);
+		helper.getReports(component);
+        helper.getTypeLabels(component);
+
     },
 
    postScript :  function(component, event, helper) {
