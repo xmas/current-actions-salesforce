@@ -22,9 +22,16 @@
 
     },
 
-    postScript : function(component, event, helper) {
+   postScript :  function(component, event, helper) {
+		console.log('in header controller');
+		$(".js-example-basic-multiple").select2().
+		on('select2:select', function (evt) {
+			//debugger;
+			console.log(evt.params.data.text);
 
-    },
+		});
+		;
+	},
 
     countChange : function(component, event, helper) {
     	var count = event.getParam("count");
