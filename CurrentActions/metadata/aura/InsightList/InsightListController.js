@@ -13,6 +13,7 @@
 	},
 
 	insightsChanged : function (component, event, helper) {
+		console.log('POST Insights CHANGED');
 		var count_event = $A.get("e.c:InsightCountEvent");
 		var insights = component.get("v.insights");
 		var count = insights.length;
@@ -82,8 +83,8 @@
 			helper.getInsightList(component);
 
 		} else if (assoc_id != null) {
-			helper.getInsightAssocList(component, assoc_id);
-
+			//helper.getInsightAssocList(component, assoc_id);
+			helper.getInsightSourceList(component, assoc_id);
 			//
 		} else if (report_id != null) {
 			console.log("get Insights by reports");

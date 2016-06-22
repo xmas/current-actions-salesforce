@@ -12,7 +12,7 @@
 
 <aura:handler event="c:MInsightDetails" action="{!c.showModalForInsight}"/>
 
-<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+<!-- <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/> -->
 <aura:attribute name="inited" type="Boolean" default="false"/>
 
 <aura:handler event="c:modalClose" action="{!c.closeModal}"/>

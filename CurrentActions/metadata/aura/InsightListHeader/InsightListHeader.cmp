@@ -12,13 +12,7 @@
 
 <aura:attribute name="title" type="String" default="Recent New and Changed"/>
 
-<aura:attribute name="typedata" type="List" />
-<aura:attribute name="reports" type="List" />
-<aura:attribute name="typelabels" type="List" />
-
-<aura:attribute name="typedata-base" type="List" />
-<aura:attribute name="reports-base" type="List" />
-<aura:attribute name="typelabels-base" type="List" />
+<aura:attribute name="sources" type="List" />
 
 <aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
 
@@ -45,9 +39,10 @@
 			<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
 
 
+
 			<select class="js-example-basic-multiple" style="width:400px">
-				<aura:iteration items="{!v.typelabels}" var="type" indexVar="indx">
-				<option value="{!indx}">{!type.Report_Type_Label__c}</option>
+				<aura:iteration items="{!v.sources}" var="type" indexVar="indx">
+				<option value="{!indx}">{!type.Data_Source__c}</option>
 				</aura:iteration>
 		</select>
 

@@ -64,6 +64,14 @@ public virtual with sharing class InsightsController {
 
   }
 
+   @AuraEnabled
+  public static List<Insight__c> getInsightsForSource(String source) {
+    //Id user_id = UserInfo.getUserId();
+    //String id_match = ' (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ';
+    String query = insightQueryString + ' WHERE (Data_Source__c = \''+source+'\') ORDER BY CreatedDate DESC LIMIT 25';
+    return Database.query(query);
+  }
+
   @AuraEnabled
   public static List<Insight__c> getInsightsByReport(Id report_id) {
     Id user_id = UserInfo.getUserId();

@@ -20,22 +20,22 @@
         });
         $A.enqueueAction(total_action);
 
-        helper.getTypes(component);
-		helper.getReports(component);
-        helper.getTypeLabels(component);
-
+        helper.getSources(component);
     },
 
-   postScript :  function(component, event, helper) {
-		console.log('in header controller');
-		$(".js-example-basic-multiple").select2().
-		on('select2:select', function (evt) {
+    postScript :  function(component, event, helper) {
+    	console.log('in header controller');
+    	$(".js-example-basic-multiple").select2().
+    	on('select2:select', function (evt) {
 			//debugger;
 			console.log(evt.params.data.text);
 
+			var selectEvent = $A.get("e.c:AssocEvent");
+			selectEvent.setParams({ "assocID": evt.params.data.text });
+
+			selectEvent.fire();
 		});
-		;
-	},
+    },
 
     countChange : function(component, event, helper) {
     	var count = event.getParam("count");

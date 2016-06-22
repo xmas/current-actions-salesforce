@@ -3,19 +3,6 @@
 		var insight = component.get("v.insight");
 		var mod = moment(insight.LastModifiedDate);
 		var today = moment();
-		//debugger;
-
-
-
-
-		// 	component.set("v.time", "SAME");
-		// } else {
-		// 	component.set("v.time", "NOT SAME");
-		// }
-
-		//debugger;
-
-		//console.log('daysAgo: '+mod.diff(today, 'day') +' hoursAgo: '+mod.diff(today, 'hour'));
 
 		var daysAgo = mod.diff(today, 'day');
 		if (Math.abs(daysAgo) === 1) {

@@ -6,6 +6,7 @@
         //Set up the callback
         var self = this;
         action.setCallback(self, function(actionResult) {
+            console.log('DEFAULT GET INSIGHT LIST');
             component.set("v.insights", actionResult.getReturnValue());
             window.scrollTo(0,0);
         });
@@ -69,12 +70,30 @@
         var self = this;
         action.setCallback(self, function(actionResult) {
             component.set("v.insights", actionResult.getReturnValue());
-            window.scrollTo(0,0);
+           // window.scrollTo(0,0);
 
         });
         $A.enqueueAction(action);
 
         //
+    },
+
+    getInsightSourceList : function(component, source) {
+        var action = component.get("c.getInsightsForSource");
+        action.setParams({
+            "source": source
+        });
+
+        //Set up the callback
+        var self = this;
+        action.setCallback(self, function(actionResult) {
+
+            component.set("v.insights", actionResult.getReturnValue());
+           // window.scrollTo(0,0);
+
+        });
+        $A.enqueueAction(action);
+
     },
 
     markUnread : function(component, event, helper) {

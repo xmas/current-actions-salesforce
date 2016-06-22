@@ -28,6 +28,11 @@ public with sharing class InsightNavController extends InsightsController {
 		return InsightsController.getInsights();
 	}
 
+	@AuraEnabled
+	public static List<AggregateResult> getSources () {
+		Id user_id = UserInfo.getUserId();
+		return [SELECT Data_Source__c, count(Id)  FROM Insight__c WHERE (Type__c != null) GROUP BY  Data_Source__c];
+	}
 
 	@AuraEnabled
 	public static List<AggregateResult> getReports () {
