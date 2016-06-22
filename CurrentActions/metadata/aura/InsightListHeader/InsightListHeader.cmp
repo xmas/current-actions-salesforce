@@ -39,8 +39,8 @@
 			<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
 
 
-
 			<select class="js-example-basic-multiple" style="width:400px">
+			<option value="ALL">Personalized</option>
 				<aura:iteration items="{!v.sources}" var="type" indexVar="indx">
 				<option value="{!indx}">{!type.Data_Source__c}</option>
 				</aura:iteration>
