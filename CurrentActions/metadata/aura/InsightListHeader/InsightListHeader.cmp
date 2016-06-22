@@ -4,19 +4,13 @@
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-<aura:attribute name="insights" type="List" />
-
+<aura:handler event="c:InsightCountEvent" action="{!c.countChange}"/>
 
 <aura:attribute name="name" type="String" default="you"/>
-<aura:attribute name="global_total" type="String" default="lots"/>
-<aura:attribute name="global_new_changed" type="String" default="some"/>
-<aura:attribute name="user_total" type="String" default="many"/>
-<aura:attribute name="user_new_changed" type="String" default="most"/>
 <aura:attribute name="count" type="String" default="14"/>
+<aura:attribute name="totalCount" type="String" default="500,000"/>
+
 <aura:attribute name="title" type="String" default="Recent New and Changed"/>
-
-
-<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="typedata" type="List" />
 <aura:attribute name="reports" type="List" />
@@ -37,7 +31,7 @@
 				{!v.name}
 			</div>
 			<div class="slds-text-body--regular header-detail">
-				of {!v.count} signficant insights.
+				of {!v.totalCount} signficant insights.
 			</div>
 		</div>
 		<img src="/resource/gray_r" class="gray-r slds-p-right--large"/>

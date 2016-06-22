@@ -2,9 +2,7 @@
 
 	doInit : function(component, event, helper) {
 
-
         //Set up the callback
-        var self = this;
         var name_action = component.get("c.getUserName");
         name_action.setCallback(this, function(actionResult) {
 
@@ -14,10 +12,23 @@
         });
         $A.enqueueAction(name_action);
 
+
+        var total_action = component.get("c.totalInsightCount");
+        total_action.setCallback(this, function(actionResult) {
+        	var result = actionResult.getReturnValue();
+        	component.set("v.totalCount", result);
+        });
+        $A.enqueueAction(total_action);
+
     },
 
     postScript : function(component, event, helper) {
 
+    },
+
+    countChange : function(component, event, helper) {
+    	var count = event.getParam("count");
+    	component.set("v.count", count);
     },
 
     assocSearch  : function(component, event, helper) {

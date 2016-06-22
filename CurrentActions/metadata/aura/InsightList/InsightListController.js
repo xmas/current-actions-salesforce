@@ -12,10 +12,12 @@
 
 	},
 
-
 	insightsChanged : function (component, event, helper) {
-		//var
-
+		var count_event = $A.get("e.c:InsightCountEvent");
+		var insights = component.get("v.insights");
+		var count = insights.length;
+		count_event.setParams({"count": count});
+		count_event.fire();
 	},
 
 	openModal : function(component, event, helper) {

@@ -8,6 +8,9 @@
 <aura:attribute name="omnifocus" type="Boolean" default="true"/>
 <aura:registerEvent name="selected_insight" type="c:InsightEvent"/>
 
+<aura:registerEvent name="insight_count" type="c:InsightCountEvent"/>
+
+
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 <aura:attribute name="inited" type="Boolean" default="false"/>
 
