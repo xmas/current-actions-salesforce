@@ -1,6 +1,6 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="InsightNavController">
 
-<ltng:require styles="/resource/select2/css/select2.min.css" scripts="/resource/jq3,/resource/select2/js/select2.full.min.js" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/select2/css/select2.min.css,/resource/rezza_fonts_css" scripts="/resource/jq3,/resource/select2/js/select2.full.min.js" afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
@@ -39,7 +39,7 @@
 			<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
 
 
-			<select class="js-example-basic-multiple" style="width:400px">
+			<select class="js-example-basic-multiple" style="width:400px;border-top: thin solid #CDCDCD;border-bottom: thin solid #CDCDCD;">
 			<option value="ALL">Personalized</option>
 				<aura:iteration items="{!v.sources}" var="type" indexVar="indx">
 				<option value="{!indx}">{!type.Data_Source__c}</option>
