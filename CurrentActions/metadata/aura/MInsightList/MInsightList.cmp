@@ -1,9 +1,10 @@
 <aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes,force:appHostable" >
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
 <aura:attribute name="insights" type="List" />
 <aura:attribute name="chart_data" type="List" />
-<aura:attribute name="user_name" type="String" default="Kevin" />
+<aura:attribute name="name" type="String" default="you" />
 <aura:attribute name="sf1_color" type="String" />
 
 <aura:attribute name="title" type="String" default="Show All"/>
@@ -13,7 +14,6 @@
 <aura:handler event="c:MInsightDetails" action="{!c.showModalForInsight}"/>
 
 <!-- <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/> -->
-<aura:attribute name="inited" type="Boolean" default="false"/>
 
 <aura:handler event="c:modalClose" action="{!c.closeModal}"/>
 <aura:handler event="c:modalOpen" action="{!c.openModal}"/>
@@ -26,67 +26,118 @@
 
 <div class="slds">
 
-  <div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide allow-scroll" aura:id="modaldialog">
-  <div class=" scroller ">
-      <div class="slds-modal__header slds-theme--info">
-        <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="{!c.hidePopup}">
-          <c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close">
-        </c:svg>
-        <span class="slds-assistive-text">Close</span>
-      </button>
-      <h2 class="slds-text-heading--medium">Your Title</h2>
-    </div>
-    <div class="slds-modal__content slds-p-around--medium" >
-      <div>
-        <p>{!v.body}</p>
-      </div>
-    </div>
-  </div>
+	<div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide allow-scroll" aura:id="modaldialog">
+		<div class=" scroller ">
+			<div class="slds-modal__header slds-theme--info">
+				<button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="{!c.hidePopup}">
+					<c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close">
+				</c:svg>
+				<span class="slds-assistive-text">Close</span>
+			</button>
+			<h2 class="slds-text-heading--medium">Your Title</h2>
+		</div>
+		<div class="slds-modal__content slds-p-around--medium" >
+			<div>
+				<p>{!v.body}</p>
+			</div>
+		</div>
+	</div>
 </div>
 
-    <div class="slds-backdrop slds-backdrop--hide" aura:id="backdrop">
-    </div>
-
-    <!-- <button class="slds-button " onclick="{!c.showPopup}"> Open </button> -->
-
-   <!-- Swiper -->
-   <div class="swiper-container swiper-container-v sizer">
-    <div class="swiper-wrapper sizer">
-        <div class="swiper-slide sizer" style="background-color:white">
-
-        <div class="slds-p-around--medium">
-                <div class="greeting slds-p-top--large">Welcome back, {!v.user_name}!</div>
-                <hr class="greeting-bar"/>
-                    </div>
-                <div class="slds-media__body slds-p-around--large valign">
-                  <div class="insight-count" >{!v.insights.length}</div>
-                  <div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
-                  <p class="cta-tag" >Swipe up to review.</p>
-
-            </div>
-
-
-     </div>
-
-     <div class="swiper-slide sizer">
-        <div class="swiper-container swiper-container-h sizer">
-            <div class="swiper-wrapper sizer">
-                <aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-                <div class="swiper-slide sizer">
-                    <c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
-
-                    <!-- <c:InsightCell insight="{!insight}" index="{!indx}" /> -->
-                    <!-- <c:InsightCharts insight="{!insight}" /> -->
-
-
-                </div>
-            </aura:iteration>
-        </div>
-        <div class="swiper-pagination"></div>
-
-    </div>
+<div class="slds-backdrop slds-backdrop--hide" aura:id="backdrop">
 </div>
-</div>
+
+<!-- Swiper -->
+<div class="swiper-container swiper-container-h-top sizer">
+	<div class="swiper-wrapper sizer">
+
+		<div class="swiper-slide sizer">
+
+			<div class="swiper-container swiper-container-v sizer">
+				<div class="swiper-wrapper sizer">
+
+					<!-- top list header -->
+					<div class="swiper-slide sizer" style="background-color:white">
+						<div class="slds-p-around--medium">
+							<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
+							<hr class="greeting-bar"/>
+						</div>
+						<div class="slds-media__body slds-p-around--large valign">
+							<div class="insight-count" >{!v.insights.length}</div>
+							<div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
+							<p class="cta-tag" >Swipe up to review.</p>
+						</div>
+					</div>
+					<!-- top list header -->
+
+
+					<!-- top list horizontal swiper -->
+					<div class="swiper-slide sizer">
+						<div class="swiper-container swiper-container-h sizer">
+							<div class="swiper-wrapper sizer">
+								<aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+								<div class="swiper-slide sizer">
+									<c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+								</div>
+							</aura:iteration>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+					<!-- top list horizontal swiper -->
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-slide sizer">
+
+		<div class="swiper-container swiper-container-v sizer">
+				<div class="swiper-wrapper sizer">
+
+					<!-- top list header -->
+					<div class="swiper-slide sizer" style="background-color:white">
+						<div class="slds-p-around--medium">
+							<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
+							<hr class="greeting-bar"/>
+						</div>
+						<div class="slds-media__body slds-p-around--large valign">
+							<div class="insight-count" >{!v.insights.length}</div>
+							<div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
+							<p class="cta-tag" >Swipe up to review.</p>
+
+							<select>
+							<option>TEST</option>
+														<option>TEST</option>
+							<option>TEST</option>
+
+							</select>
+						</div>
+					</div>
+					<!-- top list header -->
+
+
+					<!-- top list horizontal swiper -->
+					<div class="swiper-slide sizer">
+						<div class="swiper-container swiper-container-h sizer">
+							<div class="swiper-wrapper sizer">
+								<aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+								<div class="swiper-slide sizer">
+								FILTERED VERSION
+									<c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+								</div>
+							</aura:iteration>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+					<!-- top list horizontal swiper -->
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+
+
 </div>
 </div>
 
