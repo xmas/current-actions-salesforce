@@ -1,14 +1,11 @@
 ({
 	doInit : function(component, event, helper) {
-
-
 		//Fetch the insight list from the Apex controller
 		helper.getInsightList(component);
 
 	},
 
 	postScript: function(component, event, helper) {
-
 
 	},
 
@@ -19,6 +16,15 @@
 		var count = insights.length;
 		count_event.setParams({"count": count});
 		count_event.fire();
+
+		if (insights.length > 0) {
+			_.defer( function () {
+				var selectEvent = $A.get("e.c:InsightEvent");
+				selectEvent.setParams({ "insight": insights[0] });
+				selectEvent.fire();
+			});
+		}
+
 	},
 
 	openModal : function(component, event, helper) {
