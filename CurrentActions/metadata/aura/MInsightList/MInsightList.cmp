@@ -97,22 +97,9 @@
 
 					<!-- top list header -->
 					<div class="swiper-slide sizer" style="background-color:white">
-						<div class="slds-p-around--medium">
-							<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
-							<hr class="greeting-bar"/>
-						</div>
-						<div class="slds-media__body slds-p-around--large valign">
-							<div class="insight-count" >{!v.insights.length}</div>
-							<div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
-							<p class="cta-tag" >Swipe up to review.</p>
+						<c:MInsightFilter />
 
-							<select>
-							<option>TEST</option>
-														<option>TEST</option>
-							<option>TEST</option>
 
-							</select>
-						</div>
 					</div>
 					<!-- top list header -->
 

@@ -26,6 +26,7 @@
 
 			// ga('create', 'UA-78916410-1', 'auto');
 			// ga('send', 'pageview');
+$('<meta>', {name: 'viewport',content: 'user-scalable=no'}).appendTo('head');
 
 		},
 
