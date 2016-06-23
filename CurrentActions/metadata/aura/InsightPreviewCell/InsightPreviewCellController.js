@@ -28,14 +28,12 @@
 			var index_class = '#preview-cell-'+index;
 			$(index_class).addClass('selected');
 		}
-
-
 	},
+
 	doInit : function(component, event, helper) {
 
 		var insight = component.get("v.insight");
 		helper.assignIcon(component, insight);
-
 
 		if (insight) {
 			if (insight.Parent_Type__c === 'all' && insight.Child_Type__c === "group") {
@@ -45,8 +43,6 @@
 				component.set("v.grouping", " where ");
 			}
 		}
-
-
 	},
 
 	setSelectedInsight : function(component, event, helper) {

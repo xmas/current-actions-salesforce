@@ -5,16 +5,13 @@
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:handler event="c:InsightCountEvent" action="{!c.countChange}"/>
+<aura:attribute name="count" type="String" default="14"/>
 
 <aura:attribute name="name" type="String" default="you"/>
-<aura:attribute name="count" type="String" default="14"/>
 <aura:attribute name="totalCount" type="String" default="500,000"/>
-
-<aura:attribute name="title" type="String" default="Recent New and Changed"/>
 
 <aura:attribute name="sources" type="List" />
 
-<aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
 
 <div class="slds rezza-header">
 
@@ -32,54 +29,18 @@
 	</div>
 
 	<div class="filter">
-
-
-
 		<div class="filter-menu slds-p-left--x-large">
 			<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
-
-
 			<select class="js-example-basic-multiple" style="width:400px;border-top: thin solid #CDCDCD;border-bottom: thin solid #CDCDCD;">
-			<option value="ALL">Personalized</option>
+				<option value="ALL">ALL</option>
 				<aura:iteration items="{!v.sources}" var="type" indexVar="indx">
 				<option value="{!indx}">{!type.Data_Source__c}</option>
-				</aura:iteration>
+			</aura:iteration>
 		</select>
-
-
-
-
-			<div class="slds-grid slds-type-focus slds-no-space no-wrap slds-dropdown-trigger slds-dropdown-trigger--click" id="nav-dropdown" onclick="{!c.menu}">
-				<div class="slds-longform filter-text" title="{!v.title}" onclick="{!c.menu}">{!v.title}
-					<button class="slds-button slds-button--icon-bare slds-shrink-none slds-align-middle slds-p-left--x-small" onclick="{!c.menu}">
-						<c:svg class="slds-button__icon slds-button__icon--hint" style="fill:#515458;" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
-					</button>
-				</div>
-				<div class="slds-dropdown slds-dropdown--left slds-dropdown--small nav-menu">
-					<c:InsightNav />
-				</div>
-			</div>
-		</div>
 	</div>
-
 </div>
 
-
-<!-- <div class="slds-page-header" role="banner">
-	<div class="slds-grid">
-		<div class="slds-col slds-has-flexi-truncate">
-			<p class="slds-text-heading- -label slds-p-bottom- -x-small">Rezza</p>
-			<div class="slds-grid">
-
-
-
-
-			</div>
-			<p class="slds-text-body- -small slds-page-header__info">Today we processed <strong>{!v.global_total}</strong> data objects (<strong>{!v.user_total}</strong> were yours)! <strong>{!v.global_new_changed}</strong> of them were new or changed (<strong>{!v.user_new_changed}</strong> of yours)! So much!  </p>
-		</div>
-
-	</div>
-</div> -->
+</div>
 
 
 </aura:component>
