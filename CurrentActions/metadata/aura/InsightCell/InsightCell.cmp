@@ -15,29 +15,23 @@
 
 
 <div class="slds slds-p-around--large" style="background-color:white">
-
+  <div class="cell-title-text pink">{!v.insight.Data_Source__c}</div>
+      <hr style="margin:1rem 0 1rem 0"/>
   <div class="cell-table">
 
     <div class="cell-title" >
-      <div class="cell-title-text pink">{!v.insight.Data_Source__c}</div>
-      <hr style="margin:1rem 0 1rem 0"/>
-
       <div class="cell-title-text">{!v.insight.Field_Labels__c}{!v.grouping}{!v.insight.Child_Label__c}</div>
-
     </div>
 
     <div class="cell-data">
      <a class="cell-data-text" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
-     <div class="count-badge">
-       {!v.insight.Today_Changed__c}
-     </div>
    </div>
 
  </div> <!-- table -->
 
  <hr style="margin:1rem 0 1rem 0"/>
 
- <div>
+ <div class="insight-detail">
   <aura:unescapedHtml value="{!v.insight.Details__c}"/>
 </div>
 
