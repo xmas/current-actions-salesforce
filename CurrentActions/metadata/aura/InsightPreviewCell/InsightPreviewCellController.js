@@ -22,12 +22,6 @@
 		}
 		component.set("v.time", mod.format('ddd h:mm a'));
 
-		var index = component.get("v.index");
-		if (index === 0) {
-			console.log('select first');
-			var index_class = '#preview-cell-'+index;
-			$(index_class).addClass('selected');
-		}
 	},
 
 	doInit : function(component, event, helper) {
@@ -49,11 +43,7 @@
 		var selected_insight = event.getParam("insight");
 		var current_insight = component.get("v.insight");
 		var index = component.get("v.index");
-
-
 		var index_class = '#preview-cell-'+index;
-
-
 
 		if (selected_insight === current_insight) {
 			$(index_class).addClass('selected');
@@ -67,13 +57,9 @@
 
 	},
 
-
-
 	clickInsight : function(component, event, helper) {
 
 		var insight = component.get("v.insight");
-
-
 		var selectEvent = $A.get("e.c:InsightEvent");
 		selectEvent.setParams({ "insight": insight });
 		selectEvent.fire();
