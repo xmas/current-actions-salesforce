@@ -94,6 +94,9 @@
 									<c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
 								</div>
 							</aura:iteration>
+								<div class="swiper-slide sizer">
+									<c:MEnd aura:id="minsight-cell"/>
+								</div>
 						</div>
 						<div class="swiper-pagination"></div>
 					</div>
@@ -126,6 +129,9 @@
 								<c:MInsightCell aura:id="filter-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.filtered.length}"/>
 							</div>
 						</aura:iteration>
+							<div class="swiper-slide sizer">
+									<c:MEnd aura:id="filter-cell"/>
+								</div>
 					</div>
 					<div class="swiper-pagination"></div>
 				</div>

@@ -1,0 +1,40 @@
+<aura:component  controller="InsightNavController">
+
+<aura:registerEvent name="nav" type="c:SwiperNavEvent"/>
+
+
+<div class="slds" style="background-color:white">
+    <div class="slds-p-top--medium slds-p-left--medium slds-p-right--medium ">
+            <div class="greeting slds-p-top--large">    </div>
+        <hr class="greeting-bar"/>
+    </div>
+
+    <div class="slds-p-left--medium slds-p-right--medium">
+    <div class="wrap-r">
+        <img src="/resource/gray_r" class="end-r"/>
+        </div>
+
+        <div class="inline slds-p-left--small">
+            <div class="insight-filter-tag">Congrats! You're all caught up.</div>
+            <p class="cta-filter-tag" >If you'd like to see more we're always happy to share.</p>
+        </div>
+    </div>
+
+    <div class="footerholder">
+        <div class="footer">
+            <c:svg class="slds-icon" style="fill:#CFCFCF; height:3rem; width:3rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevronup" />
+        </div>
+    </div>
+
+    <div class="right-bottom slds-p-right--large">
+        <button class="rezza-button slds-button slds-button--neutral slds-button--neutral" style="  font-size: 28px;
+        height: 40px;
+        width: 180px;
+        color: #2f2f2f;
+        font-weight: 500;
+        border-radius:0;
+        border: 2px solid #2f2f2f;" onclick="{!c.filter}">SHOW MORE</button>
+    </div>
+
+</div>
+</aura:component>
