@@ -48,7 +48,8 @@
 
 	filteredInsightsChanged : function(component, event, helper) {
 		  var filterH = component.get("v.filterH");
-		 // debugger;
+		  filterH.slideTo(0);
+
 		 _.defer(function () {
 		 	filterH.update();
 		 });
