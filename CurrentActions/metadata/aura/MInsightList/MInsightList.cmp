@@ -20,6 +20,7 @@
 <aura:handler event="c:MInsightDetails" action="{!c.showModalForInsight}"/>
 
 <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+<aura:handler event="c:SwiperNavEvent" action="{!c.nav}"/>
 
 <aura:handler event="c:modalClose" action="{!c.closeModal}"/>
 <aura:handler event="c:modalOpen" action="{!c.openModal}"/>
@@ -27,6 +28,7 @@
 <aura:attribute name="swiperH" type="Object" />
 <aura:attribute name="swiperV" type="Object" />
 <aura:attribute name="filterH" type="Object" />
+<aura:attribute name="filterV" type="Object" />
 
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
@@ -104,7 +106,7 @@
 	</div>
 	<div class="swiper-slide sizer">
 
-		<div class="swiper-container swiper-container-v sizer">
+		<div class="swiper-container swiper-container-filter-v sizer">
 			<div class="swiper-wrapper sizer">
 
 				<!-- top list header -->

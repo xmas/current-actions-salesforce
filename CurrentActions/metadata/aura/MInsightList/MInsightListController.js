@@ -31,6 +31,17 @@
 
 	},
 
+	nav : function(component, event, helper) {
+		//debugger;
+		if (event.getParam("filterOne")) {
+			var filterH = component.get("v.filterH");
+			var filterV = component.get("v.filterV");
+
+			filterH.slideTo(0,0);
+			filterV.slideTo(1,200);
+		}
+	},
+
 	assocSearch  : function(component, event, helper) {
 		if (event.hasOwnProperty("sourceIndex")) {
 			return;

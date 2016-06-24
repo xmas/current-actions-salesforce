@@ -25,26 +25,15 @@
 
 	postScript :  function(component, event, helper) {
 
-		$('#source-option').change(function () {
-			console.log('SOURCE SELECTION:'+$(this).val());
+	},
 
-			var selectEvent = $A.get("e.c:AssocEvent");
-			selectEvent.setParams({ "sourceIndex": $(this).val()});
-			selectEvent.fire();
-		});
-
-
-		// $('#value-option').change(function () {
-		//     console.log('VALUE SELECTION:'+$(this).val());
-		// });
-
-		//helper.getFieldsForSource(component, 0);
-
-
+	filter :  function(component, event, helper) {
+		var selectEvent = $A.get("e.c:SwiperNavEvent");
+		selectEvent.setParams({ "filterOne": true});
+		selectEvent.fire();
 	},
 
 	onSourceChange : function(component, event, helper) {
-		//debugger;
 		var source = component.find("sources").get("v.value");
 
 		if (source === '') {
@@ -54,11 +43,6 @@
 			return;
 		}
 		component.set("v.sourceName", source+' ');
-
-
-	   // var selectEvent = $A.get("e.c:AssocEvent");
-	   //  selectEvent.setParams({ "sourceIndex": $(this).val()});
-	   //  selectEvent.fire();
 
 	   var self = this;
 	   var action = component.get("c.getFieldsForSource");
@@ -73,7 +57,6 @@
 		});
 		$A.enqueueAction(action);
 
-
 		var source_action = component.get("c.getInsightsForSource");
 		source_action.setParams({
 		    "source": source
@@ -85,14 +68,11 @@
 		});
 		$A.enqueueAction(source_action);
 
-
-
 	},
 
 	onFieldChange : function(component, event, helper) {
 		var source = component.find("sources").get("v.value");
 		var field = component.find("fields").get("v.value");
-
 
 		var selectEvent = $A.get("e.c:AssocEvent");
 		selectEvent.setParams({ "source": source, "field" : field});
@@ -107,8 +87,6 @@
 				return;
 			}
 		}
-
-
 	},
 
 	countChange : function(component, event, helper) {

@@ -73,37 +73,55 @@
                     spaceBetween: 50,
                     pagination: '.swiper-pagination',
                     paginationType: 'progress',
-                    onTouchStart: function(swiper, event) {
-                        console.log(event);
-                        var next_index = swiper.activeIndex + 1;
-                        var slides = component.find("filter-cell");
-                        var next_slide = slides[next_index];
-                        next_slide.preload(next_index);
+                //     onTouchStart: function(swiper, event) {
+                //         console.log(event);
+                //         var next_index = swiper.activeIndex + 1;
+                //         var slides = component.find("filter-cell");
+                //         var next_slide = slides[next_index];
+                //         next_slide.preload(next_index);
 
-                    },
-                    onSlideChangeEnd : function(swiper, event) {
-                      var slides = component.find("filter-cell");
+                //     },
+                //     onSlideChangeEnd : function(swiper, event) {
+                //       var slides = component.find("filter-cell");
 
-                      var activeIndex = swiper.activeIndex;
-                      if ((activeIndex - 1) >= 0) {
-                        var last_slide = slides[activeIndex - 1];
-                        last_slide.unload(activeIndex - 1);
-                    }
+                //       var activeIndex = swiper.activeIndex;
+                //       if ((activeIndex - 1) >= 0) {
+                //         var last_slide = slides[activeIndex - 1];
+                //         last_slide.unload(activeIndex - 1);
+                //     }
 
-                    var this_slide = slides[activeIndex];
-                    this_slide.preload(activeIndex);
-                },
-                onSlidePrevEnd : function (swiper) {
-                     var slides = component.find("filter-cell");
-                      var lastIndex = swiper.activeIndex + 1;
-                      if (!swiper.atEnd) {
-                        var last_slide = slides[lastIndex];
-                        last_slide.unload(lastIndex);
-                    }
+                //     var this_slide = slides[activeIndex];
+                //     this_slide.preload(activeIndex);
+                // },
+                // onSlidePrevEnd : function (swiper) {
+                //      var slides = component.find("filter-cell");
+                //       var lastIndex = swiper.activeIndex + 1;
+                //       if (!swiper.atEnd) {
+                //         var last_slide = slides[lastIndex];
+                //         last_slide.unload(lastIndex);
+                //     }
 
-                }
+                // }
             });
                   component.set("v.filterH", filterH);
+
+
+                var filterV = new Swiper('.swiper-container-filter-v', {
+                    pagination: '.swiper-pagination-v',
+                    direction: 'vertical',
+                    spaceBetween: 50,
+                    // onSlideChangeEnd : helper.onSlideChangeEnd,
+                    //  onTouchStart: function(swiper, event) {
+                    //     var h_index = swiperV.activeIndex;
+                    //     var slides = component.find("filter-cell");
+                    //     var next_slide = slides[h_index];
+                    //     //next_slide.preload(h_index);
+
+                    // },
+                });
+                component.set("v.filterV", filterV);
+
+
 
             });
         });
