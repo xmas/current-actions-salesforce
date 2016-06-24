@@ -25,7 +25,7 @@
 		<div class="insight-filter-count" >{!v.count}</div>
 		<div class="inline slds-p-left--small">
 			<div class="insight-filter-tag">Insights Found</div>
-			<p class="cta-filter-tag" >{!v.count} significant insights processed.</p>
+			<p class="cta-filter-tag" >{!v.totalCount} significant insights processed.</p>
 
 
 			<div class="select-box">

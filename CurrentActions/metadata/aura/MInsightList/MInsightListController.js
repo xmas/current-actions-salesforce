@@ -15,6 +15,14 @@
 
 		});
 		$A.enqueueAction(name_action);
+
+		var total_action = component.get("c.maxCount");
+		total_action.setCallback(this, function(actionResult) {
+			var result = actionResult.getReturnValue();
+			component.set("v.totalCount", result);
+		});
+		$A.enqueueAction(total_action);
+
 	},
 
 	postScript: function(component, event, helper) {

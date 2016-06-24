@@ -46,8 +46,14 @@ public virtual with sharing class InsightsController {
 
 	@AuraEnabled
 	public static String getInsightCounts () {
-
 		return InsightData.getInsightCounts();
+	}
+
+	@AuraEnabled
+	public static String maxCount() {
+		Integer count = [SELECT count() from Insight__c where Type__c != null];
+		return String.valueOf(count);
+
 	}
 
 	@AuraEnabled
