@@ -74,6 +74,10 @@
 							<div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
 							<p class="cta-tag" >Swipe up to review.</p>
 						</div>
+
+						<div class="center-bottom">
+						<c:svg class="slds-icon" style="fill:#CFCFCF; height:3rem; width:3rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+						</div>
 					</div>
 					<!-- top list header -->
 

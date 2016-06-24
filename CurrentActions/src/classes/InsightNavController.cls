@@ -14,7 +14,7 @@ public with sharing class InsightNavController extends InsightsController {
 
 	@AuraEnabled
 	public static String getUserName() {
-		return UserInfo.getUserName();
+		return UserInfo.getFirstName();
 	}
 
 	@AuraEnabled

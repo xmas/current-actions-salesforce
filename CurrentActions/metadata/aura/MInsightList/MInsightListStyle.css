@@ -74,6 +74,14 @@
 .THIS .valign {
 }
 
+.THIS .center-bottom {
+   position: absolute;
+   margin-left: 44%;
+   width: 10%;
+   bottom: 0;
+   text-align: center;
+}
+
 .THIS .insight-tag.slds-text-heading--label {
     font-size:35px;
     color:#515458;

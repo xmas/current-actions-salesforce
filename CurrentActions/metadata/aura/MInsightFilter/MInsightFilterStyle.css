@@ -102,6 +102,15 @@
   position: absolute;
   right: 0px;
   bottom: 0px;
+  padding-bottom: 7rem;
+}
+
+.THIS .center-bottom-filter {
+	position: absolute;
+	margin: auto;
+	width: 42%;
+	bottom: 0px;
+	text-align: center
 }
 
 .THIS .valign {

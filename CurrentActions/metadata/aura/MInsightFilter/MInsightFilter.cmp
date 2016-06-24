@@ -24,73 +24,53 @@
 	<div class="slds-p-left--medium slds-p-right--medium">
 		<div class="insight-filter-count" >{!v.count}</div>
 		<div class="inline slds-p-left--small">
-			<div class="insight-filter-tag">Personalized Insights.</div>
-			<p class="cta-filter-tag" >Swipe up to review.</p>
+			<div class="insight-filter-tag">Insights Found</div>
+			<p class="cta-filter-tag" >{!v.count} significant insights processed.</p>
 
-		<!-- 	<div class="select-box">
-				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
-				<select name="source-option" id="source-option" class="source-option" data-native-menu="true">
-
-					<option value="ALL">ALL</option>
-					<aura:iteration items="{!v.sources}" var="source" indexVar="indx">
-					<option value="{!indx}">{!source.Data_Source__c}</option>
-				</aura:iteration>
-
-				</select>
-			</div> -->
 
 			<div class="select-box">
 				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
 				<div class="select-line">
-				<ui:inputSelect aura:id="sources"  change="{!c.onSourceChange}">
-				<ui:inputSelectOption text="" label=""/>
-				<aura:iteration items="{!v.sources}" var="source" indexVar="indx">
-				<ui:inputSelectOption text="{!source.Data_Source__c}" label="{!source.Data_Source__c}" />
-			</aura:iteration>
-		</ui:inputSelect>
-					</div>
-	</div>
-
-<div class="select-box">
-				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
-				<div class="select-line">
-			<ui:inputSelect aura:id="fields"  change="{!c.onFieldChange}">
-				<ui:inputSelectOption text="" label=""/>
-				<aura:iteration items="{!v.fields}" var="field" indexVar="indx">
-					<ui:inputSelectOption text="{!field.Field_Labels__c}" label="{!field.Field_Labels__c}" />
+					<ui:inputSelect aura:id="sources"  change="{!c.onSourceChange}">
+					<ui:inputSelectOption text="" label=""/>
+					<aura:iteration items="{!v.sources}" var="source" indexVar="indx">
+					<ui:inputSelectOption text="{!source.Data_Source__c}" label="{!source.Data_Source__c}" />
 				</aura:iteration>
 			</ui:inputSelect>
-			</div>
+		</div>
 	</div>
 
-
-<!--
-			<div class="select-box">
-				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
-				<select name="value-option" id="value-option" class="value-option" data-native-menu="true">
-					<option value="ALL">ALL</option>
-					<aura:iteration items="{!v.fields}" var="field" indexVar="indx">
-					<span>
-					<option value="{!indx}">{!field.Field_Labels__c}</option>
-					</span>
-				</aura:iteration>
-				</select>
-			</div> -->
+	<div class="select-box">
+		<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+		<div class="select-line">
+			<ui:inputSelect aura:id="fields"  change="{!c.onFieldChange}">
+			<ui:inputSelectOption text="" label=""/>
+			<aura:iteration items="{!v.fields}" var="field" indexVar="indx">
+			<ui:inputSelectOption text="{!field.Field_Labels__c}" label="{!field.Field_Labels__c}" />
+		</aura:iteration>
+	</ui:inputSelect>
+</div>
+</div>
 
 
-			<div class="right-bottom slds-p-right--large slds-p-bottom--xx-large">
-				<button class="rezza-button slds-button slds-button--neutral slds-button--neutral" style="	font-size: 28px;
+<div class="center-bottom-filter">
+	<c:svg class="slds-icon" style="fill:#CFCFCF; height:3rem; width:3rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+</div>
+
+
+<div class="right-bottom slds-p-right--large">
+	<button class="rezza-button slds-button slds-button--neutral slds-button--neutral" style="	font-size: 28px;
 	height: 40px;
 	width: 180px;
 	color: #2f2f2f;
 	font-weight: 500;
 	border-radius:0;
 	border: 2px solid #2f2f2f;" onclick="{!c.close}">FILTER</button>
-			</div>
+</div>
 
-		</div>
+</div>
 
-	</div>
+</div>
 
 
 

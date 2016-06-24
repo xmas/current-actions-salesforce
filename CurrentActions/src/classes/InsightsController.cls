@@ -105,7 +105,7 @@ public virtual with sharing class InsightsController {
 
 	@AuraEnabled
 	public static String getUserName() {
-		return UserInfo.getUserName();
+		return UserInfo.getFirstName();
 	}
 
 	@AuraEnabled
