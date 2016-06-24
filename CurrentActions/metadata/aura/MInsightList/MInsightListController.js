@@ -19,19 +19,35 @@
 
 	postScript: function(component, event, helper) {
 
-			// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			// })(window,document,'script','/resource/ga','ga');
+		$('<meta>', {name: 'viewport',content: 'user-scalable=no'}).appendTo('head');
 
-			// ga('create', 'UA-78916410-1', 'auto');
-			// ga('send', 'pageview');
-$('<meta>', {name: 'viewport',content: 'user-scalable=no'}).appendTo('head');
+	},
 
-		},
+	assocSearch  : function(component, event, helper) {
+		var source = event.getParam("source");
+		var field = event.getParam("field");
+
+		var self = this;
+		var action = component.get("c.getInsightsForSourceAndField");
+		action.setParams({
+			"source": source, "field": field
+		});
+		action.setCallback(self, function(actionResult) {
+			var filtered = actionResult.getReturnValue();
+			debugger;
+			component.set("v.filtered", filtered);
+		});
+		$A.enqueueAction(action);
 
 
-		showPopup :  function(component, event, helper) {
+	},
+
+	filteredInsightsChanged : function(component, event, helper) {
+		  var filterH = component.get("v.filterH");
+		  filterH.update();
+	},
+
+	showPopup :  function(component, event, helper) {
 		//called on clicking your button
 		//run your form render code after that, run the following lines
 		helper.showPopupHelper(component, helper, 'modaldialog', 'slds-fade-in-');
@@ -39,17 +55,15 @@ $('<meta>', {name: 'viewport',content: 'user-scalable=no'}).appendTo('head');
 	},
 
 	hidePopup :  function(component, event, helper) {
-			//debugger;
-			helper.hidePopupHelper(component, helper, 'modaldialog', 'slds-fade-in-');
-			helper.hidePopupHelper(component, helper, 'backdrop', 'slds-backdrop--');
-		},
+		helper.hidePopupHelper(component, helper, 'modaldialog', 'slds-fade-in-');
+		helper.hidePopupHelper(component, helper, 'backdrop', 'slds-backdrop--');
+	},
 
-		showModalForInsight : function(component, event, helper) {
-			//debugger;
-			var insight = event.getParam("insight");
-			helper.showPopupHelper(component, helper, 'modaldialog', 'slds-fade-in-', insight);
-			helper.showPopupHelper(component, helper, 'backdrop','slds-backdrop--');
+	showModalForInsight : function(component, event, helper) {
+		var insight = event.getParam("insight");
+		helper.showPopupHelper(component, helper, 'modaldialog', 'slds-fade-in-', insight);
+		helper.showPopupHelper(component, helper, 'backdrop','slds-backdrop--');
 
-		}
+	}
 
-	})
+})

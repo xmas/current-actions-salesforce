@@ -3,6 +3,11 @@
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="insights" type="List" />
+
+<aura:attribute name="filtered" type="List" />
+<aura:handler name="change" value="{!v.filtered}" action="{!c.filteredInsightsChanged}"/>
+
+
 <aura:attribute name="chart_data" type="List" />
 <aura:attribute name="name" type="String" default="you" />
 <aura:attribute name="sf1_color" type="String" />
@@ -13,13 +18,15 @@
 
 <aura:handler event="c:MInsightDetails" action="{!c.showModalForInsight}"/>
 
-<!-- <aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/> -->
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
 
 <aura:handler event="c:modalClose" action="{!c.closeModal}"/>
 <aura:handler event="c:modalOpen" action="{!c.openModal}"/>
 
 <aura:attribute name="swiperH" type="Object" />
 <aura:attribute name="swiperV" type="Object" />
+<aura:attribute name="filterH" type="Object" />
+
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -93,38 +100,36 @@
 	<div class="swiper-slide sizer">
 
 		<div class="swiper-container swiper-container-v sizer">
-				<div class="swiper-wrapper sizer">
+			<div class="swiper-wrapper sizer">
 
-					<!-- top list header -->
-					<div class="swiper-slide sizer" style="background-color:white">
-						<c:MInsightFilter />
-
-
-					</div>
-					<!-- top list header -->
+				<!-- top list header -->
+				<div class="swiper-slide sizer" style="background-color:white">
+					<c:MInsightFilter />
 
 
-					<!-- top list horizontal swiper -->
-					<div class="swiper-slide sizer">
-						<div class="swiper-container swiper-container-h sizer">
-							<div class="swiper-wrapper sizer">
-								<aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
-								<div class="swiper-slide sizer">
+				</div>
+				<!-- top list header -->
+
+
+				<!-- top list horizontal swiper -->
+				<div class="swiper-slide sizer">
+					<div class="swiper-container swiper-container-filter-h sizer">
+						<div class="swiper-wrapper sizer">
+							<aura:iteration items="{!v.filtered}" var="insight" indexVar="indx">
+							<div class="swiper-slide sizer">
 								FILTERED VERSION
-									<c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
-								</div>
-							</aura:iteration>
-						</div>
-						<div class="swiper-pagination"></div>
+								<c:MInsightCell aura:id="filter-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+							</div>
+						</aura:iteration>
 					</div>
-					<!-- top list horizontal swiper -->
+					<div class="swiper-pagination"></div>
+				</div>
+				<!-- top list horizontal swiper -->
+			</div>
+		</div>
 	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-
-
+</div>
+</div>
 </div>
 </div>
 

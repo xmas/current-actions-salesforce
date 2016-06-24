@@ -4,6 +4,8 @@
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+
 <aura:handler event="c:InsightCountEvent" action="{!c.countChange}"/>
 <aura:attribute name="count" type="String" default="00"/>
 
@@ -11,6 +13,8 @@
 <aura:attribute name="totalCount" type="String" default="500,000"/>
 
 <aura:attribute name="sources" type="List" />
+<aura:attribute name="fields" type="List" />
+
 
 <div class="slds" style="background-color:white">
 	<div class="slds-p-top--medium slds-p-left--medium slds-p-right--medium ">
@@ -18,28 +22,52 @@
 		<hr class="greeting-bar"/>
 	</div>
 	<div class="slds-p-left--medium slds-p-right--medium">
-		<div class="insight-filter-count" >16</div>
+		<div class="insight-filter-count" >{!v.count}</div>
 		<div class="inline slds-p-left--small">
 			<div class="insight-filter-tag">Personalized Insights.</div>
 			<p class="cta-filter-tag" >Swipe up to review.</p>
 
-			<div class="select-box">
+		<!-- 	<div class="select-box">
 				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
 				<select name="source-option" id="source-option" class="source-option" data-native-menu="true">
-					<option>Select Source</option>
-					<option value="1">option 1</option>
-					<option value="2">option 2</option>
-				</select>
-			</div>
 
+					<option value="ALL">ALL</option>
+					<aura:iteration items="{!v.sources}" var="source" indexVar="indx">
+					<option value="{!indx}">{!source.Data_Source__c}</option>
+				</aura:iteration>
+
+				</select>
+			</div> -->
+
+
+			<ui:inputSelect aura:id="sources" label="Sources" change="{!c.onSourceChange}">
+				<ui:inputSelectOption text="" label=""/>
+				<aura:iteration items="{!v.sources}" var="source" indexVar="indx">
+					<ui:inputSelectOption text="{!source.Data_Source__c}" label="{!source.Data_Source__c}" />
+				</aura:iteration>
+			</ui:inputSelect>
+
+
+			<ui:inputSelect aura:id="fields" label="Fields" change="{!c.onFieldChange}">
+				<ui:inputSelectOption text="" label=""/>
+				<aura:iteration items="{!v.fields}" var="field" indexVar="indx">
+					<ui:inputSelectOption text="{!field.Field_Labels__c}" label="{!field.Field_Labels__c}" />
+				</aura:iteration>
+			</ui:inputSelect>
+
+
+<!--
 			<div class="select-box">
 				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
 				<select name="value-option" id="value-option" class="value-option" data-native-menu="true">
-					<option>Select Value</option>
-					<option value="1">option 1</option>
-					<option value="2">option 2</option>
+					<option value="ALL">ALL</option>
+					<aura:iteration items="{!v.fields}" var="field" indexVar="indx">
+					<span>
+					<option value="{!indx}">{!field.Field_Labels__c}</option>
+					</span>
+				</aura:iteration>
 				</select>
-			</div>
+			</div> -->
 
 
 			<div class="right-bottom slds-p-right--large slds-p-bottom--xx-large">

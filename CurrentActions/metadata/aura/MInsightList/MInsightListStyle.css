@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'Arimo';
+    src: url(/resource/RezzaFonts/Arimo/Arimo-Regular.ttf),
+    url(/resource/RezzaFonts/Arimo/Arimo-Bold.ttf),
+    url(/resource/RezzaFonts/Arimo/Arimo-BoldItalic.ttf),
+    url(/resource/RezzaFonts/Arimo/Arimo-Italic.ttf);
+
+    font-family: 'DidactGothic';
+    src: url(/resource/RezzaFonts/DidactGothic/DidactGothic.ttf);
+
+}
+
+
 .THIS {
     position:absolute;
     height: 100%;

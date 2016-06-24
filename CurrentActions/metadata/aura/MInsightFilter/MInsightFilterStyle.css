@@ -84,22 +84,14 @@
 
 .THIS .select-box {
 	margin-left: -10px;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 
 .THIS .right-bottom {
   position: absolute;
   right: 0px;
   bottom: 0px;
-}
-
-.THIS button .rezza-button.slds-button.slds-button--neutral {
-	font-size: 28px;
-	height: 40px;
-	width: 180px;
-	color: #2f2f2f;
-	font-weight: 600;
 }
 
 .THIS .valign {
