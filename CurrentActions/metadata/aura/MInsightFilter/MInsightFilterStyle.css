@@ -79,7 +79,7 @@
 
 .THIS select{
 	font-size: 16px;
-	width: 80%;
+	width: 70%;
     background: transparent;
     border: 1px solid #ffffff;
     color: #E50041;
@@ -93,7 +93,7 @@
 }
 
 .THIS .select-line {
-	width: 80%;
+	width: 70%;
 	border-bottom:2px solid #CDCDCD;
 	display: inline-block;
 }
@@ -105,12 +105,17 @@
   padding-bottom: 7rem;
 }
 
-.THIS .center-bottom-filter {
-	position: absolute;
-	margin: auto;
-	width: 42%;
-	bottom: 0px;
-	text-align: center
+
+.THIS .footerholder {
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+.THIS .footer {
+    margin: auto;
+    width: 400px;
 }
 
 .THIS .valign {
@@ -148,9 +153,9 @@
 }
 
 .THIS .inline {
-    display: inline-block;
-    width: 70%;
-    margin-left: 20%;
+	display: inline-block;
+	width: 60%;
+	margin-left: 30%;
 }
 
 

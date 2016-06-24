@@ -16,6 +16,9 @@
 <aura:attribute name="fields" type="List" />
 
 
+<aura:attribute name="sourceName" type="String" />
+
+
 <div class="slds" style="background-color:white">
 	<div class="slds-p-top--medium slds-p-left--medium slds-p-right--medium ">
 		<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
@@ -24,7 +27,7 @@
 	<div class="slds-p-left--medium slds-p-right--medium">
 		<div class="insight-filter-count" >{!v.count}</div>
 		<div class="inline slds-p-left--small">
-			<div class="insight-filter-tag">Insights Found</div>
+			<div class="insight-filter-tag">{!v.sourceName}Insights Found</div>
 			<p class="cta-filter-tag" >{!v.totalCount} significant insights processed.</p>
 
 
@@ -53,8 +56,18 @@
 </div>
 
 
-<div class="center-bottom-filter">
+
+</div>
+
+</div>
+
+
+
+
+<div class="footerholder">
+    <div class="footer">
 	<c:svg class="slds-icon" style="fill:#CFCFCF; height:3rem; width:3rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+    </div>
 </div>
 
 
@@ -67,14 +80,6 @@
 	border-radius:0;
 	border: 2px solid #2f2f2f;" onclick="{!c.close}">FILTER</button>
 </div>
-
-</div>
-
-</div>
-
-
-
-
 
 </div>
 

@@ -50,8 +50,11 @@
 		if (source === '') {
 			component.set("v.fields", []);
 			component.set("v.count", '00');
+			component.set("v.sourceName", '');
 			return;
 		}
+		component.set("v.sourceName", source+' ');
+
 
 	   // var selectEvent = $A.get("e.c:AssocEvent");
 	   //  selectEvent.setParams({ "sourceIndex": $(this).val()});
