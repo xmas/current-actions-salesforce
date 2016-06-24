@@ -78,7 +78,7 @@
                         var next_index = swiper.activeIndex + 1;
                         var slides = component.find("filter-cell");
                         var next_slide = slides[next_index];
-                        //next_slide.preload(next_index);
+                        next_slide.preload(next_index);
 
                     },
                     onSlideChangeEnd : function(swiper, event) {
@@ -87,7 +87,7 @@
                       var activeIndex = swiper.activeIndex;
                       if ((activeIndex - 1) >= 0) {
                         var last_slide = slides[activeIndex - 1];
-                        //last_slide.unload(activeIndex - 1);
+                        last_slide.unload(activeIndex - 1);
                     }
 
                     var this_slide = slides[activeIndex];
@@ -98,14 +98,12 @@
                       var lastIndex = swiper.activeIndex + 1;
                       if (!swiper.atEnd) {
                         var last_slide = slides[lastIndex];
-                        //last_slide.unload(lastIndex);
+                        last_slide.unload(lastIndex);
                     }
 
                 }
             });
-                component.set("v.filterH", filterH);
-
-
+                  component.set("v.filterH", filterH);
 
             });
         });

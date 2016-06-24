@@ -39,21 +39,29 @@
 				</select>
 			</div> -->
 
-
-			<ui:inputSelect aura:id="sources" label="Sources" change="{!c.onSourceChange}">
+			<div class="select-box">
+				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+				<div class="select-line">
+				<ui:inputSelect aura:id="sources"  change="{!c.onSourceChange}">
 				<ui:inputSelectOption text="" label=""/>
 				<aura:iteration items="{!v.sources}" var="source" indexVar="indx">
-					<ui:inputSelectOption text="{!source.Data_Source__c}" label="{!source.Data_Source__c}" />
-				</aura:iteration>
-			</ui:inputSelect>
+				<ui:inputSelectOption text="{!source.Data_Source__c}" label="{!source.Data_Source__c}" />
+			</aura:iteration>
+		</ui:inputSelect>
+					</div>
+	</div>
 
-
-			<ui:inputSelect aura:id="fields" label="Fields" change="{!c.onFieldChange}">
+<div class="select-box">
+				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+				<div class="select-line">
+			<ui:inputSelect aura:id="fields"  change="{!c.onFieldChange}">
 				<ui:inputSelectOption text="" label=""/>
 				<aura:iteration items="{!v.fields}" var="field" indexVar="indx">
 					<ui:inputSelectOption text="{!field.Field_Labels__c}" label="{!field.Field_Labels__c}" />
 				</aura:iteration>
 			</ui:inputSelect>
+			</div>
+	</div>
 
 
 <!--

@@ -79,13 +79,23 @@
 
 .THIS select{
 	font-size: 16px;
-	width: 80%
+	width: 80%;
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #E50041;
+    appearance: none;
 }
 
 .THIS .select-box {
 	margin-left: -10px;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+}
+
+.THIS .select-line {
+	width: 80%;
+	border-bottom:2px solid #CDCDCD;
+	display: inline-block;
 }
 
 .THIS .right-bottom {
