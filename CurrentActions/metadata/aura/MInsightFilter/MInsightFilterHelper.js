@@ -17,6 +17,7 @@
 
     getFieldsForSource : function (component, source_index) {
         try {
+           // debugger;
         var sources = component.get("v.sources");
         var source = sources[source_index].Data_Source__c;
 
@@ -24,9 +25,9 @@
 
         var self = this;
          var action = component.get("c.getFieldsForSource");
-        //   action.setParams({
-        //     "data_source": source
-        // });
+          action.setParams({
+            "data_source": source
+        });
         action.setCallback(self, function(actionResult) {
             console.log('got fields: ');
             //debugger;

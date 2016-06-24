@@ -118,7 +118,7 @@
 							<aura:iteration items="{!v.filtered}" var="insight" indexVar="indx">
 							<div class="swiper-slide sizer">
 								FILTERED VERSION
-								<c:MInsightCell aura:id="filter-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+								<c:MInsightCell aura:id="filter-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.filtered.length}"/>
 							</div>
 						</aura:iteration>
 					</div>

@@ -114,8 +114,11 @@
 	},
 
 	assocSearch  : function(component, event, helper) {
-		var index = event.getParam("sourceIndex");
+		if (event.hasOwnProperty("sourceIndex")) {
+			var index = event.getParam("sourceIndex");
+		//debugger;
 		helper.getFieldsForSource(component, index);
+	}
 	},
 
 	menu : function(component, event, helper) {

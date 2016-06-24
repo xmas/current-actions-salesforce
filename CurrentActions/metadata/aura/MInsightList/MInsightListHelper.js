@@ -103,7 +103,7 @@
 
                 }
             });
-                component.set("v.filterH", swiperH);
+                component.set("v.filterH", filterH);
 
 
 

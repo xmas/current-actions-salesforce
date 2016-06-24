@@ -8,12 +8,12 @@
 
         helper.setRelativeTime(component, event, helper);
 
-        var index = component.get("v.index");
-        if (index === 0) {
-            console.log('select first');
-            var index_class = '#preview-cell-'+index;
-            $(index_class).addClass('selected');
-        }
+        // var index = component.get("v.index");
+        // if (index === 0) {
+        //     console.log('select first');
+        //     var index_class = '#preview-cell-'+index;
+        //     $(index_class).addClass('selected');
+        // }
 
     },
 

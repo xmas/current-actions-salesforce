@@ -24,6 +24,9 @@
 	},
 
 	assocSearch  : function(component, event, helper) {
+		if (event.hasOwnProperty("sourceIndex")) {
+			return;
+		}
 		var source = event.getParam("source");
 		var field = event.getParam("field");
 
@@ -34,7 +37,8 @@
 		});
 		action.setCallback(self, function(actionResult) {
 			var filtered = actionResult.getReturnValue();
-			debugger;
+			//debugger;
+			console.log('just loaded in some filtered insights:'+filtered.length);
 			component.set("v.filtered", filtered);
 		});
 		$A.enqueueAction(action);
@@ -44,7 +48,10 @@
 
 	filteredInsightsChanged : function(component, event, helper) {
 		  var filterH = component.get("v.filterH");
-		  filterH.update();
+		 // debugger;
+		 _.defer(function () {
+		 	filterH.update();
+		 });
 	},
 
 	showPopup :  function(component, event, helper) {

@@ -21,18 +21,17 @@ public virtual with sharing class InsightsController {
 
 	@AuraEnabled
 	public static List<Insight__c> getInsightsForSourceAndField(String source, String field) {
-		String query = insightQueryString + ' WHERE (Data_Source__c = \''+source+'\' AND Field_Labels__c = \''+field+'\'';
+		String query = insightQueryString + ' WHERE (Data_Source__c = \''+source+'\' AND Field_Labels__c = \''+field+'\')';
 	return Database.query(query);
 	}
 
-@AuraEnabled
-public static List<Insight__c> getInsights() {
+	@AuraEnabled
+	public static List<Insight__c> getInsights() {
 
-	Id user_id = UserInfo.getUserId();
-
-	String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' AND (Type__c != null) ORDER BY CreatedDate DESC LIMIT 8';
-		//+' AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC';
-		return Database.query(query);
+		Id user_id = UserInfo.getUserId();
+		String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' AND (Type__c != null) ORDER BY CreatedDate DESC LIMIT 8';
+			//+' AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC';
+			return Database.query(query);
 	}
 
 	@AuraEnabled
