@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Arimo';
+    src: url(/resource/RezzaFonts/Arimo/Arimo-Regular.ttf),
+    url(/resource/RezzaFonts/Arimo/Arimo-Bold.ttf),
+    url(/resource/RezzaFonts/Arimo/Arimo-BoldItalic.ttf),
+    url(/resource/RezzaFonts/Arimo/Arimo-Italic.ttf);
+
+    font-family: 'DidactGothic';
+    src: url(/resource/RezzaFonts/DidactGothic/DidactGothic.ttf);
+
+}
+
 .THIS.rezza-header {
     height: 108px;
     width: 100%;
@@ -8,14 +20,14 @@
     font-size:30px;
     color:#515458;
     font-weight:800;
-    font-family: Arimo-Bold;
+    font-family: Arimo-Bold, Salesforce Sans;
 }
 
 .THIS span.header-count {
     font-size:70px;
     color:#ED1652;
     font-weight:800;
-    font-family: Arimo-Bold;
+    font-family: Arimo-Bold, Salesforce Sans;
 }
 
 .THIS .header-detail {
@@ -34,7 +46,7 @@
 .THIS .filter-text {
    font-size: 14px;
    color:#515458;
-   font-family: Arimo;
+   font-family: Arimo, Salesforce Sans;
    cursor: pointer;
 }
 
