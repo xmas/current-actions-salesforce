@@ -107,7 +107,11 @@
 
 .THIS .greeting-bar {
     margin-top: 0;
-    color:#515458;
+    color:#000000;
+}
+
+.THIS hr.greeting-bar {
+  border-top: 1px solid #000000;
 }
 
 @media (max-width:680px) { /* smartphones, iPhone, portrait 480x320 phones */
