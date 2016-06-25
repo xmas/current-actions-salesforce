@@ -36,12 +36,23 @@
 	onSourceChange : function(component, event, helper) {
 		var source = component.find("sources").get("v.value");
 
-		if (source === '') {
+
+
+		if (source === 'Select Source') {
 			component.set("v.fields", []);
 			component.set("v.count", '00');
 			component.set("v.sourceName", '');
+
+			var box = component.find('sources');
+			$A.util.removeClass(box, 'selected');
+
 			return;
 		}
+
+		var box = component.find('sources');
+		$A.util.addClass(box, 'selected');
+
+
 		component.set("v.sourceName", source+' ');
 
 	   var self = this;
@@ -73,6 +84,20 @@
 	onFieldChange : function(component, event, helper) {
 		var source = component.find("sources").get("v.value");
 		var field = component.find("fields").get("v.value");
+
+
+
+		if (field === 'Select Field') {
+			component.set("v.fields", []);
+
+			var box = component.find('fields');
+			$A.util.removeClass(box, 'selected');
+
+			return;
+		}
+
+		var box = component.find('fields');
+		$A.util.addClass(box, 'selected');
 
 		var selectEvent = $A.get("e.c:AssocEvent");
 		selectEvent.setParams({ "source": source, "field" : field});
