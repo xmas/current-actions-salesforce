@@ -36,6 +36,19 @@
     font-size: 18px;
 }
 
+.THIS .bar-header {
+    position: fixed;
+    height: 3rem;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: white;
+}
+
+.THIS .modal-content {
+  padding-top: 3rem;
+}
+
 /*.THIS .swiper-slide img {
     width: auto;
     height: auto;
@@ -106,7 +119,7 @@
 }
 
 .THIS .greeting-bar {
-    margin-top: 0;
+    margin: 0;
     color:#000000;
 }
 

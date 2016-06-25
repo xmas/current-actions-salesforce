@@ -40,110 +40,107 @@
 
 <div class="slds">
 
-	<div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide allow-scroll" aura:id="modaldialog">
+	<div aria-hidden="true" role="dialog" class="slds-modal slds-modal--prompt slds-fade-in-hide allow-scroll" aura:id="modaldialog" style="background-color:white">
 		<div class=" scroller ">
-			<div class="slds-modal__header slds-theme--info">
-				<button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="{!c.hidePopup}">
-					<c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close">
-				</c:svg>
-				<span class="slds-assistive-text">Close</span>
-			</button>
-			<h2 class="slds-text-heading--medium">Your Title</h2>
-		</div>
-		<div class="slds-modal__content slds-p-around--medium" >
-			<div>
-				<p>{!v.body}</p>
+			<div class="bar-header slds-p-around--medium">
+				<button class="slds-button slds-button--icon slds-notify__close" style="color:#292831;" onclick="{!c.hidePopup}">
+					<c:svg ariaHidden="false" class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close" />
+				</button>
+				<hr class="greeting-bar"/>
 			</div>
 		</div>
+		<div class="slds-p-left--medium slds-p-right--medium slds-p-bottom--xx-large modal-content">
+			<p>{!v.body}</p>
+		</div>
+
 	</div>
-</div>
 
-<div class="slds-backdrop slds-backdrop--hide" aura:id="backdrop">
-</div>
+	<div class="slds-backdrop slds-backdrop--hide" aura:id="backdrop">
+	</div>
 
-<!-- Swiper -->
-<div class="swiper-container swiper-container-h-top sizer">
-	<div class="swiper-wrapper sizer">
+	<!-- Swiper -->
+	<div class="swiper-container swiper-container-h-top sizer">
+		<div class="swiper-wrapper sizer">
 
+			<div class="swiper-slide sizer">
+
+				<div class="swiper-container swiper-container-v sizer">
+					<div class="swiper-wrapper sizer">
+
+						<!-- top list header -->
+						<div class="swiper-slide sizer" style="background-color:white">
+							<div class="slds-p-around--medium">
+								<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
+								<hr class="greeting-bar"/>
+							</div>
+							<div class="slds-media__body slds-p-around--large valign">
+								<div class="insight-count" >{!v.insights.length}</div>
+								<div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
+								<p class="cta-tag" >{!v.totalCount} significant insights processed.</p>
+							</div>
+
+							<div class="center-bottom">
+								<c:svg class="slds-icon" style="fill:#CFCFCF; height:3rem; width:3rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+							</div>
+						</div>
+						<!-- top list header -->
+
+
+						<!-- top list horizontal swiper -->
+						<div class="swiper-slide sizer">
+							<div class="swiper-container swiper-container-h sizer">
+								<div class="swiper-wrapper sizer">
+									<aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+									<div class="swiper-slide sizer">
+										<c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+									</div>
+								</aura:iteration>
+								<div class="swiper-slide sizer">
+									<c:MEnd aura:id="minsight-cell"/>
+								</div>
+							</div>
+							<div class="swiper-pagination"></div>
+						</div>
+						<!-- top list horizontal swiper -->
+
+
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="swiper-slide sizer">
 
-			<div class="swiper-container swiper-container-v sizer">
+			<div class="swiper-container swiper-container-filter-v sizer">
 				<div class="swiper-wrapper sizer">
 
 					<!-- top list header -->
 					<div class="swiper-slide sizer" style="background-color:white">
-						<div class="slds-p-around--medium">
-							<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
-							<hr class="greeting-bar"/>
-						</div>
-						<div class="slds-media__body slds-p-around--large valign">
-							<div class="insight-count" >{!v.insights.length}</div>
-							<div class="slds-text-heading--label insight-tag">Personalized Insights.</div>
-							<p class="cta-tag" >{!v.totalCount} significant insights processed.</p>
-						</div>
-
-						<div class="center-bottom">
-						<c:svg class="slds-icon" style="fill:#CFCFCF; height:3rem; width:3rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
-						</div>
+						<c:MInsightFilter/>
 					</div>
 					<!-- top list header -->
 
 
 					<!-- top list horizontal swiper -->
 					<div class="swiper-slide sizer">
-						<div class="swiper-container swiper-container-h sizer">
+						<div class="swiper-container swiper-container-filter-h sizer">
 							<div class="swiper-wrapper sizer">
-								<aura:iteration items="{!v.insights}" var="insight" indexVar="indx">
+								<aura:iteration items="{!v.filtered}" var="insight" indexVar="indx">
 								<div class="swiper-slide sizer">
-									<c:MInsightCell aura:id="minsight-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.insights.length}"/>
+									FILTERED VERSION
+									<c:MInsightCell aura:id="filter-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.filtered.length}"/>
 								</div>
 							</aura:iteration>
-								<div class="swiper-slide sizer">
-									<c:MEnd aura:id="minsight-cell"/>
-								</div>
+							<div class="swiper-slide sizer">
+								<c:MEnd aura:id="filter-cell"/>
+							</div>
 						</div>
 						<div class="swiper-pagination"></div>
 					</div>
 					<!-- top list horizontal swiper -->
-
-
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="swiper-slide sizer">
-
-		<div class="swiper-container swiper-container-filter-v sizer">
-			<div class="swiper-wrapper sizer">
-
-				<!-- top list header -->
-				<div class="swiper-slide sizer" style="background-color:white">
-					<c:MInsightFilter/>
-				</div>
-				<!-- top list header -->
-
-
-				<!-- top list horizontal swiper -->
-				<div class="swiper-slide sizer">
-					<div class="swiper-container swiper-container-filter-h sizer">
-						<div class="swiper-wrapper sizer">
-							<aura:iteration items="{!v.filtered}" var="insight" indexVar="indx">
-							<div class="swiper-slide sizer">
-								FILTERED VERSION
-								<c:MInsightCell aura:id="filter-cell" insight="{!insight}" index="{!indx}" maxCount="{!v.filtered.length}"/>
-							</div>
-						</aura:iteration>
-							<div class="swiper-slide sizer">
-									<c:MEnd aura:id="filter-cell"/>
-								</div>
-					</div>
-					<div class="swiper-pagination"></div>
-				</div>
-				<!-- top list horizontal swiper -->
-			</div>
-		</div>
-	</div>
-</div>
 </div>
 </div>
 </div>

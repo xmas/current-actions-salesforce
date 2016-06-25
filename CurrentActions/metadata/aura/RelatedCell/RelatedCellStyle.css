@@ -81,21 +81,8 @@
          border-top: thin solid white;
 }*/
 
-.THIS.list-cell:after {
-    content:"";
-    display:block;
-    position: absolute;
-    left    : 5rem;
-    height  : 1.5625rem;
-    width   : 23rem;
+.THIS.list-cell {
     border-bottom:1px solid #CDCDCD;
-    z-index: -5000;
-}
-.THIS.list-cell.selected:after {
-        border:none;
-}
-.THIS.list-cell:last-child:after {
-        border:none;
 }
 
 .THIS.selected {
