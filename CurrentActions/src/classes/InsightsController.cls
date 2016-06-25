@@ -1,11 +1,13 @@
 public virtual with sharing class InsightsController {
 
 
+	@AuraEnabled
 	public static String typeNameForID (String assoc_string) {
 
 		Id assoc_id = Id.valueOf(assoc_string);
 		Schema.SObjectType token = assoc_id.getSObjectType();
 		Schema.DescribeSObjectResult dr = token.getDescribe();
+		System.debug('assoc_string:'+assoc_string+' label: '+dr.getLabelPlural());
 		return dr.getLabelPlural();
 	}
 

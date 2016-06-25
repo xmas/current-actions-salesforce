@@ -1,0 +1,19 @@
+<aura:component>
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:registerEvent name="modal_close" type="c:modalClose"/>
+<aura:attribute name="insight" type="Insight__c" />
+<aura:attribute name="related" type="List" />
+
+<div class="slds">
+
+    <aura:iteration items="{!v.related}" var="item" indexVar="indx">
+        <c:RelatedCell item="{!item}" index="{!indx}" />
+    </aura:iteration>
+
+</div>
+
+
+
+
+
+</aura:component>

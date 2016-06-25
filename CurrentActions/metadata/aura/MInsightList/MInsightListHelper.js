@@ -142,8 +142,24 @@
     // var insight = insights[index];
     console.log(insight)
 
+    // $A.createComponent(
+    //     "c:InsightCharts",
+    //     {
+    //         "insight": insight,
+    //     },
+    //     function(newChart){
+    //         //Add the new button to the body array
+    //         if (component.isValid()) {
+    //             var body = component.get("v.body");
+    //             body.push(newChart);
+    //             component.set("v.body", newChart);
+    //             //newModal.set("v.parent", [component]);
+    //         }
+    //     }
+    // );
+
     $A.createComponent(
-        "c:InsightCharts",
+        "c:RelatedList",
         {
             "insight": insight,
         },
@@ -156,7 +172,8 @@
                 //newModal.set("v.parent", [component]);
             }
         }
-    );
+        );
+
  },
 
  showPopupHelper: function(component, helper, componentId, className, insight){
