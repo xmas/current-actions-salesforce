@@ -1,67 +1,98 @@
-/*@font-face {
-    font-family: 'Arimo';
-    font-family: 'DidactGothic';
+.THIS .cell-table {
+    display: table;
+    width: 100%;
 }
-*/
+
+.THIS .cell-icon {
+   display: table-cell;
+   width: 3.75rem;
+   vertical-align: top;
+}
+
+.THIS .cell-title {
+    font-size: 18px;
+    color:#515458;
+    font-family: Arimo, Salesforce Sans;
+    display: block;
+    overflow: hidden;
+    line-height: 1.25;
+    vertical-align: top;
+}
+
+.THIS .cell-data {
+   display: table-cell;
+   text-align: right;
+   width: 7rem;
+   vertical-align: top;
+}
+
+.THIS a.cell-data-text {
+   font-size: 12px;
+   color:#515458;
+   font-family: Arimo, Salesforce Sans;
+   cursor: pointer;
+}
+
+.THIS .cell-detail {
+    font-size: 14px;
+    color:#515458;
+    padding-left: 3.75rem;
+}
+
+.THIS .count-badge {
+    background-color: #515458;
+    font-size: 12px;
+    color: white;
+    font-family: Arimo, Salesforce Sans;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.THIS .inline {
+    display: inline-block;
+}
+
+.THIS .read {
+    color:#9B9B9B;
+}
+
+/*.THIS.list-cell {
+     border-bottom: thin solid white;
+     border-top: thin solid white;
+}*/
+
+.THIS.list-cell:after {
+  content:"";
+  display:block;
+  position: absolute;
+  left    : 5rem;
+  height  : 1.5625rem;
+  width   : 23rem;
+  border-bottom:1px solid #CDCDCD;
+  z-index: -5000;
+}
+.THIS.list-cell.selected:after {
+    border:none;
+}
+.THIS.list-cell:last-child:after {
+    border:none;
+}
 
 .THIS.selected {
-    background-color: #f0f8fc;
+    background-color: #f2f2f2;
+    border-top: thin solid #cfcfcf;
+    border-bottom: thin solid #cfcfcf;
 }
 
 .THIS.slds-card__body:hover {
     background-color: #f4f6f9;
 }
 
-.THIS .slds-icon.slds-icon--large.icon-larger {
-    width: 3.5rem;
-    height: 3.5rem;
-}
-
 .THIS .sobject-link a {
-  color: #11244A;
-}
-
-.THIS .chart {
-  width: 300px;
-  height: 150px;
-}
-
-.THIS .greeting {
-    text-align: right;
-    font-size: 16px;
-    color:#515458;
-    font-family: Arimo, Salesforce Sans;
-}
-
-.THIS span.slds-badge {
-  background-color: #e8e8e8;
-  color:#515458;
-}
-
-.THIS .greeting-bar {
-    margin-top: 0;
-    color:#515458;
-}
-
-.THIS .detail-name {
- font-size:16px;
- font-weight:800;
- font-family: Arimo-Bold, Salesforce Sans;
- line-height: 1.2em;
- color: #515458;
-}
-
-.THIS.details,
-.THIS .details{
-    font-size:14px;
-    font-weight:200;
-    color: #515458;
-}
-
-.THIS .footer, .THIS.footer {
-   position:absolute;
-   bottom:3.5em;
-   width: 100%;
+      color: #11244A;
 }
 
 .THIS .right-bottom{
@@ -70,26 +101,50 @@
   bottom: 0px;
 }
 
-.THIS .dropdown-float {
-  float: right;
-  padding: 2px 4px;
-  margin: 6px 0;
-  display: inline-block;
-  border: 1px #0A58C7;
-  right: -6px;
-  position: relative;
-  color: white;
-  }
-
-/*.THIS .slds-button--neutral.pink-button {
-    color: #292731;
-}*/
-
-.THIS .slds-list--horizontal {
-    flex-wrap: wrap;
+.THIS .footer, .THIS.footer {
+   position:absolute;
+   bottom:3.5em;
+   width: 100%;
 }
- .THIS li{
-    padding-bottom: .7em;
-    padding-right: .7em;
- }
 
+.THIS .footerholder {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  padding-right: 3rem;
+  padding-bottom: 2rem;
+}
+
+.THIS .greeting-bar {
+  margin: 0;
+  margin-top: .5rem;  color:#515458;
+  padding-bottom: 1rem;
+}
+
+.THIS .insight-detail {
+    color: #515458;
+    font-size: 14px;
+    background-color: cyan;
+    max-height: 168px;
+}
+
+.THIS hr.sub-bar {
+  border-top: 1px solid #CFCFCF;
+  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.THIS hr.footer-bar {
+  margin: 0;
+  margin-top: .5rem;
+  border-top: 1px solid #515458;;
+  margin-bottom: 2rem;
+}
+
+
+.THIS .meta-detail {
+  font-size: 12px;
+  text-align: right;
+  color:#CFCFCF
+}

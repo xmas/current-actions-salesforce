@@ -34,7 +34,7 @@
 
         // else {
             var icon = "custom-sprite/svg/symbols.svg#custom4";
-            var icon_class = "slds-icon-custom-4";
+            var icon_class = "slds-icon-standard-environment-hub";
         //}
 
         component.set("v.icon", icon);
