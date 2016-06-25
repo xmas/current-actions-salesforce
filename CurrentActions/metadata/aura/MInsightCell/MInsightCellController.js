@@ -40,6 +40,8 @@
         }
         component.set("v.time", mod.format('ddd h:mm a'));
 
+        helper.loadChart(component, event, helper);
+
     },
 
     showDetails :  function(component, event, helper) {

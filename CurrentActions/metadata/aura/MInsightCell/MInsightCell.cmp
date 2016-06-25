@@ -59,6 +59,9 @@ description="Unload a cell after we've moved on">
 		<aura:unescapedHtml value="{!v.insight.Details__c}"/>
 	</div>
 
+	<div class="slds-p-top--large" id="{!'minsight-cell-chart-'+v.index}" style="width: 100%; height: 140px;"></div>
+
+
 	<div class="footerholder">
 		<hr class="footer-bar"/>
 	</div>
@@ -67,7 +70,7 @@ description="Unload a cell after we've moved on">
 		<button class="slds-button slds-button--neutral pink-button" style="
 		color: #2f2f2f;
 		border: 1px solid #2f2f2f;"
-		onclick="{!c.showDetails}">Details</button>
+		onclick="{!c.showDetails}">Show All</button>
 	</div>
 
 
