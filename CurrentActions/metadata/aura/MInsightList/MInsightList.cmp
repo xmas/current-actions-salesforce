@@ -1,5 +1,8 @@
 <aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes,force:appHostable" >
 
+<ltng:require scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore,/resource/jq3,/resource/moment,/resource/Plotly,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
+
+
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="insights" type="List" />
@@ -29,6 +32,7 @@
 <aura:attribute name="swiperV" type="Object" />
 <aura:attribute name="filterH" type="Object" />
 <aura:attribute name="filterV" type="Object" />
+<aura:attribute name="topH" type="Object" />
 
 
 <aura:attribute name="modal" type="Aura.Component[]" access="GLOBAL"/>

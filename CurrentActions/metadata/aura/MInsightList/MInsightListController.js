@@ -1,6 +1,8 @@
 ({
 	doInit : function(component, event, helper) {
 
+		// try {
+
 		//Fetch the insight list from the Apex controller
 		helper.getInsightList(component, helper);
 		//helper.registerServiceWorker();
@@ -23,11 +25,16 @@
 		});
 		$A.enqueueAction(total_action);
 
+	// } catch	(err) {
+	// 	console.log('MIinsight List Init Error');
+	// 	console.log(err.stack);
+	// }
+
 	},
 
 	postScript: function(component, event, helper) {
 
-		$('<meta>', {name: 'viewport',content: 'user-scalable=no'}).appendTo('head');
+		//$('<meta>', {name: 'viewport',content: 'user-scalable=no'}).appendTo('head');
 
 	},
 
