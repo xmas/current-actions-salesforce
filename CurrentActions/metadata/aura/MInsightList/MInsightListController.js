@@ -32,13 +32,23 @@
 	},
 
 	nav : function(component, event, helper) {
-		//debugger;
-		if (event.getParam("filterOne")) {
-			var filterH = component.get("v.filterH");
-			var filterV = component.get("v.filterV");
+		var filterH = component.get("v.filterH");
+		var filterV = component.get("v.filterV");
+		var swiperV = component.get("v.swiperV");
+		var swiperH = component.get("v.swiperH");
+		var topH = component.get("v.topH");
 
+		if (event.getParam("filterOne")) {
 			filterH.slideTo(0,0);
 			filterV.slideTo(1,200);
+		}
+
+		if (event.getParam("filterHead")) {
+			topH.slideTo(1, 200);
+			swiperV.slideTo(0,200);
+			swiperH.slideTo(0,0);
+			filterH.slideTo(0,0);
+			filterV.slideTo(0,200);
 		}
 	},
 
@@ -66,12 +76,12 @@
 	},
 
 	filteredInsightsChanged : function(component, event, helper) {
-		  var filterH = component.get("v.filterH");
-		  filterH.slideTo(0);
+		var filterH = component.get("v.filterH");
+		filterH.slideTo(0);
 
-		 _.defer(function () {
-		 	filterH.update();
-		 });
+		_.defer(function () {
+			filterH.update();
+		});
 	},
 
 	showPopup :  function(component, event, helper) {

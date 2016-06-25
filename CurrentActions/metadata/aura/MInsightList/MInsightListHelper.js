@@ -12,9 +12,11 @@
 
             _.defer(function () {
 
-                var swiperHTop = new Swiper('.swiper-container-h-top',{
+                var topH = new Swiper('.swiper-container-h-top',{
 
                 });
+                component.set("v.topH", topH);
+
 
                 var swiperH = new Swiper('.swiper-container-h', {
                     pagination: '.swiper-pagination-h',

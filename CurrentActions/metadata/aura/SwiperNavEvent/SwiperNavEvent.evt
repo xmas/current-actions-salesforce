@@ -1,4 +1,5 @@
 <aura:event type="APPLICATION">
     <aura:attribute name="filterOne" type="Boolean" default="false"/>
+    <aura:attribute name="filterHead" type="Boolean" default="false"/>
 
 </aura:event>

@@ -29,11 +29,11 @@
     <div class="right-bottom slds-p-right--large">
         <button class="rezza-button slds-button slds-button--neutral slds-button--neutral" style="  font-size: 28px;
         height: 40px;
-        width: 180px;
+        width: 250px;
         color: #2f2f2f;
         font-weight: 500;
         border-radius:0;
-        border: 2px solid #2f2f2f;" onclick="{!c.filter}">SHOW MORE</button>
+        border: 2px solid #2f2f2f;" onclick="{!c.back}">SHOW MORE</button>
     </div>
 
 </div>
