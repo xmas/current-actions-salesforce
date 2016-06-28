@@ -45,6 +45,14 @@
         var render_list = [item];
         component.set("v.render_list", render_list);
 
+    },
 
+    isSalesforceId : function(string) {
+        var res = string.match(/^([a-zA-Z0-9]{15}|[a-zA-Z0-9]{18})$/g);
+        if (res === string) {
+            return true;
+        }
+        return false;
     }
+
 })

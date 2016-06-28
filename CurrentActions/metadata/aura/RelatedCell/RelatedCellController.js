@@ -3,6 +3,12 @@
         var item = component.get("v.item");
         console.log('item: '+item.value);
         //debugger;
+
+        // if (!helper.isSalesforceId(item.value)) {
+        //      helper.assignIcon(component);
+        //      return;
+        // }
+
         var self = this;
         var type_action = component.get("c.typeNameForID");
         type_action.setParams({

@@ -110,7 +110,7 @@
 		var insight = component.get("v.insight");
 		var chart_data = [];
 		try {
-	//	debugger;
+		//debugger;
 			if (_.isUndefined(insight.Chart__c)) {
 				return;
 			}
@@ -119,12 +119,18 @@
 			chart_data = base.data;
 			var dates = base.dates;
 
+			// #
+
+			// #DC0032
+
+			var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
 
 			for (var i = 0; i < chart_data.length; i++) {
 				chart_data[i].x = dates;
 				chart_data[i].color = '#292831';
 				chart_data[i].line = {
-					color: chroma('#E50041').brighten(i).hex(),
+					// color: chroma('#E50041').brighten(i).hex(),
+					color : scale[i],
 					width: 2
 				};
 			}
@@ -212,7 +218,11 @@
 
 		console.log( 'var data ='+ JSON.stringify(chart_data) +' var layout ='+ JSON.stringify(chart_layout));
 
-		Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, { displaylogo: false});
+		var opts =  {displaylogo: false,
+			staticPlot: true,
+			displayModeBar: false}
+
+		Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, opts);
 	},
 
 
