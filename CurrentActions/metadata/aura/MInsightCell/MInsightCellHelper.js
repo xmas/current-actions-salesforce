@@ -45,6 +45,10 @@
 		return (number * (max - min)) + min;
 	},
 
+	capitalizeFirstLetter : function (string) {
+    	return string.charAt(0).toUpperCase() + string.slice(1);
+	},
+
 	setRelativeTime : function(component, event, helper) {
 		try {
 			var insight = component.get("v.insight");

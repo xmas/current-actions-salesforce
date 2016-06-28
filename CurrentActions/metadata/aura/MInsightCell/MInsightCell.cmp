@@ -31,6 +31,8 @@ description="Unload a cell after we've moved on">
 <aura:attribute name="maxCount" type="Integer" />
 <aura:attribute name="grouping" type="String" default=" for "/>
 <aura:attribute name="space" type="String" default=" "/>
+<aura:attribute name="title" type="String" default=" "/>
+
 
 <!-- layout -->
 <div class="slds slds-p-around--large">
@@ -48,7 +50,7 @@ description="Unload a cell after we've moved on">
 				</span>
 			</div>
 		</div>
-		<div class="cell-title">{!v.insight.Value_Label__c} for {!v.insight.Field_Labels__c}{!v.grouping}{!v.insight.Child_Label__c}</div>
+		<div class="cell-title">{!v.insight.Name}</div>
 </div>
 
 	<hr class="sub-bar" />
@@ -60,7 +62,8 @@ description="Unload a cell after we've moved on">
 	</div>
 
 	<div class="insight-detail slds-p-top--large">
-		<aura:unescapedHtml value="{!v.insight.Details__c}"/>
+	<aura:unescapedHtml value="{!v.title}"/>
+	<!-- <aura:unescapedHtml value="{!v.insight.Details__c}"/> -->
 	</div>
 
 	<div class="slds-p-top--large" id="{!'minsight-cell-chart-'+v.index}" style="width: 100%; height: 140px;"></div>

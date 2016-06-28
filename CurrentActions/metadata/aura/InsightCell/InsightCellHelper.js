@@ -127,12 +127,22 @@
 
             var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
 
+            // #CFCFCF // gray
+            // #E50041 // pink
+
+
             for (var i = 0; i < chart_data.length; i++) {
                 chart_data[i].x = dates;
                 chart_data[i].color = '#292831';
+
+                var color = '#CFCFCF';
+                if (i > chart_data.length-3) {
+                    color = '#E50041';
+                }
+
                 chart_data[i].line = {
-                    // color: chroma('#E50041').brighten(i).hex(),
-                    color : scale[i],
+                    color: color,
+                    //color : scale[i],
                     width: 2
                 };
             }
@@ -190,20 +200,21 @@
             "width": width,
             "margin": {
                 "l": 40,
-                "r": 0,
+                "r": 100,
                 "b": 20,
                 "t": 10,
                 "pad": 5
             }
         }
 
-        // for( var i = 0 ; i < chart_data.length ; i++ ) {
+        // for( var i = chart_data.length -3 ; i < chart_data.length ; i++ ) {
         //  var trace = chart_data[i];
+        //  //debugger;
 
         //  var result2 = {
         //      xref: 'paper',
         //      x: 1.02,
-        //      y: i*5000,//trace.y[trace.y.length],
+        //      y: trace.y[trace.y.length-1],
         //      xanchor: 'left',
         //      yanchor: 'middle',
         //      text: trace.name,

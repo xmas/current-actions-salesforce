@@ -7,6 +7,27 @@
         helper.assignIcon(component, insight);
 
 
+        //LONG:
+        //The Expected Revenue where Stage is "Id Decision Makers" and Assigned to "Europe"
+            //has changed for A, B, C
+
+        var value_label = insight.Value_Label__c;
+        var field_labels = insight.Field_Labels__c;
+        var child_label = insight.Child_Label__c;
+        var source = insight.Data_Source__c;
+        var count = insight.Today_Changed__c;
+        if (count > 1) {
+            count = count + '</strong> signficant items.';
+        } else if ( count === 0) {
+            count = 'no</strong> signficant items.';
+        } else {
+            count = '1</strong> signficant item.';
+        }
+
+        var title = 'The <strong>'+field_labels+'</strong> for <strong>'+child_label+' '+source+'</strong> has <strong>'+count;
+        component.set("v.title", title);
+
+
     },
 
     postScript : function(component, event, helper) {
