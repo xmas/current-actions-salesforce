@@ -51,11 +51,11 @@
 		}
 
 		if (event.getParam("filterHead")) {
-			topH.slideTo(1, 200);
-			swiperV.slideTo(0,200);
+			topH.slideTo(1, 0);
+			swiperV.slideTo(0,0);
 			swiperH.slideTo(0,0);
 			filterH.slideTo(0,0);
-			filterV.slideTo(0,200);
+			filterV.slideTo(0,0);
 		}
 	},
 

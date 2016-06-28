@@ -11,7 +11,7 @@ public virtual with sharing class InsightsController {
 		return dr.getLabelPlural();
 	}
 
-	static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Assigned_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c, SObject_Count__c, Is_Read__c, Today_New__c, Today_Changed__c, Today_Total__c, Today_Deleted__c, History_New__c, History_Changed__c, History_Deleted__c, History_Total__c,History_Labels__c, AssocID__c, Assoc2ID__c, Assoc3ID__c, AssocLabel__c, AssocLabel2__c, AssocLabel3__c, Today_Updated__c, Summary__c, Detail_Name__c, Child_Label__c, Field_Labels__c, Outcome__c, Parent_Label__c, Value_Label__c, Parent_Type__c, Child_Type__c FROM Insight__c';
+	static String insightQueryString = 'SELECT Id, Name, Long_Name__c, Data_Source__c, Details__c, LastModifiedDate, Assigned_User__c, OwnerId, Chart__c, Parents__c, Table_Data__c, ReportID__c, Report_Type_Label__c, Path__c, SObject_Count__c, Is_Read__c, Today_New__c, Today_Changed__c, Today_Total__c, Today_Deleted__c, History_New__c, History_Changed__c, History_Deleted__c, History_Total__c,History_Labels__c, AssocID__c, Assoc2ID__c, Assoc3ID__c, AssocLabel__c, AssocLabel2__c, AssocLabel3__c, Today_Updated__c, Summary__c, Detail_Name__c, Child_Label__c, Field_Labels__c, Outcome__c, Parent_Label__c, Value_Label__c, Parent_Type__c, Child_Type__c, Related__c FROM Insight__c';
 
 	static String newOrChangedQueryWhereString = '(Today_Updated__c > 0)';
 

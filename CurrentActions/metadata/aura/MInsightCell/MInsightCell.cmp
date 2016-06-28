@@ -54,7 +54,9 @@ description="Unload a cell after we've moved on">
 	<hr class="sub-bar" />
 
 	<div class="meta-detail">
-		{!v.insight.Data_Source__c} · {!v.time}
+		{!v.insight.Data_Source__c} ·  <div class="slds-text-body--small" style="color:#8E99A6; display: inline-block" >
+       <a target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.time}</a>
+     </div>
 	</div>
 
 	<div class="insight-detail slds-p-top--large">
