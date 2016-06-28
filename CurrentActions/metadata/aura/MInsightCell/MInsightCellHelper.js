@@ -185,9 +185,9 @@
 			},
 			"autosize": false,
 			"height": 140,
-			"width": 327,
+			"width": width,
 			"margin": {
-				"l": 30,
+				"l": 40,
 				"r": 0,
 				"b": 20,
 				"t": 10,

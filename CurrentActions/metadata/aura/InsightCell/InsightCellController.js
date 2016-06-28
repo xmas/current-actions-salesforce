@@ -17,6 +17,13 @@
 
     },
 
+     postScript : function(component, event, helper) {
+
+        helper.setRelativeTime(component, event, helper);
+        helper.loadChart(component, event, helper);
+
+    },
+
     showModal : function(component, event, helper) {
 
         var modalCloseEvent = $A.get("e.c:modalOpen");

@@ -1,5 +1,7 @@
 <aura:component controller="InsightsController">
 
+<ltng:require scripts="/resource/jq3,/resource/moment,/resource/chroma" afterScriptsLoaded="{!c.postScript}"/>
+
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
 <aura:attribute name="insight" type="Insight__c" />
@@ -12,6 +14,7 @@
 <aura:attribute name="unread" type="Boolean" />
 <aura:attribute name="grouping" type="String" default=" for "/>
 <aura:attribute name="space" type="String" default=" "/>
+<aura:attribute name="time" type="String" />
 
 
 <div class="slds slds-p-around--large" style="background-color:white">
@@ -24,7 +27,7 @@
     </div>
 
     <div class="cell-data">
-     <a class="cell-data-text" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
+     <a class="cell-data-text" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}">{!v.time}</a>
    </div>
 
  </div> <!-- table -->
@@ -35,7 +38,9 @@
   <aura:unescapedHtml value="{!v.insight.Details__c}"/>
 </div>
 
-<div class="cell-table slds-p-top--large">
+  <div class="slds-p-top--small slds-p-bottom--xx-large" id="{!'insight-cell-chart-'+v.index}" style="width: 100%; height: 250px;"></div>
+
+<div class="cell-table slds-p-top--xx-large">
 
   <div class="cell-title">
     <ul class="slds-list--horizontal slds-has-block-links--space">
