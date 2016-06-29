@@ -29,7 +29,7 @@
     </span>
     </div>
   </div>
-      <div class="cell-title">{!v.insight.Value_Label__c} for {!v.insight.Field_Labels__c}{!v.grouping}{!v.insight.Child_Label__c}</div>
+      <div class="cell-title">{!v.insight.Name}</div>
 
   <div class="cell-data">
    <a class="cell-data-text slds-p-right--small" target="_blank" href="{!'https://rowan-dev-ed.my.salesforce.com/'+v.insight.Id}"><ui:outputDateTime value="{!v.insight.LastModifiedDate}" format="EEE, h:mm a"/></a>
