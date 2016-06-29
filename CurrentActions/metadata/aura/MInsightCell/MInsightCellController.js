@@ -19,10 +19,9 @@
 			} else {
 				count = '1</strong> signficant item.';
 			}
-
 			var title = '';
 			if (insight.Parent_Type__c === 'all' && insight.Child_Type__c === 'leaf') {
-				title = 'The <strong>'+insight.Field_Labels__c+'</strong> for <strong>'+insight.Parent_Label__c+' '+insight.Data_Source__c+'</strong> has <strong>'+count;
+				title = 'The <strong>'+insight.Field_Labels__c+'</strong> for all <strong>'+insight.Data_Source__c+'</strong> has <strong>'+count;
 			}
 			if (insight.Parent_Type__c === 'group' && insight.Child_Type__c === 'leaf') {
 				title = 'The <strong>'+insight.Field_Labels__c+'</strong> where <strong>'+insight.Parent_Label__c+'</strong> is <strong>'+insight.Child_Label__c+'</strong> in <strong>'+insight.Data_Source__c+'</strong> has <strong>'+count;
