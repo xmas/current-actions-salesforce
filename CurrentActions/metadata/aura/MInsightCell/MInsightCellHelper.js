@@ -83,10 +83,15 @@
 	},
 
 	loadChart : function (component, event, helper) {
+
+
 		var index = component.get("v.index");
-		var chart_id = 'minsight-cell-chart-'+index;
-		//debugger;
+		var aura_id = component.getLocalId();
+		var chart_id = aura_id+'-chart-'+index;
 		var width = $('#'+chart_id).width();
+
+		console.log('load chart at index: '+index+'  '+chart_id);
+
 
 		var selectorOptions = {
 			buttons: [{
@@ -223,7 +228,7 @@
 		// 	chart_layout.annotations.push(result2);
 		// }
 
-		console.log( 'var data ='+ JSON.stringify(chart_data) +' var layout ='+ JSON.stringify(chart_layout));
+		//console.log( 'var data ='+ JSON.stringify(chart_data) +' var layout ='+ JSON.stringify(chart_layout));
 
 		var opts =  {displaylogo: false,
 			staticPlot: true,

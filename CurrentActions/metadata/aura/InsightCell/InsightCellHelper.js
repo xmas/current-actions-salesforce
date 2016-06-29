@@ -228,9 +228,7 @@
 
 		console.log( 'var data ='+ JSON.stringify(chart_data) +' var layout ='+ JSON.stringify(chart_layout));
 
-		var opts =  {displaylogo: false,
-			staticPlot: false,
-			displayModeBar: true}
+		var opts =  {displaylogo: false};
 
 			Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, opts);
 		},

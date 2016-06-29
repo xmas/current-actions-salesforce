@@ -31,13 +31,16 @@
 			}
 			component.set("v.title", title);
 
-
+			component.set("v.aura_id", component.getLocalId());
 		},
 
 		postScript : function(component, event, helper) {
 
 			helper.setRelativeTime(component, event, helper);
-			helper.loadChart(component, event, helper);
+			//debugger;
+			if (component.get("v.index") === 0) {
+				helper.loadChart(component, event, helper);
+			}
 
 		},
 
@@ -59,31 +62,33 @@
 
 		var this_slide = component.get("v.index");
 
-		// if (component.get("v.preloaded") === false ) {
-		//     component.set("v.preloaded", true);
-		//     helper.chartjs(component, event, helper);
-		// }
+		if (component.get("v.preloaded") === false ) {
+		    component.set("v.preloaded", true);
+		    console.trace();
+		    helper.loadChart(component, event, helper);
+		}
 	},
 
 	unload : function(component, event, helper) {
 
 
-		// if (component.get("v.preloaded") === true ) {
-		//     var index = component.get("v.index");
-		//     var chartid = 'chart-'+index;
-		//     var chartid_lookup = '#'+chartid;
+		if (component.get("v.preloaded") === true ) {
+		    var index = component.get("v.index");
+		    var aura_id = component.getLocalId();
+		    var chart_id = aura_id+'-chart-'+index;
+		    var chartid_lookup = '#'+chart_id;
 
-		//     var params = event.getParam('arguments');
-		//     console.log('called UNLOAD: '+component.get("v.index")+' on '+params.index);
-		//     var this_slide = component.get("v.index");
+		    var params = event.getParam('arguments');
+		    console.log('called UNLOAD: '+component.get("v.index")+' on '+params.index);
+		    var this_slide = component.get("v.index");
 
-		//     component.set("v.preloaded", false);
-		//     var chart_div = $(chartid_lookup);
-		//     if (chart_div) {
-		//         chart_div.remove();
-		//     }
+		    component.set("v.preloaded", false);
+		    var chart_div = $(chartid_lookup);
+		    if (chart_div) {
+		        chart_div.remove();
+		    }
 
-		// }
+		}
 
 	}
 
