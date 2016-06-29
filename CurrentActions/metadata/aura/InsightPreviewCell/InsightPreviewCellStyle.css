@@ -79,9 +79,9 @@
 .THIS.list-cell.selected:after {
 		border:none;
 }
-.THIS.list-cell:last-child:after {
+/*.THIS.list-cell:last-child:after {
 		border:none;
-}
+}*/
 
 .THIS.selected {
 		background-color: #f2f2f2;
