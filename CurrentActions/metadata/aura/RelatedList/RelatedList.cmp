@@ -3,7 +3,7 @@
 <aura:registerEvent name="modal_close" type="c:modalClose"/>
 <aura:attribute name="insight" type="Insight__c" />
 <aura:attribute name="related" type="List" />
-<aura:attribute name="baseURL" type="String" />
+<aura:attribute name="baseURL" type="String" default="https://rowan-dev-ed.my.salesforce.com"/>
 
 <div class="slds">
 
