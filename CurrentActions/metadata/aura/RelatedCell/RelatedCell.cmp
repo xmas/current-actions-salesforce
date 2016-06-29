@@ -10,9 +10,10 @@
 <aura:attribute name="icon" type="String" />
 <aura:attribute name="icon_class" type="String" />
 <aura:attribute name="type" type="String" />
+<aura:attribute name="baseURL" type="String" />
 
 
-<div class="list-cell slds-p-around--large" id="{!'preview-cell-'+v.index}" onclick="{!c.clickInsight}">
+<div class="list-cell slds-p-around--large" id="{!'preview-cell-'+v.index}" onclick="{!c.clickRelated}">
 
 
 	<aura:iteration items="{!v.render_list}" var="render" indexVar="indx">
@@ -27,7 +28,7 @@
 			</div>
 		</div>
 		<div class="cell-title">{!v.item.label}</div>
-
+		 <a class="cell-data-text slds-p-right--small" target="_blank" href="{!v.baseURL +'/'+ v.item.value}">Go To</a>
 	</div>
 
 </aura:iteration>
