@@ -22,6 +22,8 @@
         //debugger;
         if (_.has(store, 'stats')) {
           for (var chart in store.stats) {
+            //debugger;
+            store.stats[chart].title = chart;
             charts.push(store.stats[chart]);
           }
         } else {
