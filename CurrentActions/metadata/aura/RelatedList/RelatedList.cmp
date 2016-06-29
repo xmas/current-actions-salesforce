@@ -1,13 +1,14 @@
-<aura:component>
+<aura:component controller="InsightsController">
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 <aura:registerEvent name="modal_close" type="c:modalClose"/>
 <aura:attribute name="insight" type="Insight__c" />
 <aura:attribute name="related" type="List" />
+<aura:attribute name="baseURL" type="String" />
 
 <div class="slds">
 
     <aura:iteration items="{!v.related}" var="item" indexVar="indx">
-        <c:RelatedCell item="{!item}" index="{!indx}" />
+        <c:RelatedCell item="{!item}" index="{!indx}" baseURL="{!v.baseURL}" />
     </aura:iteration>
 
 </div>
