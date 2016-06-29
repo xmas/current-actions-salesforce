@@ -2,6 +2,9 @@
 	doInit: function(component, event, helper) {
         var item = component.get("v.item");
         console.log('item: '+item.value);
+
+        console.log('baseURL: '+component.get("v.baseURL"));
+
         //debugger;
 
         // if (!helper.isSalesforceId(item.value)) {
@@ -26,5 +29,9 @@
         $A.enqueueAction(type_action);
 
 
-	}
+	},
+
+    clickRelated : function(component, event, helper) {
+
+    }
 })
