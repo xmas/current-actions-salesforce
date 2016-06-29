@@ -21,7 +21,7 @@
 <div class="slds" style="background-color:white">
 	<div class="slds-p-top--medium slds-p-left--medium slds-p-right--medium ">
 		<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
-		<hr class="greeting-bar"/>
+		<hr class="greeting-bar slds-p-bottom--large"/>
 	</div>
 	<div class="slds-p-left--medium slds-p-right--medium">
 		<div class="insight-filter-count" >{!v.count}</div>
