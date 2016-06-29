@@ -1,19 +1,9 @@
 ({
 
     doInit : function(component, event, helper) {
-        _.defer(function () {
-            helper.historyChart(component, event, helper);
-       });
 
-        var insight = component.get("v.insight");
-        if (insight) {
-            if (insight.Parent_Type__c === 'all' && insight.Child_Type__c === "group") {
-                component.set("v.grouping", " grouped by ");
-            }
-            else if (insight.Parent_Type__c === 'group' && insight.Child_Type__c === "leaf") {
-                component.set("v.grouping", " where ");
-            }
-        }
+
+
 
     },
 
@@ -21,6 +11,33 @@
 
         helper.setRelativeTime(component, event, helper);
         helper.loadChart(component, event, helper);
+
+          var insight = component.get("v.insight");
+
+        var count = insight.Today_Changed__c;
+        if (count > 1) {
+            count = count + '</strong> signficant items.';
+        } else if ( count === 0) {
+            count = 'no</strong> signficant items.';
+        } else {
+            count = '1</strong> signficant item.';
+        }
+
+        var title = '';
+        if (insight.Parent_Type__c === 'all' && insight.Child_Type__c === 'leaf') {
+                title = 'The <strong>'+insight.Field_Labels__c+'</strong> for all <strong>'+insight.Data_Source__c+'</strong> has <strong>'+count;
+        }
+        if (insight.Parent_Type__c === 'group' && insight.Child_Type__c === 'leaf') {
+            title = 'The <strong>'+insight.Field_Labels__c+'</strong> where <strong>'+insight.Parent_Label__c+'</strong> is <strong>'+insight.Child_Label__c+'</strong> in <strong>'+insight.Data_Source__c+'</strong> has <strong>'+count;
+        }
+        if (insight.Parent_Type__c === 'group' && insight.Child_Type__c === 'group') {
+            title = 'The <strong>'+insight.Field_Labels__c+'</strong> where <strong>'+insight.Child_Label__c+'</strong> in <strong>'+insight.Data_Source__c+'</strong> has <strong>'+count;
+        }
+        component.set("v.title", title);
+
+           _.defer(function () {
+            helper.historyChart(component, event, helper);
+       });
 
     },
 
