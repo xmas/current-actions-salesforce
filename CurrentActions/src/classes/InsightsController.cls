@@ -16,6 +16,11 @@ public virtual with sharing class InsightsController {
 	static String newOrChangedQueryWhereString = '(Today_Updated__c > 0)';
 
 	@AuraEnabled
+	public static String baseURL () {
+		return URL.getSalesforceBaseUrl().toExternalForm();
+	}
+
+	@AuraEnabled
 	public static List <Insight__c> getInsight (Id recordID) {
 		String query = insightQueryString + ' WHERE Id = \''+recordID+'\'';
 		return Database.query(query);
@@ -31,7 +36,7 @@ public virtual with sharing class InsightsController {
 	public static List<Insight__c> getInsights() {
 
 		Id user_id = UserInfo.getUserId();
-		String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' AND (Type__c != null) ORDER BY CreatedDate DESC LIMIT 8';
+		String query = insightQueryString + ' WHERE '+newOrChangedQueryWhereString+' AND (Type__c != null) AND (Today_Changed__c > 1)  AND (Parent_Type__c = \'all\' or Child_Type__c = \'leaf\') ORDER BY CreatedDate DESC, Global_Value__c DESC';
 			//+' AND (AssocID__c = \''+user_id+'\' OR Assoc2ID__c = \''+user_id+'\' OR Assoc3ID__c = \''+user_id+'\') ORDER BY CreatedDate DESC';
 			return Database.query(query);
 	}
