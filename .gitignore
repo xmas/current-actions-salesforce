@@ -6,7 +6,6 @@ debug/
 *.manifest
 *.profile
 .symbols/
-*-meta.xml
 .DS_Store
 *.sublime-workspace
 CurrentActions/config/
