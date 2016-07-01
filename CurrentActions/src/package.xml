@@ -17,6 +17,10 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>*</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
         <members>CurrentActionsAdmin__c</members>
         <members>Insight__c</members>
         <members>SourceLink__c</members>
@@ -27,5 +31,9 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
-    <version>31.0</version>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <version>35.0</version>
 </Package>
