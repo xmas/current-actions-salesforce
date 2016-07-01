@@ -10,15 +10,3 @@ debug/
 *.sublime-workspace
 CurrentActions/config/
 mm.log
-package.xml
-
-CurrentActions/src/package.xml
-
-CurrentActions/src/classes/HouseController.cls
-
-CurrentActions/src/classes/HouseControllerTest.cls
-
-CurrentActions/src/classes/HousePagedResult.cls
-
-CurrentActions/src/staticresources/
-CurrentActions/src/staticresources/SLDS0122.resource
