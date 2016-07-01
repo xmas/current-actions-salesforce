@@ -17,7 +17,22 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>CurrentActionsAdmin__c</members>
+        <members>Insight__c</members>
+        <members>SourceLink__c</members>
+        <members>Source__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>DataTables</members>
+        <members>RezzaFonts</members>
+        <members>SLDS100</members>
+        <members>Swiper</members>
+        <members>chroma</members>
+        <members>plotly</members>
         <members>rezza_fonts_css</members>
+        <members>rezza_logo</members>
+        <members>underscore</members>
         <name>StaticResource</name>
     </types>
     <version>31.0</version>
