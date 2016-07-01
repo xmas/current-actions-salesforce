@@ -342,7 +342,7 @@ public static testMethod void TESTgetFromS3() {
     Test.setMock(HttpCalloutMock.class, mock);
 
 
-    String data = InsightsController.getFromS3('test');
+    String data = InsightsController.getFromS3('path', 'test');
     System.assert(data.length() > 0);
 
     Test.stopTest();

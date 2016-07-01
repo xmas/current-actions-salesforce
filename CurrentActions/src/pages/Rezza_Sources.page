@@ -1,0 +1,22 @@
+<apex:page standardController="Source__c" tabstyle="Rezza_Sources__tab" recordSetVar="sources">
+    
+    
+    <apex:pageBlock title="Your Data in Rezza">
+        <apex:image url="https://rowan-dev-ed--c.na34.content.force.com/servlet/servlet.FileDownload?file=01561000001C3Gx" height="40"/>
+        <apex:form >
+            <apex:panelGrid columns="5" id="buttons">
+                <a href="https://demolake.rezza.io/dataTable/create?chromeless=1&salesforce=1" target="_blank">New Source</a>
+                |
+                <a href="https://demolake.rezza.io/query/create?chromeless=1&salesforce=1" target="_blank">New Query</a>
+                |
+                <a href="https://demolake.rezza.io/dataRelationship/index?chromeless=1&salesforce=1" target="_blank">View your data in Rezza</a>
+                
+            </apex:panelGrid>
+        </apex:form>
+    </apex:pageBlock>
+    
+    <apex:pageBlock title="Your Rezza Data Sources" >
+        <apex:enhancedList type="Source__c" height="500"/>
+    </apex:pageBlock>
+    
+</apex:page>

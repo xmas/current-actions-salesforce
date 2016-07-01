@@ -1,0 +1,27 @@
+<apex:page controller="RezzaAdminController">
+    
+    <script>
+    function OpenPage(sourcePage){
+        if(sourcePage == 'rezza'){
+            var page = {!currentPage};
+            var win=window.open('http://demolake.rezza.io/sfLogin?return_url='+page, '_blank');
+            win.focus();
+        }
+    }
+    </script>
+    
+   <a href="http://demolake.rezza.io/sfLogin?return_url={!currentPage}" target="_blank">Connect to Rezza</a>
+	{!currentPage}
+    
+    <apex:pageBlock title="Connect to Rezza">
+        <apex:image url="https://rowan-dev-ed--c.na34.content.force.com/servlet/servlet.FileDownload?file=01561000001C3Gx" height="40"/>
+        <apex:form >
+            <apex:commandButton value="Connect To Rezza" onclick="OpenPage('rezza'); return false;"/>
+        </apex:form>
+    </apex:pageBlock>
+    
+    <apex:pageBlock title="Connect to AWS" >
+        <apex:enhancedList type="CurrentActionsAdmin__c" height="350"/>
+    </apex:pageBlock>
+    
+</apex:page>

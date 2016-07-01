@@ -1,0 +1,29 @@
+<apex:page >
+    
+    <apex:pageBlock title="Welcome to Rezza!">
+        
+        <apex:tabPanel switchType="client" selectedTab="step1" id="tabPanel">
+            <apex:tab label="Setup Connected App" name="step1" id="tabOne">
+                <h1>Step 1: Make a Connected App</h1>
+                <small style="color:gray">This won't be needed once we're in the app store, 
+                    but is needed during the alpha.</small>
+                <br/>
+                
+                <apex:image value="{!$Resource.Install_Step1}" />
+                <br/>
+                <h1>Step 2: Save the Connected App</h1>        
+                <br/>
+                <br/>
+                
+                Copy this for the callback URL:
+                <div style="font-weight:700; font-size:22px; color:#ED1652">https://demolake.rezza.io/sfLogin/oauthCallback</div>
+                 <br/>
+                <br/>
+                <apex:image value="{!$Resource.Install_Step2}" width="600"/>
+            </apex:tab>
+        </apex:tabPanel>
+    </apex:pageBlock>
+    
+    
+    
+</apex:page>
