@@ -87,7 +87,9 @@
 		filterH.slideTo(0);
 
 		_.defer(function () {
-			filterH.update();
+			$A.getCallback(function() {
+				filterH.update();
+			});
 		});
 	},
 

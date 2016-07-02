@@ -12,47 +12,48 @@
 			component.set("v.insights", results);
 
 			_.defer(function () {
+				$A.getCallback(function() {
 
-				var topH = new Swiper('.swiper-container-h-top',{
+					var topH = new Swiper('.swiper-container-h-top',{
 
-				});
-				component.set("v.topH", topH);
+					});
+					component.set("v.topH", topH);
 
-				var swiperH = helper.createCardSwiper(
+					var swiperH = helper.createCardSwiper(
 						"minsight-cell",
 						".swiper-container-h",
 						component,
 						helper
 						);
-				component.set("v.swiperH",swiperH);
+					component.set("v.swiperH",swiperH);
 
-				component.set("v.swiperV",
-					helper.createVerticalSwiper(
-						"minsight-cell",
-						".swiper-container-v",
-						component,
-						helper,
-						swiperH
-						));
+					component.set("v.swiperV",
+						helper.createVerticalSwiper(
+							"minsight-cell",
+							".swiper-container-v",
+							component,
+							helper,
+							swiperH
+							));
 
-				var filterH = helper.createCardSwiper(
+					var filterH = helper.createCardSwiper(
 						"filter-cell",
 						".swiper-container-filter-h",
 						component,
 						helper
 						);
-				component.set("v.filterH",filterH);
+					component.set("v.filterH",filterH);
 
 
-				component.set("v.filterV",
-					helper.createVerticalSwiper(
-						"filter-cell",
-						".swiper-container-filter-v",
-						component,
-						helper,
-						filterH
-						));
-
+					component.set("v.filterV",
+						helper.createVerticalSwiper(
+							"filter-cell",
+							".swiper-container-filter-v",
+							component,
+							helper,
+							filterH
+							));
+				});
 			});
 		});
 		$A.enqueueAction(action);

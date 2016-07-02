@@ -35,9 +35,11 @@
         }
         component.set("v.title", title);
 
-           _.defer(function () {
-            helper.historyChart(component, event, helper);
-       });
+        _.defer(function () {
+            $A.getCallback(function() {
+                helper.historyChart(component, event, helper);
+            });
+        });
 
     },
 

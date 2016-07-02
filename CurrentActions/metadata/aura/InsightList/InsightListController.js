@@ -19,9 +19,11 @@
 
 		if (insights.length > 0) {
 			_.defer( function () {
-				var selectEvent = $A.get("e.c:InsightEvent");
-				selectEvent.setParams({ "insight": insights[0] });
-				selectEvent.fire();
+				$A.getCallback(function() {
+					var selectEvent = $A.get("e.c:InsightEvent");
+					selectEvent.setParams({ "insight": insights[0] });
+					selectEvent.fire();
+				});
 			});
 		}
 
