@@ -31,14 +31,22 @@
 	<div class="filter">
 		<div class="filter-menu slds-p-left--x-large">
 			<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
-			<select class="js-example-basic-multiple" style="width:200px;border-top: thin solid #CDCDCD;border-bottom: thin solid #CDCDCD;">
+			<!-- <select class="filter-select" style="width:200px;border-top: thin solid #CDCDCD;border-bottom: thin solid #CDCDCD;">
 				<option value="ALL">ALL</option>
 				<aura:iteration items="{!v.sources}" var="type" indexVar="indx">
-				<option value="{!indx}">{!type.Data_Source__c}</option>
-			</aura:iteration>
-		</select>
+					<option value="{!indx}">{!type.Data_Source__c}</option>
+				</aura:iteration>
+			</select> -->
+
+
+			<ui:inputSelect aura:id="filterSelect" change="{!c.onChangeType}" >
+				<ui:inputSelectOption text="Top" value="true" />
+				<aura:iteration items="{!v.sources}" var="type" indexVar="indx">
+					<ui:inputSelectOption text="{!type.Data_Source__c}" value="false"/>
+				</aura:iteration>
+			</ui:inputSelect>
+		</div>
 	</div>
-</div>
 
 </div>
 
