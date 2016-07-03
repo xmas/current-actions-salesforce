@@ -39,7 +39,7 @@
 			</select> -->
 
 
-			<ui:inputSelect aura:id="filterSelect" change="{!c.onChangeType}" >
+			<ui:inputSelect class="select-box" aura:id="filterSelect" change="{!c.onChangeType}" >
 				<ui:inputSelectOption text="Top" value="true" />
 				<aura:iteration items="{!v.sources}" var="type" indexVar="indx">
 					<ui:inputSelectOption text="{!type.Data_Source__c}" value="false"/>

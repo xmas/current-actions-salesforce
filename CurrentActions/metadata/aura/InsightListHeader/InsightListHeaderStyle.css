@@ -80,6 +80,14 @@
     border-bottom: thin solid #CDCDCD;
 }
 
+.THIS .select-box {
+    background: transparent;
+    border: none;
+    height: 30px;
+    font-size: 16px;
+    color: #292831;
+}
+
 /* Assign min-width to container */
 .THIS .select2-container{
     min-width:200px;
