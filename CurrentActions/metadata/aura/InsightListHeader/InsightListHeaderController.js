@@ -20,23 +20,18 @@
         });
         $A.enqueueAction(total_action);
 
-        helper.getSources(component);
     },
 
     postScript :  function(component, event, helper) {
-    	console.log('in header controller');
-    	$(".js-example-basic-multiple").select2().
-    	on('select2:select', function (evt) {
-			//debugger;
-			console.log(evt.params.data.text);
+        helper.getSources(component, helper);
+    },
 
-			var selectEvent = $A.get("e.c:AssocEvent");
-			selectEvent.setParams({ "assocID": evt.params.data.text });
-// 			evt.params.data.id
-// "0"
-
-			selectEvent.fire();
-		});
+    onChangeType : function(component, event, helper) {
+        var filterSelect = component.find("filterSelect");
+        var filter = filterSelect.get("v.value");
+        var selectEvent = $A.get("e.c:AssocEvent");
+        selectEvent.setParams({ "assocID": filter });
+        selectEvent.fire();
     },
 
     countChange : function(component, event, helper) {
