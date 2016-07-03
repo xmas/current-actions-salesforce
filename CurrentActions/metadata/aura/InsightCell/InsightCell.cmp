@@ -7,9 +7,6 @@
 <aura:attribute name="insight" type="Insight__c" />
 <!-- <aura:registerEvent name="selected_insight" type="c:selectInsight"/> -->
 
-<aura:attribute name="icon" type="String" />
-<aura:attribute name="icon_class" type="String" />
-
 <aura:attribute name="index" type="String" />
 <aura:attribute name="unread" type="Boolean" />
 <aura:attribute name="grouping" type="String" default=" for "/>
