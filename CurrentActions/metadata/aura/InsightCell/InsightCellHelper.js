@@ -5,48 +5,6 @@
 		$A.util.toggleClass(modal, "toggle");
 	},
 
-	assignIcon : function(component, insight) {
-
-		// var type = insight["Report_Type_Label__c"];
-		// var icon = "";
-		// var icon_class = "";
-
-		// if (type === "Accounts") {
-		//     icon =  "standard-sprite/svg/symbols.svg#account";
-		//     icon_class = "slds-icon-standard-account";
-		// } else if (type === "Campaigns") {
-		//     icon = "standard-sprite/svg/symbols.svg#campaign";
-		//     icon_class = "slds-icon-standard-campaign";
-		// } else if (type === "Leads") {
-		//     icon = "standard-sprite/svg/symbols.svg#lead";
-		//     icon_class = "slds-icon-standard-lead";
-		// } else if (type === "Opportunities" || type === "Opportunity History") {
-		//     icon = "standard-sprite/svg/symbols.svg#opportunity";
-		//     icon_class = "slds-icon-standard-opportunity";
-		// } else if (type === "Users") {
-		//     icon = "standard-sprite/svg/symbols.svg#people";
-		//     icon_class = "slds-icon-standard-people";
-		// } else if (type === "Contacts & Accounts") {
-		//     icon = "standard-sprite/svg/symbols.svg#team_member";
-		//     icon_class = "slds-icon-standard-team-member";
-		// } else if (type === "Cases") {
-		//     icon = "standard-sprite/svg/symbols.svg#case";
-		//     icon_class = "slds-icon-standard-case";
-		// } else if (type.startsWith("Activities")) {
-		//     icon = "action-sprite/svg/symbols.svg#check";
-		//     icon_class = "slds-icon-action-new-task";
-		// }
-
-
-		// else {
-			var icon = "custom-sprite/svg/symbols.svg#custom4";
-			var icon_class = "slds-icon-custom-4";
-		//}
-
-		component.set("v.icon", icon);
-		component.set("v.icon_class", icon_class);
-	},
-
 	setRelativeTime : function(component, event, helper) {
 		try {
 			var insight = component.get("v.insight");
@@ -84,6 +42,85 @@
 		var width = $('#'+chart_id).width();
 		var height = $('#'+chart_id).height();
 
+		helper.renderWithChartjs(component, chart_id);
+	},
+
+	renderWithChartjs : function (component, chart_id, chart_data, chart_layout) {
+
+		// var insight = component.get("v.insight");
+		// var chart_data = [];
+		// try {
+		// 	if (_.isUndefined(insight.Chart__c)) {
+		// 		return;
+		// 	}
+
+		// 	var base = JSON.parse(insight.Chart__c);
+		// 	chart_data = base.data;
+		// 	var dates = base.dates;
+
+		// 	var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
+
+		// 	for (var i = 0; i < chart_data.length; i++) {
+		// 		chart_data[i].x = dates;
+		// 		chart_data[i].color = '#292831';
+		// 		chart_data[i].line = {
+		// 			// color: chroma('#E50041').brighten(i).hex(),
+		// 			color : scale[i],
+		// 			width: 2
+		// 		};
+		// 	}
+
+		// } catch (err) {
+		// 	console.log('Chart__c parsing error');
+		// 	console.log(err.stack);
+		// 	return;
+		// }
+
+		var ctx = $('#'+chart_id);
+
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+				datasets: [{
+					label: '# of Votes',
+					data: [12, 19, 3, 5, 2, 3],
+					backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+					'rgba(255,99,132,1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	},
+
+	renderWithPlotly : function (component, chart_id, chart_data, chart_layout) {
+
 
 		var selectorOptions = {
 			buttons: [{
@@ -114,23 +151,13 @@
 		var insight = component.get("v.insight");
 		var chart_data = [];
 		try {
-		//debugger;
-		if (_.isUndefined(insight.Chart__c)) {
-			return;
-		}
+			if (_.isUndefined(insight.Chart__c)) {
+				return;
+			}
 
-		var base = JSON.parse(insight.Chart__c);
-		chart_data = base.data;
-		var dates = base.dates;
-
-			// #
-
-			// #DC0032
-
-			var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
-
-			// #CFCFCF // gray
-			// #E50041 // pink
+			var base = JSON.parse(insight.Chart__c);
+			chart_data = base.data;
+			var dates = base.dates;
 
 			var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
 
@@ -230,10 +257,10 @@
 
 		var opts =  {displaylogo: false};
 
-			Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, opts);
-		},
+		Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, opts);
+	},
 
-		getDataFromS3 : function(component, insight) {
+	getDataFromS3 : function(component, insight) {
 
 		  //
 		  var action = component.get("c.getFromS3");
