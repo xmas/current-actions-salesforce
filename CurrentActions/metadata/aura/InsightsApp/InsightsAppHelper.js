@@ -11,6 +11,7 @@
 
         function logCustom(level, message, error) {
             console.log(getTimestamp(), "logCustom: ", arguments);
+            console.log(error);
         }
 
         function getTimestamp() {

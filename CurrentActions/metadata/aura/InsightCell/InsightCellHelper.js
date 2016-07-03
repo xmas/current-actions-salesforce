@@ -47,124 +47,111 @@
 
 	renderWithChartjs : function (component, chart_id, chart_data, chart_layout) {
 
-		// var insight = component.get("v.insight");
-		// var chart_data = [];
-		// try {
-		// 	if (_.isUndefined(insight.Chart__c)) {
-		// 		return;
-		// 	}
+		var insight = component.get("v.insight");
+		if (_.isUndefined(insight.Chart__c)) {
+			// TODO: remove chart from DOM
+			return;
+		}
 
-		// 	var base = JSON.parse(insight.Chart__c);
-		// 	chart_data = base.data;
-		// 	var dates = base.dates;
 
-		// 	var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
+		var datasets = [];
+		var dates = [];
 
-		// 	for (var i = 0; i < chart_data.length; i++) {
-		// 		chart_data[i].x = dates;
-		// 		chart_data[i].color = '#292831';
-		// 		chart_data[i].line = {
-		// 			// color: chroma('#E50041').brighten(i).hex(),
-		// 			color : scale[i],
-		// 			width: 2
-		// 		};
-		// 	}
-
-		// } catch (err) {
-		// 	console.log('Chart__c parsing error');
-		// 	console.log(err.stack);
-		// 	return;
-		// }
 
 		var ctx = $('#'+chart_id);
 
-		var myChart = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-				datasets: [{
-					label: '# of Votes',
-					data: [12, 19, 3, 5, 2, 3],
-					backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)'
-					],
-					borderColor: [
-					'rgba(255,99,132,1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)'
-					],
-					borderWidth: 1
-				}]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero:true
-						}
-					}]
-				}
-			}
-		});
-
-
-
-	},
-
-	renderWithPlotly : function (component, chart_id, chart_data, chart_layout) {
-
-
-		var selectorOptions = {
-			buttons: [{
-				step: 'month',
-				stepmode: 'backward',
-				count: 1,
-				label: '1m'
-			}, {
-				step: 'month',
-				stepmode: 'backward',
-				count: 6,
-				label: '6m'
-			}, {
-				step: 'year',
-				stepmode: 'todate',
-				count: 1,
-				label: 'YTD'
-			}, {
-				step: 'year',
-				stepmode: 'backward',
-				count: 1,
-				label: '1y'
-			}, {
-				step: 'all',
-			}],
-		};
-
-		var insight = component.get("v.insight");
 		var chart_data = [];
+
 		try {
-			if (_.isUndefined(insight.Chart__c)) {
-				return;
-			}
-
 			var base = JSON.parse(insight.Chart__c);
-			chart_data = base.data;
-			var dates = base.dates;
+				chart_data = base.data; // array of arrays
+				dates = base.dates.reverse(); // date array
 
-			var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
+				var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
 
-			for (var i = 0; i < chart_data.length; i++) {
-				chart_data[i].x = dates;
-				chart_data[i].color = '#292831';
-				chart_data[i].line = {
+
+				for (var i = 0; i < chart_data.length; i++) {
+					var dataset = {
+						"label" : chart_data[i].name,
+						"borderColor" : scale[i],
+						"borderWidth" : 2,
+						"data" : chart_data[i].y.reverse()
+					};
+					datasets.push(dataset);
+				}
+
+		} catch (err) {
+			console.log('Chart__c parsing error');
+			console.log(err);
+			console.log(err.stack);
+			return;
+		}
+
+		try {
+			var myChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: dates,
+					datasets: datasets
+				}
+			});
+
+		} catch (err) {
+			console.log('Chart js creation error');
+			console.log(err);
+			console.log(err.stack);
+			return;
+		}
+
+
+		},
+
+		renderWithPlotly : function (component, chart_id, chart_data, chart_layout) {
+
+
+			var selectorOptions = {
+				buttons: [{
+					step: 'month',
+					stepmode: 'backward',
+					count: 1,
+					label: '1m'
+				}, {
+					step: 'month',
+					stepmode: 'backward',
+					count: 6,
+					label: '6m'
+				}, {
+					step: 'year',
+					stepmode: 'todate',
+					count: 1,
+					label: 'YTD'
+				}, {
+					step: 'year',
+					stepmode: 'backward',
+					count: 1,
+					label: '1y'
+				}, {
+					step: 'all',
+				}],
+			};
+
+			var insight = component.get("v.insight");
+			var chart_data = [];
+			try {
+				if (_.isUndefined(insight.Chart__c)) {
+					return;
+				}
+
+				var base = JSON.parse(insight.Chart__c);
+				chart_data = base.data;
+				var dates = base.dates;
+
+				var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
+
+				for (var i = 0; i < chart_data.length; i++) {
+					chart_data[i].x = dates;
+					chart_data[i].color = '#292831';
+					chart_data[i].line = {
 					// color: chroma('#E50041').brighten(i).hex(),
 					color : scale[i],
 					width: 2

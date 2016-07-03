@@ -42,6 +42,10 @@
 
 }
 
+.THIS .sharp {
+  /*max-height: 350px;*/
+}
+
 .THIS .cell-data {
    display: table-cell;
    text-align: right;

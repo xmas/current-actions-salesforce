@@ -7,7 +7,7 @@
 	postScript : function(component, event, helper) {
 
 		helper.setRelativeTime(component, event, helper);
-		//helper.loadChart(component, event, helper);
+		helper.loadChart(component, event, helper);
 
 		var insight = component.get("v.insight");
 

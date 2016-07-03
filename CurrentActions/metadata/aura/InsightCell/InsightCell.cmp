@@ -35,7 +35,16 @@
   <aura:unescapedHtml value="{!v.title}"/>
 </div>
 
-  <div class="slds-p-top--small slds-p-bottom--small" id="{!'insight-cell-chart-'+v.index}" style="width: 100%; height: 250px;"></div>
+  <div class="slds-p-top--small slds-p-bottom--small">
+
+  <!-- Plot.ly uses a div -->
+  <!-- <div id="{!'insight-cell-chart-'+v.index}" style="width: 100%; height: 250px;" /> -->
+
+  <!-- ChartJS uses Canvas -->
+  <canvas class="sharp" id="{!'insight-cell-chart-'+v.index}" max-height="250px" />
+
+  </div>
+
 
 <div class="cell-table slds-p-top--xx-large">
 
