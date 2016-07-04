@@ -52,19 +52,19 @@
 				var test = component.get("v.charts");
 				console.log('WE JUST LOADEDED THESE'+test);
 				//_.defer(helper.renderCharts(component));
-				_.defer(function() {
-					$A.getCallback(function() {
+				// _.defer(function() {
+				// 	$A.getCallback(function() {
 
-						var set_charts = component.get("v.charts");
-						console.log('Defer being called after setting the component chart value: '+set_charts.length);
-						if (set_charts.length > 0) {
-							console.log('call render charts from the deferred');
-							helper.renderCharts(component);
-						} else {
-							console.log('delaying render charts from the deferred');
-						}
-					})
-				});
+				// 		var set_charts = component.get("v.charts");
+				// 		console.log('Defer being called after setting the component chart value: '+set_charts.length);
+				// 		if (set_charts.length > 0) {
+				// 			console.log('call render charts from the deferred');
+				// 			helper.renderCharts(component);
+				// 		} else {
+				// 			console.log('delaying render charts from the deferred');
+				// 		}
+				// 	})
+				// });
 			} catch (error) {
 				console.log('error on getting data from S3: '+error);
 				console.log(store);
@@ -92,9 +92,9 @@
 				var chart_data = chart.data;
 				var chart_layout = chart.layout;
 
-				debugger;
+				//debugger;
 
-				renderWithChartjs(component, chart_id, chart_data, chart_layout);
+				//renderWithChartjs(component, chart_id, chart, );
 
 				// Plotly.newPlot(chart_id.toLowerCase(), chart,  {margin: { t: 40 } }, { displaylogo: false});
 			}
@@ -108,15 +108,16 @@
 
 	},
 
-	renderWithChartjs : function (component, chart_id, chart_data, chart_layout) {
+	renderWithChartjs : function (component, chart_id, chart) {
 			var ctx = $('#'+chart_id);
+			debugger;
 
 			var myChart = new Chart(ctx, {
 				type: 'bar',
 				data: {
-					labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+					labels: chart_data.x,
 					datasets: [{
-						label: '# of Votes',
+						label: ,
 						data: [12, 19, 3, 5, 2, 3],
 						backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',

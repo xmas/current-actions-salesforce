@@ -1,5 +1,5 @@
 <aura:application >
-<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/rezza_fonts_css" scripts="/resource/jq3,/resource/underscore,/resource/Chartjs,/resource/moment" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/rezza_fonts_css" scripts="/resource/jq3,/resource/underscore,/resource/Chartjs,/resource/moment" />
 
 
 <div class="slds" style="background:white">

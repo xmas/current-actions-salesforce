@@ -2,23 +2,34 @@
 
 	doInit : function(component, event, helper) {
 
-        //Set up the callback
-        var name_action = component.get("c.getUserName");
-        name_action.setCallback(this, function(actionResult) {
 
-        	var result = actionResult.getReturnValue();
-        	component.set("v.name", result);
+        try {
+            var name_action = component.get("c.getUserName");
+            name_action.setCallback(this, function(actionResult) {
 
-        });
-        $A.enqueueAction(name_action);
+               var result = actionResult.getReturnValue();
+               component.set("v.name", result);
+
+           });
+            $A.enqueueAction(name_action);
+        } catch (err) {
+            console.log(err);
+            console.log(err.stack);
+        }
 
 
-        var total_action = component.get("c.totalInsightCount");
-        total_action.setCallback(this, function(actionResult) {
-        	var result = actionResult.getReturnValue();
-        	component.set("v.totalCount", result);
-        });
-        $A.enqueueAction(total_action);
+        try {
+            var total_action = component.get("c.totalInsightCount");
+            total_action.setCallback(this, function(actionResult) {
+               var result = actionResult.getReturnValue();
+               component.set("v.totalCount", result);
+           });
+            $A.enqueueAction(total_action);
+        } catch (err) {
+            console.log(err);
+            console.log(err.stack);
+        }
+
 
     },
 

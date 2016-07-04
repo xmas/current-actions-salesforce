@@ -24,6 +24,11 @@
             selectEvent.setParams({ "assocID": evt.params.data.text });
             selectEvent.fire();
         });
-    }
+    },
+
+    logError: function() {
+        // subscribe to severity levels
+
+}
 
 })

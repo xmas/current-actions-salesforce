@@ -67,7 +67,7 @@
 				chart_data = base.data; // array of arrays
 				dates = base.dates.reverse(); // date array
 
-				var scale = chroma.scale(['#DEAABA','#E50041']).colors(chart_data.length);
+				var scale = chroma.scale(['#E50041', '#DEAABA']).colors(chart_data.length);
 
 
 				for (var i = 0; i < chart_data.length; i++) {
