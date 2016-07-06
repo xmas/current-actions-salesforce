@@ -32,8 +32,7 @@
 		if (insight) {
 			if (insight.Parent_Type__c === 'all' && insight.Child_Type__c === "group") {
 				component.set("v.grouping", " grouped by ");
-			}
-			else if (insight.Parent_Type__c === 'group' && insight.Child_Type__c === "leaf") {
+			} else if (insight.Parent_Type__c === 'group' && insight.Child_Type__c === "leaf") {
 				component.set("v.grouping", " where ");
 			}
 		}
@@ -59,10 +58,16 @@
 
 	clickInsight : function(component, event, helper) {
 
-		var insight = component.get("v.insight");
-		var selectEvent = $A.get("e.c:InsightEvent");
-		selectEvent.setParams({ "insight": insight });
-		selectEvent.fire();
+		//try {
+			var insight = component.get("v.insight");
+			var selectEvent = $A.get("e.c:SelectInsightEvent");
+			selectEvent.setParams({ "insight": insight });
+			selectEvent.fire();
+		// } catch (err) {
+		// 	console.log("error on preview cell clicking on an insight");
+		// 	console.log(err);
+		// 	console.log(err.stack);
+		// }
 
 	},
 

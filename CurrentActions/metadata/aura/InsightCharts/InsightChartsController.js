@@ -2,15 +2,15 @@
 
      doInit : function(component, event, helper) {
 
-        // var insight = component.get("v.insight");
-        // helper.getDataFromS3(component, event, helper, insight);
-
+        console.log("InsightsChart init");
     },
 
     postScript : function(component, event, helper) {
 
         var insight = component.get("v.insight");
-        //helper.getDataFromS3(component, event, helper, insight);
+        console.log('InsightsChartController; insight set on chart:');
+        console.log(insight);
+        helper.getDataFromS3(component, event, helper, insight);
 
     }
 

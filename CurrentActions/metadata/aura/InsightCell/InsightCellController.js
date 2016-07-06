@@ -77,11 +77,11 @@
 
 	sendSelectedInsight : function(component, event, helper) {
 
-		var insight = component.get("v.insight");
-		console.log("got the insight: "+insight);
-		var insightEvent = $A.get("e.c:selectInsight");
-		insightEvent.setParams({"insight": insight});
-		insightEvent.fire();
+		// var insight = component.get("v.insight");
+		// console.log("got the insight: "+insight);
+		// var insightEvent = $A.get("e.c:selectInsight");
+		// insightEvent.setParams({"insight": insight});
+		// insightEvent.fire();
 
 	},
 

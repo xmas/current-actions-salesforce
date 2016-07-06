@@ -8,9 +8,15 @@
 			var self = this;
 			action.setCallback(self, function(actionResult) {
 
+				var results =  actionResult.getReturnValue();
+				console.log('insights returned: '+results.length);
+				//  var result_err = new Error();
+				// console.log(result_err.stack);
+
 				try {
 					console.log('DEFAULT GET INSIGHT LIST');
 					component.set("v.insights", actionResult.getReturnValue());
+
 					window.scrollTo(0, 0);
 				} catch (err) {
 					console.log(err);

@@ -10,22 +10,41 @@
 	},
 
 	insightsChanged : function (component, event, helper) {
-		console.log('POST Insights CHANGED');
+
+
+		try {
 		var count_event = $A.get("e.c:InsightCountEvent");
 		var insights = component.get("v.insights");
 		var count = insights.length;
+		console.log('POST Insights CHANGED: '+count);
+		//console.log(insights);
+
 		count_event.setParams({"count": count});
 		count_event.fire();
+		} catch (err) {
+		console.log('error sending count event: ');
+		console.log(err);
+		console.log(err.stack);
+	}
 
-		if (insights.length > 0) {
-			_.defer( function () {
-				$A.getCallback(function() {
-					var selectEvent = $A.get("e.c:InsightEvent");
-					selectEvent.setParams({ "insight": insights[0] });
-					selectEvent.fire();
-				});
-			});
-		}
+	//	try {
+	// 		debugger;
+	// 		if (insights.length > 0) {
+	// 		// _.defer( function () {
+	// 		// 	$A.getCallback(function() {
+	// 			var selectEvent = $A.get("e.c:InsightEvent");
+	// 			var firstInsight = insights[0]; // send just the first insight
+	// 			selectEvent.setParams({ "insight": firstInsight });
+	// 			selectEvent.fire();
+	// 		// 	});
+	// 		// });
+	// 	}
+
+	// } catch (err) {
+	// 	console.log('error sending insight event: ');
+	// 	console.log(err);
+	// 	console.log(err.stack);
+	// }
 
 	},
 
