@@ -1,18 +1,24 @@
 ({
-    doInit : function(component, event, helper) {
-        $A.logger.subscribe("INFO", logCustom);
-        $A.log('initialized logger');
+	postScript : function(component, event, helper) {
 
-        function logCustom(level, message, error) {
-            console.log(getTimestamp());
-            console.log(error);
-            console.log(error.stack)
-        }
 
-        function getTimestamp() {
-            return new Date().toJSON();
-        }
+		try {
+			var mySwiper = new Swiper ('.swiper-container', {
+				direction: 'horizontal',
+				pagination: '.swiper-pagination-h',
+				spaceBetween: 50,
+				onTouchStart: function(swiper, event) {
+					console.log('swiper touch start');
+					console.log(event);
 
-    }
+				},
+			});
+			mySwiper.update();
+		} catch (err) {
+			console.log(err);
+			console.log(err.stack);
+		}
+
+	}
 
 })

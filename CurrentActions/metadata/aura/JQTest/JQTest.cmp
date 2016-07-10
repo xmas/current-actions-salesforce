@@ -1,5 +1,18 @@
-<aura:component>
+<aura:component controller="InsightsController">
 
-<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<ltng:require styles="/resource/swiper_css" scripts="/resource/swjq" afterScriptsLoaded="{!c.postScript}" />
+
+
+
+<div class="slds sizer" >
+
+	<div class="swiper-container sizer">
+		<div class="swiper-wrapper sizer ">
+			<div class="swiper-slide sizer pink">Slide 1</div>
+			<div class="swiper-slide sizer green">Slide 2</div>
+			<div class="swiper-slide sizer red">Slide 3</div>
+		</div>
+	</div>
+</div>
 
 </aura:component>
