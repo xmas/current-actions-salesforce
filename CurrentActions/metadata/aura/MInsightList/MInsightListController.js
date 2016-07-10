@@ -1,6 +1,12 @@
 ({
 	doInit : function(component, event, helper) {
 
+
+
+	},
+
+	postScript: function(component, event, helper) {
+
 		// try {
 
 		//Fetch the insight list from the Apex controller
@@ -29,12 +35,6 @@
 	// 	console.log('MIinsight List Init Error');
 	// 	console.log(err.stack);
 	// }
-
-	},
-
-	postScript: function(component, event, helper) {
-
-		//$('<meta>', {name: 'viewport',content: 'user-scalable=no'}).appendTo('head');
 
 	},
 
