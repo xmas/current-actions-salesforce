@@ -1,6 +1,6 @@
 <aura:component controller="InsightsController" implements="flexipage:availableForAllPageTypes,force:appHostable" >
 
-<ltng:require scripts="/resource/Swiper/js/swiper.min.js,/resource/underscore,/resource/jq3,/resource/moment,/resource/Plotly,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/swiper_css" scripts="/resource/swjq,/resource/underscore,/resource/moment,/resource/Chartjs" afterScriptsLoaded="{!c.postScript}"/>
 
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
