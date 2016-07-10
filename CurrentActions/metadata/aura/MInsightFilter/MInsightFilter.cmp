@@ -1,6 +1,6 @@
 <aura:component  controller="InsightNavController">
 
-<ltng:require styles="/resource/select2/css/select2.min.css,/resource/rezza_fonts_css" scripts="/resource/jq3" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require styles="/resource/select2/css/select2.min.css,/resource/rezza_fonts_css" scripts="" afterScriptsLoaded="{!c.postScript}"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
