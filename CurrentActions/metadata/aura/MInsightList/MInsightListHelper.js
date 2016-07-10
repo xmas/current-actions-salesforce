@@ -12,13 +12,18 @@
 			component.set("v.insights", results);
 
 			_.defer(function () {
-				$A.getCallback(function() {
+				//$A.getCallback(function() {
 
+
+					// top level [(TOP <---> FILTER)]
 					var topH = new Swiper('.swiper-container-h-top',{
-
+						spaceBetween: 50
 					});
 					component.set("v.topH", topH);
 
+					// TOP <---> FILTER
+					//  |
+					// [(CARDS)] <--
 					var swiperH = helper.createCardSwiper(
 						"minsight-cell",
 						".swiper-container-h",
@@ -27,14 +32,19 @@
 						);
 					component.set("v.swiperH",swiperH);
 
-					component.set("v.swiperV",
+					// TOP <---> FILTER
+					//  | <---
+					// CARDS
+					var swiperV = component.set("v.swiperV",
 						helper.createVerticalSwiper(
 							"minsight-cell",
 							".swiper-container-v",
 							component,
 							helper,
-							swiperH
+							swiperH,
+							topH
 							));
+					component.set("v.swiperV",swiperV);
 
 					var filterH = helper.createCardSwiper(
 						"filter-cell",
@@ -45,15 +55,17 @@
 					component.set("v.filterH",filterH);
 
 
-					component.set("v.filterV",
+					var filterV = component.set("v.filterV",
 						helper.createVerticalSwiper(
 							"filter-cell",
 							".swiper-container-filter-v",
 							component,
 							helper,
-							filterH
+							filterH,
+							topH
 							));
-				});
+					component.set("v.filterV",filterV);
+				//});
 			});
 		});
 		$A.enqueueAction(action);
@@ -64,15 +76,21 @@
 	onSlideChangeEnd : function (swiper) {
 	},
 
-	createVerticalSwiper : function  (aura_id, container_id, component, helper, h_swiper) {
+	createVerticalSwiper : function  (aura_id, container_id, component, helper, h_swiper, top_swiper) {
 		var vertical = new Swiper(container_id, {
 			pagination: '.swiper-pagination-v',
 			direction: 'vertical',
 			spaceBetween: 50,
-			onSlideChangeEnd : helper.onSlideChangeEnd,
+			onSlideChangeEnd : function(swiper, event) {
+
+				if (swiper.activeIndex != 0) {
+					top_swiper.detachEvents();
+				} else {
+					top_swiper.attachEvents();
+				}
+			},
 			onTouchStart: function(swiper, event) {
 				//var h_index = h_swiper.activeIndex;
-
 
 			},
 		});
@@ -109,8 +127,9 @@
 				var next_index = swiper.activeIndex + 1;
 				var slides = component.find(aura_id);
 				var next_slide = slides[next_index];
-				next_slide.preload(next_index);
-
+				if (!_.isUndefined(next_slide)) {
+					next_slide.preload(next_index);
+				}
 			},
 			onSlidePrevEnd : function (swiper) {
 				var slides = component.find(aura_id);
