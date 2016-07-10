@@ -234,7 +234,7 @@
 			staticPlot: true,
 			displayModeBar: false}
 
-		Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, opts);
+		//Plotly.newPlot(chart_id.toLowerCase(), chart_data, chart_layout, opts);
 	},
 
 
