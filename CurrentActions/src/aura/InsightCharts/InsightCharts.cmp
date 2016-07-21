@@ -1,0 +1,38 @@
+<aura:component controller="InsightsController">
+
+<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css,/resource/rezza_fonts_css" scripts="/resource/jq_locker,/resource/underscore,/resource/chart_locker,/resource/moment" afterScriptsLoaded="{!c.postScript}"/>
+
+<!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> -->
+
+<aura:attribute name="insight" type="Insight__c" />
+<aura:attribute name="charts" type="List" default="[]"/>
+
+<div class="slds">
+  <div class="slds-grid slds-wrap slds-grid--pull-padded">
+
+    <aura:iteration items="{!v.charts}" var="chart" indexVar="indx">
+      <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 slds-p-around--small">
+        <div class="slds-box slds-p-around--small">
+          <div class="slds-text-heading--label slds-text-longform">{!chart.title}</div>
+
+          <div class="slds-p-bottom--xx-large">
+
+            <!-- Plot.ly uses a div -->
+            <!-- <div id="{!'insight-charts-chart-'+indx}" style="width: 100%; height: 300px;" /> -->
+
+            <!-- ChartJS uses Canvas -->
+            <canvas  id="{!'insight-charts-chart-'+indx}" max-height="250px" />
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </aura:iteration>
+
+  </div>
+</div>
+
+
+</aura:component>

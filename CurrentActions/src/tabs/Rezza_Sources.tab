@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <icon>ConnectedApp_Resources/rezza_small_red_square.png</icon>
+    <label>Rezza Sources</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom113: TV Widescreen</motif>
+    <page>Rezza_Sources</page>
+</CustomTab>

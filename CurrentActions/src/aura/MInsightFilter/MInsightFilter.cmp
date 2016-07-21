@@ -1,0 +1,75 @@
+<aura:component controller="InsightNavController">
+
+<ltng:require styles="/resource/select2/css/select2.min.css,/resource/rezza_fonts_css" scripts="" afterScriptsLoaded="{!c.postScript}"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+<aura:handler event="c:AssocEvent" action="{!c.assocSearch}"/>
+
+<aura:handler event="c:InsightCountEvent" action="{!c.countChange}"/>
+<aura:attribute name="count" type="String" default="00"/>
+
+<aura:registerEvent name="nav" type="c:SwiperNavEvent"/>
+
+<aura:attribute name="name" type="String" default="you"/>
+<aura:attribute name="totalCount" type="String" default="500,000"/>
+
+<aura:attribute name="sources" type="List" />
+<aura:attribute name="fields" type="List" />
+<aura:attribute name="sourceName" type="String" />
+
+<div class="slds" style="background-color:white">
+	<div class="slds-p-top--medium slds-p-left--medium slds-p-right--medium ">
+		<div class="greeting slds-p-top--large">Welcome back, {!v.name}!</div>
+		<hr class="greeting-bar slds-p-bottom--large"/>
+	</div>
+	<div class="slds-p-left--medium slds-p-right--medium">
+		<div class="insight-filter-count" >{!v.count}</div>
+		<div class="inline slds-p-left--small">
+			<div class="insight-filter-tag">{!v.sourceName}Insights Found</div>
+			<p class="cta-filter-tag" >{!v.totalCount} significant insights processed.</p>
+
+			<div class="select-box">
+				<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+				<div class="select-line">
+					<ui:inputSelect aura:id="sources"  change="{!c.onSourceChange}">
+					<ui:inputSelectOption text="Select Source" label="Select Source"/>
+					<aura:iteration items="{!v.sources}" var="source" indexVar="indx">
+					<ui:inputSelectOption text="{!source.Data_Source__c}" label="{!source.Data_Source__c}" />
+				</aura:iteration>
+			</ui:inputSelect>
+		</div>
+	</div>
+
+	<div class="select-box">
+		<c:svg class="slds-icon" style="fill:#515458; height:1rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+		<div class="select-line">
+			<ui:inputSelect aura:id="fields"  change="{!c.onFieldChange}">
+			<ui:inputSelectOption text="Select Field" label="Select Field"/>
+			<aura:iteration items="{!v.fields}" var="field" indexVar="indx">
+			<ui:inputSelectOption text="{!field.Field_Labels__c}" label="{!field.Field_Labels__c}" />
+		</aura:iteration>
+	</ui:inputSelect>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footerholder">
+	<div class="footer">
+		<c:svg class="slds-icon" style="fill:#CFCFCF; height:3rem; width:3rem" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+	</div>
+</div>
+
+<div class="right-bottom slds-p-right--large">
+	<button class="rezza-button slds-button slds-button--neutral slds-button--neutral" style="	font-size: 28px;
+	height: 40px;
+	width: 180px;
+	color: #2f2f2f;
+	font-weight: 500;
+	border-radius:0;
+	border: 2px solid #2f2f2f;" onclick="{!c.filter}">FILTER</button>
+</div>
+
+</div>
+</aura:component>

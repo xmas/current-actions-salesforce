@@ -23,7 +23,7 @@ public with sharing class InsightData {
        vals.put('user', user);
 
        return JSON.serialize(vals);
- 
+    
    }
    
 
