@@ -18,11 +18,14 @@
           <div class="slds-p-bottom--xx-large">
 
             <!-- Plot.ly uses a div -->
-            <!-- <div id="{!'insight-charts-chart-'+indx}" style="width: 100%; height: 300px;" /> -->
+            <div id="{!'insight-charts-chart-'+indx}" style="width: 100%; height: 300px;" />
 
             <!-- ChartJS uses Canvas -->
-            <canvas  id="{!'insight-charts-chart-'+indx}" max-height="250px" />
+            <!-- <canvas  id="{!'insight-charts-chart-'+indx}" max-height="250px" /> -->
 
+          </div>
+          <div class="insight-detail">
+            <aura:unescapedHtml value="{!chart.detail}"/>
           </div>
 
 

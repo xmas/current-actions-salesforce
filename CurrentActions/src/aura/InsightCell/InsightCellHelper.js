@@ -42,7 +42,8 @@
 		var width = $('#'+chart_id).width();
 		var height = $('#'+chart_id).height();
 
-		helper.renderWithChartjs(component, chart_id);
+		//helper.renderWithChartjs(component, chart_id);
+		helper.renderWithPlotly(component, chart_id);
 	},
 
 	renderWithChartjs : function (component, chart_id, chart_data, chart_layout) {
@@ -108,7 +109,11 @@
 
 		renderWithPlotly : function (component, chart_id, chart_data, chart_layout) {
 
-
+			var index = component.get("v.index");
+		var chart_id = 'insight-cell-chart-'+index;
+		//debugger;
+		var width = $('#'+chart_id).width();
+		var height = $('#'+chart_id).height();
 			var selectorOptions = {
 				buttons: [{
 					step: 'month',

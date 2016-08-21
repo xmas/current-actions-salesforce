@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="cell-title">{!v.item.label}</div>
-		 <a class="cell-data-text slds-p-right--small" target="_blank" href="{!v.baseURL +'/'+ v.item.value}">Go To</a>
+		 <!-- <a class="cell-data-text slds-p-right- -small" target="_blank" href="{!v.baseURL +'/'+ v.item.value}">Go To</a> -->
 	</div>
 
 </aura:iteration>

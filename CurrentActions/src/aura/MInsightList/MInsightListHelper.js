@@ -141,19 +141,41 @@
 
 	loadInsightData : function (component, insight) {
 
-		$A.createComponent(
-			"c:RelatedList",
-			{
-				"insight": insight,
-			},
-			function(newChart){
-			//Add the new button to the body array
-			if (component.isValid()) {
-				var body = component.get("v.body");
-				body.push(newChart);
-				component.set("v.body", newChart);
+		// $A.createComponent(
+		// 	"c:TestList",
+		// 	{
+		// 		"insight": insight,
+		// 	},
+		// 	function(newChart){
+		// 	//Add the new button to the body array
+		// 	if (component.isValid()) {
+		// 		var body = component.get("v.body");
+		// 		body.push(newChart);
+		// 		component.set("v.body", newChart);
+		// 	}
+		// });
+
+		var insight = component.get("v.insight");
+		var related = JSON.parse(insight.Related__c);
+ 
+			//debugger;
+
+			try {
+				var self = this;
+				var url_action = component.get("c.baseURL");
+				url_action.setCallback(self, function(actionResult) {
+
+					var result = actionResult.getReturnValue();
+					component.set("v.baseURL", result);
+					component.set("v.related", related);
+				});
+				$A.enqueueAction(url_action);
+			} catch (err) {
+				console.log(err);
+				console.log(err.stack);
 			}
-		});
+
+			
 	},
 
 	showPopupHelper: function(component, helper, componentId, className, insight){

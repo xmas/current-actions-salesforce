@@ -3,7 +3,7 @@
 
 		var insight = component.get("v.insight");
 		var related = JSON.parse(insight.Related__c);
-
+ 
 			//debugger;
 
 			try {

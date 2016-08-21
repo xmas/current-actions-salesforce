@@ -7,6 +7,10 @@
 
 <aura:attribute name="insights" type="List" />
 
+<aura:attribute name="related" type="List" />
+<aura:attribute name="baseURL" type="String" default="https://rowan-dev-ed.my.salesforce.com"/>
+
+
 <aura:attribute name="filtered" type="List" />
 <aura:handler name="change" value="{!v.filtered}" action="{!c.filteredInsightsChanged}"/>
 
@@ -54,7 +58,10 @@
 			</div>
 		</div>
 		<div class="slds-p-left--medium slds-p-right--medium slds-p-bottom--xx-large modal-content">
-			<p>{!v.body}</p>
+			<!-- <p>{!v.body}</p> -->
+			  <aura:iteration items="{!v.related}" var="item" indexVar="indx">
+        		<c:RelatedCell item="{!item}" index="{!indx}" baseURL="{!v.baseURL}" />
+    		</aura:iteration>
 		</div>
 
 	</div>

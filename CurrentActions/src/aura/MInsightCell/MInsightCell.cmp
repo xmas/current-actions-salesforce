@@ -1,6 +1,6 @@
 <aura:component >
 
-<ltng:require scripts="/resource/jq3,/resource/moment,/resource/chroma" afterScriptsLoaded="{!c.postScript}"/>
+<ltng:require scripts="/resource/jq3,/resource/moment,/resource/chroma,/resource/Plotly" afterScriptsLoaded="{!c.postScript}"/>
 
 
 <!-- init -->

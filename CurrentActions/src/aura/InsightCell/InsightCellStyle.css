@@ -119,6 +119,10 @@
   font-size: 12px;
 }
 
+.THIS .sig-item {
+  color: #E50041;
+  font-weight: 700;
+}
 
 .THIS .sobject-link a
 {
